@@ -21,6 +21,7 @@ export interface RepairPolicy {
   id: string; tenantId: string; kitId: string; baseOrderId: string; baseRevisionId: string;
   walletConsentId: string; walletConsentDigest: string; walletConsentVersion: number;
   version: number; digest: string; createdAt: string; expiresAt: string; revokedAt: string | null;
+  endedReason?: "owner_revoked" | "base_refunded" | "base_fulfilled" | "wallet_revoked" | "expired";
   capMinor: number; currency: "USD"; merchants: string[]; categories: string[];
   scope: "digital_setup_amendments"; preserveOwned: true; preserveGoal: true; stopAfterFulfillment: true;
 }

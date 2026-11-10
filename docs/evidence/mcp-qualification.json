@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-11-10T21:01:22.911Z",
+  "observedAt": "2026-11-10T21:40:44.083Z",
   "transport": "MCP SDK 1.32.2 Streamable HTTP client over actual HTTP",
   "endpoint": "/api/mcp",
   "toolNames": [

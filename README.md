@@ -16,7 +16,7 @@ npm run db:migrate
 npm run dev
 ```
 
-Open http://localhost:4106. Each browser gets a private, durable sample workspace with a seven-day opaque session. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require the exact configured public origin.
+Open http://localhost:4106. Each browser gets a private, durable sample workspace with a seven-day opaque session. A deployment-wide PostgreSQL backstop admits at most 30 new workspaces/hour and 200/day; an existing cookie reopens its current workspace and existing work remains usable. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require the exact configured public origin.
 
 ```sh
 npm test
@@ -34,11 +34,11 @@ The core test suite uses deterministic sample providers. Credentialed qualificat
 - Real Channel3 discovery, current product details/options, similar products, category and price-history adapters. Fresh retailer URLs are excluded from persisted snapshots; original diagrams are used instead of unlicensed product images.
 - Direct OpenAI and Gemini structured goal proposals. Models propose; the deterministic compiler decides verification.
 - Actual Web Audio routing from the saved graph, isolated model buses, downstream disconnection behavior and downloadable PCM WAV files. The original test signals are labelled **Modelled**, not a hardware recording.
-- Scoped Streamable HTTP MCP tools: `verify_kit`, `repair_kit`, `quote_kit`. An actual external SDK client has matched the browser's immutable certificate and tested stale/foreign/revoked requests. These tools do not authorize payment or mutate a saved kit.
+- Scoped Streamable HTTP MCP tools: `verify_kit`, `repair_kit`, `quote_kit`. An actual external SDK client has matched the browser's immutable certificate and tested stale/foreign/revoked requests. These tools do not authorize payment or mutate a saved kit. PostgreSQL enforces 60 verifications/minute, 5 repair proposals/hour, 2 quotes/minute and at most 2 concurrent tools per grant.
 - The **Studio** view offers an itemized $12 digital routing dossier and connection guide, with graph-bound PayPal sandbox create/approval/capture, save-during-purchase consent, owned-order/token reads, separately labelled Vault setup fallback, revocation and compensating full refunds before delivery within 24 hours.
 - A separate $25 cumulative repair authority for unfulfilled Studio digital service orders. Server-owned sample events exercise actual sandbox saved-wallet payment when that account is qualified. Pending claims count; refunds do not restore the allowance; a larger change requires new approval.
 
-A catalog product is not retailer procurement. The Studio service does not sell or ship physical gear. Its dossier preserves unresolved compatibility facts. Actual WorldKit live payment capability is recorded separately from sample SDK/database tests and from another project's payment evidence.
+A catalog product is not retailer procurement. The Studio service does not sell or ship physical gear. Its dossier preserves unresolved compatibility facts. WorldKit's own observed buyer-present $12 capture, save-during-purchase, $8 saved-wallet amendment, $20/$60 escalation, full $8+$12 refunds and token deletion are recorded in [project qualification evidence](docs/evidence/paypal-worldkit-qualification.json). These observations remain separate from sample SDK/database tests and another project's payment evidence.
 
 ## Integrations and boundaries
 

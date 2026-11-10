@@ -1,0 +1,13 @@
+{
+  "observedAt": "2026-11-10T21:44:57.253Z",
+  "transport": "Actual local HTTP",
+  "checks": {
+    "freshWorkspaceCreated": true,
+    "existingCookiePreservesWorkspace": true,
+    "existingWorkspaceReadable": true,
+    "foreignOriginDenied": true,
+    "onlyNewWorkspaceConsumesGlobalQuota": true
+  },
+  "source": "sample",
+  "port": 4106
+}

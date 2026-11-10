@@ -1,0 +1,129 @@
+{
+  "recordedAt": "2026-11-10T21:38:49.113Z",
+  "project": "WorldKit",
+  "environment": "sandbox",
+  "source": "live_sandbox",
+  "sdk": {
+    "package": "paypal",
+    "version": "2.29.0",
+    "commit": "5d0df8a8817e5fdf2e2cd48e68f790ea4730aab2",
+    "core": "0.2.3"
+  },
+  "mode": "Official buyer UI completed first; this script made read-only provider calls.",
+  "observed": [
+    {
+      "domainOrderId": "513d8468-9ae2-4354-bf39-ce9cf18135e8",
+      "kind": "initial",
+      "providerOrderId": "1TN207853K813161J",
+      "providerStatus": "COMPLETED",
+      "items": [
+        {
+          "sku": "wk-routing-dossier",
+          "name": "WorldKit Studio · source-linked routing dossier",
+          "quantity": 1,
+          "unitMinor": 800
+        },
+        {
+          "sku": "wk-assembly-guide",
+          "name": "WorldKit Studio · connection and assembly guide",
+          "quantity": 1,
+          "unitMinor": 400
+        }
+      ],
+      "captureId": "4GT7791003037102M",
+      "captureStatus": "REFUNDED",
+      "capturedMinor": 1200,
+      "refundId": "44W75861BS392493F",
+      "refundStatus": "COMPLETED",
+      "refundedMinor": 1200,
+      "currency": "USD",
+      "graphHash": "a110c3096eddf789a04742e677a248c933c92341065ef75a7f56f3b2bc44d7d8",
+      "verificationId": "cert_9a94d08290865cdc46fe5a929073afd9",
+      "sourceHash": "22c4671960f0f972d27a464fb7a71914306525f5cfea48810c40adf6bcb0f170",
+      "sourceMode": "live_sandbox",
+      "transport": "apimatic_sdk"
+    },
+    {
+      "domainOrderId": "977139a0-f2ab-4c98-9b3d-7bcbb301b1f6",
+      "kind": "amendment",
+      "providerOrderId": "4PL873288S990850D",
+      "providerStatus": "COMPLETED",
+      "items": [
+        {
+          "sku": "wk-connection-revision",
+          "name": "WorldKit Studio · Update the connection dossier",
+          "quantity": 1,
+          "unitMinor": 800
+        }
+      ],
+      "captureId": "0GU665065D389015E",
+      "captureStatus": "REFUNDED",
+      "capturedMinor": 800,
+      "refundId": "2LD25152EC764710X",
+      "refundStatus": "COMPLETED",
+      "refundedMinor": 800,
+      "currency": "USD",
+      "graphHash": "a110c3096eddf789a04742e677a248c933c92341065ef75a7f56f3b2bc44d7d8",
+      "verificationId": "cert_9a94d08290865cdc46fe5a929073afd9",
+      "sourceHash": "22c4671960f0f972d27a464fb7a71914306525f5cfea48810c40adf6bcb0f170",
+      "sourceMode": "live_sandbox",
+      "transport": "apimatic_sdk"
+    }
+  ],
+  "wallet": {
+    "method": "during_purchase",
+    "independentOwnershipReadAt": "2026-11-10T21:31:26.437Z",
+    "sameCustomerVerified": true,
+    "firstPurchaseConsentBound": true,
+    "laterMerchantInitiatedUse": true,
+    "immediateCreateCaptureNotCapturedAgain": true,
+    "consentRevoked": true,
+    "providerDeletionConfirmed": true,
+    "privateIdentifiersEncrypted": true,
+    "privateIdentifiersAbsentFromBrowser": true,
+    "tokenIdentifierPublished": false
+  },
+  "repairAuthority": {
+    "originalCapMinor": 2500,
+    "grossConsumedMinor": 800,
+    "availableBeforeClosureMinor": 1700,
+    "currentlyAvailableMinor": 0,
+    "state": "ended",
+    "endedReason": "base_refunded",
+    "scenarios": [
+      {
+        "additionalMinor": 800,
+        "state": "refunded",
+        "createdFinancialOrder": true,
+        "eventSource": "sample"
+      },
+      {
+        "additionalMinor": 2000,
+        "state": "escalated",
+        "createdFinancialOrder": false,
+        "eventSource": "sample"
+      },
+      {
+        "additionalMinor": 6000,
+        "state": "escalated",
+        "createdFinancialOrder": false,
+        "eventSource": "sample"
+      }
+    ],
+    "refundDoesNotReplenish": true
+  },
+  "totals": {
+    "capturedMinor": 2000,
+    "refundedMinor": 2000,
+    "currency": "USD",
+    "domainOrders": 2,
+    "providerOperations": 5
+  },
+  "limitations": [
+    "Sandbox digital service, not physical gear procurement or retailer fulfillment.",
+    "Merchant scenario triggers are Sample; payment resources are live sandbox.",
+    "Independent human source review and physical rig testing remain pending.",
+    "No claim of production eligibility or first-ever payer wallet enrollment.",
+    "Authentic deployed webhook qualification remains separate."
+  ]
+}

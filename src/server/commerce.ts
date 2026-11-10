@@ -88,6 +88,7 @@ export async function authorizePayment(command: PaymentCommand, provider: Provid
       const others = (await database().query("SELECT payload FROM wk_repair_claims WHERE policy_id=$1 AND id<>$2", [policy.id, claim.id])).rows.map(r => r.payload as RepairClaim);
       const consumedMinor = others.filter(c => !["refused", "escalated"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0);
       const base = await loadOrder(order.tenantId, policy.baseOrderId);
+      if (base.state !== "paid" || base.refundedMinor > 0) return refuse("The original Studio order is no longer an active paid purchase. Its repair authority has ended.");
       const [original, proposed] = await Promise.all([getRevision(order.tenantId, policy.baseRevisionId), getRevision(order.tenantId, order.revisionId)]);
       const evaluation = evaluateRepair({ policy, wallet, original: original.kit, proposed: proposed.kit, merchant: "worldkit-studio", category: "setup-service", additionalMinor: claim.additionalMinor, consumedMinor, fulfilled: Boolean(base.fulfilledAt) });
       if (!evaluation.allowed) return refuse(evaluation.reason);
@@ -161,6 +162,7 @@ export async function syncOperation(session: Session, orderId: string, operation
     await event(db, session.id, `payment.${operation.status}`, order.state === "paid" ? "PayPal sandbox payment completed" : order.state === "refunded" ? "PayPal sandbox refund completed" : "Payment state saved", `The ${operation.command.action.kind.replaceAll("_", " ")} operation is ${operation.status}. Purchased graph ${order.graphHash.slice(0, 12)} remains immutable.`, order.revisionId);
     return order;
   });
+  await retireIneligiblePolicies(session.id);
   if (order.state === "paid" && order.walletConsentId && operation.receipt?.source === "live_sandbox") {
     try { await adoptCheckoutWallet(session, order); }
     catch { /* Captured money is settled independently; wallet confirmation stays pending. */ }
@@ -187,7 +189,7 @@ export async function revokeRepairPolicy(session: Session, id: string) {
   return commerceTransaction(async db => {
     const row = (await db.query("SELECT payload FROM wk_repair_policies WHERE id=$1 AND tenant_id=$2 FOR UPDATE", [id, session.id])).rows[0];
     if (!row) throw new WorldKitError("not_found", "That repair authority does not belong to this workspace.", 404);
-    const policy = { ...row.payload, revokedAt: row.payload.revokedAt ?? now() } as RepairPolicy;
+    const policy = { ...row.payload, revokedAt: row.payload.revokedAt ?? now(), endedReason: row.payload.endedReason ?? "owner_revoked" } as RepairPolicy;
     await db.query("UPDATE wk_repair_policies SET payload=$1 WHERE id=$2", [policy, id]);
     await event(db, session.id, "policy.revoked", "Automatic setup changes stopped", "Revocation is now committed. Existing captured payments and unknown operations remain recorded for reconciliation.", policy.baseRevisionId); return policy;
   });
@@ -208,7 +210,9 @@ export async function reserveRepair(session: Session, policyId: string, proposal
     if (!latest || latest.certificate.graphHash !== proposal.revision.certificate.graphHash) throw new WorldKitError("stale_revision", "Refresh this repair against the current saved graph.", 409);
     const other = (await db.query("SELECT payload FROM wk_repair_claims WHERE policy_id=$1", [policy.id])).rows.map(r => r.payload as RepairClaim);
     const consumedMinor = other.filter(c => !["refused", "escalated"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0);
-    const evaluation = evaluateRepair({ policy, wallet, original, proposed: proposal.revision.kit, merchant: "worldkit-studio", category: "setup-service", additionalMinor: proposal.minor, consumedMinor, fulfilled: Boolean(base.fulfilledAt) });
+    const evaluation = base.state !== "paid" || base.refundedMinor > 0
+      ? { allowed: false, reason: "The original Studio order is no longer an active paid purchase. Its repair authority has ended.", remainingMinor: Math.max(0, policy.capMinor - consumedMinor) }
+      : evaluateRepair({ policy, wallet, original, proposed: proposal.revision.kit, merchant: "worldkit-studio", category: "setup-service", additionalMinor: proposal.minor, consumedMinor, fulfilled: Boolean(base.fulfilledAt) });
     const claim: RepairClaim = { id: randomUUID(), tenantId: session.id, policyId, orderId: null, revisionId: proposal.revision.kit.id, scenarioId: proposal.scenarioId, additionalMinor: proposal.minor, state: evaluation.allowed ? "reserved" : "escalated", createdAt: now(), explanation: evaluation.reason, sourceMode: "sample", reversedAt: null };
     let authority: FinancialAuthority | null = null;
     if (evaluation.allowed) {
@@ -315,7 +319,24 @@ export async function deliverDossier(session: Session, id: string) {
     await saveOrder(db, { ...latest, fulfilledAt: latest.fulfilledAt ?? now() });
     await event(db, session.id, "dossier.delivered", "Your purchased dossier was delivered", `Immutable kit ${order.graphHash.slice(0, 12)} with its certificate, sources and connection guide. Automatic changes and automatic cancellation are now closed for this order.`, order.revisionId);
   });
+  await retireIneligiblePolicies(session.id);
   return { filename: `worldkit-studio-${order.id.slice(0, 8)}-dossier.json`, content };
+}
+export async function retireIneligiblePolicies(tenantId: string) {
+  return commerceTransaction(async db => {
+    const rows = await db.query("SELECT payload FROM wk_repair_policies WHERE tenant_id=$1 AND payload->>'revokedAt' IS NULL FOR UPDATE", [tenantId]);
+    let retired = 0;
+    for (const row of rows.rows) {
+      const policy = row.payload as RepairPolicy; const base = await loadOrder(tenantId, policy.baseOrderId, db); const wallet = await loadWallet(tenantId, policy.walletConsentId, db);
+      const reason: RepairPolicy["endedReason"] = base.refundedMinor > 0 || base.state === "refunded" || base.state === "cancelled" ? "base_refunded" : base.fulfilledAt ? "base_fulfilled" : wallet.revokedAt ? "wallet_revoked" : Date.parse(policy.expiresAt) <= Date.now() ? "expired" : undefined;
+      if (!reason) continue;
+      const ended = { ...policy, revokedAt: now(), endedReason: reason };
+      await db.query("UPDATE wk_repair_policies SET payload=$1 WHERE id=$2", [ended, policy.id]);
+      await event(db, tenantId, "policy.ended", "Automatic setup changes ended", reason === "base_refunded" ? "The original Studio purchase was refunded. Its repair policy is closed; gross spent and pending history remains preserved." : reason === "base_fulfilled" ? "The purchased dossier was delivered. Its automatic repair policy is closed." : reason === "wallet_revoked" ? "Wallet consent was revoked. Its automatic repair policy is closed." : "The repair authority expired.", policy.baseRevisionId);
+      retired++;
+    }
+    return retired;
+  });
 }
 export async function openSupportRequest(session: Session, orderId: string, message: string) {
   const order = await loadOrder(session.id, orderId); const id = randomUUID();

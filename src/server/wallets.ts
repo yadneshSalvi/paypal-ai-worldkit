@@ -123,7 +123,9 @@ export async function revokeWallet(session: Session, id: string, adapter = vault
     await db.query("SELECT id FROM wk_wallet_consents WHERE id=$1 AND tenant_id=$2 FOR UPDATE", [id, session.id]);
     const latest = await loadWallet(session.id, id, db);
     const revoked = { ...latest, revokedAt: latest.revokedAt ?? new Date().toISOString(), state: "revoked" as const, approvalUrl: null };
-    await saveWallet(db, revoked); return revoked;
+    await saveWallet(db, revoked);
+    await db.query("UPDATE wk_repair_policies SET payload=jsonb_set(jsonb_set(payload,'{revokedAt}',to_jsonb($1::text)),'{endedReason}','\"wallet_revoked\"'::jsonb) WHERE tenant_id=$2 AND payload->>'walletConsentId'=$3 AND payload->>'revokedAt' IS NULL", [revoked.revokedAt, session.id, id]);
+    return revoked;
   });
   if (!wallet.tokenId) return wallet;
   const taken = await claim(wallet, "delete", { tokenId: wallet.tokenId });

@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-11-10T21:29:39.303334+00:00",
+  "recordedAt": "2026-11-10T21:45:24.800298+00:00",
   "source": "sample",
   "node": "22.22.3",
   "next": "16.4.6",
@@ -10,13 +10,15 @@
     "failed": 0
   },
   "postgresIntegrationTests": {
-    "passed": 18,
+    "passed": 22,
     "failed": 0
   },
   "typecheck": "passed",
   "productionBuild": "passed",
   "port": 4106,
-  "liveMoneyQualification": "pending_worldkit_buyer_flow",
+  "liveMoneyQualification": "passed_worldkit_buyer_flow_and_readonly_corroboration",
   "physicalTest": "not_performed",
-  "humanSourceReview": "pending"
+  "humanSourceReview": "pending",
+  "liveMoneyEvidence": "paypal-worldkit-qualification.json",
+  "workspaceHttpEvidence": "workspace-http-qualification.json"
 }

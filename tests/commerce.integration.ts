@@ -111,7 +111,19 @@ test("lost Vault setup dispatch is claimed once, and exchange waits for actual A
   await assert.rejects(completeWalletSetup(session, consent.id, adapter), /original wallet setup/); assert.equal(writes, 1);
 });
 test("wallet revocation is durable before the SDK delete request leaves the process", async () => {
-  const f = await policyFixture(); let deletes = 0;
+  const f = await policyFixture(); const prepared = await reserveRepair(f.session, f.policy.id, proposal(f, 800, "prepared-before-wallet-revoke")); let deletes = 0;
   const client = new PaypalClient({ serverOptions: { baseUrl: "https://api-m.sandbox.paypal.com" }, oauth2: { clientId: "fixture", clientSecret: "fixture" }, logging: { level: "off" }, retry: { maxRetries: 0 }, fetch: async request => { const req = request as Request; if (new URL(req.url).pathname === "/v1/oauth2/token") return Response.json({ access_token: "fixture", token_type: "Bearer", expires_in: 3600 }); assert.equal((await loadWallet(f.session.id, f.wallet.id)).state, "revoked"); assert.equal(req.method, "DELETE"); deletes++; return new Response(null, { status: 204 }); } });
   const result = await revokeWallet(f.session, f.wallet.id, new VaultAdapter(client)); assert.equal(result.state, "revoked"); await revokeWallet(f.session, f.wallet.id, new VaultAdapter(client)); assert.equal(deletes, 1);
+  const policy = (await database().query("SELECT payload FROM wk_repair_policies WHERE id=$1", [f.policy.id])).rows[0].payload; assert.ok(policy.revokedAt); assert.equal(policy.endedReason, "wallet_revoked");
+  assert.equal((await authorizePayment(prepared.authority!.command, f.provider)).allowed, false);
+});
+test("refunding the original order retires its policy without restoring gross amendment spend", async () => {
+  const f = await policyFixture(); const prepared = await reserveRepair(f.session, f.policy.id, proposal(f, 800, "paid-before-base-refund")); f.provider.instantCapture = true;
+  await syncOperation(f.session, prepared.claim.orderId!, await (await f.engine).core.execute(prepared.authority!.command));
+  await refundCheckout(f.session, prepared.claim.orderId!, f.engine); await refundCheckout(f.session, f.order.id, f.engine);
+  const policy = (await database().query("SELECT payload FROM wk_repair_policies WHERE id=$1", [f.policy.id])).rows[0].payload;
+  assert.ok(policy.revokedAt); assert.equal(policy.endedReason, "base_refunded");
+  const claim = (await database().query("SELECT payload FROM wk_repair_claims WHERE id=$1", [prepared.claim.id])).rows[0].payload as RepairClaim; assert.equal(claim.state, "refunded"); assert.equal(claim.additionalMinor, 800);
+  const refused = await reserveRepair(f.session, f.policy.id, proposal(f, 100, "after-base-refund")); assert.equal(refused.claim.state, "escalated"); assert.equal(refused.authority, null);
+  assert.equal((await authorizePayment(prepared.authority!.command, f.provider)).allowed, false);
 });
