@@ -11,11 +11,22 @@
     "postgres": 22
   },
   "providerTraffic": "none; fixture providers and local database only",
-  "deployed": false,
+  "deployed": true,
   "notes": [
     "Existing buyer lifecycle remains unchanged.",
     "TypedRESTtransport availability is not domain payout/invoice implementation.",
     "Full project implementation remains active.",
     "Existing app-owned encrypted operation adapter remains active; encrypted domain authority and SQL document regression passes with new row identity checks."
-  ]
+  ],
+  "productionBuild": "passed",
+  "deploymentId": "dpl_4Ymt7sbMsMZ53nQ5ShdBSuLJzQDB",
+  "sourceCommit": "27b615d",
+  "productionUrl": "https://paypal-ai-worldkit.vercel.app",
+  "deploymentState": "READY",
+  "hostedHttp": "6checks passed; no financial dispatch",
+  "browser": "Existing saved workspace and native view survived reload; no browser errors",
+  "runtimeErrorScan": {
+    "minutes": 15,
+    "records": 0
+  }
 }
