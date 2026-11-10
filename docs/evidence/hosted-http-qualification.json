@@ -1,0 +1,42 @@
+{
+  "observedAt": "2026-11-10T21:48:55.968Z",
+  "url": "https://paypal-ai-worldkit.vercel.app",
+  "checks": [
+    {
+      "name": "anonymous_and_origin_guards",
+      "anonymousStatus": 401,
+      "missingOriginStatus": 403
+    },
+    {
+      "name": "isolated_persisted_workspaces",
+      "count": 2,
+      "secureHttpOnlyCookies": true
+    },
+    {
+      "name": "existing_session_reused",
+      "sameSession": true,
+      "sameGraph": true
+    },
+    {
+      "name": "graph_bound_quote",
+      "totalMinor": 1200,
+      "currency": "USD",
+      "items": 2
+    },
+    {
+      "name": "checkout_ownership_and_shape",
+      "crossTenantStatus": 409,
+      "injectedAmountStatus": 400
+    },
+    {
+      "name": "no_financial_dispatch",
+      "orders": 0,
+      "operations": 0
+    }
+  ],
+  "financialWrites": 0,
+  "limits": [
+    "Hosted HTTP integration qualification only; buyer-present financial lifecycle was separately tested locally.",
+    "Full WorldKit scope and deployed webhook qualification remain open."
+  ]
+}

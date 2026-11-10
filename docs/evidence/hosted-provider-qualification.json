@@ -1,0 +1,34 @@
+{
+  "observedAt": "2026-11-10T21:52:04.880Z",
+  "url": "https://paypal-ai-worldkit.vercel.app",
+  "deploymentId": "dpl_3R3eHgLUzfUi2B87PbeX7BJSW3GY",
+  "source": "live",
+  "model": {
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "inputHash": "fcae748299f3deb427ec4f5a8efa0abb861a6fc4d3539cf1c215c47cc6b036bf",
+    "promptHash": "460c85c689ed0bece7c5e34d40e666203ab87fc8781395cc044398e2775e199b",
+    "outputHash": "85baf5ff4b97835efbed7164f0ae65fd76d59d93e4d8fbfc53582ab05dfd3b7a",
+    "requestedAt": "2026-11-10T21:50:07.508Z",
+    "completedAt": "2026-11-10T21:50:55.963Z",
+    "durationMs": 48455,
+    "inputTokens": 421,
+    "outputTokens": 2036
+  },
+  "catalog": {
+    "status": "succeeded",
+    "operation": "search",
+    "resultCount": 8
+  },
+  "revision": 2,
+  "certificate": {
+    "unknown": 4,
+    "violated": 0,
+    "satisfied": 5
+  },
+  "financialWrites": 0,
+  "limits": [
+    "One hosted goal proposal and one catalog request are integration evidence, not a quality benchmark.",
+    "Current compatibility facts remain unreviewed or unresolved; no physical verification is claimed."
+  ]
+}

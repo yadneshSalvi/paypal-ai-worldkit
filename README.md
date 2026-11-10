@@ -2,7 +2,7 @@
 
 A creator workbench for turning a goal into a complete physical-system plan, with exact equipment profiles, source-linked checks, an audible routing model and a durable sandbox purchase record.
 
-The application is implemented and running locally. It remains under active development; physical testing, independent source review, the complete library/evaluation corpus, several broader integrations and release assets are still open. See [evidence and limitations](docs/WHAT_VERIFIED_MEANS.md).
+The current integration checkpoint is running locally and at [WorldKit on Vercel](https://paypal-ai-worldkit.vercel.app). It remains under active development; physical testing, independent source review, the complete library/evaluation corpus, several broader integrations and release assets are still open. See [evidence and limitations](docs/WHAT_VERIFIED_MEANS.md).
 
 ## Run locally
 
@@ -50,7 +50,7 @@ A catalog product is not retailer procurement. The Studio service does not sell 
 | OpenAI / Gemini | Direct server-side SDKs, structured schemas and prompt/input/output hashes; no secrets in prompts. |
 | MCP | Official SDK 1.32.2, exact scopes and schema checks; no financial tools. |
 | Storage | PostgreSQL for authority/state; private object-storage integration remains an active workstream. |
-| Hosting | Next.js 16.4.6 / React 19.3.1, Vercel-ready Node 22 configuration. Hosting qualification is separate from local build success. |
+| Hosting | Next.js 16.4.6 / React 19.3.1 on Vercel Node 22. Hosted session/quote isolation, live catalog search and a reviewed OpenAI proposal were independently exercised; see [HTTP checks](docs/evidence/hosted-http-qualification.json) and [provider qualification](docs/evidence/hosted-provider-qualification.json). |
 
 The [PayPal implementation contract](paypal-plan.md) records the actual SDK maps, authority boundaries, error/unknown-state handling and revision history. [APIMatic setup](APIMATIC_SETUP.md) preserves skill provenance. The shared package's provenance is in `vendor/`.
 
