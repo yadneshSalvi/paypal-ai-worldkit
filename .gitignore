@@ -29,3 +29,12 @@ test-results/
 .private/
 .setup-evidence/
 artifacts/private/
+.artifacts/
+.vercel
+.env*
+
+# Only the installed immutable shared core is part of this checkpoint.
+/vendor/*
+!/vendor/fracture-paypal-core-0.2.3.tgz
+!/vendor/fracture-paypal-core-0.2.3.PROVENANCE.json
+!.env.example

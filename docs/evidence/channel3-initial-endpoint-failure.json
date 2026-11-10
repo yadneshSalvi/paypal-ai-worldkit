@@ -1,0 +1,54 @@
+{
+  "observedAt": "2026-11-10T20:44:09.785Z",
+  "sdk": "@channel3/sdk@4.9.0",
+  "receipts": [
+    {
+      "id": "c2cc1562-8b4a-4587-a209-9c62aae22931",
+      "operation": "search",
+      "query": "Zoom H4essential portable recorder",
+      "requestedAt": "2026-11-10T20:44:07.139Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:44:08.681Z",
+      "durationMs": 1541,
+      "resultIds": [],
+      "providerRequestId": null,
+      "status": "failed",
+      "error": "Channel3 returned HTTP 404. Please retry or use your saved evidence."
+    },
+    {
+      "id": "25a4148c-65ef-4ab8-af41-ab01fa235459",
+      "operation": "search",
+      "query": "Shure SM58-LC wired XLR microphone",
+      "requestedAt": "2026-11-10T20:44:08.681Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:44:09.479Z",
+      "durationMs": 798,
+      "resultIds": [],
+      "providerRequestId": null,
+      "status": "failed",
+      "error": "Channel3 returned HTTP 404. Please retry or use your saved evidence."
+    },
+    {
+      "id": "89d54d7a-0508-4067-aa57-645bdde257b3",
+      "operation": "search",
+      "query": "Audio Technica AT2020 XLR black condenser microphone",
+      "requestedAt": "2026-11-10T20:44:09.480Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:44:09.784Z",
+      "durationMs": 304,
+      "resultIds": [],
+      "providerRequestId": null,
+      "status": "failed",
+      "error": "Channel3 returned HTTP 404. Please retry or use your saved evidence."
+    }
+  ],
+  "snapshots": [],
+  "notes": [
+    "Actual API responses with sanitized metadata only. No offer URLs or catalog imagery retained.",
+    "Search similarity does not confirm an exact hardware identity or specification.",
+    "Physical tests and retail purchases were not performed."
+  ]
+}

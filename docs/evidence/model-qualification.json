@@ -1,0 +1,73 @@
+{
+  "observedAt": "2026-11-10T20:45:02.708Z",
+  "results": [
+    {
+      "proposal": {
+        "title": "Two-musician livestream with isolated mic recordings",
+        "brief": "Livestream a camera performance by two musicians while saving two separate, isolated microphone audio files. Reuse the owned Sony ZV-E10 camera, iPad Air 5 and Sony MDR-7506 headphones. Keep total spending on new equipment strictly below $600 USD.",
+        "budgetMinor": 60000,
+        "tracks": 2,
+        "explanation": "Preserves the existing budget, two-track goal and owned-equipment requirements. This is a goal proposal; physical feasibility is checked separately by deterministic rules.",
+        "assumptions": [
+          "Two microphone sources, provisionally one per musician, are inferred from the isolated-file request; two musicians alone does not establish microphone count.",
+          "The two isolated files should be recorded during the livestream, rather than extracted from a combined mix afterward."
+        ],
+        "needsClarification": [
+          "Which livestream platform will you use, and must the iPad handle both streaming and recording?",
+          "Do you already own microphones, and is one microphone per musician the intended arrangement?"
+        ]
+      },
+      "receipt": {
+        "id": "89ebdc39-95bf-4408-8e6f-38c92f91b8bf",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "9c6bf47eae1003eed81d247206fe2834da16c0f52c121bb0ec5f41b17b4e0752",
+        "promptHash": "460c85c689ed0bece7c5e34d40e666203ab87fc8781395cc044398e2775e199b",
+        "outputHash": "93fbf8782eeb09deded9c6cc3a46a31f5ad6f972f5525628785502ef4bac3faa",
+        "requestedAt": "2026-11-10T20:44:07.227Z",
+        "completedAt": "2026-11-10T20:45:02.708Z",
+        "durationMs": 55481,
+        "requestId": "resp_03e745e7a4dd15a8016af382176d1c87d2b00507584320930c",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 422,
+        "outputTokens": 2482
+      }
+    },
+    {
+      "proposal": {
+        "title": "Two-Musician Livestream and Multitrack Setup",
+        "brief": "Help two musicians livestream a camera performance and record two isolated microphone tracks, reusing an existing camera, iPad, and headphones within a $600 budget.",
+        "budgetMinor": 60000,
+        "tracks": 2,
+        "explanation": "This proposal targets capturing two isolated audio tracks alongside camera video streaming using existing gear and up to $600 in new equipment. Note that physical feasibility, interface connectivity, and power/cable routing are evaluated separately by deterministic validation rules rather than this proposal.",
+        "assumptions": [
+          "The presence of two musicians is assumed to require two dedicated microphone channels.",
+          "The existing iPad and camera possess the requisite ports or software support for simultaneous multitrack recording and livestream routing.",
+          "Existing headphones can be driven by or shared via the chosen audio routing setup without exceeding the budget."
+        ],
+        "needsClarification": [
+          "Will both musicians perform vocal parts requiring two microphones, or will instruments require direct inputs or specific pickup patterns?",
+          "Does the livestreaming platform run directly from the iPad or via an external streaming host?"
+        ]
+      },
+      "receipt": {
+        "id": "75253ce3-23d1-4109-a774-1a374db45ba0",
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "inputHash": "9c6bf47eae1003eed81d247206fe2834da16c0f52c121bb0ec5f41b17b4e0752",
+        "promptHash": "460c85c689ed0bece7c5e34d40e666203ab87fc8781395cc044398e2775e199b",
+        "outputHash": "5be610ee715d911292c07305ab96717d7036af29e17f1f99b1ac448cd66dc1ec",
+        "requestedAt": "2026-11-10T20:44:07.231Z",
+        "completedAt": "2026-11-10T20:44:12.810Z",
+        "durationMs": 5579,
+        "requestId": "F4LzaonvKfy3z7sPwNKh6AE",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 259,
+        "outputTokens": 221
+      }
+    }
+  ],
+  "evaluation": "Two live integration probes, not a held-out accuracy benchmark."
+}

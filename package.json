@@ -1,0 +1,44 @@
+{
+  "name": "worldkit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "packageManager": "npm@10.9.8",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 4106",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 4106",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:db": "node --env-file=.env --import tsx --test --test-concurrency=1 tests/*.integration.ts",
+    "db:migrate": "node --env-file=.env --import tsx scripts/migrate.ts",
+    "qualify:catalog": "node --env-file=.env --import tsx scripts/qualify-catalog.ts",
+    "qualify:models": "node --env-file=.env --import tsx scripts/qualify-models.ts",
+    "verify:mcp": "node --env-file=.env --import tsx scripts/verify-mcp.ts"
+  },
+  "dependencies": {
+    "@channel3/sdk": "4.9.0",
+    "@fracture/paypal-core": "file:vendor/fracture-paypal-core-0.2.3.tgz",
+    "@google/genai": "3.0.0",
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@xyflow/react": "12.12.1",
+    "lucide-react": "^0.468.0",
+    "next": "16.4.6",
+    "openai": "7.55.0",
+    "pg": "8.16.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/pg": "^8.15.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,1294 @@
+{
+  "observedAt": "2026-11-10T20:47:30.706Z",
+  "sdk": "@channel3/sdk@4.9.0",
+  "receipts": [
+    {
+      "id": "510a8469-734a-4475-a78f-3098809a413a",
+      "operation": "search",
+      "query": "Zoom H4essential portable recorder",
+      "requestedAt": "2026-11-10T20:47:23.232Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:47:25.051Z",
+      "durationMs": 1819,
+      "resultIds": [
+        "uVm9wcV",
+        "aAoW00h",
+        "qrWD2eB",
+        "ebBrlqh",
+        "MJDpHTK",
+        "pCKILvx",
+        "a9gfY14",
+        "J8hFTrP"
+      ],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    },
+    {
+      "id": "ff56e463-40b4-4cc8-9e9d-d746ba1fbc21",
+      "operation": "search",
+      "query": "Shure SM58-LC wired XLR microphone",
+      "requestedAt": "2026-11-10T20:47:25.051Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:47:27.402Z",
+      "durationMs": 2351,
+      "resultIds": [
+        "a8ibawf",
+        "MUoOxXJ",
+        "eaRyTXQ",
+        "5vw3Bmn",
+        "POYyHI5",
+        "9MfXFTF",
+        "YR3xZOQ",
+        "I6kUnMP"
+      ],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    },
+    {
+      "id": "e6dcf38c-a798-4546-9997-4deef1dfa4bf",
+      "operation": "search",
+      "query": "Audio Technica AT2020 XLR black condenser microphone",
+      "requestedAt": "2026-11-10T20:47:27.402Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:47:28.607Z",
+      "durationMs": 1205,
+      "resultIds": [
+        "N151roI",
+        "81Oxk1V",
+        "PDKMD2S",
+        "VkxU004",
+        "UMMPuFz",
+        "RJts8rt",
+        "96twza4",
+        "7XhM8xU"
+      ],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    },
+    {
+      "id": "f96476ee-20e9-461c-9d70-cfe5fe0d539c",
+      "operation": "details",
+      "query": "uVm9wcV",
+      "requestedAt": "2026-11-10T20:47:28.607Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:47:28.937Z",
+      "durationMs": 330,
+      "resultIds": [
+        "uVm9wcV"
+      ],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    },
+    {
+      "id": "8f73e291-97d4-4c78-baf7-c8f7eb09a5b4",
+      "operation": "similar",
+      "query": "uVm9wcV",
+      "requestedAt": "2026-11-10T20:47:28.937Z",
+      "mode": "live",
+      "estimatedCredits": 1,
+      "completedAt": "2026-11-10T20:47:29.690Z",
+      "durationMs": 753,
+      "resultIds": [
+        "a9gfY14",
+        "Z6fzjnd",
+        "ebBrlqh",
+        "PPQDVOt",
+        "aAoW00h",
+        "r1CmYWO"
+      ],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    },
+    {
+      "id": "1d1dbd1c-51a5-4026-b3bc-73dba6127402",
+      "operation": "categories",
+      "query": "microphones audio recorders",
+      "requestedAt": "2026-11-10T20:47:29.690Z",
+      "mode": "live",
+      "estimatedCredits": 0,
+      "completedAt": "2026-11-10T20:47:30.398Z",
+      "durationMs": 708,
+      "resultIds": [],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    },
+    {
+      "id": "94488e33-0f61-4d06-b56f-0dd6d15417d7",
+      "operation": "price_history",
+      "query": "uVm9wcV",
+      "requestedAt": "2026-11-10T20:47:30.398Z",
+      "mode": "live",
+      "estimatedCredits": 0,
+      "completedAt": "2026-11-10T20:47:30.706Z",
+      "durationMs": 308,
+      "resultIds": [
+        "uVm9wcV"
+      ],
+      "providerRequestId": null,
+      "status": "succeeded",
+      "error": null
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "66f3e326-7cf8-4d79-889a-272d5ec8169b",
+      "productId": "uVm9wcV",
+      "title": "H4essential 4-Track Handy Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a versatile 4-track portable audio recorder designed for musicians, filmmakers, and podcasters. It features 32-bit float recording for distortion-free audio without manual level adjustments, and dual XLR-1/4\" combo inputs with phantom power. The built-in X/Y microphones can handle up to 130 dB SPL. The recorder also functions as a 4-in/2-out USB-C audio interface. It includes accessibility features like audible menu navigation and a 2\" color display, plus tripod-mount capability and long battery life. This bundle includes the recorder, a Zoom ZDM-1 Podcast Mic Pack, AA batteries with a charger, a 64GB memory card, an XLR cable, a cleaning kit, wire ties, a power bank battery, a USB card reader, and a USB-C cable.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "uVm9wcV:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 38995
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.041Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.041Z",
+      "source": "channel3",
+      "responseHash": "260073c7cdc073cb12c5f41d4fab6e37c296b1de88f6baf68cadafffa9bccb33",
+      "sourceMode": "live"
+    },
+    {
+      "id": "f35f54c1-8a3d-43f4-891d-374261a04493",
+      "productId": "aAoW00h",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Portable Audio Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a portable 4-track handheld audio recorder designed for musicians, content creators, and podcasters. It features 32-bit float recording, which eliminates the need for level adjustments to prevent clipping. The device is equipped with built-in X/Y stereo microphones capable of handling up to 130 dB SPL and two XLR-1/4\" TRS combo inputs with low-noise preamps and +48V phantom power. It includes a 2\" color LCD screen with real-time waveform display and can function as a 4-in / 2-out USB-C audio interface for computers and smart devices. The recorder is tripod mountable and supports microSDXC cards up to 1TB.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "aAoW00h:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 24366
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.049Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.049Z",
+      "source": "channel3",
+      "responseHash": "569d8a85891d6cdc511738dec53ec51898f69ead5ba9a88b208ecc54c5023c46",
+      "sourceMode": "live"
+    },
+    {
+      "id": "fabba3d6-c185-457d-99de-4b65982afac1",
+      "productId": "qrWD2eB",
+      "title": "H4essential 4-Track 32-Bit Float Portable Audio Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a portable 4-track audio recorder designed for musicians, filmmakers, and podcasters. It features 32-bit float recording, which eliminates the need for manual level adjustment to prevent clipping. The device is equipped with onboard X/Y microphones capable of handling up to 130 dB SPL, two XLR-1/4\" TRS combo inputs with high-quality preamps and +48V phantom power, and a 3.5mm mic/line input. It also functions as a 4-in/2-out USB-C audio interface. Additional features include a 2\" color LCD display with real-time waveform viewing, a built-in speaker, and support for microSDXC cards up to 1TB. It is powered by two AA batteries providing up to 10 hours of operation or via USB-C bus power.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "qrWD2eB:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 21999
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "portable-voice-field-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.050Z",
+      "source": "channel3",
+      "responseHash": "7c56ad34fba5e5bdd4a2bc6489a8b11e143131dfeccfa9a9c03a659e4345a79f",
+      "sourceMode": "live"
+    },
+    {
+      "id": "c4056472-c0cc-40f1-adca-478ae778fd51",
+      "productId": "ebBrlqh",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Portable Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a professional 4-track portable audio recorder from the Essential Series (2024 Model). It features innovative 32-bit float recording for distortion-free audio across four tracks, including high-quality X/Y stereo microphones and two XLR/TRS combo inputs with ultraclean preamps. Equipped with a 2-inch color display for real-time waveform monitoring, an onboard mixer, and USB-C audio interface capabilities, it is an ideal tool for musicians, podcasters, and filmmakers. The device also emphasizes accessibility with audible menu navigation and supports microSDXC cards up to 1TB.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "ebBrlqh:0:f9a36eb8e7",
+          "retailer": "macys.com",
+          "domain": "macys.com",
+          "price": {
+            "currency": "USD",
+            "minor": 21999
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "ebBrlqh:1:9b5838416b",
+          "retailer": "6ave.com",
+          "domain": "6ave.com",
+          "price": {
+            "currency": "USD",
+            "minor": 21999
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.050Z",
+      "source": "channel3",
+      "responseHash": "088c68c4a5916a68b5bb40b3695ea376aed6f648e7f489f106ce4577a05d2300",
+      "sourceMode": "live"
+    },
+    {
+      "id": "9561168c-139f-4143-a89c-56fd75129e84",
+      "productId": "MJDpHTK",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Portable Audio Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a 4-track portable audio recorder designed for musicians, indie filmmakers, and content creators. It features 32-bit float recording, which eliminates the need for manual level adjustments by capturing a wide dynamic range without clipping. The device is equipped with onboard X/Y microphones capable of handling up to 130 dB SPL and two XLR-1/4\" TRS combo inputs with high-quality Zoom preamps and +48V phantom power. It includes a 2\" color LCD screen with a real-time waveform display and an onboard mixer for easy track adjustment. Additionally, it can function as a 4-in / 2-out USB-C audio interface for streaming to computers or smart devices. This Deluxe Kit bundles the recorder with a Lexar 64GB microSDXC card, a Watson 4-bay battery charger with rechargeable batteries, and a Zoom accessory pack including a furry windscreen, case, and AC adapter.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "MJDpHTK:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 28865
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.050Z",
+      "source": "channel3",
+      "responseHash": "c553d0793af405622425508756dcc08de11ebcc13360532d838399ba651e2da0",
+      "sourceMode": "live"
+    },
+    {
+      "id": "83a71cb9-71ae-48d4-8e3f-2bbb03d6948f",
+      "productId": "pCKILvx",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Portable Audio Recorder with Booming Kit",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a portable 4-track audio recorder designed for musicians, indie filmmakers, and content creators. It features 32-bit float recording, allowing for distortion-free audio capture without the need for manual level adjustments. The device is equipped with built-in X/Y microphones capable of handling up to 130 dB SPL, two XLR-1/4\" combo inputs with high-quality preamps and +48V phantom power, and a vivid 2\" color LCD screen with real-time waveform display. It can also function as a 4-in/2-out USB-C audio interface for computers and smart devices. This specific bundle is a 'Booming Kit' that includes an Audio-Technica AT875R short shotgun microphone, an Auray aluminum boompole, a K-Tek Squid mount, a shockmount, a Lexar 64GB microSDXC card, and a Watson battery charger with rechargeable batteries.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "pCKILvx:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 73840
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.050Z",
+      "source": "channel3",
+      "responseHash": "7fd42d75e9f6ef0aafa86513dbe961754e9c8d67c1ef192afa06bc995dce1e97",
+      "sourceMode": "live"
+    },
+    {
+      "id": "4da9745c-f393-47ae-8043-1630f003bc33",
+      "productId": "a9gfY14",
+      "title": "H4essential Handy Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a 4-track portable audio recorder designed for musicians, filmmakers, podcasters, and content creators. It features 32-bit float recording for a wide dynamic range without manual level setting, ensuring pristine audio. Equipped with X/Y microphones capable of handling up to 130 dB SPL, it delivers detailed stereo sound. Two XLR-1/4\" combo inputs with ultraclean preamps and +48V phantom power allow connection of professional microphones and instruments. The H4essential also functions as a 4-in/2-out USB-C audio interface for Mac, PC, iOS, and Android devices. It has a 2\" color display with real-time waveform monitoring and audible menu navigation for accessibility. The recorder supports microSDXC cards up to 1TB and offers up to 10 hours of battery life. This bundle includes the recorder, a windscreen, and a microfiber cleaning cloth.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "a9gfY14:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 24199
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.050Z",
+      "source": "channel3",
+      "responseHash": "836508c408638a3cfcb81271008bb65ed4935f9dc2c3ff9e1475c9d8ee62eaf9",
+      "sourceMode": "live"
+    },
+    {
+      "id": "4372c01f-c058-41ed-89e3-5e7b12353d2b",
+      "productId": "J8hFTrP",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Handy Recorder",
+      "brand": "Zoom",
+      "description": "Bundle includes the Zoom H4essential 4-Track 32-Bit Float Handy Recorder and the Zoom ZDM-1 Large-Diaphragm Dynamic Microphone. The recorder features 32-bit float recording, USB mic capability, long battery life, and portable design, making it ideal for interviews and on-the-go recording.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "J8hFTrP:0:13634b905f",
+          "retailer": "adorama.com",
+          "domain": "adorama.com",
+          "price": {
+            "currency": "USD",
+            "minor": 28998
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:25.050Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "portable-voice-field-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:25.050Z",
+      "source": "channel3",
+      "responseHash": "36a20dc6cf1100c0854522bbcdbf464beb9018781c3cc1dc58c72e497c5164e8",
+      "sourceMode": "live"
+    },
+    {
+      "id": "e833ca98-6b70-40fb-9d4f-6fa99b179021",
+      "productId": "a8ibawf",
+      "title": "Shure SM58 Dynamic Microphone",
+      "brand": "Shure",
+      "description": "The Shure SM58 is a legendary dynamic vocal microphone designed for professional use in live performances, sound reinforcement, and studio recording. It features a tailored frequency response for vocals with a brightened midrange and bass rolloff, and a cardioid pickup pattern that isolates the main sound source while minimizing background noise. Built for durability, it includes a pneumatic shock-mount system to reduce handling noise and a spherical mesh grille with a built-in pop filter to minimize wind and breath noise.",
+      "selectedOptions": [
+        {
+          "name": "Version",
+          "value": "Standard"
+        }
+      ],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "a8ibawf:0:b7f40a2033",
+          "retailer": "musicarts.com",
+          "domain": "musicarts.com",
+          "price": {
+            "currency": "USD",
+            "minor": 8900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.399Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "a8ibawf:1:76f56faded",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 8900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.399Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "a8ibawf:2:c1c308af52",
+          "retailer": "guitarcenter.com",
+          "domain": "guitarcenter.com",
+          "price": {
+            "currency": "USD",
+            "minor": 8900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.399Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "a8ibawf:3:ffbf77dbd0",
+          "retailer": "shure.com",
+          "domain": "shure.com",
+          "price": {
+            "currency": "USD",
+            "minor": 8900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.399Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "a8ibawf:4:6229068629",
+          "retailer": "cdw.com",
+          "domain": "cdw.com",
+          "price": {
+            "currency": "USD",
+            "minor": 12900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.399Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:27.399Z",
+      "source": "channel3",
+      "responseHash": "bbf68981c4094de9f347e1a68f6cf15c4c0c3bec6f4b0c32ce293df4f56c74cd",
+      "sourceMode": "live"
+    },
+    {
+      "id": "dbdf2790-4b8b-4cad-a905-2aae51e42eab",
+      "productId": "MUoOxXJ",
+      "title": "Cardioid Dynamic Vocal Microphone",
+      "brand": "Shure",
+      "description": "This Shure SM58-LC is a professional dynamic vocal microphone renowned for its durability and exceptional sound quality. It features a cardioid polar pattern, which effectively isolates the main sound source and minimizes unwanted background noise. The microphone has a tailored vocal response for clear reproduction and includes a built-in spherical wind and pop filter to reduce breath and plosive noises. Its rugged construction and proven shock-mount system ensure consistent performance even with rough handling, making it a world standard for live performance and studio recording.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "MUoOxXJ:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 12900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:27.401Z",
+      "source": "channel3",
+      "responseHash": "0dec8b6b4b01473406ca2d432223209d934af9d0878ddf78eaa3cd080f1bd29b",
+      "sourceMode": "live"
+    },
+    {
+      "id": "80f94461-5702-4a44-b242-9a78830df1e2",
+      "productId": "eaRyTXQ",
+      "title": "Shure SM58 Microphone Kit",
+      "brand": "Shure, Gear One, Musician's Gear",
+      "description": "This bundle includes the world-renowned Shure SM58 dynamic vocal microphone, known for its professional quality and durability. It's designed for live performances, sound reinforcement, and studio recording, featuring a tailored vocal response and an effective built-in spherical filter to minimize pops and breath noise. The cardioid pickup pattern isolates the main sound source, reducing background noise. The bundle also comes with a 20-foot Gear One XLR cable for reliable signal transmission and a Musician's Gear MS-220 tripod microphone stand with a fixed boom, offering adjustable height for optimal positioning. This package is ideal for vocalists and speakers seeking a dependable and high-performing setup.",
+      "selectedOptions": [
+        {
+          "name": "Version",
+          "value": "Standard"
+        }
+      ],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "eaRyTXQ:0:76f56faded",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11999
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "eaRyTXQ:1:c1c308af52",
+          "retailer": "guitarcenter.com",
+          "domain": "guitarcenter.com",
+          "price": {
+            "currency": "USD",
+            "minor": 15899
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:27.401Z",
+      "source": "channel3",
+      "responseHash": "4b2a04f0df2e73a756b3d056c02f95d91c8514d211c2fc2ea71f9985e528b48e",
+      "sourceMode": "live"
+    },
+    {
+      "id": "7ec8a6ad-138b-4e3f-b56a-a084f6f3f76e",
+      "productId": "5vw3Bmn",
+      "title": "SM58-CN Handheld Cardioid Dynamic Vocal Microphone with 25-Foot XLR Cable",
+      "brand": "Shure",
+      "description": "The Shure SM58-CN is a professional handheld cardioid dynamic vocal microphone designed for clear vocal pickup. It features a uniform cardioid pickup pattern to isolate the main sound source and minimize background noise, making it ideal for live performances. The microphone includes a built-in spherical wind and pop filter, a pneumatic shock-mount system to reduce handling noise, and a frequency response tailored for vocals with brightened midrange and bass rolloff. This bundle comes with a 25-foot XLR-to-XLR cable and a break-resistant stand adapter.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "5vw3Bmn:0:f9a36eb8e7",
+          "retailer": "macys.com",
+          "domain": "macys.com",
+          "price": {
+            "currency": "USD",
+            "minor": 12900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "5vw3Bmn:1:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 12900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:27.401Z",
+      "source": "channel3",
+      "responseHash": "1b47bfe92d0eeca09f164198f86c06cb116a7ce2ed53e576aa0e5e4eb970a271",
+      "sourceMode": "live"
+    },
+    {
+      "id": "3ec534dd-7b13-4743-ad4a-faaf3e2caa5e",
+      "productId": "POYyHI5",
+      "title": "SM58-S Cardioid Dynamic Handheld Wired Microphone",
+      "brand": "Shure",
+      "description": "The Shure SM58-S is a professional handheld wired microphone designed for clear vocal pickup. It features a cardioid pickup pattern that isolates the main sound source and minimizes background noise, making it ideal for busy settings. The microphone includes a tuned frequency response for vocals, a built-in pop filter to keep speech crisp, and a pneumatic shock-mount system to reduce handling noise. It also comes equipped with an integrated on/off switch for convenient control.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "POYyHI5:0:f9a36eb8e7",
+          "retailer": "macys.com",
+          "domain": "macys.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:27.401Z",
+      "source": "channel3",
+      "responseHash": "096419d04ee29af727ce3dcecb1713fca9b0708cbd27a5d5bb0976e2703ced74",
+      "sourceMode": "live"
+    },
+    {
+      "id": "3539ea79-f94a-4806-b0c0-960a7ca96353",
+      "productId": "9MfXFTF",
+      "title": "Shure BLX24 Wireless Vocal System",
+      "brand": "Shure",
+      "description": "The Shure BLX24/SM58 is a professional wireless vocal system featuring the legendary SM58 microphone capsule. This system provides high-quality sound with a reliable signal range of up to 300 feet (100m) and a simplified one-touch setup for quick deployment. It offers up to 14 hours of continuous operation on a single pair of AA batteries and supports up to 12 channels per frequency band, making it ideal for singers and performers who need freedom of movement without sacrificing audio quality.",
+      "selectedOptions": [
+        {
+          "name": "Microphone Type",
+          "value": "SM58"
+        }
+      ],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "9MfXFTF:0:5b7a62b3be",
+          "retailer": "shure.com",
+          "domain": "shure.com",
+          "price": {
+            "currency": "USD",
+            "minor": 32900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "wireless-transmitters"
+      ],
+      "observedAt": "2026-11-10T20:47:27.401Z",
+      "source": "channel3",
+      "responseHash": "ae88d5d5f984bdbd6e8c875e9f5b987e4a6867f45e28d8e33631f26cfb34a81d",
+      "sourceMode": "live"
+    },
+    {
+      "id": "2514cec4-2864-4592-a6ad-02a7d8a22667",
+      "productId": "YR3xZOQ",
+      "title": "BLX24R/SM58 Wireless System With Rackmountable Receiver and SM58 Microphone Capsule",
+      "brand": "Shure",
+      "description": "This is a professional wireless microphone system from Shure, featuring the BLX4R half-rack receiver and a handheld BLX2 transmitter equipped with the industry-standard SM58 dynamic vocal microphone capsule. The system is designed for rugged dependability in stage and studio environments. The receiver features rack-mountable hardware for professional installation. The specific variant listed operates on the H11 frequency band (572–596mHz).",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "YR3xZOQ:0:7f21b1eb26",
+          "retailer": "musicarts.com",
+          "domain": "musicarts.com",
+          "price": {
+            "currency": "USD",
+            "minor": 46900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "YR3xZOQ:1:ec03597bb1",
+          "retailer": "cdw.com",
+          "domain": "cdw.com",
+          "price": {
+            "currency": "USD",
+            "minor": 46900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.401Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "wireless-receivers"
+      ],
+      "observedAt": "2026-11-10T20:47:27.401Z",
+      "source": "channel3",
+      "responseHash": "4a9553dc8c0ae8a5dd7bacff151140b57f048c4f06037446ad1c23c39d409dc0",
+      "sourceMode": "live"
+    },
+    {
+      "id": "274b194a-c181-45e1-a444-0fb664607471",
+      "productId": "I6kUnMP",
+      "title": "Vocal Microphone With XLR Cable",
+      "brand": "Shure",
+      "description": "This is a used Shure PGA48 dynamic microphone in good condition. It is designed for clear and reliable vocal reproduction, making it suitable for live performances, rehearsals, or public address announcements. The microphone features a cardioid pickup pattern to minimize unwanted background noise and feedback, and its durable metal construction ensures it can withstand regular use. The PGA48 has a smooth, tailored frequency response for natural voice reproduction and connects easily to mixers, audio interfaces, and PA systems via its standard XLR output.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "I6kUnMP:0:63ce49bb1f",
+          "retailer": "guitarcenter.com",
+          "domain": "guitarcenter.com",
+          "price": {
+            "currency": "USD",
+            "minor": 5400
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:27.402Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:27.402Z",
+      "source": "channel3",
+      "responseHash": "62de8c533685929a26b6dfea431b47035039bc482ffc22ba9f88be4a5e96b299",
+      "sourceMode": "live"
+    },
+    {
+      "id": "29e5e2f6-bc87-4d62-bfb6-169623f7c5f7",
+      "productId": "N151roI",
+      "title": "AT2020 Large-Diaphragm Condenser Microphone",
+      "brand": "Audio-Technica",
+      "description": "The Audio-Technica AT2020 is a professional-level large-diaphragm condenser microphone designed for home and project studios. It features a custom-engineered 16mm diaphragm providing an extended frequency response from 20 Hz to 20 kHz, ensuring clear and natural reproduction of vocals and acoustic instruments. Its cardioid polar pattern focuses on the sound source in front of the mic while minimizing background noise from the sides and rear. With a high 144dB SPL handling and wide dynamic range, it can record everything from subtle whispers to loud guitar amplifiers without distortion. Its low self-noise makes it ideal for use with high-quality digital recording equipment for a clean, professional signal path.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "N151roI:0:7f21b1eb26",
+          "retailer": "musicarts.com",
+          "domain": "musicarts.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.606Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "N151roI:1:63ce49bb1f",
+          "retailer": "guitarcenter.com",
+          "domain": "guitarcenter.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.606Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.606Z",
+      "source": "channel3",
+      "responseHash": "e95aaa1bed29b4c9fb34617a96cf47b0f1409a8eec632fd33dfd2b1ee8fb50a5",
+      "sourceMode": "live"
+    },
+    {
+      "id": "75cc4b86-6be5-48ff-9398-14747f299ae8",
+      "productId": "81Oxk1V",
+      "title": "Audio-Technica Side Address Cardioid Condenser Studio Microphone +Warranty + Accessories Bundle AT2020",
+      "brand": "Audio-Technica, Deco Gear, On-Stage",
+      "description": "The Audio-Technica AT2020 is a professional side-address cardioid condenser studio microphone designed for project and home-studio applications. This comprehensive bundle includes the AT2020 microphone, a 2-year extended warranty from CPS, a Deco Gear metal shock mount, a Deco Gear universal pop filter, a Deco Gear adjustable suspension boom arm stand, and an OnStage 25ft XLR cable. The microphone features a custom-engineered low-mass diaphragm for extended frequency response, high SPL handling, and a cardioid polar pattern to improve isolation of the desired sound source.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "81Oxk1V:0:e18af6e841",
+          "retailer": "beachcamera.com",
+          "domain": "beachcamera.com",
+          "price": {
+            "currency": "USD",
+            "minor": 14900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.606Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "81Oxk1V:1:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 14900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.606Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.606Z",
+      "source": "channel3",
+      "responseHash": "5d1ea55155c49ff735338170b65c5670b5809bb91c20d4e081d942488d8731f4",
+      "sourceMode": "live"
+    },
+    {
+      "id": "8ba3df4c-3f32-403f-8672-a7ee8e4ce443",
+      "productId": "PDKMD2S",
+      "title": "AT2020 Cardioid Condenser Microphone Bundle",
+      "brand": "Audio-Technica",
+      "description": "The Audio-Technica AT2020 Cardioid Condenser Microphone bundle is designed for home recording, podcasters, musicians, and content creators. It features a low-mass, side-address diaphragm with a cardioid polar pattern to reject ambient noise from the sides and rear. This comprehensive kit includes the AT2020 microphone, a pop filter, a 20ft XLR cable, a microphone arm, and a microfiber cleaning cloth.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "PDKMD2S:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 14900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.606Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "studio-recording-bundles"
+      ],
+      "observedAt": "2026-11-10T20:47:28.606Z",
+      "source": "channel3",
+      "responseHash": "280db4b620e692d5b7994ec5a23b913ecd0057305b152b5b81d5b4e5a7c9da11",
+      "sourceMode": "live"
+    },
+    {
+      "id": "d5e5a4c0-2d7a-4d89-a21b-b01c9fa273e4",
+      "productId": "VkxU004",
+      "title": "Audio-Technica AT2020 Side-Address Cardioid Condenser Microphone - Bundle With H&A Pop Filter for Microphone, 25' XLR Microphone Cable",
+      "brand": "Audio-Technica, H&A",
+      "description": "The Audio-Technica AT2020 is a professional-grade studio condenser microphone designed for high-quality vocal and instrument recording. Featuring a 16mm low-mass, side-address diaphragm and a cardioid polar pattern, it effectively rejects ambient noise to ensure clear, accurate captures. This bundle provides an all-in-one recording solution, including the AT2020 microphone, a H&A pop filter to reduce plosive sounds, and a 25-foot XLR microphone cable for flexible connectivity. With a wide frequency response of 20Hz to 20kHz and high SPL handling, it is an ideal choice for home studios, podcasts, and professional environments.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "VkxU004:0:13634b905f",
+          "retailer": "adorama.com",
+          "domain": "adorama.com",
+          "price": {
+            "currency": "USD",
+            "minor": 13090
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.607Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.607Z",
+      "source": "channel3",
+      "responseHash": "b140ddc99c14fff378d67323a5fed472ce3c0e7b4ab517325176491eac78ccf0",
+      "sourceMode": "live"
+    },
+    {
+      "id": "7cdccfd4-15b6-4750-aa75-d877a21798d5",
+      "productId": "UMMPuFz",
+      "title": "Audio-Technica AT2020 Cardioid Condenser Microphone",
+      "brand": "Audio-Technica",
+      "description": "The Audio-Technica AT2020 is a professional cardioid condenser microphone designed for vocal and instrument recording in project and professional studio environments. It features a 16mm low-mass diaphragm with a linear frequency response of 20 Hz to 20 kHz, allowing it to accurately reproduce a wide variety of audio sources. Built for durability, it handles high SPLs (up to 144dB) with ease and is ideal for digital recording due to its low self-noise. This specific bundle includes a 6Ave cleaning kit, a carrying case, and a 1-year extended warranty.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "UMMPuFz:0:9b5838416b",
+          "retailer": "6ave.com",
+          "domain": "6ave.com",
+          "price": {
+            "currency": "USD",
+            "minor": 13090
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.607Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.607Z",
+      "source": "channel3",
+      "responseHash": "b0a54a5eb43b29a240ab15b32652a2af815810928310abc501da0e4b8b701200",
+      "sourceMode": "live"
+    },
+    {
+      "id": "5236e34c-9999-4451-a6d2-4dab57ddf307",
+      "productId": "RJts8rt",
+      "title": "Used Audio-Technica AT2020 Condenser Microphone",
+      "brand": "Audio-Technica",
+      "description": "The Audio-Technica AT2020 is a professional-grade cardioid condenser microphone designed for home recording, podcasting, and content creation. It features a low-mass, side-address diaphragm that provides extended frequency response and superior transient response, making it ideal for capturing vocals, speech, and instruments with studio-quality articulation. Its cardioid polar pattern helps isolate the desired sound source by rejecting ambient noise from the sides and rear. The rugged design ensures reliability, while its high SPL handling and wide dynamic range allow it to capture loud signals without distortion. This microphone requires 48V phantom power and connects via a balanced XLR 3-pin output.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "RJts8rt:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.607Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.607Z",
+      "source": "channel3",
+      "responseHash": "51dcbd293725dd098b59f20da54dbfc378e49468677161cce34329c9f141bf6d",
+      "sourceMode": "live"
+    },
+    {
+      "id": "654cca04-e91c-424a-9a4a-24d3c3971232",
+      "productId": "96twza4",
+      "title": "Audio-Technica AT2020 Cardioid Condenser Microphone Bundle",
+      "brand": "Audio-Technica, Diginerds, Goby",
+      "description": "The Audio-Technica AT2020 is a professional cardioid condenser microphone designed for accurate sound reproduction, ideal for musicians, podcasters, and content creators. It features a low-mass, side-address diaphragm that captures vocals and instruments with precision while minimizing background noise. This high-performance microphone handles high SPL and offers a wide dynamic range and linear frequency response for transparent audio. This specific bundle includes the AT2020 microphone in black, a Diginerds microfiber cleaning cloth, a Goby Labs microphone cleaner, and a 10 ft XLR cable.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "96twza4:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 12995
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.607Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.607Z",
+      "source": "channel3",
+      "responseHash": "f96fcad9acdd903041b6ba156951839b037af12b679b0c7f496b0ef1f50b77bf",
+      "sourceMode": "live"
+    },
+    {
+      "id": "14664365-6013-453e-938d-3ca6ee5c41a0",
+      "productId": "7XhM8xU",
+      "title": "AT2020 Cardioid Condenser Microphone",
+      "brand": "Audio-Technica",
+      "description": "This is a versatile, side-address cardioid condenser microphone designed for home recording and project studio applications. It offers studio-quality articulation and intelligibility, making it ideal for musicians, streamers, podcasters, and other content creators. The microphone features a custom-engineered 0.6\" low-mass diaphragm, extended frequency response, and superior transient response. Its cardioid polar pattern effectively reduces pickup of sounds from the sides and rear, improving isolation of the desired sound source and minimizing background noise. The AT2020 boasts high SPL handling and a wide dynamic range for versatility, allowing it to capture loud signals with minimal noise and distortion. It operates on 48V DC phantom power and has a balanced XLR 3-pin output connector. The microphone comes with a stand mount, an adapter for different threaded stands, and a protective pouch, all housed in a rugged construction for reliable performance.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "7XhM8xU:0:3931edea58",
+          "retailer": "staples.com",
+          "domain": "staples.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.607Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "7XhM8xU:1:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 11900
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.607Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "microphones"
+      ],
+      "observedAt": "2026-11-10T20:47:28.607Z",
+      "source": "channel3",
+      "responseHash": "03904b8c2db661db1a55957c5697dbe8c22e4c30f734479ab48559830af22301",
+      "sourceMode": "live"
+    },
+    {
+      "id": "01953784-22a4-4cbd-8714-39cd4ee3a8a2",
+      "productId": "uVm9wcV",
+      "title": "H4essential 4-Track Handy Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a versatile 4-track portable audio recorder designed for musicians, filmmakers, and podcasters. It features 32-bit float recording for distortion-free audio without manual level adjustments, and dual XLR-1/4\" combo inputs with phantom power. The built-in X/Y microphones can handle up to 130 dB SPL. The recorder also functions as a 4-in/2-out USB-C audio interface. It includes accessibility features like audible menu navigation and a 2\" color display, plus tripod-mount capability and long battery life. This bundle includes the recorder, a Zoom ZDM-1 Podcast Mic Pack, AA batteries with a charger, a 64GB memory card, an XLR cable, a cleaning kit, wire ties, a power bank battery, a USB card reader, and a USB-C cable.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "uVm9wcV:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 38995
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:28.937Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:28.937Z",
+      "source": "channel3",
+      "responseHash": "336efbae3cafc21aa0b33834546b2350697f0527481a1de75d415cf0d6fc8605",
+      "sourceMode": "live"
+    },
+    {
+      "id": "502b51b6-ab4b-4603-a0a8-1c5114729486",
+      "productId": "a9gfY14",
+      "title": "H4essential Handy Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a 4-track portable audio recorder designed for musicians, filmmakers, podcasters, and content creators. It features 32-bit float recording for a wide dynamic range without manual level setting, ensuring pristine audio. Equipped with X/Y microphones capable of handling up to 130 dB SPL, it delivers detailed stereo sound. Two XLR-1/4\" combo inputs with ultraclean preamps and +48V phantom power allow connection of professional microphones and instruments. The H4essential also functions as a 4-in/2-out USB-C audio interface for Mac, PC, iOS, and Android devices. It has a 2\" color display with real-time waveform monitoring and audible menu navigation for accessibility. The recorder supports microSDXC cards up to 1TB and offers up to 10 hours of battery life. This bundle includes the recorder, a windscreen, and a microfiber cleaning cloth.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "a9gfY14:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 24199
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.689Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:29.689Z",
+      "source": "channel3",
+      "responseHash": "036ab869fb1863b4e74341aa7339b9484bf2741fda06ce16d0dfe44f63e49b20",
+      "sourceMode": "live"
+    },
+    {
+      "id": "e65e8100-1f10-4137-af2e-60ebcc6bc104",
+      "productId": "Z6fzjnd",
+      "title": "H4essential Audio Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a versatile 4-track handheld audio recorder featuring 32-bit float technology, which allows for high-dynamic range recording without the need for manual gain adjustment. It is equipped with X/Y microphones capable of handling up to 130 dB SPL and two XLR-1/4\" combo inputs with ultraclean preamps. The device functions as a 4-in/2-out USB-C audio interface and features a 2\" color display for real-time waveform monitoring. This particular kit is a bundle that includes the recorder, a windscreen, a 64GB memory card, a USB card reader, batteries, a charger, and cleaning accessories.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "Z6fzjnd:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 25495
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:29.690Z",
+      "source": "channel3",
+      "responseHash": "b2cff227d259ee39c9ab191e557132309a64e849bdcbfe2c43925d17e8c16323",
+      "sourceMode": "live"
+    },
+    {
+      "id": "6ec94027-94ac-4962-bc62-b0cbafdf59df",
+      "productId": "ebBrlqh",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Portable Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a professional 4-track portable audio recorder from the Essential Series (2024 Model). It features innovative 32-bit float recording for distortion-free audio across four tracks, including high-quality X/Y stereo microphones and two XLR/TRS combo inputs with ultraclean preamps. Equipped with a 2-inch color display for real-time waveform monitoring, an onboard mixer, and USB-C audio interface capabilities, it is an ideal tool for musicians, podcasters, and filmmakers. The device also emphasizes accessibility with audible menu navigation and supports microSDXC cards up to 1TB.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "ebBrlqh:0:f9a36eb8e7",
+          "retailer": "macys.com",
+          "domain": "macys.com",
+          "price": {
+            "currency": "USD",
+            "minor": 21999
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "ebBrlqh:1:9b5838416b",
+          "retailer": "6ave.com",
+          "domain": "6ave.com",
+          "price": {
+            "currency": "USD",
+            "minor": 21999
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:29.690Z",
+      "source": "channel3",
+      "responseHash": "473bbf171920fc1bcef82c0a139dcee61f41f6d26e76b295beea88d398023014",
+      "sourceMode": "live"
+    },
+    {
+      "id": "085f1139-8cd0-46e1-86ee-a0d1db7efa40",
+      "productId": "PPQDVOt",
+      "title": "H6essential Handy Recorder",
+      "brand": "Zoom",
+      "description": "This is a Zoom H6essential portable audio recorder, designed for creators of all kinds. It features 6 tracks of 32-bit float recording for distortion-free audio without the need to adjust levels. The removable X/Y mics can handle up to 135 dB, and four XLR-1/4\" combo inputs offer low-noise preamps with +48V phantom power. The device includes an onboard mixer, a 2\" color display with waveform viewing, and can function as a 6-in/2-out USB-C audio interface. It's also equipped with accessibility features for the visually impaired, including audible menu descriptions.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "PPQDVOt:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 34266
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        },
+        {
+          "id": "PPQDVOt:1:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 49995
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:29.690Z",
+      "source": "channel3",
+      "responseHash": "d449744d143a9dd7de2286c2a47dace34b4430a926f0520e5ed2cdaea751df88",
+      "sourceMode": "live"
+    },
+    {
+      "id": "f9e85ee5-0926-489a-b89e-de7d2c1ab555",
+      "productId": "aAoW00h",
+      "title": "Zoom H4essential 4-Track 32-Bit Float Portable Audio Recorder",
+      "brand": "Zoom",
+      "description": "The Zoom H4essential is a portable 4-track handheld audio recorder designed for musicians, content creators, and podcasters. It features 32-bit float recording, which eliminates the need for level adjustments to prevent clipping. The device is equipped with built-in X/Y stereo microphones capable of handling up to 130 dB SPL and two XLR-1/4\" TRS combo inputs with low-noise preamps and +48V phantom power. It includes a 2\" color LCD screen with real-time waveform display and can function as a 4-in / 2-out USB-C audio interface for computers and smart devices. The recorder is tripod mountable and supports microSDXC cards up to 1TB.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "aAoW00h:0:25777e1d90",
+          "retailer": "bhphotovideo.com",
+          "domain": "bhphotovideo.com",
+          "price": {
+            "currency": "USD",
+            "minor": 24366
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:29.690Z",
+      "source": "channel3",
+      "responseHash": "cad2098a5824c3ddc7e61faa1f68352a396f2a91a5f991fa9a235df602a780dc",
+      "sourceMode": "live"
+    },
+    {
+      "id": "15ed2d20-6943-44de-9414-f1bcb6d740ef",
+      "productId": "r1CmYWO",
+      "title": "H4essential 4-Track Float Audio Recorder",
+      "brand": "Zoom",
+      "description": "This is a bundle that includes the Zoom H4essential 4-Track 32-Bit Float Portable Audio Recorder, a Zoom windscreen, a Zoom ZDM-1 Podcast Mic Pack with Headphones, an XLR3F to XLR3M balanced interconnect cable, cable straps, a 64GB memory card, a Diginerds USB card reader, a microfiber cleaning cloth, and 4 AA batteries with a charger. The recorder itself is designed for musicians, filmmakers, podcasters, and content creators, offering professional-grade audio capture in a compact form factor. It features 32-bit float recording for a wide dynamic range without level adjustments, X/Y microphones with a 130 dB SPL capacity, and two XLR-1/4\" combo inputs with ultraclean preamps and phantom power. Additionally, it functions as a 4-in/2-out USB-C audio interface. The device has a 2\" color display, audible menu navigation, supports up to 1TB microSDXC cards, and offers up to 10 hours of battery life.",
+      "selectedOptions": [],
+      "variantExact": true,
+      "offers": [
+        {
+          "id": "r1CmYWO:0:5e49461e21",
+          "retailer": "bestbuy.com",
+          "domain": "bestbuy.com",
+          "price": {
+            "currency": "USD",
+            "minor": 35198
+          },
+          "availability": "InStock",
+          "condition": "new",
+          "observedAt": "2026-11-10T20:47:29.690Z",
+          "shipping": "unknown"
+        }
+      ],
+      "categoryIds": [
+        "multitrack-recorders"
+      ],
+      "observedAt": "2026-11-10T20:47:29.690Z",
+      "source": "channel3",
+      "responseHash": "fc4411567dee433ebe8ba2c8a0577e29df0d8dd8fb0554042a69d49704e35f5c",
+      "sourceMode": "live"
+    }
+  ],
+  "notes": [
+    "Actual API responses with sanitized metadata only. No offer URLs or catalog imagery retained.",
+    "Search similarity does not confirm an exact hardware identity or specification.",
+    "Physical tests and retail purchases were not performed."
+  ]
+}

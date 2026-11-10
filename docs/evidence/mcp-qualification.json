@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-11-10T21:01:22.911Z",
+  "transport": "MCP SDK 1.32.2 Streamable HTTP client over actual HTTP",
+  "endpoint": "/api/mcp",
+  "toolNames": [
+    "verify_kit",
+    "repair_kit",
+    "quote_kit"
+  ],
+  "graphHash": "58df2d158969c9c87380e1b5c204fa47021591c118423c8d52ab0ce7987a30ee",
+  "certificateId": "cert_effeaae9d9dbafdc8a2a768059a48cf0",
+  "checks": {
+    "sameCertificateAsSavedWorkspace": true,
+    "staleDigestDenied": true,
+    "foreignTenantDenied": true,
+    "paymentToolAbsent": true,
+    "revokedTokenDenied": true
+  },
+  "physicalTest": "not_performed",
+  "sourceMode": "modelled"
+}

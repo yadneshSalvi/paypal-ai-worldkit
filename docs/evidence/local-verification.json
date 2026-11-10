@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-11-10T21:29:39.303334+00:00",
+  "source": "sample",
+  "node": "22.22.3",
+  "next": "16.4.6",
+  "react": "19.3.1",
+  "core": "0.2.3",
+  "unitAndSdkWireTests": {
+    "passed": 44,
+    "failed": 0
+  },
+  "postgresIntegrationTests": {
+    "passed": 18,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "port": 4106,
+  "liveMoneyQualification": "pending_worldkit_buyer_flow",
+  "physicalTest": "not_performed",
+  "humanSourceReview": "pending"
+}
