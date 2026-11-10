@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@channel3/sdk": "4.9.0",
-    "@fracture/paypal-core": "file:vendor/fracture-paypal-core-0.2.3.tgz",
+    "@fracture/paypal-core": "file:vendor/fracture-paypal-core-0.2.4.tgz",
     "@google/genai": "3.0.0",
     "@modelcontextprotocol/sdk": "1.32.2",
     "@xyflow/react": "12.12.1",

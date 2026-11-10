@@ -19,5 +19,5 @@ playwright-report/
 *.key
 *.tsbuildinfo
 vendor/*
-!vendor/fracture-paypal-core-0.2.3.tgz
+!vendor/fracture-paypal-core-0.2.4.tgz
 !vendor/fracture-paypal-core-0.2.3.PROVENANCE.json
