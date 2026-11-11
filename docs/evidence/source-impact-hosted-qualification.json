@@ -1,0 +1,118 @@
+{
+  "version": "worldkit-source-impact-hosted.v1",
+  "observedAt": "2026-11-11T12:54:18.467Z",
+  "passed": true,
+  "sourceCommit": "cf3330b6e4cfcd219119278d8b6500b83683f9a9",
+  "deploymentId": "dpl_GykHuNQQWySGWR1C1ofSZ8jpwjbN",
+  "url": "https://paypal-ai-worldkit-5vjam4g1r-yadneshsalvis-projects.vercel.app",
+  "checks": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/evidence/impact?profileId=zoom-h4essential",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "path": "/api/workspace",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "path": "/api/workspace",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/evidence/impact?profileId=zoom-h4essential",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/evidence/impact?profileId=zoom-h4essential&documentId=f6634c9d-648f-46e2-a0eb-7f8429707c21",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/api/evidence/impact?profileId=zoom-h4essential&documentId=invalid",
+      "method": "GET",
+      "status": 400
+    },
+    {
+      "path": "/api/evidence/impact?profileId=missing-model",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/api/evidence/impact",
+      "method": "GET",
+      "status": 400
+    },
+    {
+      "path": "/api/evidence/impact",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/api/evidence/impact?profileId=zoom-f3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/workspace",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/commerce",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/?section=evidence&proof=sources&sourceProfile=zoom-h4essential",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "sourceImpact": {
+    "version": "source-impact.v1",
+    "state": "same_document",
+    "enabledPaths": 5,
+    "requirements": 9,
+    "reportDigest": "58026539abd5282fd2946a4aab2575d6e4ded75951b0d25a6400e7249848c099"
+  },
+  "originalFixtureKitUnchanged": true,
+  "providerCalls": 0,
+  "financialDispatches": 0,
+  "scope": "One new hosted Sample workspace only; no changed-manufacturer or physical-verification claim",
+  "stableUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "continuity": {
+    "observedAt": "2026-11-11T12:55:55.746Z",
+    "baselineAt": "2026-11-11T12:51:35.179Z",
+    "passed": true,
+    "protectedTables": 57,
+    "protectedOriginalRows": 404,
+    "originalRowsUnchanged": true,
+    "admissionCountersExcluded": "Only global Sample workspace admission windows; ordinary qualification may create new Sample workspaces.",
+    "providerCalls": 0,
+    "databaseWrites": 0
+  },
+  "hostedNative": {
+    "observedAt": "2026-11-11T13:01:52.698225+00:00",
+    "passed": true,
+    "savedRevision": 1,
+    "enabledConnectionTargets": 5,
+    "requirementWitnesses": 9,
+    "historicalCertificatePreserved": true,
+    "refreshPreservesTrace": true,
+    "mobileWidth": 390,
+    "documentWidth": 390,
+    "qualificationCookiesRemoved": true,
+    "temporaryViewportReset": true,
+    "screenshotSha256": "7f8cde0f9b2ace0375832f1b53035b7a951576a027050107a0569634ee196511"
+  }
+}
