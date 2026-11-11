@@ -131,7 +131,7 @@ export const QuoteSchema = z.object({
   id: z.string(), tenantId: z.string(), revisionId: z.string(), verificationId: z.string(), graphHash: z.string(), quoteHash: z.string(),
   merchantId: z.literal("worldkit-studio"), merchantName: z.literal("WorldKit Studio"),
   items: z.array(z.object({ sku: z.string(), name: z.string(), quantity: z.number().int().positive(), unitMinor: z.number().int().nonnegative(), profileId: z.string().nullable() })),
-  total: MoneySchema, createdAt: z.string(), expiresAt: z.string(), policyVersion: z.literal("studio-sandbox.v1"),
+  total: MoneySchema, createdAt: z.string(), expiresAt: z.string(), policyVersion: z.enum(["studio-sandbox.v1", "controlled-kit-sandbox.v1"]),
   source: z.literal("sample"), checkoutRequired: z.literal(true),
 });
 export type Quote = z.infer<typeof QuoteSchema>;

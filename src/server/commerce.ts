@@ -21,30 +21,30 @@ export async function loadOrder(tenantId: string, id: string, db: Db = database(
   await initializeCommerce(); const row = (await db.query("SELECT payload FROM wk_commerce_orders WHERE id=$1 AND tenant_id=$2", [id, tenantId])).rows[0];
   if (!row) throw new WorldKitError("not_found", "That order does not belong to this workspace.", 404); return row.payload;
 }
-async function saveOrder(db: Db, order: CommerceOrder) { await db.query("UPDATE wk_commerce_orders SET payload=$1 WHERE id=$2 AND tenant_id=$3", [{ ...order, updatedAt: now() }, order.id, order.tenantId]); }
+export async function saveOrder(db: Db, order: CommerceOrder) { await db.query("UPDATE wk_commerce_orders SET payload=$1 WHERE id=$2 AND tenant_id=$3", [{ ...order, updatedAt: now() }, order.id, order.tenantId]); }
 async function event(db: Db, tenantId: string, type: string, title: string, detail: string, revisionId: string | null, sourceMode: "live" | "sample" = "live") {
   const payload = { id: randomUUID(), type, at: now(), title, detail, revisionId, sourceMode }; await db.query("INSERT INTO wk_events(id,tenant_id,payload) VALUES($1,$2,$3)", [payload.id, tenantId, payload]);
 }
-async function authorityByOperation(tenantId: string, operationId: string, db: Db = database()): Promise<FinancialAuthority | null> {
+export async function authorityByOperation(tenantId: string, operationId: string, db: Db = database()): Promise<FinancialAuthority | null> {
   const row = (await db.query("SELECT payload FROM wk_financial_authorities WHERE tenant_id=$1 AND operation_id=$2", [tenantId, operationId])).rows[0];
   return row ? unseal(tenantId, row.payload) : null;
 }
-function commandFor(order: CommerceOrder, kind: FinancialAuthority["kind"], action: PaymentAction, approval = order.approval): PaymentCommand {
+export function commandFor(order: CommerceOrder, kind: FinancialAuthority["kind"], action: PaymentAction, approval = order.approval): PaymentCommand {
   const id = `${kind}:${order.id}`;
   return { scope: scope(order.tenantId), operationId: id, businessKey: id, intentId: id, providerRequestId: randomUUID(), payloadHash: payloadHash(action), action, approval };
 }
-async function insertAuthority(db: Db, order: CommerceOrder, kind: FinancialAuthority["kind"], command: PaymentCommand, policyId: string | null = null) {
-  const authority: FinancialAuthority = { id: command.intentId, tenantId: order.tenantId, orderId: order.id, kind, command, createdAt: now(), revokedAt: null, repairPolicyId: policyId, repairClaimId: order.repairClaimId };
+export async function insertAuthority(db: Db, order: CommerceOrder, kind: FinancialAuthority["kind"], command: PaymentCommand, policyId: string | null = null) {
+  const authority: FinancialAuthority = { id: command.intentId, tenantId: order.tenantId, orderId: order.id, kind, command, createdAt: now(), revokedAt: null, repairPolicyId: policyId, repairClaimId: order.repairClaimId, ...(order.livingRepair ? { livingRepair: order.livingRepair } : {}) };
   await db.query("INSERT INTO wk_financial_authorities(id,tenant_id,order_id,operation_id,payload) VALUES($1,$2,$3,$4,$5)", [authority.id, order.tenantId, order.id, command.operationId, seal(order.tenantId, authority)]); return authority;
 }
-function newOrder(tenantId: string, quote: Quote, kitId: string, origin: string, walletConsentId: string | null): CommerceOrder {
+export function newOrder(tenantId: string, quote: Quote, kitId: string, origin: string, walletConsentId: string | null): CommerceOrder {
   const id = randomUUID(); const createdAt = now();
   const approval = { id: `checkout:${id}`, version: 1, digest: sha256(canonicalJson({ id, quoteHash: quote.quoteHash, tenantId, graphHash: quote.graphHash, walletConsentId, origin })), expiresAt: new Date(Date.now() + 30 * 60000).toISOString() };
   return { id, tenantId, kitId, revisionId: quote.revisionId, graphHash: quote.graphHash, quote, createdAt, updatedAt: createdAt, origin, state: "creating", kind: "initial", parentOrderId: null, repairClaimId: null, approval, walletConsentId, providerOrderId: null, captureId: null, approvalUrl: null, capturedMinor: 0, refundedMinor: 0, fulfilledAt: null, operationIds: [], error: null, sourceMode: "live_sandbox" };
 }
-function purchaseAction(order: CommerceOrder, wallet?: WalletConsent | null): Extract<PaymentAction, { kind: "create_order" }> {
+export function purchaseAction(order: CommerceOrder, wallet?: WalletConsent | null): Extract<PaymentAction, { kind: "create_order" }> {
   return { kind: "create_order", money: order.quote.total, intent: "CAPTURE", customId: order.id,
-    experience: { returnUrl: `${order.origin}/paypal/return?order=${order.id}`, cancelUrl: `${order.origin}/paypal/return?order=${order.id}&cancelled=1`, userAction: "PAY_NOW", shippingPreference: "NO_SHIPPING", brandName: "WorldKit Studio", locale: "en-US" },
+    experience: { returnUrl: `${order.origin}/paypal/return?order=${order.id}${order.livingRepair ? `&repair=${order.livingRepair.amendmentId}${order.livingRepair.compensationId ? `&compensation=${order.livingRepair.compensationId}` : ""}` : ""}`, cancelUrl: `${order.origin}/paypal/return?order=${order.id}&cancelled=1${order.livingRepair ? `&repair=${order.livingRepair.amendmentId}${order.livingRepair.compensationId ? `&compensation=${order.livingRepair.compensationId}` : ""}` : ""}`, userAction: "PAY_NOW", shippingPreference: "NO_SHIPPING", brandName: "WorldKit Studio", locale: "en-US" },
     items: order.quote.items.map(item => ({ name: item.name, quantity: item.quantity, sku: item.sku, unitAmount: { currency: "USD", minor: item.unitMinor } })),
     ...(wallet && order.kind === "initial" ? { saveWalletOnSuccess: { consentId: wallet.id, consentVersion: wallet.version, consentDigest: wallet.digest, usageType: "MERCHANT" as const } } : {}),
     ...(wallet?.tokenId && order.kind === "amendment" ? { savedWallet: { vaultId: wallet.tokenId, consentId: wallet.id, consentVersion: wallet.version, consentDigest: wallet.digest, paymentInitiator: "MERCHANT" as const, usagePattern: "IMMEDIATE" as const, usage: "DERIVED" as const } } : {}),
@@ -73,6 +73,10 @@ export async function authorizePayment(command: PaymentCommand, provider: Provid
   if (order.state === "cancelled") return refuse("This order was cancelled.");
   if ((await unresolvedPaymentEvents([order])).has(order.id)) return refuse("An authenticated provider update is awaiting reconciliation. Refresh the retained payment state before another action.");
   if (paymentNeedsReview(order)) return refuse("A current provider observation needs reconciliation before this order can authorize another payment action.");
+  if (order.livingRepair) {
+    const { authorizeLivingRepair } = await import("./living-repair-payments");
+    return authorizeLivingRepair({ command, provider, order, authority, refuse });
+  }
   if (action.kind !== "refund_capture") {
     const current = await getRevision(order.tenantId);
     if (current.certificate.graphHash !== order.graphHash) return refuse("The kit changed after this quote. Review a fresh quote before paying.");
@@ -168,11 +172,11 @@ export async function syncOperation(session: Session, orderId: string, operation
       const row = (await db.query("SELECT payload FROM wk_repair_claims WHERE id=$1 AND tenant_id=$2 FOR UPDATE", [order.repairClaimId, session.id])).rows[0];
       if (row) { const claim = row.payload as RepairClaim; claim.state = order.state === "refunded" ? "refunded" : order.capturedMinor > 0 ? "paid" : order.state === "refused" ? "refused" : "payment_pending"; if (claim.state === "refunded") claim.reversedAt = now(); await db.query("UPDATE wk_repair_claims SET payload=$1 WHERE id=$2", [claim, claim.id]); }
     }
-    await event(db, session.id, `payment.${operation.status}`, order.state === "paid" ? "PayPal sandbox payment completed" : order.state === "refunded" ? "PayPal sandbox refund completed" : "Payment state saved", `The ${operation.command.action.kind.replaceAll("_", " ")} operation is ${operation.status}. Purchased graph ${order.graphHash.slice(0, 12)} remains immutable.`, order.revisionId);
+    await event(db, session.id, `payment.${operation.status}`, order.state === "paid" ? order.sourceMode === "sample" ? "Sample payment completed" : "PayPal sandbox payment completed" : order.state === "refunded" ? order.sourceMode === "sample" ? "Sample refund completed" : "PayPal sandbox refund completed" : "Payment state saved", `The ${operation.command.action.kind.replaceAll("_", " ")} operation is ${operation.status}. Purchased graph ${order.graphHash.slice(0, 12)} remains immutable.`, order.livingRepair ? null : order.revisionId, order.sourceMode === "live_sandbox" ? "live" : "sample");
     return order;
   });
   await retireIneligiblePolicies(session.id);
-  if (order.state === "paid" && order.walletConsentId && operation.receipt?.source === "live_sandbox") {
+  if (order.state === "paid" && !order.livingRepair && order.walletConsentId && operation.receipt?.source === "live_sandbox") {
     try { await adoptCheckoutWallet(session, order); }
     catch { /* Captured money is settled independently; wallet confirmation stays pending. */ }
   }
@@ -295,16 +299,16 @@ export async function refreshOrder(session: Session, id: string, engine = paymen
   return order;
 }
 export async function commerceView(session: Session): Promise<CommerceView> {
-  await initializeCommerce(); const runtime = await paymentEngine();
-  const [orders, wallets, policies, repairs, operations] = await Promise.all([
-    database().query("SELECT payload FROM wk_commerce_orders WHERE tenant_id=$1 ORDER BY created_at DESC", [session.id]),
+  await initializeCommerce(); const store = new SqlPaymentStore(paymentDatabase); await store.initialize();
+  const [orders, wallets, policies, repairs, allOperations] = await Promise.all([
+    database().query("SELECT payload FROM wk_commerce_orders WHERE tenant_id=$1 AND NOT (payload ? 'livingRepair') ORDER BY created_at DESC", [session.id]),
     database().query("SELECT payload FROM wk_wallet_consents WHERE tenant_id=$1 ORDER BY created_at DESC", [session.id]),
     database().query("SELECT payload FROM wk_repair_policies WHERE tenant_id=$1 ORDER BY created_at DESC", [session.id]),
     database().query("SELECT payload FROM wk_repair_claims WHERE tenant_id=$1 ORDER BY created_at DESC", [session.id]),
-    runtime.store.list(scope(session.id)),
+    store.list(scope(session.id)),
   ]);
   const claims = repairs.rows.map(r => r.payload as RepairClaim);
-  const savedOrders = orders.rows.map(row => row.payload as CommerceOrder); const holds = await unresolvedPaymentEvents(savedOrders);
+  const savedOrders = orders.rows.map(row => row.payload as CommerceOrder); const visibleOperationIds = new Set(savedOrders.flatMap(order => order.operationIds)); const operations = allOperations.filter(operation => visibleOperationIds.has(operation.command.operationId)); const holds = await unresolvedPaymentEvents(savedOrders);
   const visibleOrders = savedOrders.map(order => holds.has(order.id) ? { ...order, state: "payment_pending" as const, error: "An authenticated provider update is awaiting reconciliation. The original payment history remains saved." } : order);
   return { orders: visibleOrders, wallets: wallets.rows.map(r => walletView(unseal<WalletConsent>(session.id, r.payload))), policies: policies.rows.map(r => { const p = r.payload as RepairPolicy; const active = claims.filter(c => c.policyId === p.id && !["escalated", "refused"].includes(c.state)); return { ...p, consumedMinor: active.reduce((sum, c) => sum + c.additionalMinor, 0), pendingMinor: active.filter(c => ["reserved", "payment_pending"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0) }; }), repairs: claims,
     receipts: operations.flatMap(o => o.receipt ? [o.receipt] : []), operations: operations.map(o => ({ id: o.command.operationId, kind: o.command.action.kind, status: o.status, observedAt: o.updatedAt, message: o.error?.message ?? null })),
@@ -322,6 +326,7 @@ export async function cancelCheckout(session: Session, id: string) {
 }
 export async function deliverDossier(session: Session, id: string) {
   const order = await loadOrder(session.id, id);
+  if (order.livingRepair) throw new WorldKitError("invalid_request", "This order belongs to a controlled kit amendment. Review its commitment and receipt in Living kit.", 409);
   if ((await unresolvedPaymentEvents([order])).has(order.id)) throw new WorldKitError("needs_evidence", "Wait for the authenticated payment update to be reconciled before delivery.", 409);
   if (order.state !== "paid" || order.capturedMinor !== order.quote.total.minor || order.refundedMinor) throw new WorldKitError("forbidden", "A completed, unrefunded Studio purchase is required to deliver this dossier.", 403);
   const bundle = await getRevision(session.id, order.revisionId);

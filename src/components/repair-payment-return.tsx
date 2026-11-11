@@ -1,0 +1,24 @@
+"use client";
+import { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight, Check, CircleHelp, Fingerprint, RefreshCw, ShieldCheck } from "lucide-react";
+import type { RepairView } from "../../packages/living-repair/contracts";
+import { api, Busy, currency } from "./ui";
+
+export function RepairPaymentReturn({ amendmentId, orderId, compensationId, cancelled }: { amendmentId: string; orderId: string | null; compensationId: string | null; cancelled: boolean }) {
+  const [data, setData] = useState<RepairView | null>(null); const [error, setError] = useState(""); const [busy, setBusy] = useState(false);
+  useEffect(() => { let active = true; api<RepairView>(`/api/living-repair?amendment=${encodeURIComponent(amendmentId)}`).then(value => { if (active) setData(value); }).catch(error => { if (active) setError(error.message); }); return () => { active = false; }; }, [amendmentId]);
+  const amendment = data?.amendments.find(value => value.proposal.id === amendmentId);
+  const order = data?.orders.find(value => value.id === orderId && value.livingRepair?.amendmentId === amendmentId && (value.livingRepair.compensationId ?? null) === compensationId);
+  const compensation = data?.compensations.find(value => value.id === compensationId && value.amendmentId === amendmentId);
+  const complete = compensation ? compensation.state === "completed" : amendment?.status === "committed";
+  const returnPath = `/?section=living&living=repairs${amendment ? `&repair=${amendment.proposal.runId}` : ""}`;
+  async function act(capture: boolean) {
+    if (!amendment || !order) return; setBusy(true); setError("");
+    try {
+      const input = compensationId ? { kind: capture ? "capture_restoration" : "reconcile_compensation", compensationId, ...(capture ? { acceptExactCapture: true } : {}) } : { kind: capture ? "capture" : "reconcile", amendmentId, ...(capture ? { acceptExactCapture: true } : {}) };
+      const result = await api<{ repair: RepairView }>(`/api/living-repair?run=${encodeURIComponent(amendment.proposal.runId)}`, "POST", input); setData(result.repair);
+    } catch (error) { setError(error instanceof Error ? error.message : "The original payment could not be confirmed. Its saved authority and history remain available."); }
+    finally { setBusy(false); }
+  }
+  return <main className="payment-return"><a className="return-brand" href={returnPath}><span>worldkit</span><b>LIVING REPAIR</b></a><section className="payment-return-card"><span className={`return-symbol ${complete ? "complete" : ""}`}>{complete ? <Check size={29}/> : <ShieldCheck size={29}/>}</span><span className="eyebrow">{order?.sourceMode === "sample" ? "SAMPLE PAYMENT RECORD" : "PAYPAL SANDBOX"} · CONTROLLED KIT AMENDMENT</span><h1>{complete ? compensation ? "Restoration resolved." : "Your kit change is complete." : cancelled ? "Your original kit is still recorded." : order?.capturedMinor ? "Payment recorded. Check the kit change." : "Welcome back to your kit."}</h1><p>{complete ? compensation?.reason ?? amendment?.reason : cancelled ? "Leaving PayPal does not erase a payment or cancel an uncertain operation. Reconcile the retained record before another action." : "This approval belongs to the exact controlled merchant amendment. Capture, merchant commitment and conditional restoration are tracked separately. No retailer equipment is ordered or shipped."}</p>{order && <div className="return-order"><div><span>WorldKit Studio · {compensation ? "restoration supplement" : "controlled kit change"}</span><strong>{currency(order.quote.total.minor)} USD</strong></div><small><Fingerprint size={13}/> {order.graphHash.slice(0, 24)}</small><b>{order.state.replaceAll("_", " ")}</b><small>{currency(order.capturedMinor)} captured · {currency(order.refundedMinor)} refunded</small>{order.error && <p className="inline-error">{order.error}</p>}</div>}{amendment && !complete && <div className="repair-dialog-note"><CircleHelp size={18}/><p>{compensation?.reason ?? amendment.reason}</p></div>}{error && <div className="return-error" role="alert"><CircleHelp size={18}/><p>{error}</p></div>}{busy && <Busy text="Reading the retained authority and exact provider state…"/>}<div className="return-actions">{order && !order.capturedMinor && <button className="button paypal-button" disabled={busy} onClick={() => void act(true)}>Confirm this approved payment <ArrowRight size={15}/></button>}{order && <button className="text-button" disabled={busy} onClick={() => void act(false)}><RefreshCw size={14}/> Reconcile original operation</button>}<a className="button subtle" href={returnPath}><ArrowLeft size={15}/> Return to the repair workshop</a></div>{!data && !error && <Busy text="Opening your exact saved amendment…"/>}{data && (!amendment || !order) && <p className="inline-error">This return does not match an amendment and order in your current private workspace. Open the saved repair record to continue.</p>}</section></main>;
+}

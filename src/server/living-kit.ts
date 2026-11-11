@@ -8,6 +8,8 @@ import type { LivingIncident, LivingView } from "../../packages/living-kit/contr
 import type { CommercialSignal } from "../../packages/webhooks/contracts";
 import { database } from "./db";
 import { initializeLiving } from "./living-db";
+import { initializeLivingRepair } from "./living-repair-db";
+import { enqueueIncidentRepair } from "./living-repair";
 import { notifications, publishNotification } from "./notifications";
 import { appendEvent, saveCatalogResultInTransaction } from "./repository";
 import { getOfferWatches } from "./subscriptions";
@@ -26,6 +28,7 @@ export async function dismissIncident(tenantId: string, id: string): Promise<voi
 }
 
 export async function processCommercialEvent(job: WebhookClaim, owners: EventOwners, runtime: CommercialRuntime = { mode: "live", refresh: retrieveProduct }): Promise<void> {
+  await initializeLivingRepair();
   const signal = job.signal as CommercialSignal;
   const rows = await database().query("SELECT w.*,i.payload AS item FROM wk_offer_watches w JOIN wk_inventory_items i ON i.id=w.item_id JOIN wk_sessions s ON s.id=w.tenant_id WHERE w.id=ANY($1::text[]) AND w.stopped_at IS NULL AND s.expires_at>now() AND (i.payload->>'version')::int=w.item_version AND i.payload->>'status'='active'", [owners.watchIds]);
   if (!rows.rowCount) { await finishWebhook(job, "ignored", { reason: "The matching equipment watches have ended." }); return; }
@@ -49,6 +52,7 @@ export async function processCommercialEvent(job: WebhookClaim, owners: EventOwn
       const incident: LivingIncident = { id: randomUUID(), webhookId: job.id, watchId: watch.id, itemId: watch.item_id, model: watch.payload.model, sourceMode: job.source_mode, catalogSource: runtime.mode, signal, impact, refreshed: snapshot, snapshotHash: hash(snapshot), observedAt, revisionId: revision, createdAt: observedAt, dismissedAt: null };
       const inserted = await db.query("INSERT INTO wk_living_incidents(id,tenant_id,webhook_id,watch_id,state,payload) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(webhook_id,watch_id) DO NOTHING RETURNING id", [incident.id, watch.tenant_id, job.id, watch.id, impact.state, incident]);
       if (!inserted.rowCount) continue;
+      if (impact.state === "needs_repair_review") await enqueueIncidentRepair(db, watch.tenant_id, incident);
       await appendEvent(db, watch.tenant_id, "offer.observed", impact.title, impact.reason, revision, job.source_mode);
       await publishNotification(db, watch.tenant_id, `webhook:${job.id}:watch:${watch.id}`, { kind: "equipment-update", title: impact.title, detail: `${watch.payload.model}: ${impact.reason}`, sourceMode: job.source_mode, incidentId: incident.id, orderId: null });
     }

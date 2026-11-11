@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2026-11-11T07:31:27Z",
+  "scope": "Living Repair local Sample implementation and native review",
+  "sourceBase": "4fc341a4ba2d8344f4e635c2a6c4a204547372aa",
+  "sourceIdentity": "Working source on this base; final immutable release manifest is retained privately",
+  "tests": {
+    "unitAndSdk": { "passed": 114, "failed": 0, "newRepairCases": 13 },
+    "postgresql": { "passed": 108, "failed": 0, "newRepairCases": 30 },
+    "typeScript": "passed",
+    "nativeReviewProductionBuild": "passed"
+  },
+  "isolation": {
+    "database": "Dedicated local PostgreSQL schema with no public-schema fallback",
+    "observedLocalTableCount": 59,
+    "newLivingRepairTables": 10,
+    "providerCredentials": "empty",
+    "qaPort": 4506,
+    "hostedSchemaQualification": "not performed by this unit"
+  },
+  "nativeReview": {
+    "reviewer": "Root integration agent using the native in-app browser",
+    "sourceMode": "sample",
+    "reviewSnapshot": "Isolated production review build v2",
+    "checks": [
+      "Persisted discovery found alternatives and the exact same-recorder proposal remained reviewable",
+      "Fresh exact $8 Sample approval completed payment and controlled merchant commitment",
+      "Review conditional undo opened immediately",
+      "Current restoration showed an exact $8 refund, zero supplement, a digest and separate consent",
+      "Separate compensation approval completed the $8 Sample refund and restored the original kit as a new version",
+      "Original and changed graph histories remained retained",
+      "Committed mobile document measured 390 pixel client and scroll widths",
+      "Restored mobile state was visually reviewed and the viewport override was cleared"
+    ],
+    "privateScreenshotBasename": "worldkit-repair-restored-mobile.png"
+  },
+  "coveredInvariants": [
+    "Tenant, source, immutable proposal and legacy service boundaries",
+    "Multi-position replacement, exact current commitment continuity and event deduplication",
+    "Critical evidence, owned items, hard requirements, exact offers and condition scope",
+    "Gross pending and consumed caps, concurrent claims, expiry and revocation",
+    "Lost create/capture/refund recovery uses the retained operation identity",
+    "Partial prior refunds, parent attribution, freshness and unresolved payment holds",
+    "Conditional undo, supplemental approval and failure after a completed refund",
+    "Bounded recent summaries with exact older-run retrieval"
+  ],
+  "actualFinancialProviderWrites": 0,
+  "actualSubscriptionProviderWrites": 0,
+  "authenticMarketCallbacksQualified": 0,
+  "newHumanSourceReviews": 0,
+  "newPhysicalCompatibilityTests": 0,
+  "openReleaseGates": [
+    "Original and hosted migration, exact-source deployment and hosted verification",
+    "Authentic market delivery, ownership and provider lifecycle qualification",
+    "Fresh new-scope PayPal sandbox buyer and eligible wallet qualification",
+    "Independent engineering review, held-out quality metrics and physical/user studies"
+  ]
+}

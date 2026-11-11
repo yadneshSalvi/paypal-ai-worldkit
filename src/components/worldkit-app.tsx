@@ -69,7 +69,7 @@ export function WorldKitApp({ initialWorkspace }: { initialWorkspace: Workspace 
     {tab === "compare" && <Compare workspace={w} onEdit={safeEdit} busy={busy}/>}
     {tab === "assembly" && <Assembly workspace={w} onRefresh={refresh}/>}
     {tab === "studio" && <Studio workspace={w}/>}
-    {tab === "living" && <LivingKit workspace={w} onExplore={explore} onEquipment={() => setTab("inventory")} onWorkbench={() => setTab("workbench")} onStudio={() => setTab("studio")}/>}
+    {tab === "living" && <LivingKit workspace={w} onRefresh={refresh} onExplore={explore} onEquipment={() => setTab("inventory")} onWorkbench={() => setTab("workbench")} onStudio={() => setTab("studio")}/>}
     {tab === "evidence" && <Evidence workspace={w} onRefresh={refresh}/>}
     </main><footer className="app-footer"><Brand/><p>Thoughtfully connected. Honestly verified.</p><span>Computational checks · physical performance not tested</span></footer>
     {goalOpen && <GoalEditor workspace={w} onClose={() => setGoalOpen(false)} onEdit={edit}/>}

@@ -1,5 +1,6 @@
 import type { EvidenceMode, PaymentCommand, PaymentOperation, ProviderReceipt } from "@fracture/paypal-core";
 import type { Quote } from "../contracts/index";
+import type { RepairAuthorityContext } from "../living-repair/contracts";
 
 export const MERCHANT_ID = "worldkit-studio";
 export const PROJECT_ID = "worldkit";
@@ -46,11 +47,13 @@ export interface CommerceOrder {
   providerOrderId: string | null; captureId: string | null; approvalUrl: string | null;
   capturedMinor: number; refundedMinor: number; fulfilledAt: string | null;
   operationIds: string[]; error: string | null; sourceMode: EvidenceMode; paymentHealth?: PaymentHealth;
+  livingRepair?: RepairAuthorityContext;
 }
 export interface FinancialAuthority {
   id: string; tenantId: string; orderId: string; kind: "purchase" | "capture" | "refund";
   command: PaymentCommand; createdAt: string; revokedAt: string | null;
   repairPolicyId: string | null; repairClaimId: string | null;
+  livingRepair?: RepairAuthorityContext;
 }
 export interface CommerceView {
   orders: CommerceOrder[]; wallets: WalletView[]; policies: (RepairPolicy & { consumedMinor: number; pendingMinor: number })[];

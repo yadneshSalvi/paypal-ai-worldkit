@@ -5,7 +5,7 @@ import { walletView } from "../../../../packages/commerce/contracts";
 import { WorldKitError } from "../../../../packages/contracts/index";
 import { errorResponse, readJson, requireSession, sameOrigin } from "@/server/http";
 import { createQuote, getRevision } from "@/server/repository";
-import { acceptCheckout, cancelCheckout, captureCheckout, commerceView, deliverDossier, enableRepairPolicy, executeRepair, openSupportRequest, refreshOrder, refundCheckout, revokeRepairPolicy } from "@/server/commerce";
+import { acceptCheckout, loadOrder, cancelCheckout, captureCheckout, commerceView, deliverDossier, enableRepairPolicy, executeRepair, openSupportRequest, refreshOrder, refundCheckout, revokeRepairPolicy } from "@/server/commerce";
 import { beginWalletSetup, completeWalletSetup, createWalletConsent, revokeWallet } from "@/server/wallets";
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -35,6 +35,7 @@ export async function GET() { try { return Response.json(await commerceView(awai
 export async function POST(request: Request) {
   try {
     sameOrigin(request); const session = await requireSession(); const input = Input.parse(await readJson(request)); const origin = request.headers.get("origin")!;
+    if ("orderId" in input && (await loadOrder(session.id, input.orderId)).livingRepair) throw new WorldKitError("invalid_request", "This order belongs to Living Repair. Use its separately scoped amendment or compensation controls.", 409);
     let value: unknown;
     switch (input.kind) {
       case "quote": { const bundle = await getRevision(session.id); if (bundle.kit.id !== input.revisionId || bundle.certificate.graphHash !== input.graphHash) throw new WorldKitError("stale_revision", "Refresh the kit before requesting its quote.", 409); value = await createQuote(session.id, bundle); break; }
