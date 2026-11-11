@@ -93,6 +93,10 @@ export async function readPaymentEvidence(actor: PaymentEvidenceActor, raw: Tool
 }
 export async function paymentEvidenceDesk(session: Session): Promise<ToolkitDesk> {
   await initializePaymentEvidence(); await authorize({ session });
-  const rows = (await database().query("SELECT payload FROM wk_payment_evidence_reads WHERE tenant_id=$1 ORDER BY created_at DESC,id DESC LIMIT 20", [session.id])).rows;
-  return { ...toolkitAvailability(), records: rows.map(row => displayRecord(row.payload)) };
+  const [reads, orders] = await Promise.all([
+    database().query("SELECT payload FROM wk_payment_evidence_reads WHERE tenant_id=$1 ORDER BY created_at DESC,id DESC LIMIT 20", [session.id]),
+    database().query("SELECT payload FROM wk_commerce_orders WHERE tenant_id=$1 AND payload->>'sourceMode'='live_sandbox' AND payload->>'captureId' IS NOT NULL AND payload->>'providerOrderId' IS NOT NULL AND (payload->>'capturedMinor')::bigint>0 ORDER BY created_at DESC,id DESC LIMIT 100", [session.id]),
+  ]);
+  await authorize({ session });
+  return { ...toolkitAvailability(), orders: orders.rows.map(row => { const order = row.payload as CommerceOrder; return { id: order.id, graphHash: order.graphHash, createdAt: order.createdAt, capturedMinor: order.capturedMinor, purpose: order.livingRepair ? "Controlled kit amendment" as const : order.kind === "amendment" ? "Studio amendment" as const : "Studio service" as const }; }), records: reads.rows.map(row => displayRecord(row.payload)) };
 }

@@ -26,5 +26,6 @@ export interface ToolkitReadRecord {
 }
 export interface ToolkitDesk {
   available: boolean; mode: "sandbox" | "synthetic_transport"; message: string;
+  orders: { id: string; graphHash: string; createdAt: string; capturedMinor: number; purpose: "Studio service" | "Studio amendment" | "Controlled kit amendment" }[];
   records: ToolkitReadRecord[];
 }

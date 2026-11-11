@@ -41,6 +41,8 @@ test("official Toolkit observations are immutable, scoped, replayable and change
   const first = await readPaymentEvidence({ session: f.session }, f.input, f.reader), again = await readPaymentEvidence({ session: f.session }, f.input, f.reader);
   assert.equal(first.state, "succeeded"); assert.equal(first.observation?.source, "synthetic_transport"); assert.deepEqual(first, again); assert.equal(f.calls(), 2);
   assert.equal(await financialFingerprint(f.order.id), before); const desk = await paymentEvidenceDesk(f.session); assert.equal(desk.records.length, 1); assert.deepEqual(desk.records[0], first);
+  assert.deepEqual(desk.orders, [{ id: f.order.id, graphHash: f.order.graphHash, createdAt: f.order.createdAt, capturedMinor: 1200, purpose: "Studio service" }]);
+  assert.equal(JSON.stringify(desk.orders).includes(f.order.captureId!), false);
 });
 test("concurrent duplicate identity dispatches once and exposes the saved running attempt", async () => {
   const f = await fixture(); let release!: () => void, entered!: () => void; const blocked = new Promise<void>(r => { release = r; }), started = new Promise<void>(r => { entered = r; });
@@ -106,4 +108,11 @@ test("workspace rate limits include every retained attempt", async () => {
 test("disabled production providers do not create an apparent provider attempt", async () => {
   const f = await fixture(); assert.equal(toolkitAvailability().available, false);
   await assert.rejects(readPaymentEvidence({ session: f.session }, f.input), /unavailable/); assert.equal((await paymentEvidenceDesk(f.session)).records.length, 0);
+});
+test("saved evidence selection includes controlled amendments and excludes foreign and Sample orders", async () => {
+  const f = await fixture(), foreign = await fixture();
+  await database().query("UPDATE wk_commerce_orders SET payload=payload||'{\"livingRepair\":{}}'::jsonb WHERE id=$1", [f.order.id]);
+  const desk = await paymentEvidenceDesk(f.session); assert.equal(desk.orders.length, 1); assert.equal(desk.orders[0]!.purpose, "Controlled kit amendment"); assert.equal(JSON.stringify(desk.orders).includes(foreign.order.id), false);
+  await database().query("UPDATE wk_commerce_orders SET payload=jsonb_set(payload,'{sourceMode}','\"sample\"') WHERE id=$1", [f.order.id]);
+  assert.equal((await paymentEvidenceDesk(f.session)).orders.length, 0);
 });

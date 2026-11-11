@@ -1,17 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, Clock3, Fingerprint, History, LockKeyhole, RefreshCw, ScanLine, X } from "lucide-react";
-import type { CommerceOrder } from "../../packages/commerce/contracts";
 import type { ToolkitDesk, ToolkitReadInput, ToolkitReadRecord } from "../../packages/commerce/toolkit-contracts";
 import { api, Busy, currency } from "./ui";
 import { ModalFrame } from "./modal";
 
 const labels = { get_order: "Order & capture", list_transactions: "Transaction report" };
 const when = (value: string) => new Date(value).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", second: "2-digit" });
-export function PaymentEvidence({ orders }: { orders: CommerceOrder[] }) {
+export function PaymentEvidence() {
   const [desk, setDesk] = useState<ToolkitDesk | null>(null), [selected, setSelected] = useState("");
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [opened, setOpened] = useState<ToolkitReadRecord | null>(null);
-  const eligible = orders.filter(order => order.sourceMode === "live_sandbox" && order.captureId && order.providerOrderId && order.capturedMinor > 0);
+  const eligible = desk?.orders ?? [];
   const chosen = eligible.find(order => order.id === selected) ?? eligible[0];
   useEffect(() => { let active = true; api<ToolkitDesk>("/api/payment-evidence").then(value => { if (active) setDesk(value); }).catch(e => { if (active) setError(e.message); }); return () => { active = false; }; }, []);
   async function reload() { setError(""); try { setDesk(await api<ToolkitDesk>("/api/payment-evidence")); } catch (e) { setError(e instanceof Error ? e.message : "Saved evidence could not be loaded."); } }
@@ -29,7 +28,7 @@ export function PaymentEvidence({ orders }: { orders: CommerceOrder[] }) {
       <label htmlFor="payment-evidence-order">Your captured sandbox order</label>
       <select id="payment-evidence-order" value={chosen?.id ?? ""} onChange={e => setSelected(e.target.value)} disabled={busy || !eligible.length}>
         {!eligible.length && <option value="">No captured sandbox order yet</option>}
-        {eligible.map(order => <option key={order.id} value={order.id}>{when(order.createdAt)} · {currency(order.capturedMinor)} · {order.id.slice(0, 8)}</option>)}
+        {eligible.map(order => <option key={order.id} value={order.id}>{order.purpose} · {currency(order.capturedMinor)} · {order.id.slice(0, 8)}</option>)}
       </select>
       <p className="fine-print">{desk?.message ?? "Loading saved evidence…"}</p>
       <div className="payment-evidence-actions"><button className="button" disabled={busy || !chosen || !desk?.available} onClick={() => void read("get_order")}><ScanLine size={16}/> Read order <ArrowRight size={15}/></button><button className="button subtle" disabled={busy || !chosen || !desk?.available} onClick={() => void read("list_transactions")}><History size={16}/> Read reporting page</button></div>
