@@ -9,4 +9,4 @@ export async function reviewRequest<T>(path: string, body?: unknown, signal?: Ab
   return result as T;
 }
 export const reviewDate = (value: string) => new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
-export const claimValue = (value: string | number | boolean | null) => value === null ? "Unknown" : String(value);
+export const claimValue = (value: string | number | boolean | null) => value === null ? "Unknown" : typeof value === "boolean" ? value ? "Yes" : "No" : String(value);

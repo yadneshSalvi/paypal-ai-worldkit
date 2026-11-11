@@ -1,0 +1,146 @@
+{
+  "schema": "worldkit.engineering-review-native-root.v1",
+  "observedAt": "2026-11-11T18:43:55.987521+00:00",
+  "provenance": "sample",
+  "baseCommit": "a9aacdb8acaf93ebc4aa0a43cb3761922ca97f77",
+  "correctedBuildId": "VTsscb_-0orYpq6VrysJJ",
+  "sourceDigest": "319dcabcc6f883c8cb85f38288fb8fd906e5c03bdb779499334789920a99d162",
+  "privateRuntimeManifestSha256": "c57dad7379a0cf4b82341a99e35490d24bcca5ab7e4ccf6c7948a095d5c539a2",
+  "validation": {
+    "typecheck": "passed",
+    "independentProductionBuild": "passed",
+    "baseUnitTests": 152,
+    "basePostgresTests": 166,
+    "baseHttpGroups": 12,
+    "nativeBrowser": "Codex in-app browser",
+    "humanEngineeringReview": false,
+    "physicalTests": 0
+  },
+  "observedJourneys": [
+    "Exact source passage and retained accept/reject reasons",
+    "First adjudicator leaves a conflict unresolved; second distinct adjudicator resolves the exact decision set",
+    "Explicit Sample promotion retains zero actual-human and physical coverage",
+    "Withdrawal retains immutable profile, earlier evidence and five affected requirement witnesses",
+    "One-use fragment invitation removes its fragment, grants scoped reader access and refuses reuse",
+    "Revoked reader credential is refused on replay",
+    "Keyboard arrows and Shift move image anchors; exact numeric precision survives save",
+    "Keyboard source selection creates an exact passage anchor and retains button focus",
+    "New edition saves with focused confirmation; dismissal returns focus to the heading",
+    "Historical edition retains original hash and evidence and disables editing",
+    "Earlier/current edition navigation returns focus to the heading",
+    "Concurrent stale save is rejected and retains the local draft",
+    "Explicit source-head rebase creates a fresh edition and retains the old one"
+  ],
+  "responsive": {
+    "widths": [
+      360,
+      390,
+      768,
+      1280
+    ],
+    "horizontalDocumentOverflow": false,
+    "reducedMotion": "emulated preference checked",
+    "zoom": "640x400 CSS viewport at DPR2 is a 200% reflow equivalent of1280x800; native browser zoom shortcut had no observed effect and is not claimed"
+  },
+  "initialFailuresRetained": [
+    "Numeric input step0.001 rejected existing coordinate precision; changed to step=any",
+    "Save/source-selection feedback dropped keyboard focus; explicit feedback and source-button focus corrected",
+    "History navigation dropped focus; edition navigation added to heading focus effect"
+  ],
+  "uiChecks": {
+    "booleans": "Yes/No/Unknown/0 verified",
+    "staleSourceMessage": "Known binding label mapped to plain language; historical messages preserved",
+    "privateCookiesAndViewport": "Restored after isolated native qualification"
+  },
+  "databaseContinuity": {
+    "tables": 79,
+    "beforeRows": 22419,
+    "afterRows": 22442,
+    "changed": [
+      {
+        "table": "wk_review_capabilities",
+        "before": 301,
+        "after": 301,
+        "changedOrRemoved": 1,
+        "addedOrChanged": 1
+      },
+      {
+        "table": "wk_review_decisions",
+        "before": 1244,
+        "after": 1246,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 2
+      },
+      {
+        "table": "wk_review_editions",
+        "before": 421,
+        "after": 423,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 2
+      },
+      {
+        "table": "wk_review_events",
+        "before": 2609,
+        "after": 2617,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 8
+      },
+      {
+        "table": "wk_review_impacts",
+        "before": 22,
+        "after": 23,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 1
+      },
+      {
+        "table": "wk_review_intents",
+        "before": 2319,
+        "after": 2326,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 7
+      },
+      {
+        "table": "wk_review_profile_heads",
+        "before": 22,
+        "after": 23,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 1
+      },
+      {
+        "table": "wk_review_profiles",
+        "before": 22,
+        "after": 23,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 1
+      },
+      {
+        "table": "wk_review_proposals",
+        "before": 190,
+        "after": 190,
+        "changedOrRemoved": 2,
+        "addedOrChanged": 2
+      },
+      {
+        "table": "wk_review_withdrawals",
+        "before": 19,
+        "after": 20,
+        "changedOrRemoved": 0,
+        "addedOrChanged": 1
+      }
+    ],
+    "nonReviewTablesUnchanged": 64,
+    "providerCalls": 0,
+    "originalDatabaseAccess": false
+  },
+  "isolation": {
+    "originalDatabaseAccess": false,
+    "actualProviderCalls": 0,
+    "modelCalls": 0,
+    "originalSessionExpiryChanged": false,
+    "hostedPromotion": "not_performed_in_this_record"
+  },
+  "limits": [
+    "This proves software behavior with fictional fixtures only. Genuine independent technical review and physical testing remain separate.",
+    "Full WorldKit and the other five projects remain in progress."
+  ]
+}

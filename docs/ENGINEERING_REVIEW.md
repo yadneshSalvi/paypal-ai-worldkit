@@ -2,7 +2,7 @@
 
 The engineering reading room at `/review` separates source extraction, proposed corrections, independent engineering decisions and physical evidence. It is an additive application unit. Existing source documents, model drafts, candidates, kits, certificates and financial records are never rewritten by a review or promotion.
 
-The isolated qualification uses original fictional source text, an original fictional recorder illustration and explicitly **Sample** principals. It establishes software behavior only. Actual human-reviewed coverage and physical tests remain zero. Genuine identity/qualification examination, technical review of the actual corpus, native browser qualification and hosted promotion are separate evidence gates; consult the qualification receipts for which observations have actually occurred.
+The isolated qualification uses original fictional source text, an original fictional recorder illustration and explicitly **Sample** principals. It establishes software behavior only. Actual human-reviewed coverage and physical tests remain zero. The root in-app browser qualification is recorded in `docs/evidence/engineering-review-native-root-qualification.json`. Genuine identity/qualification examination, technical review of the actual corpus and hosted promotion remain separate evidence gates; consult the receipts for the exact observations.
 
 ## Authority and identity
 
