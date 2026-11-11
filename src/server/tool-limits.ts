@@ -1,11 +1,12 @@
 import { randomUUID } from "node:crypto";
 import { WorldKitError, type Principal, type ToolScope } from "../../packages/contracts/index";
 import { database, initialize, transaction } from "./db";
-export type LimitedTool = "verify_kit" | "repair_kit" | "quote_kit";
+export type LimitedTool = "verify_kit" | "repair_kit" | "quote_kit" | "read_payment_evidence";
 const policy: Record<LimitedTool, { scope: ToolScope; count: number; seconds: number }> = {
   verify_kit: { scope: "kit:verify", count: 60, seconds: 60 },
   repair_kit: { scope: "kit:propose", count: 5, seconds: 3600 },
   quote_kit: { scope: "kit:quote", count: 2, seconds: 60 },
+  read_payment_evidence: { scope: "payment:read", count: 4, seconds: 60 },
 };
 const state = globalThis as unknown as { worldkitMcpLimits1?: Promise<void> };
 function init() { return state.worldkitMcpLimits1 ??= initialize().then(async () => { await database().query("CREATE TABLE IF NOT EXISTS wk_mcp_runs(id text PRIMARY KEY,token_id text NOT NULL REFERENCES wk_access_tokens(id),tenant_id text NOT NULL,tool text NOT NULL,started_at timestamptz NOT NULL DEFAULT now(),lease_until timestamptz NOT NULL,completed_at timestamptz); CREATE INDEX IF NOT EXISTS wk_mcp_runs_token_time ON wk_mcp_runs(token_id,started_at)"); }).catch(error => { state.worldkitMcpLimits1 = undefined; throw error; }); }

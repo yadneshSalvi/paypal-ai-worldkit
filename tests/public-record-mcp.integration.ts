@@ -54,3 +54,14 @@ test("an expired grant or owner session cannot read resources through a previous
   await assert.rejects(() => readScopedRecord(b.principal, b.record.payload.revisionId, b.record.payload.graphHash, b.record.id, "assembly"), /expired/);
   assert.equal((await getRevision(b.session.id)).certificate.graphHash, b.record.payload.graphHash);
 });
+test("payment read tool is advertised only with its separate scope and rejects foreign orders", async () => {
+  const { session } = await createSession(), grant = await createAccessToken(session, ["payment:read"]), principal = (await authenticateAccess(grant.token))!;
+  const server = createMcpServer(principal), client = new Client({ name: "payment-read-scope-qa", version: "1.0.0" });
+  const [a, b] = InMemoryTransport.createLinkedPair(); await Promise.all([server.connect(a), client.connect(b)]);
+  try {
+    const tools = await client.listTools(); assert.deepEqual(tools.tools.map(tool => tool.name).sort(), ["quote_kit", "read_payment_evidence", "repair_kit", "verify_kit"]);
+    const tool = tools.tools.find(tool => tool.name === "read_payment_evidence")!; assert.equal(tool.annotations?.readOnlyHint, true); assert.equal(tool.inputSchema.additionalProperties, false);
+    const response = await client.callTool({ name: "read_payment_evidence", arguments: { requestId: randomUUID(), orderId: "foreign-order", expectedGraphHash: "a".repeat(64), operation: "get_order" } }); assert.equal(response.isError, true); assert.match(JSON.stringify(response.content), /outside/);
+    await revokeAccessToken(session, grant.id); const revoked = await client.callTool({ name: "read_payment_evidence", arguments: { requestId: randomUUID(), orderId: "foreign-order", expectedGraphHash: "a".repeat(64), operation: "get_order" } }); assert.equal(revoked.isError, true); assert.match(JSON.stringify(revoked.content), /revoked/);
+  } finally { await client.close(); await server.close(); }
+});

@@ -155,7 +155,7 @@ export const McpQuoteInput = z.object({
   kit_revision_id: z.string(), verification_id: z.string(), expected_graph_hash: z.string(),
   merchant_id: z.literal("worldkit-studio"), currency: z.literal("USD"), locale: z.literal("en-US"),
 }).strict();
-export type ToolScope = "kit:verify" | "kit:propose" | "kit:quote";
+export type ToolScope = "kit:verify" | "kit:propose" | "kit:quote" | "payment:read";
 export type Principal = { tenantId: string; id: string; kind: "judge" | "external"; expiresAt: string; scopes: ToolScope[]; allowedKitIds: string[] };
 export type Workspace = {
   session: { id: string; expiresAt: string }; kit: KitRevision; certificate: Certificate;

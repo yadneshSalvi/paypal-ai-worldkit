@@ -11,6 +11,8 @@ import { trustedOrigin } from "../../packages/security/origin";
 import { privateRecord } from "./public-records";
 import { initializePublicRecords } from "./public-record-db";
 import { database } from "./db";
+import { ToolkitReadInput } from "../../packages/commerce/toolkit-contracts";
+import { readPaymentEvidence } from "./payment-evidence";
 
 export async function authorizeKit(principal: Principal, scope: ToolScope, revisionId: string, expectedHash: string) {
   if (!principal.scopes.includes(scope) || Date.parse(principal.expiresAt) <= Date.now()) throw new WorldKitError("forbidden", "The current grant does not allow this operation.", 403);
@@ -28,7 +30,7 @@ async function guarded(principal: Principal, tool: LimitedTool, action: () => Pr
   finally { if (lease) await releaseTool(principal, lease); }
 }
 export function createMcpServer(principal: Principal): McpServer {
-  const server = new McpServer({ name: "worldkit", version: "0.1.0" }, { instructions: "WorldKit verifies source-backed physical-system plans. A satisfied modeled check is not a physical test. Unknown critical facts block overall verification. Tools only inspect, propose repairs and create WorldKit Studio sandbox service quotes. They cannot modify a kit, authorize payment, spend a wallet, place retailer orders, or remove constraints." });
+  const server = new McpServer({ name: "worldkit", version: "0.1.0" }, { instructions: "WorldKit verifies source-backed physical-system plans. A satisfied modeled check is not a physical test. Unknown critical facts block overall verification. Tools inspect kits, propose repairs, create WorldKit Studio sandbox service quotes, and—with a separate payment:read grant—record owned sandbox payment observations. They cannot modify a kit, authorize payment, spend a wallet, place retailer orders, or remove constraints." });
   server.registerTool("verify_kit", { title: "Verify a saved kit", description: "Return the exact immutable certificate for an authorized kit revision. Current-sources mode explicitly re-evaluates source availability and returns a new certificate.", inputSchema: McpVerifyInput, annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false } }, input => guarded(principal, "verify_kit", async () => {
     const bundle = await authorizeKit(principal, "kit:verify", input.kit_revision_id, input.expected_graph_hash);
     if (input.requirement_ids?.some(id => !bundle.kit.goal.requirements.some(r => r.id === id))) throw new WorldKitError("invalid_request", "An unknown requirement was requested.", 400);
@@ -50,6 +52,7 @@ export function createMcpServer(principal: Principal): McpServer {
     if (input.verification_id !== bundle.certificate.id) throw new WorldKitError("stale_revision", "The certificate does not belong to this revision.", 409);
     return { quote: await createQuote(principal.tenantId, bundle), hardwareFulfillment: "not_included", paymentAuthorized: false, verificationStatus: bundle.certificate.status };
   }));
+  if (principal.scopes.includes("payment:read")) server.registerTool("read_payment_evidence", { title: "Read one owned sandbox payment", description: "With the separate payment:read grant, use the official PayPal Toolkit to read an existing owned order or one bounded reporting page for its capture. Pass the application order ID, original graph hash and a unique requestId. Repeating that exact identity returns the saved attempt, never a second provider call. A reporting absence is inconclusive. This records an observation; it cannot change payments, refund, approve or buy equipment.", inputSchema: ToolkitReadInput, annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } }, input => guarded(principal, "read_payment_evidence", async () => ({ record: await readPaymentEvidence({ principal }, input), paymentStateChanged: false })));
   for (const kind of ["certificate", "assembly"] as const) {
     const template = new ResourceTemplate(`worldkit://records/{revisionId}/{graphHash}/{recordId}/${kind}`, { list: async () => {
       const current = await currentAccess(principal, "kit:verify"); await initializePublicRecords();

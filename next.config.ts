@@ -8,9 +8,11 @@ const sourceRuntimeFiles = [
   "./node_modules/@napi-rs/canvas-*/**/*",
 ];
 const nextConfig: NextConfig = {
+  turbopack: { root: process.cwd() },
+  outputFileTracingRoot: process.cwd(),
   distDir: process.env.WORLDKIT_QA_MODE === "certificate" ? ".next-certificate-qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? ".next-source-impact-qa" : ".next",
   poweredByHeader: false,
-  serverExternalPackages: ["pg", "@fracture/paypal-core", "paypal", "better-sqlite3", "pdf-parse", "pdfjs-dist", "@napi-rs/canvas"],
+  serverExternalPackages: ["pg", "@fracture/paypal-core", "paypal", "better-sqlite3", "pdf-parse", "pdfjs-dist", "@napi-rs/canvas", "@paypal/agent-toolkit", "axios"],
   outputFileTracingIncludes: Object.fromEntries(["/api/evidence", "/api/jobs", "/api/jobs/recover", "/api/planner", "/api/inventory"].map(route => [route, sourceRuntimeFiles])),
   async headers() {
     return [{ source: "/(.*)", headers: [
