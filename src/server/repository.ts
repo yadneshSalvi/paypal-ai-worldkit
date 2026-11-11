@@ -115,6 +115,12 @@ export async function authenticateAccess(token: string): Promise<Principal | nul
   const result = await database().query("UPDATE wk_access_tokens t SET request_count=request_count+1 FROM wk_sessions s WHERE t.tenant_id=s.id AND t.token_hash=$1 AND t.expires_at>now() AND s.expires_at>now() AND t.revoked_at IS NULL AND t.request_count<500 RETURNING t.id,t.tenant_id,t.scopes,t.kit_ids,t.expires_at", [tokenHash(token)]);
   const row = result.rows[0]; return row ? { id: row.id, tenantId: row.tenant_id, kind: "external", scopes: row.scopes, allowedKitIds: row.kit_ids, expiresAt: row.expires_at.toISOString() } : null;
 }
+export async function currentAccess(principal: Principal, scope: ToolScope): Promise<Principal> {
+  await initialize();
+  const row = (await database().query("SELECT t.id,t.tenant_id,t.scopes,t.kit_ids,least(t.expires_at,s.expires_at) AS expires_at FROM wk_access_tokens t JOIN wk_sessions s ON s.id=t.tenant_id WHERE t.id=$1 AND t.tenant_id=$2 AND t.expires_at>clock_timestamp() AND s.expires_at>clock_timestamp() AND t.revoked_at IS NULL", [principal.id, principal.tenantId])).rows[0];
+  if (!row || !row.scopes.includes(scope)) throw new WorldKitError("forbidden", "This scoped grant or its workspace expired, was revoked, or does not permit this resource.", 403);
+  return { id: row.id, tenantId: row.tenant_id, kind: "external", scopes: row.scopes, allowedKitIds: row.kit_ids, expiresAt: new Date(row.expires_at).toISOString() };
+}
 export async function createQuote(tenantId: string, bundle: RevisionBundle): Promise<Quote> {
   const createdAt = now(); const items = [
     { sku: "wk-routing-dossier", name: "WorldKit Studio · source-linked routing dossier", quantity: 1, unitMinor: 800, profileId: null },

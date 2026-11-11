@@ -11,6 +11,7 @@
 # Dependencies and generated artifacts
 node_modules/
 .next/
+.next-certificate-qa/
 .vercel/
 out/
 dist/

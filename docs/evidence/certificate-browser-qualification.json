@@ -1,0 +1,80 @@
+{
+  "observedAt": "2026-11-11T10:09:16.650Z",
+  "environment": "Isolated local production build on port 4508",
+  "observer": "Root native in-app browser review and exported PDF inspection",
+  "mode": "Sample",
+  "workflow": {
+    "privatePreparation": true,
+    "twoExplicitPreviewReviewConfirmations": true,
+    "separatePublicationConfirmation": true,
+    "uncheckedPublishDisabled": true,
+    "immutableEditionPublished": true,
+    "ownerWithdrawal": true,
+    "ownerHistoryRetainsWithdrawal": true
+  },
+  "responsive": {
+    "width": 390,
+    "certificateDocumentWidth": 390,
+    "guideDocumentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "keyboard": {
+    "spaceToggledEnabledReminder": true,
+    "reminderDoesNotChangeEvidence": true
+  },
+  "history": {
+    "currentEdition": 2,
+    "historicalEdition": 1,
+    "historicalSupersededLabel": true,
+    "disabledConnection": "mic2-audio",
+    "enabledPaths": 7,
+    "disabledPaths": 1,
+    "disabledGuideRemainsUnassembled": true,
+    "disabledReminderCannotBeChecked": true
+  },
+  "openPageWithdrawal": {
+    "reloadRequired": false,
+    "visibleAtObservationSeconds": 12,
+    "closedByObservationSeconds": 22,
+    "interpretation": "Observation bound only; not exact latency"
+  },
+  "print": {
+    "a4": {
+      "pages": 14,
+      "pageSize": [
+        594.96,
+        841.92
+      ],
+      "identityAndQrOnSamePage": 14,
+      "noPrintedNavigation": true,
+      "disabledPathPreserved": true,
+      "clippedTextBounds": 0,
+      "sha256": "f13fe67ade7852ea2285f3447cc1dcb998094f1d7a394132dac4c2792589e674",
+      "qrDecodesToExactEdition": true
+    },
+    "letter": {
+      "pages": 16,
+      "pageSize": [
+        612,
+        792
+      ],
+      "identityAndQrOnSamePage": 16,
+      "noPrintedNavigation": true,
+      "disabledPathPreserved": true,
+      "clippedTextBounds": 0,
+      "sha256": "16c77a0a97262d8604e228951fae2194c2532f51e6e1b13bc25066f8841fc85f",
+      "qrDecodesToExactEdition": true
+    },
+    "monochrome": {
+      "priorCorrectedLetterExportWithoutBackgrounds": true,
+      "qrDecodesToExactEdition": true,
+      "finalPrintStylesUseMonochrome": true
+    }
+  },
+  "privateArtifacts": "Root .setup-evidence/build-platform; PDFs, PNGs and browser state are not committed",
+  "providerCalls": 0,
+  "financialWrites": 0,
+  "independentHumanEngineeringReviews": 0,
+  "physicalTests": 0,
+  "hostedQualification": "pending"
+}

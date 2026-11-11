@@ -1,17 +1,22 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { McpQuoteInput, McpRepairInput, McpVerifyInput, WorldKitError, type Principal, type ToolScope } from "../../packages/contracts/index";
 import { graphHash, suggestRepairs, verifyKit } from "../../packages/compatibility/index";
 import { architectures, sources as currentSources } from "../../packages/device-library/index";
 import { editKit } from "../../packages/workbench/index";
-import { authenticateAccess, createQuote, getRevision } from "./repository";
+import { authenticateAccess, createQuote, currentAccess, getRevision } from "./repository";
 import { claimTool, releaseTool, type LimitedTool } from "./tool-limits";
 import { trustedOrigin } from "../../packages/security/origin";
+import { privateRecord } from "./public-records";
+import { initializePublicRecords } from "./public-record-db";
+import { database } from "./db";
 
 export async function authorizeKit(principal: Principal, scope: ToolScope, revisionId: string, expectedHash: string) {
   if (!principal.scopes.includes(scope) || Date.parse(principal.expiresAt) <= Date.now()) throw new WorldKitError("forbidden", "The current grant does not allow this operation.", 403);
+  const current = await currentAccess(principal, scope);
   const bundle = await getRevision(principal.tenantId, revisionId);
-  if (!principal.allowedKitIds.includes(bundle.kit.kitId)) throw new WorldKitError("forbidden", "This kit is outside the current grant.", 403);
+  if (!principal.allowedKitIds.includes(bundle.kit.kitId) || !current.allowedKitIds.includes(bundle.kit.kitId)) throw new WorldKitError("forbidden", "This kit is outside the current grant.", 403);
   if (bundle.certificate.graphHash !== expectedHash || graphHash(bundle.kit, bundle.profiles) !== expectedHash) throw new WorldKitError("stale_revision", "The expected graph hash does not match this saved revision.", 409);
   return bundle;
 }
@@ -45,7 +50,34 @@ export function createMcpServer(principal: Principal): McpServer {
     if (input.verification_id !== bundle.certificate.id) throw new WorldKitError("stale_revision", "The certificate does not belong to this revision.", 409);
     return { quote: await createQuote(principal.tenantId, bundle), hardwareFulfillment: "not_included", paymentAuthorized: false, verificationStatus: bundle.certificate.status };
   }));
+  for (const kind of ["certificate", "assembly"] as const) {
+    const template = new ResourceTemplate(`worldkit://records/{revisionId}/{graphHash}/{recordId}/${kind}`, { list: async () => {
+      const current = await currentAccess(principal, "kit:verify"); await initializePublicRecords();
+      const rows = (await database().query("SELECT id,revision_id,edition,payload->>'graphHash' AS graph_hash,payload->>'title' AS title FROM wk_record_editions WHERE tenant_id=$1 AND kit_id=ANY($2::text[]) ORDER BY created_at DESC LIMIT 100", [current.tenantId, current.allowedKitIds])).rows;
+      return { resources: rows.map(row => ({ uri: `worldkit://records/${encodeURIComponent(row.revision_id)}/${row.graph_hash}/${row.id}/${kind}`, name: `${kind}-${row.id}`, title: `${row.title} · edition ${row.edition} · ${kind}`, mimeType: "application/json", description: "Private scoped access to an immutable prepared edition. Public sharing does not grant this access." })) };
+    } });
+    server.registerResource(`saved-${kind}`, template, { title: kind === "certificate" ? "Saved certificate edition" : "Saved assembly guide", mimeType: "application/json", description: "Read the same prepared graph, scope and source-linked steps as the app. Requires a current kit:verify grant. No publication, payment, modification or source-document access." }, async (uri, variables) => {
+      let lease: string | null = null;
+      try {
+        lease = await claimTool(principal, "verify_kit");
+        if (typeof variables.revisionId !== "string" || typeof variables.graphHash !== "string" || typeof variables.recordId !== "string") throw new WorldKitError("invalid_request", "Use one exact revision, graph hash and record identity.");
+        const resource = await readScopedRecord(principal, variables.revisionId, variables.graphHash, variables.recordId, kind);
+        return { contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(resource) }] };
+      } catch (error) {
+        throw new McpError(ErrorCode.InvalidRequest, error instanceof WorldKitError ? error.message : "The scoped record could not be read.", { code: error instanceof WorldKitError ? error.code : "invalid_request" });
+      } finally { if (lease) await releaseTool(principal, lease); }
+    });
+  }
   return server;
+}
+
+export async function readScopedRecord(principal: Principal, revisionId: string, expectedHash: string, recordId: string, kind: "certificate" | "assembly") {
+  await authorizeKit(principal, "kit:verify", revisionId, expectedHash);
+  const record = await privateRecord({ id: principal.tenantId, expiresAt: principal.expiresAt, discoveryRequests: 0, liveRebuilds: 0 }, recordId);
+  if (record.payload.revisionId !== revisionId || record.payload.graphHash !== expectedHash) throw new WorldKitError("stale_revision", "This edition does not belong to the requested saved graph.", 409);
+  await currentAccess(principal, "kit:verify");
+  const identity = { recordId: record.id, edition: record.edition, contentHash: record.contentHash, revisionId, graphHash: expectedHash, certificateId: record.payload.certificateId, sourceHash: record.payload.sourceHash, ruleVersion: record.payload.ruleVersion, physicalTest: record.payload.physicalTest, access: "scoped_private", sharingState: record.state };
+  return kind === "certificate" ? { schema: "worldkit.scoped-certificate.v1", ...identity, payload: record.payload } : { schema: "worldkit.scoped-assembly.v1", ...identity, title: record.payload.title, devices: record.payload.devices, connections: record.payload.connections, assembly: record.payload.assembly, sources: record.payload.sources, limitations: record.payload.limitations };
 }
 export async function handleMcp(request: Request): Promise<Response> {
   const origin = request.headers.get("origin");

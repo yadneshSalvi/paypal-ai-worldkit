@@ -228,7 +228,7 @@ export async function deleteSourceJob(job: ClaimedJob): Promise<JobResult> {
   if (row.status !== "deleted") await del(row.blob_path, { abortSignal: AbortSignal.timeout(25000) });
   return { output: { documentId: row.id, removed: true }, persist: async db => {
     await db.query("UPDATE wk_source_documents SET status='deleted',payload=NULL,write_until=NULL,deleted_at=now(),updated_at=now() WHERE id=$1 AND tenant_id=$2", [row.id, job.tenantId]);
-    await appendEvent(db, job.tenantId, "source.private_copy_deleted", "Private source copy removed", "The manufacturer's link, document fingerprint, proposal history and saved candidate versions remain. New extraction needs a fresh private copy.", null, "live");
+    await appendEvent(db, job.tenantId, "source.private_copy_deleted", "Private source copy removed", "The manufacturer's link, document fingerprint, proposal history and saved candidate versions remain private. Public certificate editions that depend on this copy are withheld. New extraction needs a fresh private copy.", null, "live");
   } };
 }
 export async function recoverSourceIntents(tenantId?: string): Promise<number> {

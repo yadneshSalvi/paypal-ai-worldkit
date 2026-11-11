@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-11-11T10:09:16.651Z",
+  "unit": "Immutable public certificate, QR, assembly and scoped MCP resources",
+  "payloadSchema": "worldkit.public-record.v1",
+  "environment": "Isolated worldkit_certificate_qa database, wk_certificate_qa cookie, port 4508, blank external-provider credentials",
+  "tests": {
+    "unit": {
+      "total": 121,
+      "passed": 121,
+      "failed": 0
+    },
+    "postgres": {
+      "total": 120,
+      "passed": 120,
+      "failed": 0
+    },
+    "focusedNewCases": {
+      "projection": 7,
+      "publicationDatabase": 9,
+      "mcpDatabase": 3
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "actualHttpGroups": 10,
+    "portableDeploymentScriptLocalRehearsalGroups": 10,
+    "nativeReview": "passed; see certificate-browser-qualification.json"
+  },
+  "buildTrace": {
+    "manifests": 29,
+    "tracedFiles": 1815,
+    "prohibitedPaths": 0,
+    "missingFiles": 0,
+    "observedAt": "2026-11-11T10:03:55.834Z",
+    "build": ".next-certificate-qa",
+    "filesScanned": 2329,
+    "privateVariablesCompared": 17,
+    "privateValueFindings": []
+  },
+  "providerCalls": 0,
+  "financialWrites": 0,
+  "physicalTests": 0,
+  "independentHumanEngineeringReviews": 0,
+  "originalDatabaseChanged": false,
+  "protectedRepairQa4506Changed": false,
+  "hostedQualification": "pending",
+  "remainingGates": [
+    "Root-owned additive production migration and protected-deployment/stable-host qualification",
+    "Full 60-device/source/relationship engineering review and independent held-out adjudication",
+    "Source collaboration, upgrades and reviewed domain packs",
+    "Scoped PayPal Agent Toolkit reads",
+    "Authentic delivery/ownership and remaining provider event qualification",
+    "Physical rig and expert tests, consenting novice study, original media and release"
+  ],
+  "sourcePrivacyScan": {
+    "checkedFiles": 295,
+    "privateVariablesCompared": 16,
+    "privateValueFindings": 0,
+    "prohibitedFiles": 0
+  }
+}

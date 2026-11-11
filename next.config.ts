@@ -8,6 +8,7 @@ const sourceRuntimeFiles = [
   "./node_modules/@napi-rs/canvas-*/**/*",
 ];
 const nextConfig: NextConfig = {
+  distDir: process.env.WORLDKIT_QA_MODE === "certificate" ? ".next-certificate-qa" : ".next",
   poweredByHeader: false,
   serverExternalPackages: ["pg", "@fracture/paypal-core", "paypal", "better-sqlite3", "pdf-parse", "pdfjs-dist", "@napi-rs/canvas"],
   outputFileTracingIncludes: Object.fromEntries(["/api/evidence", "/api/jobs", "/api/jobs/recover", "/api/planner", "/api/inventory"].map(route => [route, sourceRuntimeFiles])),
@@ -17,7 +18,13 @@ const nextConfig: NextConfig = {
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
       { key: "X-Frame-Options", value: "DENY" }
-    ] }];
+    ] }, ...["/record/:path*", "/api/public-records/:path*", "/api/records"].map(source => ({ source, headers: [
+      { key: "Cache-Control", value: "private, no-store, max-age=0, must-revalidate" },
+      { key: "CDN-Cache-Control", value: "no-store" },
+      { key: "Vercel-CDN-Cache-Control", value: "no-store" },
+      { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+      { key: "Referrer-Policy", value: "no-referrer" }
+    ] }))];
   }
 };
 export default nextConfig;

@@ -1,0 +1,25 @@
+{
+  "observedAt": "2026-11-11T09:49:32.893Z",
+  "environment": "isolated local certificate QA",
+  "origin": "http://127.0.0.1:4508",
+  "transport": "Actual HTTP against the production Next.js build; MCP SDK Streamable HTTP client",
+  "checks": {
+    "separateQaCookie": true,
+    "privateAuthAndForeignOriginDenied": true,
+    "unreviewedAndUncheckedPublicationDenied": true,
+    "actualHttpIdempotentPublication": true,
+    "serverRenderedCurrentHistoricalGuidePrintNoStore": true,
+    "actualHttpQrDecodesToImmutableEdition": true,
+    "unknownLinksReturn404": true,
+    "externalMcpHttpIdentityAndRevocation": true,
+    "withdrawalClosesAllCurrentHistoricalQrGuidePrintRoutes": true,
+    "expiredSessionDeniedOverHttp": true
+  },
+  "checkCount": 10,
+  "providerCalls": 0,
+  "physicalTests": 0,
+  "independentHumanReviews": 0,
+  "fixtures": "Fictional Sample workspaces; separate database and cookie",
+  "nativeBrowserReview": "pending",
+  "hostedQualification": "pending"
+}
