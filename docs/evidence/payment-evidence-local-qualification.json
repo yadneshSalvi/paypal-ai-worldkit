@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "55ae95af3a4a2803e778dadeb620c35777017a08",
+  "observedAt": "2026-11-11T14:21:01.603Z",
+  "passed": true,
+  "provider": "PayPal sandbox",
+  "toolkit": "@paypal/agent-toolkit@1.11.0",
+  "reads": [
+    {
+      "id": "593f961d-9197-4bea-b70d-ff78834ba6bf",
+      "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+      "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+      "operation": "get_order",
+      "state": "succeeded",
+      "createdAt": "2026-11-11T14:20:23.373Z",
+      "finishedAt": "2026-11-11T14:20:44.151Z",
+      "observation": {
+        "source": "sandbox",
+        "transport": "Toolkit",
+        "package": "@paypal/agent-toolkit@1.11.0",
+        "operation": "get_order",
+        "observedAt": "2026-11-11T14:20:40.058Z",
+        "bodyHash": "8480edf821abdc98f56f4a2e6da725afb5073a358ab54a2c6ec5c79a68d7e688",
+        "httpStatus": 200,
+        "binding": {
+          "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+          "kitId": "sample:568d3519-ecd8-4a49-8c98-0858e672522e",
+          "revisionId": "repair-revision:de241493d729e9b707f19ca0fecf7854",
+          "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+          "providerOrderId": "5JF478860A251353B",
+          "captureId": "5P179814174867548",
+          "customId": "38546715-fad5-4e84-866d-7255b4885235",
+          "amountMinor": 800
+        },
+        "order": {
+          "status": "COMPLETED",
+          "captureStatus": "REFUNDED",
+          "amountMinor": 800,
+          "currency": "USD",
+          "occurredAt": "2026-11-11T08:00:59.000Z"
+        },
+        "reporting": null,
+        "disclosure": "A current read of this exact sandbox order and owned capture. It does not change the original receipt or reconcile payment state."
+      },
+      "message": "Saved a separate PayPal observation. The original receipt and payment state are unchanged."
+    },
+    {
+      "id": "29391e9a-8b8f-42cf-a683-a16b91b2fb05",
+      "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+      "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+      "operation": "list_transactions",
+      "state": "succeeded",
+      "createdAt": "2026-11-11T14:20:44.177Z",
+      "finishedAt": "2026-11-11T14:20:58.029Z",
+      "observation": {
+        "source": "sandbox",
+        "transport": "Toolkit",
+        "package": "@paypal/agent-toolkit@1.11.0",
+        "operation": "list_transactions",
+        "observedAt": "2026-11-11T14:20:53.943Z",
+        "bodyHash": "9e248f51eb5d5758edacf91c7941ca438acaa43625c2d4e5c77b859893f73d32",
+        "httpStatus": 200,
+        "binding": {
+          "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+          "kitId": "sample:568d3519-ecd8-4a49-8c98-0858e672522e",
+          "revisionId": "repair-revision:de241493d729e9b707f19ca0fecf7854",
+          "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+          "providerOrderId": "5JF478860A251353B",
+          "captureId": "5P179814174867548",
+          "customId": "38546715-fad5-4e84-866d-7255b4885235",
+          "amountMinor": 800
+        },
+        "order": null,
+        "reporting": {
+          "observed": true,
+          "status": "S",
+          "amountMinor": 800,
+          "occurredAt": "2026-11-11T08:00:59.000Z",
+          "start": "2026-10-11T14:20:48.794Z",
+          "end": "2026-11-11T14:20:48.794Z",
+          "page": 1,
+          "pageSize": 100,
+          "totalItems": 1,
+          "totalPages": 1,
+          "refreshedAt": "2026-11-11T12:29:59.000Z",
+          "complete": false
+        },
+        "disclosure": "One bounded reporting page for this exact capture. Reporting can lag; absence does not prove that a capture or refund is missing. This does not reconcile payment state."
+      },
+      "message": "Saved a separate PayPal observation. The original receipt and payment state are unchanged."
+    }
+  ],
+  "transport": {
+    "oauthRequests": 2,
+    "resourceGets": 2,
+    "statuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "financialWrites": 0
+  },
+  "originalData": {
+    "unchanged": true,
+    "protectedTables": 12,
+    "protectedRows": 57
+  },
+  "retainedEarlierAttempts": [
+    "v1 cohort-count preflight held before dispatch",
+    "v2 historical amendment binding preflight held before dispatch",
+    "v3 capture custom-ID projection preflight held before dispatch",
+    "v4 two original authentication failures retained",
+    "v5 private helper JSON key-order comparison preflight held before dispatch",
+    "v6 two instrumented OAuth invalid_client failures, no resource GET; exported sensitive credential was redacted",
+    "v7 uses matching privately retained isolated project credential; both exact resource reads passed"
+  ],
+  "native": {
+    "origin": "http://127.0.0.1:4523",
+    "savedObservationsReopenAfterReload": true,
+    "earlierFailuresPreserved": 4,
+    "modalEscapeCloses": true,
+    "mobileViewport": 390,
+    "pageWidth": 390,
+    "dialogLeft": 16,
+    "dialogRight": 374,
+    "optionalPaymentScopeDefault": false,
+    "financialProviderButtonsDisabledInLocalQa": true,
+    "session": "Existing owned records copied to an independent local database with a new local-only cookie; source database unchanged."
+  },
+  "limitations": [
+    "Reporting covers one bounded page and does not assert completeness or reconcile original financial state.",
+    "Native QA has no provider credentials; actual reads were qualified separately using the same source against the original owned sandbox resource.",
+    "Hosted migration and native provider dispatch remain pending.",
+    "This unit does not establish retailer fulfillment, engineering review or physical compatibility."
+  ]
+}
