@@ -89,10 +89,10 @@ export async function setStep(session: Session, revisionId: string, stepId: stri
   if (!generateAssembly(bundle.kit, bundle.profiles).some(s => s.id === stepId)) throw new WorldKitError("not_found", "Unknown assembly step.", 404);
   await database().query("INSERT INTO wk_step_checks(tenant_id,revision_id,step_id,completed) VALUES($1,$2,$3,$4) ON CONFLICT(tenant_id,revision_id,step_id) DO UPDATE SET completed=EXCLUDED.completed,updated_at=now()", [session.id, revisionId, stepId, completed]);
 }
-export async function reserveUsage(tenantId: string, kind: "discovery" | "model") {
+export async function reserveUsage(tenantId: string, kind: "discovery" | "model", db?: PoolClient) {
   await initialize();
   const column = kind === "discovery" ? "discovery_requests" : "live_rebuilds"; const limit = kind === "discovery" ? limits.discoveryRequests : limits.liveRebuilds;
-  const result = await database().query(`UPDATE wk_sessions SET ${column}=${column}+1 WHERE id=$1 AND expires_at>now() AND ${column}<$2 RETURNING id`, [tenantId, limit]);
+  const result = await (db ?? database()).query(`UPDATE wk_sessions SET ${column}=${column}+1 WHERE id=$1 AND expires_at>now() AND ${column}<$2 RETURNING id`, [tenantId, limit]);
   if (!result.rowCount) throw new WorldKitError("rate_limited", `This workspace has used its ${kind === "discovery" ? "catalog request" : "model request"} allowance. Your saved work is still available.`, 429);
 }
 export async function saveCatalogResult(tenantId: string, snapshots: CatalogSnapshot[], receipt: CatalogReceipt) {

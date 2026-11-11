@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-11-11T03:24:07.066281+00:00",
+  "scope": "Manufacturer source reading workflow and 60 exact candidate identities",
+  "checks": {
+    "unit": {
+      "tests": 85,
+      "pass": 85,
+      "fail": 0
+    },
+    "postgres": {
+      "tests": 52,
+      "pass": 52,
+      "fail": 0
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "productionRoutes": 18,
+    "httpChecks": 8,
+    "runtimePackaging": "passed; hosted Linux check pending",
+    "productionDependencyAudit": {
+      "vulnerabilities": 0
+    }
+  },
+  "browserEvidence": "source-browser-qualification.json",
+  "providerEvidence": "source-workflow-qualification.json",
+  "frozenReference": {
+    "assertions": 323,
+    "devices": 30,
+    "sha256": "d623c38ff6ff360c318d2e8ceff39d692170b7013e0dfeba312d913ed8259a65",
+    "humanReviewed": false
+  },
+  "corpusEvaluationAtCheck": {
+    "completion": "in_progress",
+    "providers": [
+      {
+        "provider": "openai",
+        "jobs": {
+          "attempted": 29,
+          "running": 2,
+          "succeeded": 27,
+          "failed": 0
+        }
+      },
+      {
+        "provider": "gemini",
+        "jobs": {
+          "attempted": 28,
+          "running": 0,
+          "succeeded": 28,
+          "failed": 0
+        }
+      }
+    ]
+  },
+  "unchangedAuthority": {
+    "paypalCore": "0.2.4",
+    "hostingCron": "Existing one-minute recovery configuration",
+    "financialWrites": 0,
+    "independentHumanReviews": 0,
+    "physicalTests": 0
+  },
+  "remainingGates": [
+    "Hosted Linux manufacturer PDF parsing and source-job recovery",
+    "Finish retained corpus operations and export their declared primary proposals",
+    "Complete source-backed engineering port maps and independent human review",
+    "Full remaining product plan, including authentic webhooks, living-kit saga, Toolkit reads, public certificates, collaboration and broader domain packs"
+  ]
+}

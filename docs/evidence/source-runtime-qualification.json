@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-11T03:22:50.800Z",
+  "sourceMode": "recorded_manufacturer_document",
+  "sourceHash": "527f0454027f1ba141c2a89cabb3c2c365465387bf09c45a96dc178195842e28",
+  "node": "v22.22.3",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "tracedRoutes": [
+    {
+      "route": "/api/evidence",
+      "files": 328,
+      "workerIncluded": true,
+      "nativeCanvasIncluded": true
+    },
+    {
+      "route": "/api/jobs",
+      "files": 338,
+      "workerIncluded": true,
+      "nativeCanvasIncluded": true
+    },
+    {
+      "route": "/api/jobs/recover",
+      "files": 335,
+      "workerIncluded": true,
+      "nativeCanvasIncluded": true
+    },
+    {
+      "route": "/api/planner",
+      "files": 338,
+      "workerIncluded": true,
+      "nativeCanvasIncluded": true
+    },
+    {
+      "route": "/api/inventory",
+      "files": 328,
+      "workerIncluded": true,
+      "nativeCanvasIncluded": true
+    }
+  ],
+  "developmentDependenciesOutsideBundleDenied": true,
+  "result": {
+    "pages": 1,
+    "characters": 2890,
+    "identityLocated": true,
+    "powerTextLocated": true
+  },
+  "newProviderCalls": 0,
+  "limitation": "This local operating-system package proof does not replace the hosted Linux parser check."
+}

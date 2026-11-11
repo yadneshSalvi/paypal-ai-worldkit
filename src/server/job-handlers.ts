@@ -10,6 +10,10 @@ import { cropPhoto, deletePhotoBlob, readPhoto } from "./inventory-photos";
 import type { ClaimedJob, JobResult } from "./jobs";
 
 export async function executeWorldKitJob(job: ClaimedJob): Promise<JobResult> {
+  if (["source_retrieve", "source_extract", "source_document_delete"].includes(job.kind)) {
+    const evidence = await import("./source-evidence");
+    return job.kind === "source_retrieve" ? evidence.retrieveSourceJob(job) : job.kind === "source_extract" ? evidence.extractSourceJob(job) : evidence.deleteSourceJob(job);
+  }
   if (job.kind === "goal_proposal") {
     const input = z.object({ brief: z.string(), provider: z.enum(["openai", "gemini"]), revisionId: z.string() }).parse(job.input);
     const previous = await getRevision(job.tenantId, input.revisionId);

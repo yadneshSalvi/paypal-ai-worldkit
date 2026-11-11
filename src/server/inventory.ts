@@ -4,22 +4,25 @@ import { CatalogSnapshotSchema, WorldKitError, type CatalogSnapshot, type Device
 import { architectures, profiles as library, sources as librarySources } from "../../packages/device-library/index";
 import { hash, verifyKit } from "../../packages/compatibility/index";
 import { InventoryItemSchema, type InventoryConfirmation, type InventoryHistory, type InventoryItem, type InventoryPreview, type InventoryRegion, type InventoryWorkspace } from "../../packages/inventory/contracts";
-import { assertExactSelection, confirmedProfile, engineeringId } from "../../packages/inventory/identity";
+import { assertExactSelection, confirmedProfile, engineeringId, profileChoice } from "../../packages/inventory/identity";
 import { database, initialize, transaction } from "./db";
 import { appendEvent, getRevision, getSnapshots, saveRevision, type RevisionBundle, type Session } from "./repository";
 import { photoRecord, publicPhoto, storageReady } from "./inventory-photos";
+import { evidenceLibrary } from "./source-evidence";
 
 type Prepared = { item: InventoryItem; input: InventoryConfirmation; bundle: RevisionBundle | null; preview: InventoryPreview; previewHash: string };
 export async function getInventory(session: Session): Promise<InventoryWorkspace> {
   await initialize();
-  const [items, photos, regions, history] = await Promise.all([
+  const [items, photos, regions, history, candidates] = await Promise.all([
     database().query("SELECT payload FROM wk_inventory_items WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 100", [session.id]),
     database().query("SELECT * FROM wk_inventory_photos WHERE tenant_id=$1 AND status IN ('active','deleting') ORDER BY created_at DESC LIMIT 12", [session.id]),
     database().query("SELECT r.payload FROM wk_inventory_regions r JOIN wk_inventory_photos p ON p.id=r.photo_id WHERE r.tenant_id=$1 AND p.status='active' ORDER BY r.created_at DESC LIMIT 100", [session.id]),
     database().query("SELECT payload FROM wk_inventory_history WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 100", [session.id]),
+    evidenceLibrary(session.id),
   ]);
-  return { items: items.rows.map(row => InventoryItemSchema.parse(row.payload)), photos: photos.rows.map(publicPhoto), regions: regions.rows.map(row => row.payload as InventoryRegion), history: history.rows.map(row => row.payload as InventoryHistory), library, storageReady: storageReady() };
+  return { items: items.rows.map(row => InventoryItemSchema.parse(row.payload)), photos: photos.rows.map(publicPhoto), regions: regions.rows.map(row => row.payload as InventoryRegion), history: history.rows.map(row => row.payload as InventoryHistory), library: [...library, ...candidates.profiles].map(profileChoice), storageReady: storageReady() };
 }
+export async function getInventoryProfileChoices(session: Session) { return [...library, ...(await evidenceLibrary(session.id)).profiles].map(profileChoice); }
 export async function getInventoryItem(tenantId: string, id: string): Promise<InventoryItem> {
   await initialize(); const result = await database().query("SELECT payload FROM wk_inventory_items WHERE tenant_id=$1 AND id=$2", [tenantId, id]);
   if (!result.rows[0]) throw new WorldKitError("not_found", "That item is not in this equipment passport.", 404);
@@ -48,7 +51,7 @@ async function confirmedSnapshot(tenantId: string, input: InventoryConfirmation,
   }
   return snapshot;
 }
-function placeProfile(previous: RevisionBundle, item: InventoryItem, targets: string[], confirmOwnedReplacement: boolean, snapshots: CatalogSnapshot[], at: string): { bundle: RevisionBundle; changesOwnedConstraint: boolean } {
+function placeProfile(previous: RevisionBundle, item: InventoryItem, targets: string[], confirmOwnedReplacement: boolean, snapshots: CatalogSnapshot[], at: string, candidateSources: Source[] = []): { bundle: RevisionBundle; changesOwnedConstraint: boolean } {
   const kit = structuredClone(previous.kit); let changesOwnedConstraint = false;
   for (const target of targets) {
     const component = kit.components.find(c => c.id === target); const old = previous.profiles.find(p => p.id === component?.profileId);
@@ -69,21 +72,22 @@ function placeProfile(previous: RevisionBundle, item: InventoryItem, targets: st
   if (allocated > item.quantity) throw new WorldKitError("needs_evidence", `This plan uses ${allocated} pieces of this equipment, but its passport quantity is ${item.quantity}. Confirm the correct quantity before using it in another position.`, 409);
   const profiles = [...previous.profiles.filter(p => p.id !== item.profile.id), item.profile];
   const neededSources = new Set(Object.values(item.profile.facts).flatMap(fact => fact.sourceIds));
-  const sources: Source[] = [...previous.sources, ...librarySources.filter(source => neededSources.has(source.id) && !previous.sources.some(old => old.id === source.id))];
+  const additions = [...librarySources, ...candidateSources].filter(source => neededSources.has(source.id) && !previous.sources.some(old => old.id === source.id));
+  const sources: Source[] = [...previous.sources, ...new Map(additions.map(source => [source.id, source])).values()];
   const revision: KitRevision = { ...kit, id: randomUUID(), parentRevisionId: previous.kit.id, revision: previous.kit.revision + 1, createdAt: at, sourceMode: "modelled" };
   return { bundle: { kit: revision, profiles, sources, certificate: verifyKit(revision, profiles, sources, architectures, snapshots, at) }, changesOwnedConstraint };
 }
 export async function previewInventory(session: Session, input: InventoryConfirmation): Promise<InventoryPreview & { previewHash: string }> {
-  const [snapshot, previous, snapshots] = await Promise.all([confirmedSnapshot(session.id, input), getRevision(session.id), getSnapshots(session.id)]);
+  const [snapshot, previous, snapshots, candidates] = await Promise.all([confirmedSnapshot(session.id, input), getRevision(session.id), getSnapshots(session.id), evidenceLibrary(session.id)]);
   if (previous.kit.id !== input.expectedRevisionId || previous.certificate.graphHash !== input.expectedGraphHash) throw new WorldKitError("stale_revision", "Refresh the saved plan before checking this equipment.", 409);
   const oldItem = input.correctItemId ? await getInventoryItem(session.id, input.correctItemId) : null;
   if (oldItem && (oldItem.version !== input.expectedItemVersion || oldItem.status !== "active")) throw new WorldKitError("stale_revision", "This equipment entry changed. Reopen it before correcting the model.", 409);
   const at = new Date().toISOString(); const id = oldItem?.id ?? randomUUID(); const version = (oldItem?.version ?? 0) + 1;
-  const profile = confirmedProfile(`inventory:${id}:v${version}`, input.identity, snapshot, [...previous.profiles, ...library.filter(p => !previous.profiles.some(old => old.id === p.id))], at); profile.version = version;
+  const profile = confirmedProfile(`inventory:${id}:v${version}`, input.identity, snapshot, [...previous.profiles, ...library.filter(p => !previous.profiles.some(old => old.id === p.id)), ...candidates.profiles], at); profile.version = version;
   const item = InventoryItemSchema.parse({ id, version, profile, ownership: input.identity.ownership, quantity: input.identity.quantity, condition: input.identity.condition, accessories: input.identity.accessories, notes: input.identity.notes,
     status: "active", origin: snapshot ? input.photoId ? "photo_crop" : "catalog" : "manual", snapshotId: snapshot?.id ?? null, photoId: input.photoId, regionId: input.regionId, confirmedAt: at, createdAt: oldItem?.createdAt ?? at, updatedAt: at });
   const targets = [...new Set([...(input.targetComponentId ? [input.targetComponentId] : []), ...previous.kit.components.filter(c => oldItem && c.inventoryItemId === oldItem.id).map(c => c.id)])];
-  const placed = targets.length ? placeProfile(previous, item, targets, input.confirmOwnedReplacement, snapshots, at) : null;
+  const placed = targets.length ? placeProfile(previous, item, targets, input.confirmOwnedReplacement, snapshots, at, candidates.sources) : null;
   const preview: InventoryPreview = { profile, certificate: placed?.bundle.certificate ?? null, previousProfile: previous.profiles.find(p => p.id === previous.kit.components.find(c => c.id === input.targetComponentId)?.profileId)?.model ?? null, targetComponentId: input.targetComponentId,
     changesOwnedConstraint: placed?.changesOwnedConstraint ?? false, warnings: ["Your identity confirmation does not approve engineering facts or prove physical performance.", ...(!profile.ports.length ? ["This candidate has no source-backed port map yet. Any affected connections will need evidence."] : []), ...(oldItem && targets.length ? [`Correcting this item rechecks ${targets.length} position${targets.length === 1 ? "" : "s"} in the current plan. Historical revisions stay intact.`] : [])] };
   const previewHash = hash({ input, profile, graph: placed?.bundle.certificate.graphHash ?? null });
@@ -138,10 +142,10 @@ export async function updateInventoryNotes(session: Session, id: string, expecte
   });
 }
 export async function previewPlacement(session: Session, itemId: string, target: string, expectedRevisionId: string, expectedGraphHash: string, confirmOwnedReplacement = false) {
-  const [item, previous, snapshots] = await Promise.all([getInventoryItem(session.id, itemId), getRevision(session.id), getSnapshots(session.id)]);
+  const [item, previous, snapshots, candidates] = await Promise.all([getInventoryItem(session.id, itemId), getRevision(session.id), getSnapshots(session.id), evidenceLibrary(session.id)]);
   if (item.status !== "active") throw new WorldKitError("invalid_request", "Restore this archived item before using it in the plan.", 409);
   if (previous.kit.id !== expectedRevisionId || previous.certificate.graphHash !== expectedGraphHash) throw new WorldKitError("stale_revision", "Refresh the plan before placing this equipment.", 409);
-  return { item, ...placeProfile(previous, item, [target], confirmOwnedReplacement, snapshots, new Date().toISOString()) };
+  return { item, ...placeProfile(previous, item, [target], confirmOwnedReplacement, snapshots, new Date().toISOString(), candidates.sources) };
 }
 export async function applyPlacement(session: Session, input: { itemId: string; target: string; expectedRevisionId: string; expectedGraphHash: string; previewGraphHash: string; confirmOwnedReplacement: boolean }) {
   const prepared = await previewPlacement(session, input.itemId, input.target, input.expectedRevisionId, input.expectedGraphHash, input.confirmOwnedReplacement);

@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   try {
     sameOrigin(request); const session = await requireSession(); const input = Input.parse(await readJson(request));
     const job = input.action === "cancel" ? await cancelJob(session.id, input.id) : await retryJob(session, input.id);
-    if (input.action === "retry") after(async () => { await runQueuedJobs(session.id); });
+    after(async () => { await runQueuedJobs(session.id); });
     return Response.json({ job }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) { return errorResponse(error); }
 }

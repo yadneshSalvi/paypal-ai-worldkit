@@ -1,0 +1,283 @@
+{
+  "sourceMode": "live_provider_calls",
+  "fixtureMode": "synthetic",
+  "transportVersion": "source-transport.2",
+  "completedAt": "2026-11-11T02:21:02.701Z",
+  "purpose": "Transport and schema qualification only; no hardware correctness or recognition accuracy measured.",
+  "observedEarlierFailures": {
+    "sourceBatchGeminiHttp400": 3,
+    "sourceBatchAstraForegroundTimeouts": 2,
+    "schemaOnlyJsonSchemaHttp400": 1,
+    "schemaOnlyResponseSchemaExclusiveMinimumHttp400": 1,
+    "schemaOnlyResponseSchemaPassed": 1
+  },
+  "changes": [
+    "Google Schema removes unsupported exclusiveMinimum and grammar-expanding bounds; Zod still validates every returned value.",
+    "Astra background creation stores its response identity before yielding. Recovery polls that identity with store=false.",
+    "Frozen reference, source bytes and extraction instructions are unchanged."
+  ],
+  "references": [
+    "https://developers.openai.com/api/docs/guides/background",
+    "https://aistudio.google.com/docs/structured-output"
+  ],
+  "observations": [
+    {
+      "provider": "gemini",
+      "case": 1,
+      "status": "succeeded",
+      "fixtureAssertionsCorrect": true,
+      "durationMs": 11182,
+      "values": [
+        {
+          "id": "fixture:channels",
+          "state": "supported",
+          "value": 2,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:simultaneous",
+          "state": "supported",
+          "value": false,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:camera",
+          "state": "unknown",
+          "value": null,
+          "validation": "abstained"
+        }
+      ],
+      "receipt": {
+        "id": "3d169169-9344-430d-86f1-55e665469d52",
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "inputHash": "3f8ed0716ae6d557ce392e0abab1c78a693d80bc962e9aad742e3327db93cac5",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "ede75bbcc2fedd85c46c540d469d394d2c6b34cd683234fbbcd2b9024f8bd84a",
+        "requestedAt": "2026-11-11T02:19:51.479Z",
+        "completedAt": "2026-11-11T02:20:02.661Z",
+        "durationMs": 11182,
+        "requestId": "x9Dzap2tN6rK1_oP6-_X2Ag",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 632,
+        "outputTokens": 215
+      }
+    },
+    {
+      "provider": "openai",
+      "case": 1,
+      "status": "succeeded",
+      "fixtureAssertionsCorrect": true,
+      "durationMs": 22424,
+      "values": [
+        {
+          "id": "fixture:channels",
+          "state": "supported",
+          "value": 2,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:simultaneous",
+          "state": "supported",
+          "value": false,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:camera",
+          "state": "unknown",
+          "value": null,
+          "validation": "abstained"
+        }
+      ],
+      "receipt": {
+        "id": "7e934090-3e38-4049-a9f3-9fa639334c7f",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "3f8ed0716ae6d557ce392e0abab1c78a693d80bc962e9aad742e3327db93cac5",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "2fc79482a10521c604ba4750a4efd164fa7753133c8b52a6f5672d235e34aae6",
+        "requestedAt": "2026-11-11T02:19:51.474Z",
+        "completedAt": "2026-11-11T02:20:13.894Z",
+        "durationMs": 22420,
+        "requestId": "resp_0dcf4c9faa1740d8006af3d0c7a5d487d2babb384c6a9b22b6",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 927,
+        "outputTokens": 882
+      }
+    },
+    {
+      "provider": "gemini",
+      "case": 3,
+      "status": "succeeded",
+      "fixtureAssertionsCorrect": true,
+      "durationMs": 18112,
+      "values": [
+        {
+          "id": "fixture:channels",
+          "state": "supported",
+          "value": 2,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:simultaneous",
+          "state": "supported",
+          "value": false,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:camera",
+          "state": "unknown",
+          "value": null,
+          "validation": "abstained"
+        }
+      ],
+      "receipt": {
+        "id": "66958929-f802-4b4d-a342-73443ec44538",
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "inputHash": "3f8ed0716ae6d557ce392e0abab1c78a693d80bc962e9aad742e3327db93cac5",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "d7863517cd15eb280875a2106da08d5865a3f4d163d91b7d6c405b71a78b8e42",
+        "requestedAt": "2026-11-11T02:20:13.894Z",
+        "completedAt": "2026-11-11T02:20:32.006Z",
+        "durationMs": 18112,
+        "requestId": "3tDzatWmH8aC694PjrqwqAE",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 632,
+        "outputTokens": 221
+      }
+    },
+    {
+      "provider": "gemini",
+      "case": 4,
+      "status": "succeeded",
+      "fixtureAssertionsCorrect": true,
+      "durationMs": 6920,
+      "values": [
+        {
+          "id": "fixture:channels",
+          "state": "supported",
+          "value": 2,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:simultaneous",
+          "state": "supported",
+          "value": false,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:camera",
+          "state": "unknown",
+          "value": null,
+          "validation": "abstained"
+        }
+      ],
+      "receipt": {
+        "id": "36340776-d254-4d15-90fe-a2bff76df505",
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "inputHash": "3f8ed0716ae6d557ce392e0abab1c78a693d80bc962e9aad742e3327db93cac5",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "78c5f6878369e81debbe5f268dc7e897be6bb3ca85cc1350fb5c1fd16dd3c3fb",
+        "requestedAt": "2026-11-11T02:20:32.007Z",
+        "completedAt": "2026-11-11T02:20:38.926Z",
+        "durationMs": 6919,
+        "requestId": "8NDzapfZFqai694Pspbl4QY",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 632,
+        "outputTokens": 198
+      }
+    },
+    {
+      "provider": "gemini",
+      "case": 5,
+      "status": "succeeded",
+      "fixtureAssertionsCorrect": true,
+      "durationMs": 9103,
+      "values": [
+        {
+          "id": "fixture:channels",
+          "state": "supported",
+          "value": 2,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:simultaneous",
+          "state": "supported",
+          "value": false,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:camera",
+          "state": "unknown",
+          "value": null,
+          "validation": "abstained"
+        }
+      ],
+      "receipt": {
+        "id": "10f4daa8-b3b3-4f50-85bb-94ad0697ab4d",
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "inputHash": "3f8ed0716ae6d557ce392e0abab1c78a693d80bc962e9aad742e3327db93cac5",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "c3ec114121fcbe61aa8b16f250fd2ef7a552cfa0d1c3b7e3d354ab25c08ce25e",
+        "requestedAt": "2026-11-11T02:20:38.927Z",
+        "completedAt": "2026-11-11T02:20:48.030Z",
+        "durationMs": 9103,
+        "requestId": "99DzavWVDZDv694Pt4PEoAg",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 632,
+        "outputTokens": 198
+      }
+    },
+    {
+      "provider": "gemini",
+      "case": 2,
+      "status": "succeeded",
+      "fixtureAssertionsCorrect": true,
+      "durationMs": 60039,
+      "values": [
+        {
+          "id": "fixture:channels",
+          "state": "supported",
+          "value": 2,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:simultaneous",
+          "state": "supported",
+          "value": false,
+          "validation": "located_pending_review"
+        },
+        {
+          "id": "fixture:camera",
+          "state": "unknown",
+          "value": null,
+          "validation": "abstained"
+        }
+      ],
+      "receipt": {
+        "id": "9cc8f2b5-df75-46e1-ac4b-59492b9c0aec",
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "inputHash": "3f8ed0716ae6d557ce392e0abab1c78a693d80bc962e9aad742e3327db93cac5",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "7d04e339f75d7f5c7482b97a58d57477929735395c3916b7156c473ee5c75fb5",
+        "requestedAt": "2026-11-11T02:20:02.662Z",
+        "completedAt": "2026-11-11T02:21:02.701Z",
+        "durationMs": 60039,
+        "requestId": "09Dzao3GAZCL694P257UsQs",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 632,
+        "outputTokens": 223
+      }
+    }
+  ]
+}

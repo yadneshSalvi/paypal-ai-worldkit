@@ -62,6 +62,7 @@ export function initialize(): Promise<void> {
     ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS idempotency_key text;
     ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS input_hash text;
     ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS attempts integer NOT NULL DEFAULT 0;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS continuations integer NOT NULL DEFAULT 0;
     ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS max_attempts integer NOT NULL DEFAULT 3;
     ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS lease_token text;
     ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS lease_expires_at timestamptz;
@@ -73,6 +74,45 @@ export function initialize(): Promise<void> {
       job_id text NOT NULL REFERENCES wk_jobs(id), attempt integer NOT NULL, lease_token text NOT NULL,
       status text NOT NULL, receipt jsonb, error text, started_at timestamptz NOT NULL DEFAULT now(), finished_at timestamptz,
       PRIMARY KEY(job_id,attempt)
+    );
+    CREATE TABLE IF NOT EXISTS wk_source_model_requests (
+      operation_id text PRIMARY KEY, job_id text NOT NULL REFERENCES wk_jobs(id), tenant_id text NOT NULL REFERENCES wk_sessions(id),
+      provider text NOT NULL, model text NOT NULL, request_hash text NOT NULL, phase text NOT NULL,
+      response_id text, payload jsonb NOT NULL, cleanup_token text, cleanup_expires_at timestamptz,
+      created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now(), UNIQUE(job_id)
+    );
+    CREATE INDEX IF NOT EXISTS wk_source_model_active ON wk_source_model_requests(tenant_id,phase);
+    CREATE TABLE IF NOT EXISTS wk_source_model_observations (
+      sequence bigserial PRIMARY KEY, operation_id text NOT NULL REFERENCES wk_source_model_requests(operation_id),
+      payload_hash text NOT NULL, payload jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(operation_id,payload_hash)
+    );
+    CREATE TABLE IF NOT EXISTS wk_source_documents (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), profile_id text NOT NULL,
+      job_id text NOT NULL REFERENCES wk_jobs(id), source_url text NOT NULL, blob_path text NOT NULL,
+      content_hash text, text_hash text, media_type text, bytes integer, payload jsonb,
+      status text NOT NULL DEFAULT 'retrieving', created_at timestamptz NOT NULL DEFAULT now(),
+      updated_at timestamptz NOT NULL DEFAULT now(), deleted_at timestamptz, UNIQUE(job_id)
+    );
+    CREATE INDEX IF NOT EXISTS wk_source_documents_tenant ON wk_source_documents(tenant_id,profile_id,created_at);
+    ALTER TABLE wk_source_documents ADD COLUMN IF NOT EXISTS write_until timestamptz;
+    CREATE TABLE IF NOT EXISTS wk_source_heads (
+      tenant_id text NOT NULL REFERENCES wk_sessions(id), profile_id text NOT NULL, document_id text NOT NULL REFERENCES wk_source_documents(id),
+      version integer NOT NULL, updated_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(tenant_id,profile_id)
+    );
+    CREATE TABLE IF NOT EXISTS wk_source_drafts (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), document_id text NOT NULL REFERENCES wk_source_documents(id),
+      profile_id text NOT NULL, job_id text NOT NULL REFERENCES wk_jobs(id), payload jsonb NOT NULL, receipt jsonb NOT NULL,
+      created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(job_id)
+    );
+    CREATE TABLE IF NOT EXISTS wk_source_review_requests (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), draft_id text NOT NULL REFERENCES wk_source_drafts(id),
+      request_id text NOT NULL, input_hash text NOT NULL, assertion_ids jsonb NOT NULL, question text NOT NULL,
+      status text NOT NULL DEFAULT 'open', created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(tenant_id,request_id)
+    );
+    CREATE TABLE IF NOT EXISTS wk_source_profile_versions (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), profile_id text NOT NULL,
+      draft_id text NOT NULL REFERENCES wk_source_drafts(id), source_document_id text NOT NULL REFERENCES wk_source_documents(id),
+      payload jsonb NOT NULL, source jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(tenant_id,draft_id)
     );
     CREATE TABLE IF NOT EXISTS wk_catalog_categories (
       tenant_id text NOT NULL REFERENCES wk_sessions(id), id text NOT NULL, payload jsonb NOT NULL,

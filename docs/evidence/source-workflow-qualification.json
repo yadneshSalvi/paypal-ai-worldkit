@@ -1,0 +1,96 @@
+{
+  "completedAt": "2026-11-11T03:01:23.570Z",
+  "sourceMode": "live_provider_calls",
+  "interfaceMode": "server_integration",
+  "plannedInventoryEntry": "automated qualification fixture; not possession or human review",
+  "checks": [
+    "Actual manufacturer PDF and private Blob copy match their saved SHA-256; retrieval is idempotent",
+    "Foreign workspace and wrong source fingerprint cannot enqueue extraction",
+    "Actual Gemini facts remain unreviewed; preview-bound candidate save is private and idempotent",
+    "Planned test identity can use the immutable candidate; incomplete ports remain unresolved and the original certificate is intact",
+    "A review request stores a question without inventing a reviewer or approving facts",
+    "Actual Astra background result resumes after database restart with one retained provider identity",
+    "Cancellation retains the actual provider response identity and prevents any source proposal from being applied",
+    "Actual private source deletion removes document text while retaining historical fingerprints, candidates and certificates"
+  ],
+  "originalRevisionId": "d8e44dad-7542-48c4-8c94-be3e8edb6b8c",
+  "sourceCopies": [
+    {
+      "id": "536958b6-01bc-4b81-a34a-f2899fdb7862",
+      "sourceHash": "527f0454027f1ba141c2a89cabb3c2c365465387bf09c45a96dc178195842e28",
+      "textHash": "7105455d9fa2d5b699f2f4b05ae5b60c8a996c0edf9cec49eea2312c2305511f",
+      "pages": 1,
+      "bytes": 112083,
+      "removed": true
+    },
+    {
+      "id": "1534201b-bbd9-4c38-aa2d-a88a12788e61",
+      "sourceHash": "527f0454027f1ba141c2a89cabb3c2c365465387bf09c45a96dc178195842e28",
+      "textHash": "7105455d9fa2d5b699f2f4b05ae5b60c8a996c0edf9cec49eea2312c2305511f",
+      "pages": 1,
+      "bytes": 112083,
+      "removed": true
+    }
+  ],
+  "models": [
+    {
+      "receipt": {
+        "id": "1e76f478-773d-4915-b936-1e1611ba3790",
+        "mode": "live",
+        "model": "gemini-3.8-flash",
+        "status": "succeeded",
+        "provider": "gemini",
+        "inputHash": "7ef9392f2824b8919e43bfe950a89aa9bcaf5cf9be221f86cbebe41c406b63fd",
+        "requestId": "m9jzao64EqLkg8UP94Ow0Q0",
+        "durationMs": 85015,
+        "outputHash": "4dea70c28e5b10cdd04b319e85984c089bb2e4422ba07a42ce39a4e358cf7a16",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "completedAt": "2026-11-11T02:54:39.993Z",
+        "inputTokens": 2404,
+        "requestedAt": "2026-11-11T02:53:14.978Z",
+        "outputTokens": 1346
+      },
+      "counts": {
+        "located": 9,
+        "unknown": 3,
+        "rejected": 1,
+        "conflicted": 0
+      },
+      "continuations": 0
+    },
+    {
+      "receipt": {
+        "id": "3a19e6fa-a729-486f-a7d9-9860c4a2e4c2",
+        "mode": "live",
+        "model": "gpt-6-astra",
+        "status": "succeeded",
+        "provider": "openai",
+        "inputHash": "7ef9392f2824b8919e43bfe950a89aa9bcaf5cf9be221f86cbebe41c406b63fd",
+        "requestId": "resp_0e27953e833f0dce006af3d8f132f087d29d76e19ff5df856d",
+        "durationMs": 398201,
+        "outputHash": "f99a74560d7e13f5f2db23933e350ca39d759dee17b69174cf17c80da2f28740",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "completedAt": "2026-11-11T03:01:19.201Z",
+        "inputTokens": 2469,
+        "requestedAt": "2026-11-11T02:54:41.000Z",
+        "outputTokens": 6654
+      },
+      "counts": {
+        "located": 10,
+        "unknown": 3,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "continuations": 38
+    }
+  ],
+  "cancellation": {
+    "jobId": "f2ac3819-ded2-44ff-a268-6db3f9e9f01e",
+    "responseId": "resp_02c620b44aa1c294006af3da7f585c87d2a7fdf315cfebffca",
+    "observedProviderStatus": "cancelled",
+    "outputApplied": false
+  },
+  "humanReviewDecisions": 0,
+  "physicalTests": 0,
+  "financialWrites": 0
+}

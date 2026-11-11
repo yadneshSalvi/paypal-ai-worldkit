@@ -1,7 +1,7 @@
 import { after } from "next/server";
 import { z } from "zod";
 import { ConfirmationSchema, CropSchema } from "../../../../packages/inventory/contracts";
-import { applyPlacement, confirmInventory, getInventory, previewInventory, previewPlacement, updateInventoryNotes } from "@/server/inventory";
+import { applyPlacement, confirmInventory, getInventory, getInventoryProfileChoices, previewInventory, previewPlacement, updateInventoryNotes } from "@/server/inventory";
 import { photoRecord, requestPhotoDeletion } from "@/server/inventory-photos";
 import { enqueueJob, runQueuedJobs } from "@/server/jobs";
 import { errorResponse, readJson, requireSession, sameOrigin } from "@/server/http";
@@ -18,7 +18,7 @@ const Input = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("search_crop"), requestId: z.uuid(), photoId: z.string().max(100), crop: CropSchema, label: z.string().trim().min(1).max(80), hint: z.string().trim().max(180), confirmedCrop: z.literal(true) }).strict(),
   z.object({ kind: z.literal("delete_photo"), photoId: z.string().max(100) }).strict(),
 ]);
-export async function GET() { try { const session = await requireSession(); return Response.json(await getInventory(session), { headers: { "Cache-Control": "no-store" } }); } catch (error) { return errorResponse(error); } }
+export async function GET(request: Request) { try { const session = await requireSession(); const profilesOnly = new URL(request.url).searchParams.get("view") === "profiles"; return Response.json(profilesOnly ? { library: await getInventoryProfileChoices(session) } : await getInventory(session), { headers: { "Cache-Control": "no-store" } }); } catch (error) { return errorResponse(error); } }
 export async function POST(request: Request) {
   try {
     sameOrigin(request); const session = await requireSession(); const input = Input.parse(await readJson(request));

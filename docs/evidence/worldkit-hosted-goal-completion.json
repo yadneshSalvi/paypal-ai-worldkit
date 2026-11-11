@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "jobId": "1b143757-8e00-402f-b91e-50d9fdb8ca26",
+  "jobStatus": "succeeded",
+  "attempts": 1,
+  "progress": "Ready to review",
+  "outputPresent": true,
+  "financialWrites": 0
+}

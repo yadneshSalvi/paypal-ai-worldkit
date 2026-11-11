@@ -2,7 +2,7 @@
 
 A creator workbench for turning a goal into a complete physical-system plan, with exact equipment profiles, source-linked checks, an audible routing model and a durable sandbox purchase record.
 
-The current integration checkpoint is running locally and at [WorldKit on Vercel](https://paypal-ai-worldkit.vercel.app). It remains under active development; physical testing, independent source review, the complete library/evaluation corpus, several broader integrations and release assets are still open. See [evidence and limitations](docs/WHAT_VERIFIED_MEANS.md).
+The current inventory integration checkpoint is running at [WorldKit on Vercel](https://paypal-ai-worldkit.vercel.app). The source-reading milestone is also available in the local production build. It remains under active development; physical testing, independent source review, complete engineering port maps, several broader integrations and release assets are still open. See [evidence and limitations](docs/WHAT_VERIFIED_MEANS.md).
 
 ## Run locally
 
@@ -34,6 +34,7 @@ The core test suite uses deterministic sample providers. Credentialed qualificat
 - Real Channel3 discovery, exact variant refresh, category/attribute browsing, condition/price/dimension filters, observed price history, product URL lookup and workspace-scoped attribution. Fresh retailer URLs are excluded from persisted snapshots; original diagrams are used instead of unlicensed product images.
 - An equipment passport with private photo upload, editable model region proposals, user-confirmed crop search, exact model/ownership review, quantities, accessories, condition and history. Placing or correcting an item previews the whole kit, commits an immutable profile and preserves older proofs. Unknown engineering facts remain unknown.
 - Direct OpenAI and Gemini structured goal and photo-region proposals, saved as recoverable jobs. Models propose; the deterministic compiler decides verification.
+- A reading room for 60 exact manufacturer-source candidates. Private document copies, source fingerprints, selected text pages, traceable model proposals, unanswered review questions and immutable candidate versions remain separate. Saving a candidate never approves its claims or records ownership. [Source-reading method](docs/SOURCE_READING.md).
 - Actual Web Audio routing from the saved graph, isolated model buses, downstream disconnection behavior and downloadable PCM WAV files. The original test signals are labelled **Modelled**, not a hardware recording.
 - Scoped Streamable HTTP MCP tools: `verify_kit`, `repair_kit`, `quote_kit`. An actual external SDK client has matched the browser's immutable certificate and tested stale/foreign/revoked requests. These tools do not authorize payment or mutate a saved kit. PostgreSQL enforces 60 verifications/minute, 5 repair proposals/hour, 2 quotes/minute and at most 2 concurrent tools per grant.
 - The **Studio** view offers an itemized $12 digital routing dossier and connection guide, with graph-bound PayPal sandbox create/approval/capture, save-during-purchase consent, owned-order/token reads, separately labelled Vault setup fallback, revocation and compensating full refunds before delivery within 24 hours.
@@ -50,7 +51,7 @@ A catalog product is not retailer procurement. The Studio service does not sell 
 | Channel3 | Official `@channel3/sdk` 4.9.0 and real account-qualified product reads. Selected options and offer condition are preserved. |
 | OpenAI / Gemini | Direct server-side SDKs, structured schemas and prompt/input/output hashes; no secrets in prompts. |
 | MCP | Official SDK 1.32.2, exact scopes and schema checks; no financial tools. |
-| Storage | PostgreSQL for authority, immutable revisions and leased jobs; private Vercel Blob for sanitized equipment photos, served only through tenant-authenticated routes. |
+| Storage | PostgreSQL for authority, immutable revisions, model request identities and leased jobs; private Vercel Blob for sanitized equipment photos and manufacturer source copies. Full source text is never served by the public evidence API. |
 | Hosting | Next.js 16.4.6 / React 19.3.1 on Vercel Node 22. Hosted session/quote isolation, live catalog search and a reviewed OpenAI proposal were independently exercised; see [HTTP checks](docs/evidence/hosted-http-qualification.json) and [provider qualification](docs/evidence/hosted-provider-qualification.json). |
 
 The [PayPal implementation contract](paypal-plan.md) records the actual SDK maps, authority boundaries, error/unknown-state handling and revision history. [APIMatic setup](APIMATIC_SETUP.md) preserves skill provenance. The shared package's provenance is in `vendor/`.
@@ -61,9 +62,11 @@ Open **Equipment** to add a labelled photo, public HTTPS product URL or exact mo
 
 Configure `BLOB_READ_WRITE_TOKEN` for a **private** Blob store. `OPENAI_VISION_MODEL` and `GEMINI_VISION_MODEL` optionally override the configured goal models. `POST /api/planner` now accepts `{ brief, provider, requestId }` and returns a saved job with HTTP202; `GET /api/jobs` and `GET /api/jobs?id=…` return only this workspace’s work. Long reads are fenced with a lease, preserve attempt receipts, and cannot apply equipment or goals without confirmation. These workers never dispatch payments.
 
-Configure a supported Vercel cron cadence for `GET /api/jobs/recover`, authenticated by `CRON_SECRET` (at least 24 characters). Browser polling also resumes work. A process crash can repeat a provider read after its lease expires; the old worker cannot commit late output. The recovery trigger still needs hosted deployment qualification.
+The checked-in Vercel cron runs `GET /api/jobs/recover` every minute, authenticated by `CRON_SECRET` (at least 24 characters); the deployment plan must support that cadence. Browser polling also resumes work. A process crash can repeat an ordinary provider read after its lease expires; the old worker cannot commit late output. Source extraction records its model operation before dispatch, resumes a saved OpenAI background response, and never repeats an ambiguous dispatch automatically. Hosted inventory recovery returned successful automatic cron responses; see [hosted runtime evidence](docs/evidence/worldkit-inventory-runtime-summary.json).
 
 Run `npm run qualify:inventory` to exercise actual Blob/catalog/model operations on an original, explicitly synthetic equipment illustration. The script makes no equipment purchase or physical-performance claim. The observed qualification and disclosed URL lookup failures are in [inventory evidence](docs/evidence/inventory-qualification.json).
+
+Open **Proof → Source library** to inspect the exact manufacturer scope, save a private copy, select pages and ask Gemini or Astra for proposed facts. A located quotation proves where text was found; it does not establish that the proposed interpretation is correct. Astra may take several minutes and resumes its original response across worker restarts. Removing a private copy purges its document text after any pending upload settles, while historical fingerprints and saved candidate versions remain. [Actual source-workflow qualification](docs/evidence/source-workflow-qualification.json) covers both providers, restart recovery, cancellation, candidate placement and private-copy deletion.
 
 ## Sandbox buyer workflow
 

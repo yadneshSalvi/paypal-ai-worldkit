@@ -1,13 +1,24 @@
 import { WorldKitError, type CatalogSnapshot, type DeviceProfile } from "../contracts/index";
-import type { Identity } from "./contracts";
+import type { Identity, InventoryProfileChoice } from "./contracts";
+import { corpusVariantMatches } from "./catalog-variants";
 
-const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, "");
-export function engineeringId(profile: DeviceProfile): string { return profile.baseProfileId ?? profile.id; }
-export function catalogIdentityMatches(snapshot: CatalogSnapshot, profile: DeviceProfile): boolean {
+const ascii = (value: string) => value.normalize("NFKD").replace(/ø/gi, "o").replace(/ß/g, "ss").replace(/[\u0300-\u036f]/g, "");
+const normalize = (value: string) => ascii(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+export function engineeringId(profile: Pick<DeviceProfile, "id" | "baseProfileId">): string { return profile.baseProfileId ?? profile.id; }
+export function profileChoice(profile: DeviceProfile): InventoryProfileChoice {
+  return { id: profile.id, baseProfileId: profile.baseProfileId, basisProfileId: profile.basisProfileId, corpusId: profile.corpusId, sourceVersion: profile.sourceVersion, manufacturer: profile.manufacturer, model: profile.model, variant: profile.variant, kind: profile.kind };
+}
+export function catalogIdentityMatches(snapshot: CatalogSnapshot, profile: InventoryProfileChoice): boolean {
   const title = normalize(snapshot.title); const identity = normalize(`${snapshot.brand ?? ""} ${snapshot.title}`);
-  if (profile.manufacturer === "Unconfirmed" || !identity.includes(normalize(profile.manufacturer)) || !title.includes(normalize(profile.model))) return false;
+  const manufacturerMatches = identity.includes(normalize(profile.manufacturer)) || profile.corpusId && (profile.manufacturer === "StarTech.com" && identity.includes("startech") || profile.manufacturer === "König & Meyer" && /\bk\s*&\s*m\b|konig.*meyer|koenig.*meyer/i.test(ascii(`${snapshot.brand ?? ""} ${snapshot.title}`)));
+  if (profile.manufacturer === "Unconfirmed" || !manufacturerMatches || !title.includes(normalize(profile.model))) return false;
   const id = engineeringId(profile);
   if (/\bbundle\b|\bkit with\b|\bpack of\b|\b\d+[ -]pack\b/i.test(snapshot.title)) return false;
+  if (profile.corpusId) {
+    const modelPattern = ascii(profile.model).split(/[\s\-_/]+/).map(part => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[\\s\\-_/]*");
+    if (!new RegExp(`(?<![a-z0-9])${modelPattern}(?![a-z0-9])`, "i").test(ascii(snapshot.title))) return false;
+    if (!corpusVariantMatches(profile.corpusId, `${snapshot.title} ${snapshot.selectedOptions.map(option => `${option.name}: ${option.value}`).join(" ")}`)) return false;
+  }
   if (id === "at2020-xlr" && /at2020usb|at2020\+usb/.test(title)) return false;
   if (id === "focusrite-2i2-4" && !/4th|4thgen|4thgeneration|fourth/.test(title)) return false;
   if (id === "sony-zve10" && /zve10ii|zve10mark2|zve102/.test(title)) return false;
@@ -35,7 +46,7 @@ export function confirmedProfile(id: string, identity: Identity, snapshot: Catal
   const unknownFact = { id: `${id}:technical-scope:1`, property: "technicalScope", value: null, unit: null, sourceIds: [], scope: `${identity.manufacturer} ${identity.model}; ${identity.variant}`, conditions: [], state: "unknown" as const, critical: true, review: { status: "pending" as const, reviewer: null, date: null } };
   return {
     ...(base ? structuredClone(base) : { manufacturer: identity.manufacturer, model: identity.model, variant: identity.variant, kind: identity.deviceKind, shortName: identity.model, description: "Exact identity confirmed by you. Manufacturer specifications and technical review are still needed.", ports: [], facts: { technicalScope: unknownFact }, reviewState: "candidate" as const, art: "original_line_art" as const, accent: "#dae4e0" }),
-    id, version: 1, ...(base ? { baseProfileId: engineeringId(base) } : {}),
+    id, version: 1, ...(base ? { baseProfileId: engineeringId(base), basisProfileId: base.basisProfileId ?? base.id } : {}),
     catalogId: snapshot?.productId ?? null, selectedOptions: snapshot?.selectedOptions ?? [],
     ...(snapshot ? { catalogBinding: { snapshotId: snapshot.id, productId: snapshot.productId, selectedOptions: snapshot.selectedOptions, confirmedAt: at, confirmation: "user_confirmed_exact_identity" as const } } : { catalogBinding: undefined }),
   };

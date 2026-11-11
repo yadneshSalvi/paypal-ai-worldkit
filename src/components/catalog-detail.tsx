@@ -1,15 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, Clock3, Fingerprint, RefreshCw, TrendingDown, X } from "lucide-react";
-import type { CatalogReceipt, CatalogSnapshot, DeviceProfile, FreshCatalogProduct, Workspace } from "../../packages/contracts/index";
+import type { CatalogReceipt, CatalogSnapshot, FreshCatalogProduct, Workspace } from "../../packages/contracts/index";
 import type { PriceHistory } from "../../packages/channel3/contracts";
-import type { InventoryItem } from "../../packages/inventory/contracts";
+import type { InventoryItem, InventoryProfileChoice } from "../../packages/inventory/contracts";
 import { EquipmentReview } from "./equipment-review";
 import { api, Busy, currency, shortTime } from "./ui";
 
-export function CatalogDetail({ product, workspace, library = workspace.profiles, photoId = null, regionId = null, correctItem = null, onClose, onRefresh, onSaved }: { product: CatalogSnapshot; workspace: Workspace; library?: DeviceProfile[]; photoId?: string | null; regionId?: string | null; correctItem?: InventoryItem | null; onClose: () => void; onRefresh: () => Promise<void>; onSaved?: () => Promise<void> }) {
+export function CatalogDetail({ product, workspace, library, photoId = null, regionId = null, correctItem = null, onClose, onRefresh, onSaved }: { product: CatalogSnapshot; workspace: Workspace; library?: InventoryProfileChoice[]; photoId?: string | null; regionId?: string | null; correctItem?: InventoryItem | null; onClose: () => void; onRefresh: () => Promise<void>; onSaved?: () => Promise<void> }) {
   const [fresh, setFresh] = useState<FreshCatalogProduct | null>(null); const [selection, setSelection] = useState<Record<string, string>>(Object.fromEntries(product.selectedOptions.map(o => [o.name, o.value])));
   const [busy, setBusy] = useState("Refreshing this exact product…"); const [error, setError] = useState(""); const [history, setHistory] = useState<PriceHistory | null>(null); const [reviewing, setReviewing] = useState(false); const [expired, setExpired] = useState(false); const [offline, setOffline] = useState(false);
+  const [profileChoices, setProfileChoices] = useState<InventoryProfileChoice[] | null>(null);
   const initialRequest = useRef<Promise<FreshCatalogProduct & { receipt: CatalogReceipt }> | null>(null); const refreshWorkspace = useRef(onRefresh); refreshWorkspace.current = onRefresh;
   useEffect(() => {
     let active = true;
@@ -21,6 +22,7 @@ export function CatalogDetail({ product, workspace, library = workspace.profiles
   useEffect(() => { const update = () => { setOffline(!navigator.onLine); if (!navigator.onLine) setExpired(true); }; update(); window.addEventListener("online", update); window.addEventListener("offline", update); return () => { window.removeEventListener("online", update); window.removeEventListener("offline", update); }; }, []);
   async function refresh() { setBusy("Checking your selected variant and retailer links…"); setError(""); try { const result = await api<FreshCatalogProduct>("/api/catalog", "POST", { kind: "details", productId: fresh?.snapshot.productId ?? product.productId, selectedOptions: selection }); setFresh(result); setExpired(false); await onRefresh(); } catch (e) { setError(e instanceof Error ? e.message : "This product could not be refreshed."); } finally { setBusy(""); } }
   async function loadHistory() { setBusy("Reading observed price history…"); setError(""); try { const result = await api<{ history: PriceHistory }>("/api/catalog", "POST", { kind: "history", productId: fresh?.snapshot.productId ?? product.productId }); setHistory(result.history); await onRefresh(); } catch (e) { setError(e instanceof Error ? e.message : "No history could be loaded."); } finally { setBusy(""); } }
+  async function reviewIdentity() { setBusy("Opening your exact profile library…"); setError(""); try { const choices = library ?? (await api<{ library: InventoryProfileChoice[] }>("/api/inventory?view=profiles")).library; setProfileChoices(choices); setReviewing(true); } catch (e) { setError(e instanceof Error ? e.message : "Your source candidates could not be loaded."); } finally { setBusy(""); } }
   const current = fresh?.snapshot ?? product;
   const selected = fresh && fresh.snapshot.variantExact && Object.keys(selection).length === fresh.snapshot.selectedOptions.length && fresh.snapshot.selectedOptions.every(option => selection[option.name] === option.value);
   const canUse = Boolean(fresh && selected && !expired && !offline && !busy);
@@ -29,10 +31,10 @@ export function CatalogDetail({ product, workspace, library = workspace.profiles
     {fresh && !selected && <p className="variant-warning" role="status">{fresh.snapshot.variantExact ? "Refresh the changed selection before confirming it or visiting a retailer." : "Channel3 returned a different option. Choose the available exact selection and refresh; it has not been accepted into your plan."}</p>}
     {(expired || offline) && <p className="variant-warning" role="status">{offline ? "You’re offline. Saved product facts remain visible; reconnect and refresh retailer links." : "These retailer links have aged. Refresh before continuing."}</p>}
     <div className="fresh-offers">{current.offers.map(offer => { const link = fresh?.buyLinks.find(link => link.offerId === offer.id); return <article key={offer.id}><div><b>{offer.retailer}</b><small>{offer.availability === "InStock" ? "Reported in stock" : "Not reported in stock"} · {offer.condition} · shipping & tax unknown</small>{offer.dimensions && <small>Catalog dimensions: {[offer.dimensions.length, offer.dimensions.width, offer.dimensions.height].map(value => value === null ? "?" : String(Math.round(value))).join(" × ")} mm</small>}</div><strong>{offer.price ? currency(offer.price.minor) : "No USD price"}</strong>{link && offer.availability === "InStock" && canUse ? <a className="button subtle" href={link.url} target="_blank" rel="noopener noreferrer sponsored">Visit retailer <ArrowUpRight size={14}/></a> : <span className="fine-print">{busy ? "Refreshing…" : !selected ? "Confirm selection" : "Refresh to visit"}</span>}</article>; })}</div>
-    <div className="catalog-detail-actions"><button className="button" disabled={!canUse} onClick={() => setReviewing(true)}><Fingerprint size={16}/> Confirm exact equipment</button><button className="button subtle" disabled={Boolean(busy)} onClick={() => void refresh()}><RefreshCw size={14}/> Refresh details</button><button className="text-button" disabled={Boolean(busy)} onClick={() => void loadHistory()}><Clock3 size={15}/> Price history</button></div>
+    <div className="catalog-detail-actions"><button className="button" disabled={!canUse} onClick={() => void reviewIdentity()}><Fingerprint size={16}/> Confirm exact equipment</button><button className="button subtle" disabled={Boolean(busy)} onClick={() => void refresh()}><RefreshCw size={14}/> Refresh details</button><button className="text-button" disabled={Boolean(busy)} onClick={() => void loadHistory()}><Clock3 size={15}/> Price history</button></div>
     {busy && <Busy text={busy}/>} {error && <p className="inline-error" role="alert">{error}</p>}{history && <PriceHistoryView value={history}/>}
     <p className="fine-print">Retailer links may earn affiliate attribution. Retailer fulfillment is separate from WorldKit Studio; saving a candidate places no order. Links are refreshed and never stored for reuse.</p>
-    {reviewing && fresh && <EquipmentReview workspace={workspace} snapshot={fresh.snapshot} library={library} photoId={photoId} regionId={regionId} correctItem={correctItem} onClose={() => setReviewing(false)} onSaved={async () => { await onRefresh(); await onSaved?.(); }}/>}
+    {reviewing && fresh && profileChoices && <EquipmentReview workspace={workspace} snapshot={fresh.snapshot} library={profileChoices} photoId={photoId} regionId={regionId} correctItem={correctItem} onClose={() => setReviewing(false)} onSaved={async () => { await onRefresh(); await onSaved?.(); }}/>}
   </section>;
 }
 function PriceHistoryView({ value }: { value: PriceHistory }) {

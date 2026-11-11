@@ -1,0 +1,2740 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-11T02:12:42.873Z",
+  "sourceMode": "live_provider_calls",
+  "referenceMode": "unreviewed_ai_draft",
+  "referenceHash": "d623c38ff6ff360c318d2e8ceff39d692170b7013e0dfeba312d913ed8259a65",
+  "promptHash": "b55ed4bdf2766d6cd16387ef70b986972d3c5f1306b3cd871d7bef81aedb3739",
+  "referenceFrozenAt": "2026-11-11T02:07:23.946760Z",
+  "completion": "interrupted",
+  "counts": {
+    "referenceAssertions": 323,
+    "heldOutDevices": 30,
+    "developmentDevices": 30,
+    "independentHumanReviews": 0,
+    "physicalTests": 0
+  },
+  "providers": [
+    {
+      "provider": "openai",
+      "modelIds": [],
+      "jobs": {
+        "attempted": 2,
+        "succeeded": 0,
+        "failed": 2
+      },
+      "durationMs": 260020,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "comparison": {
+        "mode": "agreement_with_unreviewed_ai_draft",
+        "assertions": 323,
+        "expectedSupported": 299,
+        "expectedUnknown": 23,
+        "expectedConflicted": 1,
+        "completedAssertions": 0,
+        "missing": 323,
+        "rawSupportedPredictions": 0,
+        "supportedPredictions": 0,
+        "rejected": 0,
+        "typedValueAgreement": 0,
+        "exactValueUnitScopeAgreement": 0,
+        "draftTypedPrecision": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "draftTypedRecall": {
+          "numerator": 0,
+          "denominator": 299,
+          "value": 0
+        },
+        "draftCorrectAbstention": {
+          "numerator": 0,
+          "denominator": 23,
+          "value": 0
+        },
+        "draftConflictAgreement": 0,
+        "locatedCitationCoverage": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "humanSourceSupportPrecision": null,
+        "humanGoldAccuracy": null,
+        "verifiedFactPromotions": 0,
+        "independentHumanReviews": 0,
+        "physicalTests": 0,
+        "limitations": [
+          "This reference was prepared by an AI from manufacturer documents. It has not been adjudicated by the two required human reviewers.",
+          "Draft agreement is not accuracy. A shared mistake in the draft and extractor may appear as agreement.",
+          "Located quotations prove traceability, not semantic source support. Semantic source-support precision remains unmeasured.",
+          "Scope equality checks the requested string. It does not establish that every quoted passage supports that exact variant or mode.",
+          "Operating conditions are retained for review; free-text condition correctness is not automatically scored.",
+          "Failed provider calls count as missing assertions, not successful abstentions. Rejected proposals are also not correct abstentions.",
+          "All extracted facts remain pending review. None can promote itself into verified device evidence."
+        ],
+        "disagreements": [
+          {
+            "assertionId": "zoom-f3:micinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:micconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:phantomuppervoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:phantomcombinedcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:recordsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbfloatfirmware",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbbuspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:micinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:micconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:phantomuppervoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:phantomcurrentperchannel",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:tracksat192k",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbreccapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbrecratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:iosmultitrack",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:windowsdriverrequired",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbbuspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:inputchannelcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:phantomvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:gainmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:headphoneoutputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbplaybackchannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbsamplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbbitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usb192k",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:xlrphantom",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:linejackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:headphonejackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:wavsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:wavbitdepthmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:usbbuspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:maxsdcardcapacity",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:inputchannelcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:xlrmicinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:phantominmicmode",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:phantominlinemode",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbbitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbplaybackchannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:wavfloatsupported",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:maxsdcardcapacity",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:comboinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:assignablechannelcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:physicalfadercount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:gainmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:supplyvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:supplycurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:samplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:bitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:headphoneoutputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:headsetjackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:minmacos",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:minwindowsbuild",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:simultaneouscameraapp",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:samplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbmaxcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbmaxvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbmaxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:micgainmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:micinputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:phantomvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:cameraconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:phoneconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:mainoutputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:outputconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:powerdesignation",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:polarpattern",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:outputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:maxspl",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:noise",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:usbsamplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:outputconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:phantomrequired",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:polarpattern",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:outputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:sensitivity",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:usbsamplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:outputconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:buspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:samplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:bitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:capturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:playbackchannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:simultaneousio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:headphonediameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:minmacos",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:minwindows",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usbccount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usb4rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usb31rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:headphonediameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:externaldisplaycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usbcdisplayport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:microphonecount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:concurrentappaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:thunderboltportcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:usb4rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:usbacount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:usbarate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:headphonediameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:hdmimultichannel",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:ethernetbaserate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:concurrentappaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:usbccount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:thunderbolt4",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:usb4",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:surfaceconnectcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:usbcharging",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:microphonecount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:osmajor",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:nominalbattery",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:concurrentappaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usb3count",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usb2count",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usb3rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:simultaneoususb3",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:dcvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:dccurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usbpowerdelivery",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:displaycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:mipitransceivercount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:mipilanes",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:gpiopins",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:poewithouthat",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:camosupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:hdmiconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:micjackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:micdirection",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:usbpowersupported",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:batterymodel",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:bodyweight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:simultaneoushdmisd",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:hdmiconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:micjackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:supplyvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:recordpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:playbackpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:videoaudiochannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:bodyweight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:simultaneoushdmisd",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:videoinput",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:videopassthrough",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:maxrecordfps1080",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:maxpassthroughfps1080",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:hdcpcapture",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:uhdcapture",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:hdrsupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:hardwareencoding",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:applesiliconmac12",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:minimumipados",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:hdmiinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:audioinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:dedicatedaudiooutputs",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:usbcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:uhdsupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:analoginputbalanced",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:pluginpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:inputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:supplyvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:powerusage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:independentwavrecording",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:thunderboltportcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:usbccount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:usbacount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:usbrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:hostpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:dcvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:dccurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:ethernetrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:minmacos",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:passivedptohdmi",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:displayappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:builtinpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:hostpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:hostconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:hdmiversion",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:includedcablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:tb2hostconnection",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:tb2adaptedcharging",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:allhostsdualdisplays",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:independentaudioapps",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:length",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:connectorone",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:connectortwo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:bandwidth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:audiochannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:fpsat3840",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:fpsat4096",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:fpsat1080",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:hdmiversion",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:length",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:datarate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:pdpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:chargecurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:connectorone",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:connectortwo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:displayportsupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:fps4k",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:thunderboltportcompatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:thunderbolt40grate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:length",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:datarate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:connectorone",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:connectortwo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:thunderboltportcompatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:usbcreversible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:displayportvideo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:driverdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:powerhandling",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:closedback",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:transducer",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:smalladapterdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:usbaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:driverdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:powerhandling",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:detachablecable",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:includedcablecount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:usbaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:powerhandling",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:cablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:cablecoiled",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:jackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:adapterdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:closedback",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:jackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:adapterdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:closedback",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:wired",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:onear",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5voltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5current",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd9vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd12vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd15vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:cablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:inputvoltagemin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:inputvoltagemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5peripheralcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:minsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:maxsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:horizontalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:verticalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:clampmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:insertmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:rotation",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:sm5compatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:usbcablemanagement",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomminlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boommaxlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:minheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:threaddiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomsectioncount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:foldinglegs",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxsupportedmass",
+            "reason": "No completed extraction result."
+          }
+        ]
+      }
+    },
+    {
+      "provider": "gemini",
+      "modelIds": [],
+      "jobs": {
+        "attempted": 3,
+        "succeeded": 0,
+        "failed": 3
+      },
+      "durationMs": 4137,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "comparison": {
+        "mode": "agreement_with_unreviewed_ai_draft",
+        "assertions": 323,
+        "expectedSupported": 299,
+        "expectedUnknown": 23,
+        "expectedConflicted": 1,
+        "completedAssertions": 0,
+        "missing": 323,
+        "rawSupportedPredictions": 0,
+        "supportedPredictions": 0,
+        "rejected": 0,
+        "typedValueAgreement": 0,
+        "exactValueUnitScopeAgreement": 0,
+        "draftTypedPrecision": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "draftTypedRecall": {
+          "numerator": 0,
+          "denominator": 299,
+          "value": 0
+        },
+        "draftCorrectAbstention": {
+          "numerator": 0,
+          "denominator": 23,
+          "value": 0
+        },
+        "draftConflictAgreement": 0,
+        "locatedCitationCoverage": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "humanSourceSupportPrecision": null,
+        "humanGoldAccuracy": null,
+        "verifiedFactPromotions": 0,
+        "independentHumanReviews": 0,
+        "physicalTests": 0,
+        "limitations": [
+          "This reference was prepared by an AI from manufacturer documents. It has not been adjudicated by the two required human reviewers.",
+          "Draft agreement is not accuracy. A shared mistake in the draft and extractor may appear as agreement.",
+          "Located quotations prove traceability, not semantic source support. Semantic source-support precision remains unmeasured.",
+          "Scope equality checks the requested string. It does not establish that every quoted passage supports that exact variant or mode.",
+          "Operating conditions are retained for review; free-text condition correctness is not automatically scored.",
+          "Failed provider calls count as missing assertions, not successful abstentions. Rejected proposals are also not correct abstentions.",
+          "All extracted facts remain pending review. None can promote itself into verified device evidence."
+        ],
+        "disagreements": [
+          {
+            "assertionId": "zoom-f3:micinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:micconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:phantomuppervoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:phantomcombinedcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:recordsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbfloatfirmware",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:usbbuspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f3:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:micinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:micconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:phantomuppervoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:phantomcurrentperchannel",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:tracksat192k",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbreccapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbrecratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:iosmultitrack",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:windowsdriverrequired",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:usbbuspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-f6:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:inputchannelcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:phantomvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:gainmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:headphoneoutputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbplaybackchannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbsamplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usbbitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "zoom-podtrak-p4:usb192k",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:xlrphantom",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:linejackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:headphonejackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:wavsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:wavbitdepthmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:usbbuspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:maxsdcardcapacity",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-dr40x:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:inputchannelcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:recordtrackcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:xlrmicinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:phantominmicmode",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:phantominlinemode",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbbitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbcapturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbplaybackchannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:usbsampleratemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:wavfloatsupported",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "tascam-portacapture-x6:maxsdcardcapacity",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:comboinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:assignablechannelcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:physicalfadercount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:gainmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:supplyvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:supplycurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:samplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:bitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:headphoneoutputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:headsetjackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:minmacos",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:minwindowsbuild",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:simultaneouscameraapp",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:samplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbmaxcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbmaxvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:usbmaxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:micgainmax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:micinputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:phantomvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:cameraconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:phoneconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:mainoutputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "focusrite-vocaster-two:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:outputconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:powerdesignation",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:polarpattern",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:outputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:maxspl",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:noise",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-nt1-signature:usbsamplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:outputconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:phantomrequired",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:polarpattern",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:outputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:sensitivity",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-podmic:usbsamplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:outputconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:buspowered",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:samplerate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:bitdepth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:capturechannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:playbackchannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:simultaneousio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:headphonediameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:minmacos",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:minwindows",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:cameraappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usbccount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usb4rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usb31rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:headphonediameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:externaldisplaycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:usbcdisplayport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:microphonecount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-macbook-air-m2:concurrentappaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:thunderboltportcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:usb4rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:usbacount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:usbarate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:headphonediameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:hdmimultichannel",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:ethernetbaserate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "apple-mac-mini-m2:concurrentappaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:usbccount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:thunderbolt4",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:usb4",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:surfaceconnectcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:usbcharging",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:microphonecount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:osmajor",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:nominalbattery",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "microsoft-surface-pro9-intel:concurrentappaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usb3count",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usb2count",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usb3rate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:simultaneoususb3",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:dcvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:dccurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:usbpowerdelivery",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:displaycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:mipitransceivercount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:mipilanes",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:gpiopins",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:poewithouthat",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi5-8gb:camosupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:hdmiconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:micjackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:micdirection",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:usbpowersupported",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:batterymodel",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:batterycount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:bodyweight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "canon-eos-r50:simultaneoushdmisd",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:hdmiconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:micjackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:supplyvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:recordpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:playbackpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:videoaudiochannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:bodyweight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "panasonic-g100d:simultaneoushdmisd",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:usbconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:videoinput",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:videopassthrough",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:maxrecordfps1080",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:maxpassthroughfps1080",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:hdcpcapture",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:uhdcapture",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:hdrsupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:hardwareencoding",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:applesiliconmac12",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "avermedia-gc311:minimumipados",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:hdmiinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:audioinputcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:dedicatedaudiooutputs",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:usbcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:uhdsupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:analoginputbalanced",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:pluginpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:inputimpedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:supplyvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:powerusage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:independentwavrecording",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:thunderboltportcount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:usbccount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:usbacount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:usbrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:hostpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:dcvoltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:dccurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:ethernetrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:minmacos",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:passivedptohdmi",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "caldigit-ts4:displayappconcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:builtinpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:hostpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:thunderboltrate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:hostconnector",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:hdmiversion",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:includedcablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:tb2hostconnection",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:tb2adaptedcharging",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:allhostsdualdisplays",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "owc-thunderbolt-go:independentaudioapps",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:length",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:connectorone",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:connectortwo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:bandwidth",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:audiochannels",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:fpsat3840",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:fpsat4096",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:fpsat1080",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-hdmiadmm3:hdmiversion",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:length",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:datarate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:pdpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:chargecurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:connectorone",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:connectortwo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:displayportsupport",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:fps4k",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:thunderboltportcompatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:thunderbolt40grate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:length",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:datarate",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:usbprotocol",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:connectorone",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:connectortwo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:thunderboltportcompatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:usbcreversible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "startech-usb2cub1m:displayportvideo",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:driverdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:powerhandling",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:closedback",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:transducer",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:smalladapterdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sony-mdr7506:usbaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:driverdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:powerhandling",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:detachablecable",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:includedcablecount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "audio-technica-m50x:usbaudio",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:powerhandling",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:cablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:cablecoiled",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:jackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:adapterdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:closedback",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:jackdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:adapterdiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:frequencymin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:frequencymax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:closedback",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:wired",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:impedance",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "sennheiser-hd280pro:onear",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5voltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5current",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd9vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd12vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd15vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:cablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:inputvoltagemin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:inputvoltagemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5peripheralcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:minsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:maxsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:horizontalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:verticalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:clampmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:insertmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:rotation",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:sm5compatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:usbcablemanagement",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomminlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boommaxlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:minheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:threaddiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomsectioncount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:foldinglegs",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxsupportedmass",
+            "reason": "No completed extraction result."
+          }
+        ]
+      }
+    }
+  ],
+  "interruption": {
+    "reason": "Transport failures prompted a deliberate versioned transport correction; source/reference/prompt unchanged.",
+    "observedCompletedFailures": 5,
+    "operatorStop": "SIGINT",
+    "potentialInFlightCases": [
+      "zoom-podtrak-p4/openai",
+      "tascam-dr-40x/openai"
+    ],
+    "inFlightIdentityKnown": false,
+    "inFlightOutcome": "unknown; no original provider identity was saved by v1; cancellation is not claimed"
+  }
+}

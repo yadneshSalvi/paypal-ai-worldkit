@@ -1,0 +1,22 @@
+{
+  "observedAt": "2026-11-11T01:50:45.606Z",
+  "url": "https://paypal-ai-worldkit.vercel.app",
+  "deploymentId": "dpl_CCEcqM1QJ2JxK5d2Fd8i6RsCHi71",
+  "sourceCommit": "19ece25ca56aa9023ca9346fb9f55e6f3de17bfe",
+  "checks": [
+    "anonymous inventory/jobs/scheduler denied",
+    "foreign origin refused",
+    "two isolated persisted workspaces",
+    "private storage configured and library available",
+    "preview-bound exact identity and idempotent save",
+    "equipment tenant isolation",
+    "durable planning job and cross-tenant denial",
+    "zero financial orders and operations"
+  ],
+  "passed": true,
+  "financialWrites": 0,
+  "sessionId": "351b293c-b28e-41c0-98ee-f7b243e4c202",
+  "jobId": "1b143757-8e00-402f-b91e-50d9fdb8ca26",
+  "itemId": "d96b420d-90d1-4162-afbe-c420edf8e6b3",
+  "jobStatus": "running"
+}

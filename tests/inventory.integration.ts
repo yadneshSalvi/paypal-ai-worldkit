@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { profiles } from "../packages/device-library/index";
 import { createSession, getRevision, getWorkspace, commitEdit, saveCatalogResult } from "../src/server/repository";
 import { closeDatabase, database } from "../src/server/db";
-import { getInventory, getInventoryItem, getCatalogSnapshot, previewInventory, confirmInventory, previewPlacement, applyPlacement, updateInventoryNotes } from "../src/server/inventory";
+import { getInventory, getInventoryProfileChoices, getInventoryItem, getCatalogSnapshot, previewInventory, confirmInventory, previewPlacement, applyPlacement, updateInventoryNotes } from "../src/server/inventory";
 import { photoRecord } from "../src/server/inventory-photos";
 import { catalog, confirmation, receipt } from "./support/inventory-fixtures";
 after(async () => { await closeDatabase(); });
@@ -13,7 +13,7 @@ test("exact catalog confirmation commits once, retains pending reviews and survi
   const { session } = await createSession(); const previous = await getRevision(session.id); const snapshot = catalog(); await saveCatalogResult(session.id, [snapshot], receipt(snapshot)); const input = confirmation(previous, undefined, snapshot); input.targetComponentId = "mic-1";
   const preview = await previewInventory(session, input); assert.ok(preview.certificate); assert.notEqual(preview.certificate.status, "satisfied"); const saved = await Promise.all([confirmInventory(session, input, preview.previewHash), confirmInventory(session, input, preview.previewHash)]); assert.equal(saved[0]!.id, saved[1]!.id);
   const current = await getRevision(session.id); assert.equal(current.kit.revision, previous.kit.revision + 1); assert.equal(current.kit.components.find(component => component.id === "mic-1")!.inventoryItemId, saved[0]!.id); assert.equal(saved[0]!.profile.catalogBinding?.productId, snapshot.productId); assert.equal(current.certificate.review.reviewed, 0); assert.deepEqual(await getRevision(session.id, previous.kit.id), previous);
-  await closeDatabase(); assert.equal((await getInventoryItem(session.id, saved[0]!.id)).profile.id, saved[0]!.profile.id); assert.equal((await getInventory(session)).history.length, 1);
+  await closeDatabase(); assert.equal((await getInventoryItem(session.id, saved[0]!.id)).profile.id, saved[0]!.profile.id); const inventory = await getInventory(session); assert.equal(inventory.history.length, 1); assert.equal(inventory.library.filter(profile => profile.corpusId).length, 60); assert.ok(inventory.library.every(profile => !("facts" in profile) && !("ports" in profile))); assert.deepEqual(await getInventoryProfileChoices(session), inventory.library);
 });
 test("foreign catalog identities, items and previews cannot be claimed by another tenant", async () => {
   const a = await createSession(); const b = await createSession(); const snapshot = catalog(); await saveCatalogResult(a.session.id, [snapshot], receipt(snapshot)); await assert.rejects(() => getCatalogSnapshot(b.session.id, snapshot.id), /own workspace/); const own = confirmation(await getRevision(a.session.id)); const preview = await previewInventory(a.session, own); const item = await confirmInventory(a.session, own, preview.previewHash); await assert.rejects(() => getInventoryItem(b.session.id, item.id), /not in/); await assert.rejects(() => confirmInventory(b.session, own, preview.previewHash), /Review this exact/);

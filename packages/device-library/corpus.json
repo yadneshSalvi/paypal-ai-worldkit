@@ -1,0 +1,1216 @@
+[
+  {
+    "id": "zoom-h4essential",
+    "manufacturer": "Zoom",
+    "model": "H4essential",
+    "variant": "Original H4essential · recording mode separately scoped",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "zoom-essential",
+    "split": "development",
+    "aliases": [
+      "H4essential"
+    ],
+    "source": {
+      "id": "corpus-zoom-h4essential",
+      "title": "Zoom H4essential manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/manuals/h4essential-en/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "focusrite-2i2-4",
+    "manufacturer": "Focusrite",
+    "model": "Scarlett 2i2",
+    "variant": "4th generation · USB-C",
+    "kind": "interface",
+    "group": "audio",
+    "family": "focusrite-scarlett",
+    "split": "development",
+    "aliases": [
+      "Scarlett 2i2"
+    ],
+    "source": {
+      "id": "corpus-focusrite-2i2-4",
+      "title": "Focusrite Scarlett 2i2 manufacturer documentation",
+      "publisher": "Focusrite",
+      "url": "https://fael-downloads-prod.focusrite.com/customer/prod/downloads/scarlett_2i2_4th_gen_user_guide_v4-pdf-en.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "zoom-livetrak-l8",
+    "manufacturer": "Zoom",
+    "model": "LiveTrak L-8",
+    "variant": "L-8 · not L-6 or L-12",
+    "kind": "mixer",
+    "group": "audio",
+    "family": "zoom-livetrak",
+    "split": "development",
+    "aliases": [
+      "L-8"
+    ],
+    "source": {
+      "id": "corpus-zoom-livetrak-l8",
+      "title": "Zoom LiveTrak L-8 manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/en/jp/digital-mixer-multi-track-recorders/digital-mixer-recorders/LIVETRAK-L-8/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "zoom-h1essential",
+    "manufacturer": "Zoom",
+    "model": "H1essential",
+    "variant": "Original H1essential · 32-bit float",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "zoom-essential",
+    "split": "development",
+    "aliases": [
+      "H1essential"
+    ],
+    "source": {
+      "id": "corpus-zoom-h1essential",
+      "title": "Zoom H1essential manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/manuals/h1essential-en/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "zoom-h6essential",
+    "manufacturer": "Zoom",
+    "model": "H6essential",
+    "variant": "Original H6essential · supplied XYH-6e capsule",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "zoom-essential",
+    "split": "development",
+    "aliases": [
+      "H6essential"
+    ],
+    "source": {
+      "id": "corpus-zoom-h6essential",
+      "title": "Zoom H6essential manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/manuals/h6essential-en/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "zoom-f3",
+    "manufacturer": "Zoom",
+    "model": "F3",
+    "variant": "F3 · firmware-specific USB mode kept conditional",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "zoom-field",
+    "split": "held_out",
+    "aliases": [
+      "F3"
+    ],
+    "source": {
+      "id": "corpus-zoom-f3",
+      "title": "Zoom F3 manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/manuals/f3-en/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "zoom-f6",
+    "manufacturer": "Zoom",
+    "model": "F6",
+    "variant": "F6 · six microphone inputs",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "zoom-field",
+    "split": "held_out",
+    "aliases": [
+      "F6"
+    ],
+    "source": {
+      "id": "corpus-zoom-f6",
+      "title": "Zoom F6 manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/documents/248/E_F6.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "zoom-podtrak-p4",
+    "manufacturer": "Zoom",
+    "model": "PodTrak P4",
+    "variant": "Original P4 · not P4next",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "zoom-podtrak",
+    "split": "held_out",
+    "aliases": [
+      "P4"
+    ],
+    "source": {
+      "id": "corpus-zoom-podtrak-p4",
+      "title": "Zoom PodTrak P4 manufacturer documentation",
+      "publisher": "Zoom",
+      "url": "https://zoomcorp.com/media/documents/E_P4_v2.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "tascam-dr40x",
+    "manufacturer": "TASCAM",
+    "model": "DR-40X",
+    "variant": "DR-40X · not DR-40 or DR-40XP",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "tascam-dr",
+    "split": "held_out",
+    "aliases": [
+      "DR-40X"
+    ],
+    "source": {
+      "id": "corpus-tascam-dr40x",
+      "title": "TASCAM DR-40X manufacturer documentation",
+      "publisher": "TASCAM",
+      "url": "https://cf.tascam.com/wp-content/uploads/downloads/products/tascam/dr-40x/7l_dr-40x_om_vc_b6.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "tascam-portacapture-x6",
+    "manufacturer": "TASCAM",
+    "model": "Portacapture X6",
+    "variant": "X6 · not X8",
+    "kind": "recorder",
+    "group": "audio",
+    "family": "tascam-portacapture",
+    "split": "held_out",
+    "aliases": [
+      "Portacapture X6"
+    ],
+    "source": {
+      "id": "corpus-tascam-portacapture-x6",
+      "title": "TASCAM Portacapture X6 manufacturer documentation",
+      "publisher": "TASCAM",
+      "url": "https://cf.tascam.com/wp-content/uploads/downloads/products/tascam/portacapture_x6/7l_portacapture_x6_om_vb.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-rodecaster-duo",
+    "manufacturer": "RØDE",
+    "model": "RØDECaster Duo",
+    "variant": "Duo · not Pro II",
+    "kind": "mixer",
+    "group": "audio",
+    "family": "rode-rodecaster",
+    "split": "held_out",
+    "aliases": [
+      "RODECaster Duo",
+      "RØDECaster Duo"
+    ],
+    "source": {
+      "id": "corpus-rode-rodecaster-duo",
+      "title": "RØDE RØDECaster Duo manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://edge.rode.com/pdf/products/1225/RODECaster_Duo_ds_V06_FA.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "focusrite-vocaster-two",
+    "manufacturer": "Focusrite",
+    "model": "Vocaster Two",
+    "variant": "Original Vocaster Two · two mic inputs",
+    "kind": "interface",
+    "group": "audio",
+    "family": "focusrite-vocaster",
+    "split": "held_out",
+    "aliases": [
+      "Vocaster Two"
+    ],
+    "source": {
+      "id": "corpus-focusrite-vocaster-two",
+      "title": "Focusrite Vocaster Two manufacturer documentation",
+      "publisher": "Focusrite",
+      "url": "https://fael-downloads-prod.focusrite.com/customer/prod/downloads/vocaster_two_user_guide_v2_en_0.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "shure-sm58-lc",
+    "manufacturer": "Shure",
+    "model": "SM58",
+    "variant": "SM58-LC · wired XLR · no cable",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "shure-passive-dynamic",
+    "split": "development",
+    "aliases": [
+      "SM58",
+      "SM58"
+    ],
+    "source": {
+      "id": "corpus-shure-sm58-lc",
+      "title": "Shure SM58 manufacturer documentation",
+      "publisher": "Shure",
+      "url": "https://pubs.shure.com/view/guide/SM58/en-US.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "shure-sm57-lc",
+    "manufacturer": "Shure",
+    "model": "SM57",
+    "variant": "SM57-LC · wired XLR · no cable",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "shure-passive-dynamic",
+    "split": "development",
+    "aliases": [
+      "SM57",
+      "SM57"
+    ],
+    "source": {
+      "id": "corpus-shure-sm57-lc",
+      "title": "Shure SM57 manufacturer documentation",
+      "publisher": "Shure",
+      "url": "https://pubs.shure.com/view/guide/SM57/en-US.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "shure-sm7b",
+    "manufacturer": "Shure",
+    "model": "SM7B",
+    "variant": "Passive XLR · not SM7dB",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "shure-passive-dynamic",
+    "split": "development",
+    "aliases": [
+      "SM7B",
+      "SM7B"
+    ],
+    "source": {
+      "id": "corpus-shure-sm7b",
+      "title": "Shure SM7B manufacturer documentation",
+      "publisher": "Shure",
+      "url": "https://pubs.shure.com/view/guide/SM7B/en-US.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "shure-mv7x",
+    "manufacturer": "Shure",
+    "model": "MV7X",
+    "variant": "Passive XLR · not MV7 USB",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "shure-passive-dynamic",
+    "split": "development",
+    "aliases": [
+      "MV7X",
+      "MV7X"
+    ],
+    "source": {
+      "id": "corpus-shure-mv7x",
+      "title": "Shure MV7X manufacturer documentation",
+      "publisher": "Shure",
+      "url": "https://pubs.shure.com/view/guide/MV7X/en-US.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "shure-beta58a",
+    "manufacturer": "Shure",
+    "model": "BETA 58A",
+    "variant": "Wired XLR · supercardioid",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "shure-passive-dynamic",
+    "split": "development",
+    "aliases": [
+      "BETA 58A",
+      "BETA58A"
+    ],
+    "source": {
+      "id": "corpus-shure-beta58a",
+      "title": "Shure BETA 58A manufacturer documentation",
+      "publisher": "Shure",
+      "url": "https://pubs.shure.com/view/guide/BETA58A/en-US.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "at2020-xlr",
+    "manufacturer": "Audio-Technica",
+    "model": "AT2020",
+    "variant": "Black · XLR condenser · not USB",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "audio-technica-at20",
+    "split": "development",
+    "aliases": [
+      "AT2020"
+    ],
+    "source": {
+      "id": "corpus-at2020-xlr",
+      "title": "Audio-Technica AT2020 manufacturer documentation",
+      "publisher": "Audio-Technica",
+      "url": "https://docs.audio-technica.com/eu/at2020_english.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "at2040-xlr",
+    "manufacturer": "Audio-Technica",
+    "model": "AT2040",
+    "variant": "Black · XLR dynamic · not USB",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "audio-technica-at20",
+    "split": "development",
+    "aliases": [
+      "AT2040"
+    ],
+    "source": {
+      "id": "corpus-at2040-xlr",
+      "title": "Audio-Technica AT2040 manufacturer documentation",
+      "publisher": "Audio-Technica",
+      "url": "https://docs.audio-technica.com/us/AT2040_UM_142317030_V1_11L_web_210302.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-nt1-signature",
+    "manufacturer": "RØDE",
+    "model": "NT1 Signature Series",
+    "variant": "Black · XLR-only · not NT1 5th Generation",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "rode-studio-microphones",
+    "split": "held_out",
+    "aliases": [
+      "NT1 Signature Series"
+    ],
+    "source": {
+      "id": "corpus-rode-nt1-signature",
+      "title": "RØDE NT1 Signature Series manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://edge.rode.com/pdf/products/1362/NT1%20Signature%20Series_Datasheet_FA.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-podmic",
+    "manufacturer": "RØDE",
+    "model": "PodMic",
+    "variant": "Original black XLR model · not PodMic USB",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "rode-studio-microphones",
+    "split": "held_out",
+    "aliases": [
+      "PodMic"
+    ],
+    "source": {
+      "id": "corpus-rode-podmic",
+      "title": "RØDE PodMic manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://edge.rode.com/pdf/products/108/PodMic_Datasheet_07_FA.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-ntusb-mini",
+    "manufacturer": "RØDE",
+    "model": "NT-USB Mini",
+    "variant": "USB-C condenser · not NT-USB or NT-USB+",
+    "kind": "microphone",
+    "group": "microphones",
+    "family": "rode-studio-microphones",
+    "split": "held_out",
+    "aliases": [
+      "NT-USB Mini"
+    ],
+    "source": {
+      "id": "corpus-rode-ntusb-mini",
+      "title": "RØDE NT-USB Mini manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://edge.rode.com/pdf/page/78/modules/8/Asset_Pack_Datasheet_NT-USB_MINI.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "apple-ipad-air5",
+    "manufacturer": "Apple",
+    "model": "iPad Air",
+    "variant": "5th generation · Wi-Fi · M1 · 64GB",
+    "kind": "host",
+    "group": "hosts",
+    "family": "apple-ipad",
+    "split": "development",
+    "aliases": [
+      "iPad Air"
+    ],
+    "source": {
+      "id": "corpus-apple-ipad-air5",
+      "title": "Apple iPad Air manufacturer documentation",
+      "publisher": "Apple",
+      "url": "https://support.apple.com/en-us/111887",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "apple-ipad10",
+    "manufacturer": "Apple",
+    "model": "iPad",
+    "variant": "10th generation · Wi-Fi · A14 · 64GB",
+    "kind": "host",
+    "group": "hosts",
+    "family": "apple-ipad",
+    "split": "development",
+    "aliases": [
+      "10th generation"
+    ],
+    "source": {
+      "id": "corpus-apple-ipad10",
+      "title": "Apple iPad manufacturer documentation",
+      "publisher": "Apple",
+      "url": "https://support.apple.com/en-us/111840",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "apple-macbook-air-m2",
+    "manufacturer": "Apple",
+    "model": "MacBook Air",
+    "variant": "M2 2022 · 13.6-inch · 8-core GPU · 8GB/256GB",
+    "kind": "host",
+    "group": "hosts",
+    "family": "apple-mac-m2",
+    "split": "held_out",
+    "aliases": [
+      "MacBook Air"
+    ],
+    "source": {
+      "id": "corpus-apple-macbook-air-m2",
+      "title": "Apple MacBook Air manufacturer documentation",
+      "publisher": "Apple",
+      "url": "https://support.apple.com/en-us/111867",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "apple-mac-mini-m2",
+    "manufacturer": "Apple",
+    "model": "Mac mini",
+    "variant": "M2 2023 · 8-core CPU · 8GB/256GB · not M2 Pro",
+    "kind": "host",
+    "group": "hosts",
+    "family": "apple-mac-m2",
+    "split": "held_out",
+    "aliases": [
+      "Mac mini"
+    ],
+    "source": {
+      "id": "corpus-apple-mac-mini-m2",
+      "title": "Apple Mac mini manufacturer documentation",
+      "publisher": "Apple",
+      "url": "https://support.apple.com/en-us/111837",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "microsoft-surface-pro9-intel",
+    "manufacturer": "Microsoft",
+    "model": "Surface Pro 9",
+    "variant": "Intel Core i5 Wi-Fi · 8GB/256GB · not SQ3/5G",
+    "kind": "host",
+    "group": "hosts",
+    "family": "microsoft-surface-pro",
+    "split": "held_out",
+    "aliases": [
+      "Surface Pro 9"
+    ],
+    "source": {
+      "id": "corpus-microsoft-surface-pro9-intel",
+      "title": "Microsoft Surface Pro 9 manufacturer documentation",
+      "publisher": "Microsoft",
+      "url": "https://support.microsoft.com/en-us/surface/models/surface-pro-9-features-and-specs",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "raspberry-pi5-8gb",
+    "manufacturer": "Raspberry Pi",
+    "model": "Raspberry Pi 5",
+    "variant": "8GB · board only · separate power and OS",
+    "kind": "host",
+    "group": "hosts",
+    "family": "raspberry-pi5",
+    "split": "held_out",
+    "aliases": [
+      "Raspberry Pi 5"
+    ],
+    "source": {
+      "id": "corpus-raspberry-pi5-8gb",
+      "title": "Raspberry Pi Raspberry Pi 5 manufacturer documentation",
+      "publisher": "Raspberry Pi",
+      "url": "https://pip-assets.raspberrypi.com/categories/892-raspberry-pi-5/documents/RP-008348-DS-10-raspberry-pi-5-product-brief.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "sony-zve10",
+    "manufacturer": "Sony",
+    "model": "ZV-E10",
+    "variant": "Original generation · body · not ZV-E10 II",
+    "kind": "camera",
+    "group": "cameras",
+    "family": "sony-zv-e10",
+    "split": "development",
+    "aliases": [
+      "ZV-E10"
+    ],
+    "source": {
+      "id": "corpus-sony-zve10",
+      "title": "Sony ZV-E10 manufacturer documentation",
+      "publisher": "Sony",
+      "url": "https://helpguide.sony.net/ilc/2070/v1/en/contents/TP1000201578.html",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "sony-zve10-ii",
+    "manufacturer": "Sony",
+    "model": "ZV-E10 II",
+    "variant": "ZV-E10M2 · body only",
+    "kind": "camera",
+    "group": "cameras",
+    "family": "sony-zv-e10",
+    "split": "development",
+    "aliases": [
+      "ZV-E10M2",
+      "ZV-E10 II"
+    ],
+    "source": {
+      "id": "corpus-sony-zve10-ii",
+      "title": "Sony ZV-E10 II manufacturer documentation",
+      "publisher": "Sony",
+      "url": "https://helpguide.sony.net/ilc/2430/v1/en/contents/232h_specifications_ilc2430.html",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "canon-eos-r50",
+    "manufacturer": "Canon",
+    "model": "EOS R50",
+    "variant": "Original R50 · body · not R50 V",
+    "kind": "camera",
+    "group": "cameras",
+    "family": "canon-eos-r50",
+    "split": "held_out",
+    "aliases": [
+      "EOS R50"
+    ],
+    "source": {
+      "id": "corpus-canon-eos-r50",
+      "title": "Canon EOS R50 manufacturer documentation",
+      "publisher": "Canon",
+      "url": "https://cam.start.canon/en/C011/manual/html/UG-11_Reference_0090.html",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "panasonic-g100d",
+    "manufacturer": "Panasonic",
+    "model": "LUMIX G100D",
+    "variant": "DC-G100D · not G100 · lens conditions explicit",
+    "kind": "camera",
+    "group": "cameras",
+    "family": "panasonic-g100",
+    "split": "held_out",
+    "aliases": [
+      "DC-G100D"
+    ],
+    "source": {
+      "id": "corpus-panasonic-g100d",
+      "title": "Panasonic LUMIX G100D manufacturer documentation",
+      "publisher": "Panasonic",
+      "url": "https://help.na.panasonic.com/answers/features-and-specifications-lumix-g-series-model-dc-g100d/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "elgato-camlink-4k",
+    "manufacturer": "Elgato",
+    "model": "Cam Link 4K",
+    "variant": "Hardware revision unresolved · no 4K60 inference",
+    "kind": "capture",
+    "group": "capture_hubs",
+    "family": "elgato-usb-capture",
+    "split": "development",
+    "aliases": [
+      "Cam Link 4K"
+    ],
+    "source": {
+      "id": "corpus-elgato-camlink-4k",
+      "title": "Elgato Cam Link 4K manufacturer documentation",
+      "publisher": "Elgato",
+      "url": "https://help.elgato.com/api/v2/help_center/en-us/articles/360027963272.json",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "anker-555-a8383",
+    "manufacturer": "Anker",
+    "model": "555 USB-C Hub",
+    "variant": "A8383 · 8-in-1 · 10 Gb/s",
+    "kind": "hub",
+    "group": "capture_hubs",
+    "family": "anker-hubs",
+    "split": "development",
+    "aliases": [
+      "555",
+      "A8383"
+    ],
+    "source": {
+      "id": "corpus-anker-555-a8383",
+      "title": "Anker 555 USB-C Hub manufacturer documentation",
+      "publisher": "Anker",
+      "url": "https://www.anker.com/uk/products/a8383",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "elgato-hd60x",
+    "manufacturer": "Elgato",
+    "model": "HD60 X",
+    "variant": "External USB 3.0 · not HD60 S+",
+    "kind": "capture",
+    "group": "capture_hubs",
+    "family": "elgato-usb-capture",
+    "split": "development",
+    "aliases": [
+      "HD60 X"
+    ],
+    "source": {
+      "id": "corpus-elgato-hd60x",
+      "title": "Elgato HD60 X manufacturer documentation",
+      "publisher": "Elgato",
+      "url": "https://help.elgato.com/api/v2/help_center/en-us/articles/5293216945805.json",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "elgato-4kx",
+    "manufacturer": "Elgato",
+    "model": "4K X",
+    "variant": "External USB 3.2 Gen 2 · not 4K Pro",
+    "kind": "capture",
+    "group": "capture_hubs",
+    "family": "elgato-usb-capture",
+    "split": "development",
+    "aliases": [
+      "4K X"
+    ],
+    "source": {
+      "id": "corpus-elgato-4kx",
+      "title": "Elgato 4K X manufacturer documentation",
+      "publisher": "Elgato",
+      "url": "https://help.elgato.com/api/v2/help_center/en-us/articles/23658118721421.json",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "avermedia-gc311",
+    "manufacturer": "AVerMedia",
+    "model": "Live Gamer MINI",
+    "variant": "GC311 · not GC311G2",
+    "kind": "capture",
+    "group": "capture_hubs",
+    "family": "avermedia-live-gamer",
+    "split": "held_out",
+    "aliases": [
+      "GC311",
+      "Live Gamer MINI"
+    ],
+    "source": {
+      "id": "corpus-avermedia-gc311",
+      "title": "AVerMedia Live Gamer MINI manufacturer documentation",
+      "publisher": "AVerMedia",
+      "url": "https://www.avermedia.com/product-detail/GC311",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "blackmagic-atem-mini-pro",
+    "manufacturer": "Blackmagic Design",
+    "model": "ATEM Mini Pro",
+    "variant": "Pro · not Pro ISO or Extreme",
+    "kind": "capture",
+    "group": "capture_hubs",
+    "family": "blackmagic-atem-mini",
+    "split": "held_out",
+    "aliases": [
+      "ATEM Mini Pro"
+    ],
+    "source": {
+      "id": "corpus-blackmagic-atem-mini-pro",
+      "title": "Blackmagic Design ATEM Mini Pro manufacturer documentation",
+      "publisher": "Blackmagic Design",
+      "url": "https://www.blackmagicdesign.com/products/atemmini/techspecs",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "caldigit-ts4",
+    "manufacturer": "CalDigit",
+    "model": "TS4",
+    "variant": "Thunderbolt Station 4 · 98W host charging",
+    "kind": "hub",
+    "group": "capture_hubs",
+    "family": "caldigit-ts",
+    "split": "held_out",
+    "aliases": [
+      "TS4"
+    ],
+    "source": {
+      "id": "corpus-caldigit-ts4",
+      "title": "CalDigit TS4 manufacturer documentation",
+      "publisher": "CalDigit",
+      "url": "https://downloads.caldigit.com/TS4/CalDigit_TS4_Manual.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "owc-thunderbolt-go",
+    "manufacturer": "OWC",
+    "model": "Thunderbolt Go Dock",
+    "variant": "OWCTB4DKG11P · integrated power supply",
+    "kind": "hub",
+    "group": "capture_hubs",
+    "family": "owc-thunderbolt-go",
+    "split": "held_out",
+    "aliases": [
+      "Thunderbolt Go Dock"
+    ],
+    "source": {
+      "id": "corpus-owc-thunderbolt-go",
+      "title": "OWC Thunderbolt Go Dock manufacturer documentation",
+      "publisher": "OWC",
+      "url": "https://www.owc.com/solutions/thunderbolt-go-dock",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "hosa-hmic010",
+    "manufacturer": "Hosa",
+    "model": "HMIC-010",
+    "variant": "10 ft · REAN XLR female to male",
+    "kind": "cable",
+    "group": "cables",
+    "family": "hosa-analog",
+    "split": "development",
+    "aliases": [
+      "HMIC-010",
+      "HMIC"
+    ],
+    "source": {
+      "id": "corpus-hosa-hmic010",
+      "title": "Hosa HMIC-010 manufacturer documentation",
+      "publisher": "Hosa",
+      "url": "https://hosatech.com/products/analog-audio/microphone-cables/pro-microphone-cables/hmic/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "hosa-gpm103",
+    "manufacturer": "Hosa",
+    "model": "GPM-103",
+    "variant": "3.5 mm TRS female to 6.35 mm TRS male",
+    "kind": "cable",
+    "group": "cables",
+    "family": "hosa-analog",
+    "split": "development",
+    "aliases": [
+      "GPM-103"
+    ],
+    "source": {
+      "id": "corpus-hosa-gpm103",
+      "title": "Hosa GPM-103 manufacturer documentation",
+      "publisher": "Hosa",
+      "url": "https://hosatech.com/products/analog-audio/adapters/general-adapters/gpm-103/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "hosa-cmp159",
+    "manufacturer": "Hosa",
+    "model": "CMP-159",
+    "variant": "10 ft · 3.5 mm TRS to dual 6.35 mm TS",
+    "kind": "cable",
+    "group": "cables",
+    "family": "hosa-analog",
+    "split": "development",
+    "aliases": [
+      "CMP-159",
+      "CMP-150"
+    ],
+    "source": {
+      "id": "corpus-hosa-cmp159",
+      "title": "Hosa CMP-159 manufacturer documentation",
+      "publisher": "Hosa",
+      "url": "https://hosatech.com/products/analog-audio/stereo-breakouts/hosa-breakouts/cmp-150/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-sc4",
+    "manufacturer": "RØDE",
+    "model": "SC4",
+    "variant": "3.5 mm TRS female to TRRS male · CTIA",
+    "kind": "cable",
+    "group": "cables",
+    "family": "rode-signal-cables",
+    "split": "development",
+    "aliases": [
+      "SC4"
+    ],
+    "source": {
+      "id": "corpus-rode-sc4",
+      "title": "RØDE SC4 manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://rode.com/en-us/products/sc4",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-sc7",
+    "manufacturer": "RØDE",
+    "model": "SC7",
+    "variant": "3.5 mm TRS to TRRS patch cable · CTIA",
+    "kind": "cable",
+    "group": "cables",
+    "family": "rode-signal-cables",
+    "split": "development",
+    "aliases": [
+      "SC7"
+    ],
+    "source": {
+      "id": "corpus-rode-sc7",
+      "title": "RØDE SC7 manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://rode.com/en-us/products/sc7",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-sc16",
+    "manufacturer": "RØDE",
+    "model": "SC16",
+    "variant": "300 mm · USB-C to USB-C",
+    "kind": "cable",
+    "group": "cables",
+    "family": "rode-signal-cables",
+    "split": "development",
+    "aliases": [
+      "SC16"
+    ],
+    "source": {
+      "id": "corpus-rode-sc16",
+      "title": "RØDE SC16 manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://rode.com/en-us/products/sc16",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "startech-hdmiadmm3",
+    "manufacturer": "StarTech.com",
+    "model": "HDMIADMM3",
+    "variant": "3 ft · HDMI type A to micro HDMI type D",
+    "kind": "cable",
+    "group": "cables",
+    "family": "startech-data-cables",
+    "split": "held_out",
+    "aliases": [
+      "HDMIADMM3"
+    ],
+    "source": {
+      "id": "corpus-startech-hdmiadmm3",
+      "title": "StarTech.com HDMIADMM3 manufacturer documentation",
+      "publisher": "StarTech.com",
+      "url": "https://media.startech.com/cms/pdfs/hdmiadmm3_datasheet.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "startech-usb315cc1m",
+    "manufacturer": "StarTech.com",
+    "model": "USB315CC1M",
+    "variant": "1 m · USB-C to USB-C · USB 5Gbps · 60W",
+    "kind": "cable",
+    "group": "cables",
+    "family": "startech-data-cables",
+    "split": "held_out",
+    "aliases": [
+      "USB315CC1M"
+    ],
+    "source": {
+      "id": "corpus-startech-usb315cc1m",
+      "title": "StarTech.com USB315CC1M manufacturer documentation",
+      "publisher": "StarTech.com",
+      "url": "https://media.startech.com/cms/pdfs/usb315cc1m_datasheet.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "startech-usb2cub1m",
+    "manufacturer": "StarTech.com",
+    "model": "USB2CUB1M",
+    "variant": "1 m · USB-C to USB Micro-B · USB 2.0",
+    "kind": "cable",
+    "group": "cables",
+    "family": "startech-data-cables",
+    "split": "held_out",
+    "aliases": [
+      "USB2CUB1M"
+    ],
+    "source": {
+      "id": "corpus-startech-usb2cub1m",
+      "title": "StarTech.com USB2CUB1M manufacturer documentation",
+      "publisher": "StarTech.com",
+      "url": "https://media.startech.com/cms/pdfs/usb2cub1m_datasheet.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "apple-60w-usbc1m",
+    "manufacturer": "Apple",
+    "model": "60W USB-C Charge Cable",
+    "variant": "MW493ZM/A · 1 m · woven · India regional package · USB 2 rates",
+    "kind": "cable",
+    "group": "cables",
+    "family": "apple-charge-cables",
+    "split": "development",
+    "aliases": [
+      "60W USB-C Charge Cable"
+    ],
+    "source": {
+      "id": "corpus-apple-60w-usbc1m",
+      "title": "Apple 60W USB-C Charge Cable manufacturer documentation",
+      "publisher": "Apple",
+      "url": "https://www.apple.com/in/shop/product/mw493zm/a/60w-usb-c-charge-cable-1m",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "sony-mdr7506",
+    "manufacturer": "Sony",
+    "model": "MDR-7506",
+    "variant": "Wired · supplied 3.5/6.35 mm adapter",
+    "kind": "headphones",
+    "group": "monitoring",
+    "family": "sony-mdr-monitoring",
+    "split": "held_out",
+    "aliases": [
+      "MDR-7506"
+    ],
+    "source": {
+      "id": "corpus-sony-mdr7506",
+      "title": "Sony MDR-7506 manufacturer documentation",
+      "publisher": "Sony",
+      "url": "https://pro.sony/en_NA/pdf/mdr-7506",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "audio-technica-m50x",
+    "manufacturer": "Audio-Technica",
+    "model": "ATH-M50x",
+    "variant": "Black · wired · not M50xBT2",
+    "kind": "headphones",
+    "group": "monitoring",
+    "family": "audio-technica-m-series",
+    "split": "held_out",
+    "aliases": [
+      "ATH-M50x"
+    ],
+    "source": {
+      "id": "corpus-audio-technica-m50x",
+      "title": "Audio-Technica ATH-M50x manufacturer documentation",
+      "publisher": "Audio-Technica",
+      "url": "https://docs.audio-technica.com/eu/M-Series_leaflet_ENG_L00053_V1.0.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "beyerdynamic-dt770-80",
+    "manufacturer": "beyerdynamic",
+    "model": "DT 770 PRO",
+    "variant": "80 ohm · article 474746 · not 32/250 ohm",
+    "kind": "headphones",
+    "group": "monitoring",
+    "family": "beyerdynamic-dt770",
+    "split": "held_out",
+    "aliases": [
+      "DT 770 PRO"
+    ],
+    "source": {
+      "id": "corpus-beyerdynamic-dt770-80",
+      "title": "beyerdynamic DT 770 PRO manufacturer documentation",
+      "publisher": "beyerdynamic",
+      "url": "https://api.beyerdynamic.de/amfile/file/download/file/865/",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "sennheiser-hd280pro",
+    "manufacturer": "Sennheiser",
+    "model": "HD 280 PRO",
+    "variant": "Current 506845 · wired · 64 ohm",
+    "kind": "headphones",
+    "group": "monitoring",
+    "family": "sennheiser-hd280",
+    "split": "held_out",
+    "aliases": [
+      "HD 280 PRO"
+    ],
+    "source": {
+      "id": "corpus-sennheiser-hd280pro",
+      "title": "Sennheiser HD 280 PRO manufacturer documentation",
+      "publisher": "Sennheiser",
+      "url": "https://www.sennheiser.com/en-us/catalog/products/headphones/hd-280-pro/hd-280-pro-506845",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "anker-735-a2668",
+    "manufacturer": "Anker",
+    "model": "735 Charger",
+    "variant": "A2668 · GaNPrime 65W · US folding plug · not A2667",
+    "kind": "power",
+    "group": "power",
+    "family": "anker-gan-chargers",
+    "split": "development",
+    "aliases": [
+      "735 Charger",
+      "A2668"
+    ],
+    "source": {
+      "id": "corpus-anker-735-a2668",
+      "title": "Anker 735 Charger manufacturer documentation",
+      "publisher": "Anker",
+      "url": "https://service.anker.com/product-description/a085g000004xGpUAAU",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "anker-737-a2148",
+    "manufacturer": "Anker",
+    "model": "737 Charger",
+    "variant": "A2148 · GaNPrime 120W · US folding plug",
+    "kind": "power",
+    "group": "power",
+    "family": "anker-gan-chargers",
+    "split": "development",
+    "aliases": [
+      "737 Charger",
+      "A2148"
+    ],
+    "source": {
+      "id": "corpus-anker-737-a2148",
+      "title": "Anker 737 Charger manufacturer documentation",
+      "publisher": "Anker",
+      "url": "https://service.anker.com/product-description/a085g000004xGpZAAU",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "anker-715-a2663",
+    "manufacturer": "Anker",
+    "model": "715 Charger",
+    "variant": "A2663 · Nano II 65W · US folding plug",
+    "kind": "power",
+    "group": "power",
+    "family": "anker-gan-chargers",
+    "split": "development",
+    "aliases": [
+      "715 Charger",
+      "A2663"
+    ],
+    "source": {
+      "id": "corpus-anker-715-a2663",
+      "title": "Anker 715 Charger manufacturer documentation",
+      "publisher": "Anker",
+      "url": "https://www.anker.com/products/a2663",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "raspberry-pi-27w-psu",
+    "manufacturer": "Raspberry Pi",
+    "model": "27W USB-C Power Supply",
+    "variant": "US plug · white · fixed 1.2 m USB-C cable",
+    "kind": "power",
+    "group": "power",
+    "family": "raspberry-pi5",
+    "split": "held_out",
+    "aliases": [
+      "27W USB-C Power Supply"
+    ],
+    "source": {
+      "id": "corpus-raspberry-pi-27w-psu",
+      "title": "Raspberry Pi 27W USB-C Power Supply manufacturer documentation",
+      "publisher": "Raspberry Pi",
+      "url": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "rode-psa1plus",
+    "manufacturer": "RØDE",
+    "model": "PSA1+",
+    "variant": "Original PSA1+ studio arm · not PSA1",
+    "kind": "stand",
+    "group": "stands",
+    "family": "rode-psa",
+    "split": "held_out",
+    "aliases": [
+      "PSA1+"
+    ],
+    "source": {
+      "id": "corpus-rode-psa1plus",
+      "title": "RØDE PSA1+ manufacturer documentation",
+      "publisher": "RØDE",
+      "url": "https://edge.rode.com/pdf/page/357/modules/1258/RODE_PSA1PLUS_DATASHEET2.pdf",
+      "kind": "manufacturer"
+    }
+  },
+  {
+    "id": "km-2109-black",
+    "manufacturer": "König & Meyer",
+    "model": "210/9",
+    "variant": "21090-300-55 · black · 3/8 inch thread",
+    "kind": "stand",
+    "group": "stands",
+    "family": "konig-meyer-boom",
+    "split": "held_out",
+    "aliases": [
+      "210/9"
+    ],
+    "source": {
+      "id": "corpus-km-2109-black",
+      "title": "König & Meyer 210/9 manufacturer documentation",
+      "publisher": "König & Meyer",
+      "url": "https://www.k-m.de/en/products/microphone-stands/floor-stands/microphone-stands-with-boom/210-9-microphone-stand-black",
+      "kind": "manufacturer"
+    }
+  }
+]

@@ -89,6 +89,7 @@ export async function recoverPhotoIntents(tenantId?: string): Promise<number> {
     for (const photo of rows.rows) {
       const input = { photoId: photo.id };
       const result = await db.query("INSERT INTO wk_jobs(id,tenant_id,kind,status,input,managed,idempotency_key,input_hash,progress) VALUES($1,$2,'inventory_photo_delete','queued',$3,true,$4,$5,'Removing an expired or incomplete private photo') ON CONFLICT(tenant_id,kind,idempotency_key) WHERE idempotency_key IS NOT NULL DO NOTHING RETURNING id", [randomUUID(), photo.tenant_id, input, photo.id, hash(input)]);
+      if (!result.rowCount) await db.query("UPDATE wk_jobs SET status='retry_wait',max_attempts=attempts-continuations+3,next_attempt_at=now(),error=NULL,progress='Resuming private photo cleanup',updated_at=now() WHERE tenant_id=$1 AND kind='inventory_photo_delete' AND idempotency_key=$2 AND status IN ('failed','cancelled') AND updated_at<now()-interval '1 hour'", [photo.tenant_id, photo.id]);
       await db.query("UPDATE wk_inventory_photos SET status='deleting' WHERE id=$1", [photo.id]); inserted += result.rowCount ?? 0;
     }
     return inserted;

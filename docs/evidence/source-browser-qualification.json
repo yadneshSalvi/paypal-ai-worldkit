@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-11-11T03:11:07.031654+00:00",
+  "interface": "Codex in-app browser",
+  "performedBy": "Root integration agent",
+  "sourceMode": "live_provider_calls",
+  "application": "http://127.0.0.1:4106",
+  "sourceProfile": "at2020-xlr",
+  "documentId": "384bdb90-2263-48fb-8c63-5a2b9d599d85",
+  "draftId": "b17feb45-fcec-4d4d-9e9c-5e87c460954c",
+  "savedCandidateId": "research:at2020-xlr:b9ea643b81cc956e4adb",
+  "sourceHash": "527f0454027f1ba141c2a89cabb3c2c365465387bf09c45a96dc178195842e28",
+  "observedProposal": {
+    "provider": "gemini",
+    "located": 10,
+    "unknown": 3,
+    "criticalFactsSelectedForQuestion": 9
+  },
+  "reviewQuestion": "Check the XLR model scope and required phantom power before using this candidate.",
+  "checks": [
+    "Private manufacturer copy saved through the source-reading UI",
+    "Actual Gemini proposal resumed through ordinary page reload",
+    "Located phantom-power quotation and source page inspected",
+    "Unanswered review question preserved after reload without a review decision",
+    "Pending-review acknowledgement required before immutable candidate save",
+    "Saved candidate preserved after reload and confirmed by read-only database binding",
+    "Equipment selector includes the exact saved proposal rather than only the frozen library candidate",
+    "Planned equipment selection previewed without saving a new item",
+    "Escape restored equipment modal focus",
+    "Source-version control has visible keyboard focus",
+    "No horizontal document overflow at 390, 768, 1280 and 1920 pixels"
+  ],
+  "screenshots": {
+    "storage": "Private root evidence; images are not published by this receipt",
+    "files": [
+      "worldkit-grounded-source-review.png",
+      "worldkit-source-mobile.png"
+    ]
+  },
+  "newEquipmentItems": 0,
+  "humanReviewDecisions": 0,
+  "physicalTests": 0,
+  "financialWrites": 0,
+  "notRepeatedInBrowser": [
+    "Astra provider cancellation",
+    "Private-source deletion"
+  ],
+  "separateBackendEvidence": "source-workflow-qualification.json"
+}

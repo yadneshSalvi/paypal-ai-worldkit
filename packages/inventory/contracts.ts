@@ -15,7 +15,8 @@ export const InventoryItemSchema = z.object({
 });
 export type InventoryItem = z.infer<typeof InventoryItemSchema>;
 export type InventoryHistory = { id: string; itemId: string; version: number; at: string; title: string; detail: string };
-export type InventoryWorkspace = { items: InventoryItem[]; photos: InventoryPhoto[]; regions: InventoryRegion[]; history: InventoryHistory[]; library: z.infer<typeof DeviceSchema>[]; storageReady: boolean };
+export type InventoryProfileChoice = Pick<z.infer<typeof DeviceSchema>, "id" | "baseProfileId" | "basisProfileId" | "corpusId" | "sourceVersion" | "manufacturer" | "model" | "variant" | "kind">;
+export type InventoryWorkspace = { items: InventoryItem[]; photos: InventoryPhoto[]; regions: InventoryRegion[]; history: InventoryHistory[]; library: InventoryProfileChoice[]; storageReady: boolean };
 export const IdentitySchema = z.object({
   libraryProfileId: z.string().min(1).max(200).nullable(), manufacturer: z.string().trim().min(1).max(100),
   model: z.string().trim().min(1).max(160), variant: z.string().trim().min(1).max(250), deviceKind: DeviceKindSchema,

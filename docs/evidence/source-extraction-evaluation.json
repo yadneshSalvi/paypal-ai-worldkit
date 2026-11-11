@@ -1,0 +1,425 @@
+{
+  "version": 2,
+  "transportVersion": "source-transport.2",
+  "updatedAt": "2026-11-11T03:22:15.199Z",
+  "sourceMode": "live_provider_calls",
+  "referenceMode": "unreviewed_ai_draft",
+  "referenceHash": "d623c38ff6ff360c318d2e8ceff39d692170b7013e0dfeba312d913ed8259a65",
+  "promptHash": "b55ed4bdf2766d6cd16387ef70b986972d3c5f1306b3cd871d7bef81aedb3739",
+  "referenceFrozenAt": "2026-11-11T02:07:23.946760Z",
+  "priorAttempts": "source-extraction-transport-v1-interrupted.json",
+  "completion": "in_progress",
+  "counts": {
+    "referenceAssertions": 323,
+    "heldOutDevices": 30,
+    "developmentDevices": 30,
+    "independentHumanReviews": 0,
+    "physicalTests": 0
+  },
+  "providers": [
+    {
+      "provider": "openai",
+      "modelIds": [
+        "gpt-6-astra"
+      ],
+      "jobs": {
+        "attempted": 29,
+        "running": 2,
+        "succeeded": 27,
+        "failed": 0
+      },
+      "durationMs": 6099052,
+      "inputTokens": 160004,
+      "outputTokens": 197904,
+      "comparison": {
+        "mode": "agreement_with_unreviewed_ai_draft",
+        "assertions": 323,
+        "expectedSupported": 299,
+        "expectedUnknown": 23,
+        "expectedConflicted": 1,
+        "completedAssertions": 294,
+        "missing": 29,
+        "rawSupportedPredictions": 267,
+        "supportedPredictions": 267,
+        "rejected": 0,
+        "typedValueAgreement": 267,
+        "exactValueUnitScopeAgreement": 267,
+        "draftTypedPrecision": {
+          "numerator": 267,
+          "denominator": 267,
+          "value": 1
+        },
+        "draftTypedRecall": {
+          "numerator": 267,
+          "denominator": 299,
+          "value": 0.8929765886287625
+        },
+        "draftCorrectAbstention": {
+          "numerator": 22,
+          "denominator": 23,
+          "value": 0.9565217391304348
+        },
+        "draftConflictAgreement": 1,
+        "locatedCitationCoverage": {
+          "numerator": 267,
+          "denominator": 267,
+          "value": 1
+        },
+        "humanSourceSupportPrecision": null,
+        "humanGoldAccuracy": null,
+        "verifiedFactPromotions": 0,
+        "independentHumanReviews": 0,
+        "physicalTests": 0,
+        "limitations": [
+          "This reference was prepared by an AI from manufacturer documents. It has not been adjudicated by the two required human reviewers.",
+          "Draft agreement is not accuracy. A shared mistake in the draft and extractor may appear as agreement.",
+          "Located quotations prove traceability, not semantic source support. Semantic source-support precision remains unmeasured.",
+          "Scope equality checks the requested string. It does not establish that every quoted passage supports that exact variant or mode.",
+          "Operating conditions are retained for review; free-text condition correctness is not automatically scored.",
+          "Failed provider calls count as missing assertions, not successful abstentions. Rejected proposals are also not correct abstentions.",
+          "All extracted facts remain pending review. None can promote itself into verified device evidence."
+        ],
+        "disagreements": [
+          {
+            "assertionId": "avermedia-gc311:usbconnector",
+            "reason": "Abstention or conflict differs from unreviewed draft."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:inputimpedance",
+            "reason": "Abstention or conflict differs from unreviewed draft."
+          },
+          {
+            "assertionId": "startech-usb315cc1m:fps4k",
+            "reason": "Abstention or conflict differs from unreviewed draft."
+          },
+          {
+            "assertionId": "sony-mdr7506:frequencymin",
+            "reason": "Abstention or conflict differs from unreviewed draft."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:maxpower",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5voltage",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5current",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd9vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd12vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pd15vcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:cablelength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:inputvoltagemin",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:inputvoltagemax",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "raspberry-pi-27w-psu:pi5peripheralcurrent",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:minsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:maxsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:horizontalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:verticalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:clampmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:insertmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:rotation",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:sm5compatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:usbcablemanagement",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomminlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boommaxlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:minheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:threaddiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomsectioncount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:foldinglegs",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxsupportedmass",
+            "reason": "No completed extraction result."
+          }
+        ]
+      }
+    },
+    {
+      "provider": "gemini",
+      "modelIds": [
+        "gemini-3.8-flash"
+      ],
+      "jobs": {
+        "attempted": 28,
+        "running": 0,
+        "succeeded": 28,
+        "failed": 0
+      },
+      "durationMs": 717476,
+      "inputTokens": 170994,
+      "outputTokens": 46686,
+      "comparison": {
+        "mode": "agreement_with_unreviewed_ai_draft",
+        "assertions": 323,
+        "expectedSupported": 299,
+        "expectedUnknown": 23,
+        "expectedConflicted": 1,
+        "completedAssertions": 304,
+        "missing": 19,
+        "rawSupportedPredictions": 280,
+        "supportedPredictions": 266,
+        "rejected": 15,
+        "typedValueAgreement": 266,
+        "exactValueUnitScopeAgreement": 266,
+        "draftTypedPrecision": {
+          "numerator": 266,
+          "denominator": 266,
+          "value": 1
+        },
+        "draftTypedRecall": {
+          "numerator": 266,
+          "denominator": 299,
+          "value": 0.8896321070234113
+        },
+        "draftCorrectAbstention": {
+          "numerator": 21,
+          "denominator": 23,
+          "value": 0.9130434782608695
+        },
+        "draftConflictAgreement": 1,
+        "locatedCitationCoverage": {
+          "numerator": 266,
+          "denominator": 280,
+          "value": 0.95
+        },
+        "humanSourceSupportPrecision": null,
+        "humanGoldAccuracy": null,
+        "verifiedFactPromotions": 0,
+        "independentHumanReviews": 0,
+        "physicalTests": 0,
+        "limitations": [
+          "This reference was prepared by an AI from manufacturer documents. It has not been adjudicated by the two required human reviewers.",
+          "Draft agreement is not accuracy. A shared mistake in the draft and extractor may appear as agreement.",
+          "Located quotations prove traceability, not semantic source support. Semantic source-support precision remains unmeasured.",
+          "Scope equality checks the requested string. It does not establish that every quoted passage supports that exact variant or mode.",
+          "Operating conditions are retained for review; free-text condition correctness is not automatically scored.",
+          "Failed provider calls count as missing assertions, not successful abstentions. Rejected proposals are also not correct abstentions.",
+          "All extracted facts remain pending review. None can promote itself into verified device evidence."
+        ],
+        "disagreements": [
+          {
+            "assertionId": "rode-rodecaster-duo:assignablechannelcount",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-rodecaster-duo:physicalfadercount",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:outputconnector",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:buspowered",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:samplerate",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:bitdepth",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:capturechannels",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:playbackchannels",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:simultaneousio",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:headphonediameter",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:minmacos",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:minwindows",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-ntusb-mini:cameraappconcurrent",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "blackmagic-atem-mini-pro:inputimpedance",
+            "reason": "Abstention or conflict differs from unreviewed draft."
+          },
+          {
+            "assertionId": "caldigit-ts4:thunderboltportcount",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "beyerdynamic-dt770-80:weight",
+            "reason": "Rejected by source/type/scope validation."
+          },
+          {
+            "assertionId": "rode-psa1plus:minsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:maxsupportedmass",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:horizontalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:verticalreach",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:clampmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:insertmaxthickness",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:rotation",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:sm5compatible",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:usbcablemanagement",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "rode-psa1plus:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomminlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boommaxlength",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:minheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxheight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:threaddiameter",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:boomsectioncount",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:foldinglegs",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:weight",
+            "reason": "No completed extraction result."
+          },
+          {
+            "assertionId": "km-2109-black:maxsupportedmass",
+            "reason": "No completed extraction result."
+          }
+        ]
+      }
+    }
+  ]
+}

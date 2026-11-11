@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { writeFile } from "node:fs/promises";
+import type { EvidenceDetail, EvidenceWorkspace } from "../packages/spec-evidence/contracts";
+import type { InventoryProfileChoice } from "../packages/inventory/contracts";
+
+const base = "http://127.0.0.1:4106";
+const checks: string[] = [];
+assert.equal((await fetch(`${base}/api/evidence`)).status, 401); checks.push("Anonymous source-library access denied");
+assert.equal((await fetch(`${base}/api/workspace`, { method: "POST", headers: { Origin: base } })).status, 415); checks.push("Non-JSON mutation rejected before workspace creation");
+const created = await fetch(`${base}/api/workspace`, { method: "POST", headers: { Origin: base, "Content-Type": "application/json" }, body: "{}" });
+assert.equal(created.status, 201);
+const cookie = created.headers.get("set-cookie")!.split(";")[0]!;
+const request = async (path: string, init: RequestInit = {}) => fetch(`${base}${path}`, { ...init, headers: { Cookie: cookie, Origin: base, ...init.headers } });
+const libraryResponse = await request("/api/evidence"); assert.equal(libraryResponse.status, 200);
+const library = await libraryResponse.json() as EvidenceWorkspace;
+assert.equal(library.summary.candidates, 60); assert.equal(library.summary.retrieved, 60); assert.equal(library.summary.humanReviewed, 0); checks.push("Sixty manufacturer-source candidates retain zero human reviews");
+const detailResponse = await request("/api/evidence?profileId=at2020-xlr"); assert.equal(detailResponse.status, 200);
+const detail = await detailResponse.json() as EvidenceDetail;
+assert.equal(detail.libraryProfile!.portMapStatus, "pending"); assert.equal(detail.queries.length, 13); checks.push("Exact source detail retains its pending port map and thirteen scoped questions");
+assert.equal((await request("/api/evidence?profileId=not-a-profile")).status, 404); checks.push("Unknown source profile denied");
+const choicesResponse = await request("/api/inventory?view=profiles"); assert.equal(choicesResponse.status, 200);
+const choicesText = await choicesResponse.text(); const choices = JSON.parse(choicesText) as { library: InventoryProfileChoice[] };
+assert.equal(choices.library.filter(profile => profile.corpusId).length, 60); assert.ok(choices.library.every(profile => !("facts" in profile) && !("ports" in profile)));
+assert.ok(Buffer.byteLength(choicesText) < 50_000); checks.push("Discovery and Equipment can load all exact identities without downloading the full source corpus");
+const foreignDraft = process.argv.find(value => value.startsWith("--foreign-draft="))?.slice(16);
+if (foreignDraft) { assert.equal((await request(`/api/evidence?draftId=${encodeURIComponent(foreignDraft)}`)).status, 404); checks.push("Another workspace's saved source proposal is inaccessible"); }
+assert.equal((await request("/api/evidence", { method: "POST", headers: { Origin: "https://foreign.example.com", "Content-Type": "application/json" }, body: JSON.stringify({ kind: "retrieve", profileId: "at2020-xlr", requestId: crypto.randomUUID(), expectedHeadId: null }) })).status, 403); checks.push("Foreign-origin source retrieval denied");
+const receipt = { checkedAt: new Date().toISOString(), sourceMode: "production_build_http", checks, selector: { profiles: choices.library.length, bytes: Buffer.byteLength(choicesText), corpusFactsIncluded: false }, providerCalls: 0, financialWrites: 0 };
+await writeFile("docs/evidence/source-http-qualification.json", JSON.stringify(receipt, null, 2) + "\n");
+console.log(JSON.stringify(receipt));

@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-11T03:22:26.453Z",
+  "sourceMode": "production_build_http",
+  "checks": [
+    "Anonymous source-library access denied",
+    "Non-JSON mutation rejected before workspace creation",
+    "Sixty manufacturer-source candidates retain zero human reviews",
+    "Exact source detail retains its pending port map and thirteen scoped questions",
+    "Unknown source profile denied",
+    "Discovery and Equipment can load all exact identities without downloading the full source corpus",
+    "Another workspace's saved source proposal is inaccessible",
+    "Foreign-origin source retrieval denied"
+  ],
+  "selector": {
+    "profiles": 71,
+    "bytes": 20172,
+    "corpusFactsIncluded": false
+  },
+  "providerCalls": 0,
+  "financialWrites": 0
+}

@@ -20,6 +20,9 @@ export const FactSchema = z.object({
   unit: z.string().nullable(), sourceIds: z.array(z.string()), scope: z.string(), conditions: z.array(z.string()),
   state: z.enum(["supported", "unknown", "conflicted"]), critical: z.boolean(),
   review: z.object({ status: z.enum(["pending", "reviewed", "rejected"]), reviewer: z.string().nullable(), date: z.string().nullable() }),
+  evidence: z.array(z.object({ sourceId: z.string(), contentHash: z.string(), textHash: z.string(), page: z.number().int().positive(), start: z.number().int().nonnegative(), end: z.number().int().positive(), excerptHash: z.string() })).optional(),
+  extraction: z.object({ draftId: z.string(), validation: z.enum(["located_pending_review", "abstained", "rejected", "conflicted"]) }).optional(),
+  interpretation: z.string().optional(),
 });
 export type Fact = z.infer<typeof FactSchema>;
 export const SignalSchema = z.enum(["audio", "video", "data", "power"]);
@@ -43,6 +46,7 @@ export const DeviceSchema = z.object({
   ports: z.array(PortSchema), facts: z.record(z.string(), FactSchema),
   catalogId: z.string().nullable(), selectedOptions: z.array(SelectedOptionSchema),
   baseProfileId: z.string().optional(), catalogBinding: CatalogBindingSchema.optional(),
+  corpusId: z.string().optional(), sourceVersion: z.string().optional(), basisProfileId: z.string().optional(), portMapStatus: z.enum(["pending", "review_pending", "reviewed"]).optional(),
   reviewState: z.enum(["candidate", "sources_collected", "review_pending", "verified_scope", "conflicted"]),
   art: z.literal("original_line_art"), accent: z.string(),
 });
