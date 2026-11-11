@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "worldkit.engineering-review-hosted.v1",
+  "at": "2026-11-11T19:01:16.048555+00:00",
+  "sourceCommit": "2e4cca3c3c380d1bdff86871a0a21d0db08f0eab",
+  "deploymentId": "dpl_7ZvnbTUS48SpaPuy4ixcFkg4wYEA",
+  "url": "https://paypal-ai-worldkit.vercel.app",
+  "status": "READY and promoted",
+  "httpChecks": 34,
+  "httpPassed": true,
+  "nativeChecks": [
+    "New owned Sample identity loads current edition2 with18 assertions",
+    "Exact779-character fictional source displayed",
+    "Edition comparison retains earlier unknown values and current typed values",
+    "Keyboard historical/current edition navigation lands on H1",
+    "Historical editing disabled",
+    "Revoked Sample identity shows capability version3 with original history",
+    "390px review and360px access view have no horizontal overflow",
+    "Zero observed console errors before cleanup",
+    "Temporary workspace cookie removed; existing Vercel authentication cookie unchanged; viewport reset"
+  ],
+  "migration": {
+    "backupVerified": true,
+    "backupBytes": 900733,
+    "backupSha256": "e623f3b80c934efbd8b8f50124a61f6cfab1cc27bd7ded668a5d0e55041aa95e",
+    "newTables": 15,
+    "originalTables": 64,
+    "originalRows": 475,
+    "afterTables": 79,
+    "afterRows": 519,
+    "allOriginalApplicationRowsRetained": true,
+    "admissionCounterDelta": [
+      {
+        "period": "day",
+        "windowStart": "2026-11-11T00:00:00.000Z",
+        "before": 31,
+        "after": 35,
+        "delta": 4
+      }
+    ],
+    "unchangedFinancialTables": [
+      "wk_commerce_orders",
+      "wk_kit_sample_payments",
+      "wk_payment_evidence_reads",
+      "wk_payment_observations",
+      "wk_payment_resources",
+      "wk_vault_operations",
+      "wk_wallet_consents"
+    ],
+    "newSessionsObserved": 4,
+    "httpQualificationSessions": 2,
+    "additionalEmptySessionsObservedBeforeQualification": 2,
+    "additionalSessionsLimitation": "Two additional sessions predate the recorded qualification start. Their origin is not inferred. Both have one initial Sample kit, zero discovery/model requests and zero commerce orders; no old application row was lost."
+  },
+  "stableOriginal": {
+    "studioRevision": 2,
+    "graphPrefix": "68f130fb23",
+    "satisfiedModelChecks": 5,
+    "totalModelChecks": 9,
+    "openEvidenceQuestions": 4,
+    "savedPaymentObservations": 2,
+    "workspaceCookieAndExpiryUnchanged": true
+  },
+  "providerCalls": 0,
+  "actualHumanReviews": 0,
+  "physicalTests": 0,
+  "scope": "Engineering review software milestone. Sample sources and actors do not establish real hardware compatibility, specialist qualification or physical performance. Full WorldKit product scope remains in progress."
+}
