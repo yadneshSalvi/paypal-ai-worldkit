@@ -31,7 +31,7 @@
   "authenticProviderDeliveries": 0,
   "providerSubscriptionMutations": 0,
   "financialProviderMutations": 0,
-  "browserQualification": "pending root review; this subagent has no available browser surface",
+  "browserQualification": "passed root IAB41 review; see living-browser-qualification.json",
   "hostingQualification": "pending",
   "coveredInvariants": [
     "raw signature and timestamp validation",

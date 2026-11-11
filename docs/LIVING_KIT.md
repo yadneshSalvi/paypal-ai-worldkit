@@ -1,6 +1,6 @@
 # Living Kit: alerts and authenticated observations
 
-This checkpoint implements exact-product alerts, signed event intake, durable recovery, current catalog/payment reads, private notifications and a customer review surface. It has passed local SDK, PostgreSQL and production-build HTTP checks. **Authentic deployed deliveries and actual subscription creation/cancellation are still qualification gates.** Browser qualification and deployment are separate from those checks.
+This checkpoint implements exact-product alerts, signed event intake, durable recovery, current catalog/payment reads, private notifications and a customer review surface. It has passed local SDK, PostgreSQL and production-build HTTP checks. **Authentic deployed deliveries and actual subscription creation/cancellation are still qualification gates.** Root browser qualification now passes for the live offer review and declared Sample lifecycle; deployment remains separate.
 
 Open **Living kit** to inspect updates, equipment alerts and event receipts. The section and selected view survive reload. Add an alert from an active, catalog-bound equipment entry, refresh its exact variant and choose current merchant domains. Ownership of the equipment remains the passport's separate confirmation. An alert does not reserve stock, accept a substitution or authorize a charge.
 
@@ -56,6 +56,8 @@ An offer event triggers a fresh read of its exact product/variant. A currently i
 A PayPal event can only reconcile an accepted, encrypted operation and reread its already-owned order/capture or a freshly established refund child. Callback strings do not establish tenant ownership. Conflicting parents, currency, source or amount require review. Fresh resource timestamps protect canonical projection from old receipts; gross capture and individual completed refunds never disappear. Pending or adverse observations hold delivery and future payment authority. Refunds and reversals end the original standing policy without restoring its consumed/pending gross allowance. A reversal remains distinct from a refund. The callback runtime has no execute, capture, refund or retry-write interface.
 
 ## Qualification and current limits
+
+[Root browser qualification](evidence/living-browser-qualification.json) passed on the local production build: actual saved H4 offers, unavailable-endpoint save gating, modal focus/Escape, Sample read/dismiss/stop persistence, three deliveries with one processing attempt, and layouts at 390/768/1280/1920 pixels. The original browser session and viewport were restored. No synthetic product ID was refreshed against the actual catalog, and no financial or subscription provider mutation occurred.
 
 [Local qualification](evidence/living-local-qualification.json) records 101 unit/SDK checks, 78 PostgreSQL checks and a successful production build. [HTTP qualification](evidence/living-http-qualification.json) records 14 production-build access, origin, namespace, body-limit and reload checks. Contract/provider fixtures are **Sample**; this unit has made no new financial or subscription provider mutation. Preserve the earlier fully refunded $12+$8 qualification and retired wallet/policy.
 

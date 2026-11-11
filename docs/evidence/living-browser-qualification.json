@@ -1,0 +1,65 @@
+{
+  "qualifiedAt": "2026-11-11T04:44:23.568123+00:00",
+  "sourceCommit": "7264905f9def77e25c34dba400aa4d1f4125288b",
+  "environment": "local production build at 127.0.0.1:4106",
+  "qualifiedBy": "root agent using IAB tab 41",
+  "checks": [
+    {
+      "name": "Actual saved H4 identity returned current offers from two merchants with distinct in-stock and out-of-stock states",
+      "passed": true,
+      "sourceMode": "live"
+    },
+    {
+      "name": "Save alert remained disabled while its endpoint was awaiting setup",
+      "passed": true
+    },
+    {
+      "name": "Escape closed the alert dialog and restored Add alert focus",
+      "passed": true
+    },
+    {
+      "name": "Sample notification marked read and retained after reload",
+      "passed": true,
+      "sourceMode": "sample"
+    },
+    {
+      "name": "Dismissed Sample incident remained available in retained history",
+      "passed": true,
+      "sourceMode": "sample"
+    },
+    {
+      "name": "Three Sample deliveries retained one processing attempt and safe SHA-256 receipt",
+      "passed": true,
+      "sourceMode": "sample"
+    },
+    {
+      "name": "Stopped Sample alert retained stopped state after reload",
+      "passed": true,
+      "sourceMode": "sample"
+    },
+    {
+      "name": "390, 768, 1280 and 1920 pixel layouts had no document overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile alert dialog screenshot was visually checked",
+      "passed": true
+    },
+    {
+      "name": "Original browser cookie restored and viewport override cleared",
+      "passed": true
+    }
+  ],
+  "privateScreenshots": [
+    "worldkit-living-empty.png",
+    "worldkit-living-mobile-dialog.png",
+    "worldkit-living-stopped.png"
+  ],
+  "syntheticProductProviderRefreshes": 0,
+  "financialProviderMutations": 0,
+  "subscriptionProviderMutations": 0,
+  "authenticCallbackQualification": "pending root endpoint setup and actual delivery",
+  "hostedReceiverQualification": "pending",
+  "physicalTests": 0,
+  "humanSourceReviews": 0
+}
