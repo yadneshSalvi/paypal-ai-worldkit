@@ -66,7 +66,12 @@ async function owned(actor: PaymentEvidenceActor, input: ToolkitReadInput, db: P
   const resources = (await db.query("SELECT provider_id,kind,payload FROM wk_payment_resources WHERE tenant_id=$1 AND order_id=$2 AND provider_id=ANY($3::text[]) ORDER BY provider_id", [tenant(actor), order.id, [order.providerOrderId, order.captureId]])).rows;
   const payment = resources.find(r => r.provider_id === order.providerOrderId && r.kind === "order")?.payload as ProviderResource | undefined;
   const capture = resources.find(r => r.provider_id === order.captureId && r.kind === "capture")?.payload as ProviderResource | undefined;
-  if (resources.length !== 2 || !payment || !capture || payment.id !== order.providerOrderId || payment.kind !== "order" || payment.customId !== order.id || payment.source !== "live_sandbox" || capture.id !== order.captureId || capture.kind !== "capture" || capture.parentId !== payment.id || capture.source !== "live_sandbox" || capture.money?.minor !== order.capturedMinor || capture.money.currency !== "USD") throw denied();
+  if (resources.length !== 2 || !payment || !capture || payment.id !== order.providerOrderId || payment.kind !== "order" || payment.source !== "live_sandbox" || capture.id !== order.captureId || capture.kind !== "capture" || capture.parentId !== payment.id || capture.source !== "live_sandbox" || capture.money?.minor !== order.capturedMinor || capture.money.currency !== "USD") throw denied();
+  // The APIMatic capture projection can retain custom_id on the capture while
+  // the accompanying order projection omits it. Require one exact identifier
+  // and refuse every conflicting identifier across the owned resource pair.
+  const customIds = [payment.customId, capture.customId].filter(value => value !== null && value !== undefined);
+  if (!customIds.length || customIds.some(value => value !== order.id)) throw denied();
   const binding: ToolkitOwnedOrder = { orderId: order.id, kitId: order.kitId, revisionId: order.revisionId, graphHash: order.graphHash, providerOrderId: order.providerOrderId, captureId: order.captureId, customId: order.id, amountMinor: order.capturedMinor };
   return { binding, fingerprint: hash({ order, resources, manifest }) };
 }

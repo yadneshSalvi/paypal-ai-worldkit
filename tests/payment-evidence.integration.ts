@@ -172,3 +172,17 @@ test("a separately consented restoration supplement resolves its historical rest
   await database().query("UPDATE wk_kit_compensations SET payload=jsonb_set(payload,'{supplementalOrderId}','\"foreign\"') WHERE id=$1", [f.compensation.id]);
   await assert.rejects(readPaymentEvidence({ session: f.session }, { ...f.input, requestId: randomUUID() }, f.reader), /outside/); assert.equal(f.calls(), 2);
 });
+test("the owned APIMatic capture may hold the exact custom ID when the order projection omits it", async () => {
+  const f = await fixture();
+  await database().query("UPDATE wk_payment_resources SET payload=jsonb_set(payload,'{customId}','null') WHERE provider_id=$1", [f.order.providerOrderId]);
+  await database().query("UPDATE wk_payment_resources SET payload=jsonb_set(payload,'{customId}',to_jsonb($2::text)) WHERE provider_id=$1", [f.order.captureId, f.order.id]);
+  assert.equal((await readPaymentEvidence({ session: f.session }, f.input, f.reader)).state, "succeeded"); assert.equal(f.calls(), 2);
+});
+test("absent or conflicting resource custom IDs cannot reach OAuth", async () => {
+  const f = await fixture();
+  await database().query("UPDATE wk_payment_resources SET payload=jsonb_set(payload,'{customId}','null') WHERE provider_id=$1", [f.order.providerOrderId]);
+  await assert.rejects(readPaymentEvidence({ session: f.session }, f.input, f.reader), /outside/); assert.equal(f.calls(), 0);
+  await database().query("UPDATE wk_payment_resources SET payload=jsonb_set(payload,'{customId}',to_jsonb($2::text)) WHERE provider_id=$1", [f.order.providerOrderId, f.order.id]);
+  await database().query("UPDATE wk_payment_resources SET payload=jsonb_set(payload,'{customId}','\"foreign\"') WHERE provider_id=$1", [f.order.captureId]);
+  await assert.rejects(readPaymentEvidence({ session: f.session }, f.input, f.reader), /outside/); assert.equal(f.calls(), 0);
+});
