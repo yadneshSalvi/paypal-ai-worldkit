@@ -4,10 +4,13 @@ import { WorldKitError, type Principal } from "../../packages/contracts";
 import { hash } from "../../packages/compatibility";
 import { ToolkitReadInput, type ToolkitDesk, type ToolkitOwnedOrder, type ToolkitReadRecord } from "../../packages/commerce/toolkit-contracts";
 import type { CommerceOrder } from "../../packages/commerce/contracts";
+import type { AmendmentProposal, CompensationRequest, KitAmendment, KitCommitment, KitRepairClaim } from "../../packages/living-repair/contracts";
 import { database, transaction } from "./db";
 import { initializeCommerce } from "./commerce-db";
 import { currentAccess, getRevision, type Session } from "./repository";
 import { ScopedPayPalToolkit, type ToolkitReader } from "./paypal-toolkit";
+import { initializeLivingRepair } from "./living-repair-db";
+import { compensationDigest } from "./living-repair-compensation";
 
 export type PaymentEvidenceActor = { session: Session } | { principal: Principal };
 const globalSchema = globalThis as unknown as { worldkitPaymentEvidenceSchema1?: Promise<void> };
@@ -32,21 +35,40 @@ async function authorize(actor: PaymentEvidenceActor) {
   const row = await database().query("SELECT id FROM wk_sessions WHERE id=$1 AND expires_at>clock_timestamp()", [actor.session.id]);
   if (!row.rowCount) throw denied(); return null;
 }
+async function historicalGraph(order: CommerceOrder, db: Pick<PoolClient, "query">) {
+  if (!order.livingRepair) return { bundle: await getRevision(order.tenantId, order.revisionId), manifest: null };
+  await initializeLivingRepair();
+  const context = order.livingRepair;
+  const row = (await db.query("SELECT id,commitment_id,proposal,proposal_digest,payload FROM wk_kit_amendments WHERE id=$1 AND tenant_id=$2", [context.amendmentId, order.tenantId])).rows[0];
+  const commitment = (await db.query("SELECT payload FROM wk_kit_commitments WHERE id=$1 AND tenant_id=$2", [context.commitmentId, order.tenantId])).rows[0]?.payload as KitCommitment | undefined;
+  if (!row || !commitment) throw denied();
+  const proposal = row.proposal as AmendmentProposal, amendment = row.payload as Omit<KitAmendment, "proposal">;
+  const { digest, ...body } = proposal, { digest: quoteDigest, ...quote } = proposal.quote;
+  if (row.id !== proposal.id || row.commitment_id !== context.commitmentId || proposal.commitmentId !== context.commitmentId || commitment.id !== context.commitmentId || commitment.tenantId !== order.tenantId || commitment.kitId !== order.kitId || row.proposal_digest !== digest || context.proposalDigest !== digest || hash(body) !== digest || hash(quote) !== quoteDigest || !amendment.acceptedAt || context.paymentMode !== "live_sandbox") throw denied();
+  if (context.compensationId) {
+    const request = (await db.query("SELECT payload FROM wk_kit_compensations WHERE id=$1 AND tenant_id=$2", [context.compensationId, order.tenantId])).rows[0]?.payload as CompensationRequest | undefined;
+    if (!request || request.id !== context.compensationId || request.tenantId !== order.tenantId || request.amendmentId !== proposal.id || request.commitmentId !== commitment.id || request.supplementalOrderId !== order.id || !request.consentedAt || request.paymentMode !== "live_sandbox" || !request.restore || request.digest !== compensationDigest(request) || request.digest !== order.quote.quoteHash || request.supplementalMinor !== order.quote.total.minor) throw denied();
+    return { bundle: request.restore, manifest: { row, commitment, request } };
+  }
+  const claim = (await db.query("SELECT payload FROM wk_kit_repair_claims WHERE id=$1 AND tenant_id=$2", [context.claimId, order.tenantId])).rows[0]?.payload as KitRepairClaim | undefined;
+  if (!claim || claim.id !== context.claimId || claim.tenantId !== order.tenantId || claim.amendmentId !== proposal.id || claim.commitmentId !== commitment.id || claim.orderId !== order.id || claim.acceptedDigest !== digest || claim.paymentMode !== "live_sandbox" || claim.additionalMinor !== order.quote.total.minor || amendment.claimId !== claim.id || amendment.orderId !== order.id || amendment.paymentMode !== "live_sandbox" || order.quote.quoteHash !== digest || proposal.quote.deltaMinor !== order.quote.total.minor) throw denied();
+  return { bundle: proposal.after, manifest: { row, commitment, claim } };
+}
 async function owned(actor: PaymentEvidenceActor, input: ToolkitReadInput, db: Pick<PoolClient, "query"> = database()) {
   const grant = await authorize(actor);
   const row = (await db.query("SELECT quote_id,payload FROM wk_commerce_orders WHERE id=$1 AND tenant_id=$2", [input.orderId, tenant(actor)])).rows[0];
   if (!row) throw denied(); const order = row.payload as CommerceOrder;
   if (order.id !== input.orderId || order.tenantId !== tenant(actor) || grant && (!grant.allowedKitIds.includes(order.kitId) || !("principal" in actor) || !actor.principal.allowedKitIds.includes(order.kitId))) throw denied();
   if (order.graphHash !== input.expectedGraphHash || order.quote.graphHash !== order.graphHash || order.quote.revisionId !== order.revisionId || order.quote.tenantId !== tenant(actor) || order.quote.id !== row.quote_id || order.quote.merchantId !== "worldkit-studio") throw new WorldKitError("stale_revision", "Use the exact saved graph and accepted Studio quote bound to this order.", 409);
-  const bundle = await getRevision(tenant(actor), order.revisionId);
-  if (bundle.kit.kitId !== order.kitId || bundle.certificate.graphHash !== order.graphHash || bundle.certificate.id !== order.quote.verificationId) throw denied();
+  const { bundle, manifest } = await historicalGraph(order, db);
+  if (bundle.kit.id !== order.revisionId || bundle.kit.kitId !== order.kitId || bundle.certificate.graphHash !== order.graphHash || bundle.certificate.id !== order.quote.verificationId) throw denied();
   if (order.sourceMode !== "live_sandbox" || !order.providerOrderId || !order.captureId || !Number.isSafeInteger(order.capturedMinor) || order.capturedMinor <= 0 || order.capturedMinor !== order.quote.total.minor || order.quote.total.currency !== "USD") throw new WorldKitError("needs_evidence", "This read needs an owned sandbox order with an already recorded capture. Sample and uncaptured orders cannot enter PayPal.", 409);
   const resources = (await db.query("SELECT provider_id,kind,payload FROM wk_payment_resources WHERE tenant_id=$1 AND order_id=$2 AND provider_id=ANY($3::text[]) ORDER BY provider_id", [tenant(actor), order.id, [order.providerOrderId, order.captureId]])).rows;
   const payment = resources.find(r => r.provider_id === order.providerOrderId && r.kind === "order")?.payload as ProviderResource | undefined;
   const capture = resources.find(r => r.provider_id === order.captureId && r.kind === "capture")?.payload as ProviderResource | undefined;
   if (resources.length !== 2 || !payment || !capture || payment.id !== order.providerOrderId || payment.kind !== "order" || payment.customId !== order.id || payment.source !== "live_sandbox" || capture.id !== order.captureId || capture.kind !== "capture" || capture.parentId !== payment.id || capture.source !== "live_sandbox" || capture.money?.minor !== order.capturedMinor || capture.money.currency !== "USD") throw denied();
   const binding: ToolkitOwnedOrder = { orderId: order.id, kitId: order.kitId, revisionId: order.revisionId, graphHash: order.graphHash, providerOrderId: order.providerOrderId, captureId: order.captureId, customId: order.id, amountMinor: order.capturedMinor };
-  return { binding, fingerprint: hash({ order, resources }) };
+  return { binding, fingerprint: hash({ order, resources, manifest }) };
 }
 export function toolkitAvailability(): Pick<ToolkitDesk, "available" | "mode" | "message"> {
   const available = process.env.WORLDKIT_TOOLKIT_READS_ENABLED === "1" && process.env.WORLDKIT_DISABLE_PROVIDERS !== "true" && !process.env.WORLDKIT_QA_MODE && process.env.PAYPAL_ENVIRONMENT === "sandbox" && !!process.env.PAYPAL_PROJECT_ISOLATED && !!process.env.PAYPAL_CLIENT_ID && !!process.env.PAYPAL_CLIENT_SECRET && (!process.env.DEBUG || !/agent-toolkit|\*/.test(process.env.DEBUG));
