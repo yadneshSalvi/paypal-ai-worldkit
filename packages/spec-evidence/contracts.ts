@@ -42,7 +42,7 @@ export type EvidenceCandidate = {
 };
 export type EvidenceDraftSummary = { id: string; profileId: string; documentId: string; sourceHash: string; provider: string; model: string; createdAt: string; counts: ExtractionDraft["counts"]; savedCandidateId: string | null };
 export type EvidenceReviewRequest = { id: string; draftId: string; assertionIds: string[]; question: string; status: "open"; createdAt: string };
-export type EvidenceWorkspace = { candidates: EvidenceCandidate[]; summary: { candidates: number; retrieved: number; heldOut: number; development: number; humanReviewed: 0; physicalTests: 0 }; storageReady: boolean };
+export type EvidenceWorkspace = { candidates: EvidenceCandidate[]; summary: { candidates: number; retrieved: number; heldOut: number; development: number; humanReviewed: number; sampleReviewed?: number; physicalTests: 0 }; storageReady: boolean };
 export type EvidenceDetail = {
   candidate: EvidenceCandidate; documents: EvidenceDocument[]; drafts: EvidenceDraftSummary[];
   queries: ExtractionQuery[]; reviewRequests: EvidenceReviewRequest[]; libraryProfile: DeviceProfile | null; librarySource: Source | null;

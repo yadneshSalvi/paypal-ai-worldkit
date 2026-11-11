@@ -48,6 +48,8 @@ export const DeviceSchema = z.object({
   baseProfileId: z.string().optional(), catalogBinding: CatalogBindingSchema.optional(),
   corpusId: z.string().optional(), sourceVersion: z.string().optional(), basisProfileId: z.string().optional(), portMapStatus: z.enum(["pending", "review_pending", "reviewed"]).optional(),
   reviewState: z.enum(["candidate", "sources_collected", "review_pending", "verified_scope", "conflicted"]),
+  engineeringReview: z.object({ editionId: z.string(), editionHash: z.string(), policy: z.literal("worldkit.engineering-review.1"), provenance: z.enum(["human", "sample"]), verifiedPredicates: z.array(z.string()), conditions: z.array(z.string()), physicalTest: z.literal("not_performed") }).optional(),
+  portAnchors: z.array(z.discriminatedUnion("kind", [z.object({ portId: z.string(), kind: z.literal("rail"), reason: z.string() }), z.object({ portId: z.string(), kind: z.literal("image"), assetId: z.string(), imageHash: z.string(), cropHash: z.string(), x: z.number().min(0).max(1), y: z.number().min(0).max(1), facing: z.enum(["front", "back", "left", "right", "top", "bottom"]), labelSide: z.enum(["left", "right", "above", "below"]) })])).optional(),
   art: z.literal("original_line_art"), accent: z.string(),
 });
 export type DeviceProfile = z.infer<typeof DeviceSchema>;

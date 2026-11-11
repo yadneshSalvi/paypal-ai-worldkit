@@ -17,6 +17,11 @@ export async function appendEvent(db: PoolClient, tenantId: string, type: string
 }
 export async function saveRevision(db: PoolClient, tenantId: string, bundle: RevisionBundle) {
   KitSchema.parse(bundle.kit); CertificateSchema.parse(bundle.certificate);
+  const activeProfiles = bundle.profiles.filter(profile => profile.engineeringReview && bundle.kit.components.some(component => component.profileId === profile.id));
+  if (activeProfiles.length) {
+    const { assertEngineeringProfilesCurrent } = await import("./engineering-review");
+    await assertEngineeringProfilesCurrent(db, tenantId, activeProfiles);
+  }
   await db.query("INSERT INTO wk_revisions(id,kit_id,tenant_id,revision,kit,certificate,profiles,sources) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [bundle.kit.id, bundle.kit.kitId, tenantId, bundle.kit.revision, bundle.kit, bundle.certificate, JSON.stringify(bundle.profiles), JSON.stringify(bundle.sources)]);
 }
 export async function createSession(): Promise<{ token: string; session: Session }> {

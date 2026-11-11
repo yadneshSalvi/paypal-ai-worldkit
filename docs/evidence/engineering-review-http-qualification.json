@@ -1,0 +1,75 @@
+{
+  "schema": "worldkit.engineering-review-http-qualification.1",
+  "startedAt": "2026-11-11T17:52:02.537Z",
+  "completedAt": "2026-11-11T17:52:06.023Z",
+  "origin": "http://127.0.0.1:4532",
+  "provenance": "sample",
+  "providers": "disabled",
+  "actualHumanReviews": 0,
+  "physicalTests": 0,
+  "sourceEditionHash": "ec6f96b660507edb8fc23d6b822e82f1a19c1ef35afc026859aae52adb6f6b0b",
+  "unchangedCertificatePayloadHash": "45b9e1660e341e8e9c46cf70725efb053386589cdb99c4af14abd14df5b84c48",
+  "checks": [
+    {
+      "name": "anonymous access, private cache policy and creator/specialist cookie separation",
+      "status": "passed",
+      "milliseconds": 128
+    },
+    {
+      "name": "foreign origins, malformed commands and bounded transport fail closed",
+      "status": "passed",
+      "milliseconds": 14
+    },
+    {
+      "name": "deliberate one-time redemption, scoped principal and HttpOnly strict cookie",
+      "status": "passed",
+      "milliseconds": 848
+    },
+    {
+      "name": "private source bytes, exact selection hash and approved crop stay resource-scoped",
+      "status": "passed",
+      "milliseconds": 27
+    },
+    {
+      "name": "publish an isolated fictional certificate before review changes",
+      "status": "passed",
+      "milliseconds": 59
+    },
+    {
+      "name": "one qualified Sample principal cannot promote a critical simultaneous claim",
+      "status": "passed",
+      "milliseconds": 205
+    },
+    {
+      "name": "disagreement is immutable and two exact-set adjudications resolve it",
+      "status": "passed",
+      "milliseconds": 78
+    },
+    {
+      "name": "guarded promotion creates a Sample profile and preserves source, graph and public certificate bytes",
+      "status": "passed",
+      "milliseconds": 65
+    },
+    {
+      "name": "capability revocation closes disclosure and preserves the published historical record",
+      "status": "passed",
+      "milliseconds": 50
+    },
+    {
+      "name": "invitation expiry closes a redeemed HTTP cookie and private source reads",
+      "status": "passed",
+      "milliseconds": 1639
+    },
+    {
+      "name": "stale source binding blocks a decision while the exact past edition stays retained",
+      "status": "passed",
+      "milliseconds": 101
+    },
+    {
+      "name": "withdraw only the isolated public Sample publication after immutable-byte qualification",
+      "status": "passed",
+      "milliseconds": 13
+    }
+  ],
+  "status": "passed"
+}

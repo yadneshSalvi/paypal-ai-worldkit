@@ -1,0 +1,38 @@
+{
+  "schema": "worldkit.engineering-review-qualification.1",
+  "provenance": "sample",
+  "baselineCommit": "d2961c495c0faa1a19b28e74cf99756448617a1d",
+  "protectedHostedRuntimeCommit": "d5fae25b22af755280083bf4a3f708f422f4440d",
+  "unitTests": {
+    "passed": 152,
+    "failed": 0
+  },
+  "postgresTests": {
+    "passed": 166,
+    "failed": 0,
+    "engineeringGroups": 20
+  },
+  "pureEngineeringPolicyGroups": 9,
+  "http": {
+    "passedGroups": 12,
+    "failedGroups": 0,
+    "receipt": "engineering-review-http-qualification.json",
+    "checksCachedAdoptionAfterRevocation": true
+  },
+  "productionBuild": {
+    "status": "passed",
+    "next": "16.4.6",
+    "buildId": "Uh3F5buPlxGl73KYGgku-",
+    "independentCheckout": true,
+    "providers": "disabled",
+    "note": "The final immutable source/dependency/runtime manifest is a separate private handoff artifact. This record is the pre-freeze qualification; final frozen reruns retain their own receipts."
+  },
+  "actualHumanReviews": 0,
+  "physicalTests": 0,
+  "nativeBrowserGate": "pending_root_observation",
+  "hostedPromotion": "not_performed",
+  "genuineIdentityAndEngineeringReview": "pending_real_evidence",
+  "originalData": "Original provider, source, certificate and payment databases were not used. All SQL qualification used a separate restricted local database.",
+  "failures": "engineering-review-failures.json",
+  "remainingFullProductScope": "Retained; this engineering-review software unit is not overall product completion."
+}

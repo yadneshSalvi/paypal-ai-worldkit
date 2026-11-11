@@ -9,6 +9,7 @@ import { database, initialize, transaction } from "./db";
 import { appendEvent, getRevision, getSnapshots, saveRevision, type RevisionBundle, type Session } from "./repository";
 import { photoRecord, publicPhoto, storageReady } from "./inventory-photos";
 import { evidenceLibrary } from "./source-evidence";
+import { assertEngineeringProfilesCurrent, checkEngineeringProfilesCurrent } from "./engineering-review";
 
 type Prepared = { item: InventoryItem; input: InventoryConfirmation; bundle: RevisionBundle | null; preview: InventoryPreview; previewHash: string };
 export async function getInventory(session: Session): Promise<InventoryWorkspace> {
@@ -84,6 +85,7 @@ export async function previewInventory(session: Session, input: InventoryConfirm
   if (oldItem && (oldItem.version !== input.expectedItemVersion || oldItem.status !== "active")) throw new WorldKitError("stale_revision", "This equipment entry changed. Reopen it before correcting the model.", 409);
   const at = new Date().toISOString(); const id = oldItem?.id ?? randomUUID(); const version = (oldItem?.version ?? 0) + 1;
   const profile = confirmedProfile(`inventory:${id}:v${version}`, input.identity, snapshot, [...previous.profiles, ...library.filter(p => !previous.profiles.some(old => old.id === p.id)), ...candidates.profiles], at); profile.version = version;
+  await checkEngineeringProfilesCurrent(session.id, [profile]);
   const item = InventoryItemSchema.parse({ id, version, profile, ownership: input.identity.ownership, quantity: input.identity.quantity, condition: input.identity.condition, accessories: input.identity.accessories, notes: input.identity.notes,
     status: "active", origin: snapshot ? input.photoId ? "photo_crop" : "catalog" : "manual", snapshotId: snapshot?.id ?? null, photoId: input.photoId, regionId: input.regionId, confirmedAt: at, createdAt: oldItem?.createdAt ?? at, updatedAt: at });
   const targets = [...new Set([...(input.targetComponentId ? [input.targetComponentId] : []), ...previous.kit.components.filter(c => oldItem && c.inventoryItemId === oldItem.id).map(c => c.id)])];
@@ -112,6 +114,7 @@ export async function confirmInventory(session: Session, input: InventoryConfirm
     const current = await db.query("SELECT id,current_revision_id FROM wk_kits WHERE tenant_id=$1 ORDER BY created_at LIMIT 1 FOR UPDATE", [session.id]);
     if (current.rows[0]?.current_revision_id !== input.expectedRevisionId) throw new WorldKitError("stale_revision", "This plan changed after the preview. Check the replacement again.", 409);
     const item = prepared.item;
+    await assertEngineeringProfilesCurrent(db, session.id, [item.profile]);
     if (input.correctItemId) {
       const changed = await db.query("UPDATE wk_inventory_items SET version=$3,payload=$4,request_id=$5,request_hash=$6 WHERE tenant_id=$1 AND id=$2 AND version=$7 RETURNING id", [session.id, input.correctItemId, item.version, item, input.requestId, hash(input), input.expectedItemVersion]);
       if (!changed.rowCount) throw new WorldKitError("stale_revision", "This equipment entry changed after the preview.", 409);
@@ -144,6 +147,7 @@ export async function updateInventoryNotes(session: Session, id: string, expecte
 export async function previewPlacement(session: Session, itemId: string, target: string, expectedRevisionId: string, expectedGraphHash: string, confirmOwnedReplacement = false) {
   const [item, previous, snapshots, candidates] = await Promise.all([getInventoryItem(session.id, itemId), getRevision(session.id), getSnapshots(session.id), evidenceLibrary(session.id)]);
   if (item.status !== "active") throw new WorldKitError("invalid_request", "Restore this archived item before using it in the plan.", 409);
+  await checkEngineeringProfilesCurrent(session.id, [item.profile]);
   if (previous.kit.id !== expectedRevisionId || previous.certificate.graphHash !== expectedGraphHash) throw new WorldKitError("stale_revision", "Refresh the plan before placing this equipment.", 409);
   return { item, ...placeProfile(previous, item, [target], confirmOwnedReplacement, snapshots, new Date().toISOString(), candidates.sources) };
 }

@@ -1,0 +1,51 @@
+{
+  "schema": "worldkit.engineering-review-failures.1",
+  "provenance": "sample",
+  "actualHumanReviews": 0,
+  "physicalTests": 0,
+  "observations": [
+    {
+      "phase": "initial_typecheck",
+      "status": "corrected_before_qualification",
+      "failure": "TypeScript did not narrow nullable values through an inferred arrow helper returning never.",
+      "correction": "Declared the throwing helper as a function with an explicit never return; later typechecks and production builds passed.",
+      "originalEvidence": "Initial tool transcript retained; no failed source state or original data was reset."
+    },
+    {
+      "phase": "first_production_http_harness",
+      "status": "corrected_and_rerun",
+      "failure": "The harness expected GET /api/kit to return 401. That route intentionally exposes PATCH only, so it correctly returned 405.",
+      "correction": "The scope check now requests the existing GET inventory surface and separately verifies that PATCH /api/kit refuses a specialist cookie with 401.",
+      "receipt": {
+        "schema": "worldkit.engineering-review-http-qualification.1",
+        "startedAt": "2026-11-11T17:35:04.103Z",
+        "completedAt": "2026-11-11T17:35:04.553Z",
+        "origin": "http://127.0.0.1:4532",
+        "provenance": "sample",
+        "providers": "disabled",
+        "actualHumanReviews": 0,
+        "physicalTests": 0,
+        "sourceEditionHash": "335d7b09a0d3a94d89488ed97e7b68dd9d9a75e0be5d09631eb693480e4cb597",
+        "unchangedCertificatePayloadHash": null,
+        "checks": [
+          {
+            "name": "anonymous access, private cache policy and creator/specialist cookie separation",
+            "status": "passed",
+            "milliseconds": 98
+          },
+          {
+            "name": "foreign origins, malformed commands and bounded transport fail closed",
+            "status": "passed",
+            "milliseconds": 14
+          },
+          {
+            "name": "deliberate one-time redemption, scoped principal and HttpOnly strict cookie",
+            "status": "failed",
+            "milliseconds": 100
+          }
+        ],
+        "status": "failed"
+      }
+    }
+  ]
+}

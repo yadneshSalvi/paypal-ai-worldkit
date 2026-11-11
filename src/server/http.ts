@@ -4,16 +4,16 @@ import { WorldKitError } from "../../packages/contracts/index";
 import { findSession, type Session } from "./repository";
 import { trustedOrigin } from "../../packages/security/origin";
 
-export const sessionCookie = process.env.WORLDKIT_QA_MODE === "certificate" ? "wk_certificate_qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? "wk_source_impact_qa" : process.env.WORLDKIT_QA_MODE === "toolkit" ? "wk_payment_evidence_qa" : "wk_session";
+export const sessionCookie = process.env.WORLDKIT_QA_MODE === "engineering" ? "wk_engineering_qa" : process.env.WORLDKIT_QA_MODE === "certificate" ? "wk_certificate_qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? "wk_source_impact_qa" : process.env.WORLDKIT_QA_MODE === "toolkit" ? "wk_payment_evidence_qa" : "wk_session";
 export async function requireSession(): Promise<Session> {
   const token = (await cookies()).get(sessionCookie)?.value; const session = await findSession(token);
   if (!session) throw new WorldKitError("forbidden", "Open a private workbench to continue.", 401, "Create a workbench");
   return session;
 }
-export function sameOrigin(request: Request) {
+export function sameOrigin(request: Request, maxBytes = 20_000) {
   if (!trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL, process.env.VERCEL_URL)) throw new WorldKitError("forbidden", "This action must start from your WorldKit workbench.", 403);
   if (!request.headers.get("content-type")?.startsWith("application/json")) throw new WorldKitError("invalid_request", "Send a JSON request.", 415);
-  if (Number(request.headers.get("content-length") ?? 0) > 20_000) throw new WorldKitError("invalid_request", "This request is too large.", 413);
+  if (Number(request.headers.get("content-length") ?? 0) > maxBytes) throw new WorldKitError("invalid_request", "This request is too large.", 413);
 }
 export function errorResponse(error: unknown): Response {
   if (error instanceof WorldKitError) return Response.json({ error: { code: error.code, message: error.message, nextAction: error.nextAction } }, { status: error.status, headers: { "Cache-Control": "no-store" } });

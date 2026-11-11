@@ -54,6 +54,8 @@ async function assertLease(db: PoolClient, job: ClaimedJob) {
 
 export async function evidenceWorkspace(session: Session): Promise<EvidenceWorkspace> {
   await initialize();
+  const { reviewedProfileLibrary } = await import("./engineering-review");
+  const reviewed = await reviewedProfileLibrary(session.id);
   const [heads, versions] = await Promise.all([
     database().query("SELECT d.*,h.document_id AS current_document_id,h.version AS head_version FROM wk_source_heads h JOIN wk_source_documents d ON d.id=h.document_id WHERE h.tenant_id=$1", [session.id]),
     database().query("SELECT DISTINCT ON(profile_id) profile_id,id,payload FROM wk_source_profile_versions WHERE tenant_id=$1 ORDER BY profile_id,created_at DESC", [session.id]),
@@ -62,7 +64,9 @@ export async function evidenceWorkspace(session: Session): Promise<EvidenceWorks
     const saved = versions.rows.find(row => row.profile_id === device.id);
     const primary = candidateProfiles.find(profile => profile.corpusId === device.id);
     return publicCandidate(device, heads.rows.find(row => row.profile_id === device.id), saved?.id ?? null, Object.values((saved?.payload as DeviceProfile | undefined)?.facts ?? primary?.facts ?? {}).filter(fact => fact.state === "supported").length);
-  }), summary: { candidates: corpusDevices.length, retrieved: manifest.filter(row => row.status === "retrieved").length, heldOut: corpusDevices.filter(device => device.split === "held_out").length, development: corpusDevices.filter(device => device.split === "development").length, humanReviewed: 0, physicalTests: 0 }, storageReady: storageReady() };
+  }), summary: { candidates: corpusDevices.length, retrieved: manifest.filter(row => row.status === "retrieved").length, heldOut: corpusDevices.filter(device => device.split === "held_out").length, development: corpusDevices.filter(device => device.split === "development").length,
+    humanReviewed: new Set(reviewed.profiles.filter(profile => profile.engineeringReview?.provenance === "human" && profile.reviewState === "verified_scope" && corpusDevices.some(device => device.id === profile.corpusId)).map(profile => profile.corpusId)).size,
+    sampleReviewed: reviewed.profiles.filter(profile => profile.engineeringReview?.provenance === "sample").length, physicalTests: 0 }, storageReady: storageReady() };
 }
 export async function evidenceDetail(session: Session, profileId: string): Promise<EvidenceDetail> {
   const device = deviceById(profileId); await initialize();
@@ -210,7 +214,9 @@ export async function requestSourceReview(session: Session, draftId: string, ass
 export async function evidenceLibrary(tenantId: string): Promise<{ profiles: DeviceProfile[]; sources: Source[] }> {
   await initialize();
   const result = await database().query("SELECT payload,source FROM wk_source_profile_versions WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 120", [tenantId]);
-  return { profiles: [...result.rows.map(row => row.payload as DeviceProfile), ...candidateProfiles], sources: [...result.rows.map(row => row.source as Source), ...candidateSources] };
+  const { reviewedProfileLibrary } = await import("./engineering-review");
+  const reviewed = await reviewedProfileLibrary(tenantId);
+  return { profiles: [...reviewed.profiles, ...result.rows.map(row => row.payload as DeviceProfile), ...candidateProfiles], sources: [...reviewed.sources, ...result.rows.map(row => row.source as Source), ...candidateSources] };
 }
 
 export async function requestSourceDeletion(session: Session, id: string) {
