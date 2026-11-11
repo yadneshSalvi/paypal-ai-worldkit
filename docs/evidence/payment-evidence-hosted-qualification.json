@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-11T14:35:01.552Z",
+  "passed": true,
+  "sourceCommit": "d5fae25b22af755280083bf4a3f708f422f4440d",
+  "runtimeCommit": "55ae95af3a4a2803e778dadeb620c35777017a08",
+  "deploymentId": "dpl_5utdL5DD9gd8tTjuV7ER3drtvQBD",
+  "url": "https://paypal-ai-worldkit.vercel.app",
+  "hostedChecks": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "path": "/api/workspace",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "path": "/api/workspace",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "POST",
+      "status": 400
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "path": "/api/access",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "scope": "legacy",
+      "paymentToolAbsent": true
+    },
+    {
+      "path": "/api/access",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "scope": "payment:read",
+      "toolAdvertised": true,
+      "foreignOrderDenied": true
+    },
+    {
+      "path": "/api/access",
+      "method": "DELETE",
+      "status": 200
+    },
+    {
+      "revokedGrantDenied": true
+    },
+    {
+      "path": "/api/workspace",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/payment-evidence",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/commerce",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "reads": [
+    {
+      "id": "ea436d13-974e-4e42-bca1-da58865cb944",
+      "state": "succeeded",
+      "message": "Saved a separate PayPal observation. The original receipt and payment state are unchanged.",
+      "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+      "createdAt": "2026-11-11T14:33:59.168Z",
+      "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+      "operation": "get_order",
+      "finishedAt": "2026-11-11T14:34:00.764Z",
+      "observation": {
+        "order": {
+          "status": "COMPLETED",
+          "currency": "USD",
+          "occurredAt": "2026-11-11T08:00:59.000Z",
+          "amountMinor": 800,
+          "captureStatus": "REFUNDED"
+        },
+        "source": "sandbox",
+        "binding": {
+          "kitId": "sample:568d3519-ecd8-4a49-8c98-0858e672522e",
+          "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+          "customId": "38546715-fad5-4e84-866d-7255b4885235",
+          "captureId": "5P179814174867548",
+          "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+          "revisionId": "repair-revision:de241493d729e9b707f19ca0fecf7854",
+          "amountMinor": 800,
+          "providerOrderId": "5JF478860A251353B"
+        },
+        "package": "@paypal/agent-toolkit@1.11.0",
+        "bodyHash": "8480edf821abdc98f56f4a2e6da725afb5073a358ab54a2c6ec5c79a68d7e688",
+        "operation": "get_order",
+        "reporting": null,
+        "transport": "Toolkit",
+        "disclosure": "A current read of this exact sandbox order and owned capture. It does not change the original receipt or reconcile payment state.",
+        "httpStatus": 200,
+        "observedAt": "2026-11-11T14:34:00.691Z"
+      }
+    },
+    {
+      "id": "a2ac1f8a-92c4-42c7-8330-022f81f59ff1",
+      "state": "succeeded",
+      "message": "Saved a separate PayPal observation. The original receipt and payment state are unchanged.",
+      "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+      "createdAt": "2026-11-11T14:34:09.328Z",
+      "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+      "operation": "list_transactions",
+      "finishedAt": "2026-11-11T14:34:09.997Z",
+      "observation": {
+        "order": null,
+        "source": "sandbox",
+        "binding": {
+          "kitId": "sample:568d3519-ecd8-4a49-8c98-0858e672522e",
+          "orderId": "38546715-fad5-4e84-866d-7255b4885235",
+          "customId": "38546715-fad5-4e84-866d-7255b4885235",
+          "captureId": "5P179814174867548",
+          "graphHash": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+          "revisionId": "repair-revision:de241493d729e9b707f19ca0fecf7854",
+          "amountMinor": 800,
+          "providerOrderId": "5JF478860A251353B"
+        },
+        "package": "@paypal/agent-toolkit@1.11.0",
+        "bodyHash": "ed5a26dde9de01edf467c76e9025b94f17b41be82ebbb2643f061d9986f9fba4",
+        "operation": "list_transactions",
+        "reporting": {
+          "end": "2026-11-11T14:34:09.606Z",
+          "page": 1,
+          "start": "2026-10-11T14:34:09.606Z",
+          "status": "S",
+          "complete": false,
+          "observed": true,
+          "pageSize": 100,
+          "occurredAt": "2026-11-11T08:00:59.000Z",
+          "totalItems": 1,
+          "totalPages": 1,
+          "amountMinor": 800,
+          "refreshedAt": "2026-11-11T12:29:59.000Z"
+        },
+        "transport": "Toolkit",
+        "disclosure": "One bounded reporting page for this exact capture. Reporting can lag; absence does not prove that a capture or refund is missing. This does not reconcile payment state.",
+        "httpStatus": 200,
+        "observedAt": "2026-11-11T14:34:09.941Z"
+      }
+    }
+  ],
+  "migration": {
+    "startedAt": "2026-11-11T14:26:36.706Z",
+    "sourceCommit": "d5fae25b22af755280083bf4a3f708f422f4440d",
+    "sourceSha256": "309dcfa1159fb0312a73c48b72ecd5a53705f9dad91bf22d5142f5e76bc600ae",
+    "newTables": [
+      "wk_payment_evidence_reads"
+    ],
+    "providerCalls": 0,
+    "before": [
+      {
+        "name": "paycore_attempts",
+        "count": 11,
+        "hash": "9b1475fbaf419ffd0cfeb17691fc2ad6"
+      },
+      {
+        "name": "paycore_operations",
+        "count": 11,
+        "hash": "fdb0a1e65c004e874527b195337db9bd"
+      },
+      {
+        "name": "paycore_resource_locks",
+        "count": 3,
+        "hash": "d1bc008a82506f67708bd5fec8489e19"
+      },
+      {
+        "name": "paycore_webhook_deliveries",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "paycore_webhook_events",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_access_tokens",
+        "count": 1,
+        "hash": "98f3656426b24db3f1813dbc26755948"
+      },
+      {
+        "name": "wk_catalog",
+        "count": 17,
+        "hash": "70f731cb53c4380188e3aab786d638b1"
+      },
+      {
+        "name": "wk_catalog_categories",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_commerce_orders",
+        "count": 4,
+        "hash": "a1d18ecafd49e8dbad20c4932e46467f"
+      },
+      {
+        "name": "wk_events",
+        "count": 100,
+        "hash": "19e09db0e0424b10eef7f0100130a7e9"
+      },
+      {
+        "name": "wk_financial_authorities",
+        "count": 11,
+        "hash": "fec198686ded56deb3042555b0cbd342"
+      },
+      {
+        "name": "wk_inventory_confirmations",
+        "count": 2,
+        "hash": "bb1ee9bf91788f3998681f232578c79f"
+      },
+      {
+        "name": "wk_inventory_history",
+        "count": 2,
+        "hash": "f688878e479c99968115122e6639fc12"
+      },
+      {
+        "name": "wk_inventory_items",
+        "count": 2,
+        "hash": "ce656762d88aece76265b8b23a9da30d"
+      },
+      {
+        "name": "wk_inventory_photos",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_inventory_proposals",
+        "count": 2,
+        "hash": "b6460ad995610bd1ad4e0ce8b1825a63"
+      },
+      {
+        "name": "wk_inventory_regions",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_job_attempts",
+        "count": 3,
+        "hash": "fe0191ce2a1dd6e436b7a7c8b8eebf37"
+      },
+      {
+        "name": "wk_jobs",
+        "count": 4,
+        "hash": "2f73734254cdf290bce95ea7f7b82c63"
+      },
+      {
+        "name": "wk_kit_amendments",
+        "count": 5,
+        "hash": "bc442bbeb2478fa54f1289618c71af00"
+      },
+      {
+        "name": "wk_kit_commitment_versions",
+        "count": 11,
+        "hash": "fd0f1b9dabdc0b71d1a2e1773a625afc"
+      },
+      {
+        "name": "wk_kit_commitments",
+        "count": 4,
+        "hash": "4c9e78b6d5f9896aeb195fda20afd042"
+      },
+      {
+        "name": "wk_kit_compensations",
+        "count": 3,
+        "hash": "209da41fad2a9a6e42392da641350d9d"
+      },
+      {
+        "name": "wk_kit_repair_claims",
+        "count": 4,
+        "hash": "04d5056a40b30e0f790f968694517358"
+      },
+      {
+        "name": "wk_kit_repair_outbox",
+        "count": 24,
+        "hash": "265a9d62e42f99615d2730278334bcff"
+      },
+      {
+        "name": "wk_kit_repair_policies",
+        "count": 1,
+        "hash": "f1fe21750f29e66ef0174e1854b0fa6b"
+      },
+      {
+        "name": "wk_kit_sample_payments",
+        "count": 8,
+        "hash": "25f987046de6908f9f8a788a5966372f"
+      },
+      {
+        "name": "wk_kits",
+        "count": 37,
+        "hash": "67ae93c14a6396b10be7249c901199e7"
+      },
+      {
+        "name": "wk_living_incidents",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_living_repairs",
+        "count": 5,
+        "hash": "299e3e68debe163c35f6d909b8444125"
+      },
+      {
+        "name": "wk_mcp_runs",
+        "count": 2,
+        "hash": "068e97ebbbdfd7c827a28d469fd3a425"
+      },
+      {
+        "name": "wk_notifications",
+        "count": 27,
+        "hash": "1edc488d3889fe55b2a6b5787620153b"
+      },
+      {
+        "name": "wk_offer_subscription_observations",
+        "count": 2,
+        "hash": "a01758c465fff23f83daa68bade41176"
+      },
+      {
+        "name": "wk_offer_subscription_ownership",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_offer_subscriptions",
+        "count": 1,
+        "hash": "436da00d4489799e7ae599b52455b18f"
+      },
+      {
+        "name": "wk_offer_watch_resources",
+        "count": 1,
+        "hash": "b34babd13a2adda1b4e4313e89e6c507"
+      },
+      {
+        "name": "wk_offer_watches",
+        "count": 1,
+        "hash": "f3f6e71d27c0e91f5b20234fbb344efe"
+      },
+      {
+        "name": "wk_payment_observations",
+        "count": 3,
+        "hash": "05f8de8cdcfcaf86adb43af990f13e99"
+      },
+      {
+        "name": "wk_payment_resources",
+        "count": 11,
+        "hash": "e161c612904b7edeac3222eca81deb65"
+      },
+      {
+        "name": "wk_provider_receipts",
+        "count": 4,
+        "hash": "f59fdc2ef79d25ac291b156d9189e489"
+      },
+      {
+        "name": "wk_quotes",
+        "count": 3,
+        "hash": "b63b57d56bc98fc374235b3fd2df6e77"
+      },
+      {
+        "name": "wk_record_editions",
+        "count": 3,
+        "hash": "cefcfecf77c01bb5934a8c0686ebb001"
+      },
+      {
+        "name": "wk_record_events",
+        "count": 10,
+        "hash": "3a3ec256cea1c79cfe0aa92cad257e4a"
+      },
+      {
+        "name": "wk_record_intents",
+        "count": 10,
+        "hash": "e97f20907c47d6dc80e9815c0a538d5f"
+      },
+      {
+        "name": "wk_record_shares",
+        "count": 1,
+        "hash": "370e0af8979834729bcf3ea630d2fca9"
+      },
+      {
+        "name": "wk_repair_candidates",
+        "count": 9,
+        "hash": "3f9aafb58fd1a2b1f99d9509e79c1ed0"
+      },
+      {
+        "name": "wk_repair_claims",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_repair_policies",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_revisions",
+        "count": 39,
+        "hash": "33a3bbe887108e93fd580daba82ddb22"
+      },
+      {
+        "name": "wk_session_windows",
+        "count": 13,
+        "hash": "daa49e4d806ec1115d01a407168db52e"
+      },
+      {
+        "name": "wk_sessions",
+        "count": 37,
+        "hash": "1aa8f387d952a36f38d703b0a703c0f5"
+      },
+      {
+        "name": "wk_source_documents",
+        "count": 1,
+        "hash": "1a28eecb795278ee05ca46493daba824"
+      },
+      {
+        "name": "wk_source_drafts",
+        "count": 1,
+        "hash": "82d6a16cb175f54c26666a68ac6c2b7d"
+      },
+      {
+        "name": "wk_source_heads",
+        "count": 1,
+        "hash": "979496c63e8ff916cb73385e725a6978"
+      },
+      {
+        "name": "wk_source_model_observations",
+        "count": 2,
+        "hash": "64068c039b989336c8f2b37cd00d500d"
+      },
+      {
+        "name": "wk_source_model_requests",
+        "count": 1,
+        "hash": "4d4953896235c9402a93187ff7462245"
+      },
+      {
+        "name": "wk_source_profile_versions",
+        "count": 1,
+        "hash": "48a169282d9014c5690d0aa41dc75664"
+      },
+      {
+        "name": "wk_source_review_requests",
+        "count": 1,
+        "hash": "0bf78b398bb60d3b2b1cbcc507a452a6"
+      },
+      {
+        "name": "wk_step_checks",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_vault_operations",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_wallet_consents",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_webhook_deliveries",
+        "count": 3,
+        "hash": "91df6d82387b95987e0625b39eab289a"
+      },
+      {
+        "name": "wk_webhook_events",
+        "count": 3,
+        "hash": "cde5bb57a4ef343bb68c850835eeed7c"
+      }
+    ],
+    "after": [
+      {
+        "name": "paycore_attempts",
+        "count": 11,
+        "hash": "9b1475fbaf419ffd0cfeb17691fc2ad6"
+      },
+      {
+        "name": "paycore_operations",
+        "count": 11,
+        "hash": "fdb0a1e65c004e874527b195337db9bd"
+      },
+      {
+        "name": "paycore_resource_locks",
+        "count": 3,
+        "hash": "d1bc008a82506f67708bd5fec8489e19"
+      },
+      {
+        "name": "paycore_webhook_deliveries",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "paycore_webhook_events",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_access_tokens",
+        "count": 1,
+        "hash": "98f3656426b24db3f1813dbc26755948"
+      },
+      {
+        "name": "wk_catalog",
+        "count": 17,
+        "hash": "70f731cb53c4380188e3aab786d638b1"
+      },
+      {
+        "name": "wk_catalog_categories",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_commerce_orders",
+        "count": 4,
+        "hash": "a1d18ecafd49e8dbad20c4932e46467f"
+      },
+      {
+        "name": "wk_events",
+        "count": 100,
+        "hash": "19e09db0e0424b10eef7f0100130a7e9"
+      },
+      {
+        "name": "wk_financial_authorities",
+        "count": 11,
+        "hash": "fec198686ded56deb3042555b0cbd342"
+      },
+      {
+        "name": "wk_inventory_confirmations",
+        "count": 2,
+        "hash": "bb1ee9bf91788f3998681f232578c79f"
+      },
+      {
+        "name": "wk_inventory_history",
+        "count": 2,
+        "hash": "f688878e479c99968115122e6639fc12"
+      },
+      {
+        "name": "wk_inventory_items",
+        "count": 2,
+        "hash": "ce656762d88aece76265b8b23a9da30d"
+      },
+      {
+        "name": "wk_inventory_photos",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_inventory_proposals",
+        "count": 2,
+        "hash": "b6460ad995610bd1ad4e0ce8b1825a63"
+      },
+      {
+        "name": "wk_inventory_regions",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_job_attempts",
+        "count": 3,
+        "hash": "fe0191ce2a1dd6e436b7a7c8b8eebf37"
+      },
+      {
+        "name": "wk_jobs",
+        "count": 4,
+        "hash": "2f73734254cdf290bce95ea7f7b82c63"
+      },
+      {
+        "name": "wk_kit_amendments",
+        "count": 5,
+        "hash": "bc442bbeb2478fa54f1289618c71af00"
+      },
+      {
+        "name": "wk_kit_commitment_versions",
+        "count": 11,
+        "hash": "fd0f1b9dabdc0b71d1a2e1773a625afc"
+      },
+      {
+        "name": "wk_kit_commitments",
+        "count": 4,
+        "hash": "4c9e78b6d5f9896aeb195fda20afd042"
+      },
+      {
+        "name": "wk_kit_compensations",
+        "count": 3,
+        "hash": "209da41fad2a9a6e42392da641350d9d"
+      },
+      {
+        "name": "wk_kit_repair_claims",
+        "count": 4,
+        "hash": "04d5056a40b30e0f790f968694517358"
+      },
+      {
+        "name": "wk_kit_repair_outbox",
+        "count": 24,
+        "hash": "265a9d62e42f99615d2730278334bcff"
+      },
+      {
+        "name": "wk_kit_repair_policies",
+        "count": 1,
+        "hash": "f1fe21750f29e66ef0174e1854b0fa6b"
+      },
+      {
+        "name": "wk_kit_sample_payments",
+        "count": 8,
+        "hash": "25f987046de6908f9f8a788a5966372f"
+      },
+      {
+        "name": "wk_kits",
+        "count": 37,
+        "hash": "67ae93c14a6396b10be7249c901199e7"
+      },
+      {
+        "name": "wk_living_incidents",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_living_repairs",
+        "count": 5,
+        "hash": "299e3e68debe163c35f6d909b8444125"
+      },
+      {
+        "name": "wk_mcp_runs",
+        "count": 2,
+        "hash": "068e97ebbbdfd7c827a28d469fd3a425"
+      },
+      {
+        "name": "wk_notifications",
+        "count": 27,
+        "hash": "1edc488d3889fe55b2a6b5787620153b"
+      },
+      {
+        "name": "wk_offer_subscription_observations",
+        "count": 2,
+        "hash": "a01758c465fff23f83daa68bade41176"
+      },
+      {
+        "name": "wk_offer_subscription_ownership",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_offer_subscriptions",
+        "count": 1,
+        "hash": "436da00d4489799e7ae599b52455b18f"
+      },
+      {
+        "name": "wk_offer_watch_resources",
+        "count": 1,
+        "hash": "b34babd13a2adda1b4e4313e89e6c507"
+      },
+      {
+        "name": "wk_offer_watches",
+        "count": 1,
+        "hash": "f3f6e71d27c0e91f5b20234fbb344efe"
+      },
+      {
+        "name": "wk_payment_observations",
+        "count": 3,
+        "hash": "05f8de8cdcfcaf86adb43af990f13e99"
+      },
+      {
+        "name": "wk_payment_resources",
+        "count": 11,
+        "hash": "e161c612904b7edeac3222eca81deb65"
+      },
+      {
+        "name": "wk_provider_receipts",
+        "count": 4,
+        "hash": "f59fdc2ef79d25ac291b156d9189e489"
+      },
+      {
+        "name": "wk_quotes",
+        "count": 3,
+        "hash": "b63b57d56bc98fc374235b3fd2df6e77"
+      },
+      {
+        "name": "wk_record_editions",
+        "count": 3,
+        "hash": "cefcfecf77c01bb5934a8c0686ebb001"
+      },
+      {
+        "name": "wk_record_events",
+        "count": 10,
+        "hash": "3a3ec256cea1c79cfe0aa92cad257e4a"
+      },
+      {
+        "name": "wk_record_intents",
+        "count": 10,
+        "hash": "e97f20907c47d6dc80e9815c0a538d5f"
+      },
+      {
+        "name": "wk_record_shares",
+        "count": 1,
+        "hash": "370e0af8979834729bcf3ea630d2fca9"
+      },
+      {
+        "name": "wk_repair_candidates",
+        "count": 9,
+        "hash": "3f9aafb58fd1a2b1f99d9509e79c1ed0"
+      },
+      {
+        "name": "wk_repair_claims",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_repair_policies",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_revisions",
+        "count": 39,
+        "hash": "33a3bbe887108e93fd580daba82ddb22"
+      },
+      {
+        "name": "wk_session_windows",
+        "count": 13,
+        "hash": "daa49e4d806ec1115d01a407168db52e"
+      },
+      {
+        "name": "wk_sessions",
+        "count": 37,
+        "hash": "1aa8f387d952a36f38d703b0a703c0f5"
+      },
+      {
+        "name": "wk_source_documents",
+        "count": 1,
+        "hash": "1a28eecb795278ee05ca46493daba824"
+      },
+      {
+        "name": "wk_source_drafts",
+        "count": 1,
+        "hash": "82d6a16cb175f54c26666a68ac6c2b7d"
+      },
+      {
+        "name": "wk_source_heads",
+        "count": 1,
+        "hash": "979496c63e8ff916cb73385e725a6978"
+      },
+      {
+        "name": "wk_source_model_observations",
+        "count": 2,
+        "hash": "64068c039b989336c8f2b37cd00d500d"
+      },
+      {
+        "name": "wk_source_model_requests",
+        "count": 1,
+        "hash": "4d4953896235c9402a93187ff7462245"
+      },
+      {
+        "name": "wk_source_profile_versions",
+        "count": 1,
+        "hash": "48a169282d9014c5690d0aa41dc75664"
+      },
+      {
+        "name": "wk_source_review_requests",
+        "count": 1,
+        "hash": "0bf78b398bb60d3b2b1cbcc507a452a6"
+      },
+      {
+        "name": "wk_step_checks",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_vault_operations",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_wallet_consents",
+        "count": 0,
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "name": "wk_webhook_deliveries",
+        "count": 3,
+        "hash": "91df6d82387b95987e0625b39eab289a"
+      },
+      {
+        "name": "wk_webhook_events",
+        "count": 3,
+        "hash": "cde5bb57a4ef343bb68c850835eeed7c"
+      }
+    ],
+    "passed": true,
+    "finishedAt": "2026-11-11T14:27:19.708Z"
+  },
+  "originalData": {
+    "observedAt": "2026-11-11T14:34:58.690Z",
+    "baselineAt": "2026-11-11T14:23:45.054Z",
+    "passed": true,
+    "protectedTables": 57,
+    "protectedOriginalRows": 420,
+    "originalRowsUnchanged": true,
+    "admissionCountersExcluded": "Only global Sample workspace admission windows; ordinary qualification may create new Sample workspaces.",
+    "providerCalls": 0,
+    "databaseWrites": 0
+  },
+  "originalFinancialPosition": {
+    "capturedMinor": 800,
+    "refundedMinor": 800,
+    "currency": "USD",
+    "state": "refunded",
+    "newFinancialWrites": 0
+  },
+  "native": {
+    "inAppBrowser": true,
+    "originalOwnedSession": true,
+    "orderReadSucceeded": true,
+    "reportingReadSucceeded": true,
+    "savedObservationsAfterReload": 2,
+    "mobile": {
+      "viewport": 390,
+      "page": 390,
+      "dialogLeft": 16,
+      "dialogRight": 374,
+      "dialogWidth": 358,
+      "dialogScrollWidth": 356
+    }
+  },
+  "limitations": [
+    "Reporting is one bounded page; absence is inconclusive and completeness is not asserted.",
+    "Provider reads save separate observations and do not reconcile or rewrite original payment state.",
+    "Full engineering-review, collaboration, domain-pack and evaluation work remains active."
+  ]
+}
