@@ -1,0 +1,186 @@
+{
+  "observedAt": "2026-11-11T10:16:57.238Z",
+  "environment": "hosted HTTP qualification",
+  "requestOrigin": "https://paypal-ai-worldkit-gsntf60vh-yadneshsalvis-projects.vercel.app",
+  "publicOrigin": "https://paypal-ai-worldkit.vercel.app",
+  "transport": "Actual HTTP and MCP SDK Streamable HTTP",
+  "checks": {
+    "newPrivateWorkspacesAndOriginBoundary": true,
+    "privateDraftReviewAndTenantIsolation": true,
+    "concurrentPublishIdempotence": true,
+    "exactPublicProjectionAndServerRenderedNoStore": true,
+    "qrDecodesToStableImmutableEdition": true,
+    "unknownLinksDenied": true,
+    "mcpTransportIdentityAndRevocation": true,
+    "immutableHistoryCurrentEditionAndDisabledGuide": true,
+    "withdrawalClosesAllHistoricalAndCurrentSurfaces": true,
+    "oldPublishRetryCannotResurrectWithdrawal": true
+  },
+  "checkCount": 10,
+  "providerCalls": 0,
+  "physicalTests": 0,
+  "independentHumanReviews": 0,
+  "fixtures": "Two new Sample workspaces; automated privacy review; all created public editions withdrawn and MCP grant revoked",
+  "sourceAvailabilityAndSessionExpiry": "Covered by isolated PostgreSQL and local HTTP suites; this script does not change deployed source documents or session expiry",
+  "nativePrintReview": "Passed: A4/Letter complete record14/16 pages and guide7/8 pages; zero clipped bounds, disabled warning retained, identity and QR together, all four rendered PDF QR codes decode exactly.",
+  "completedAt": "2026-11-11T10:27:43.528035+00:00",
+  "sourceCommit": "5432abebebf64c0d2c77a305add610b7b6f387a3",
+  "deploymentId": "dpl_8V6ctCPzCzUiz1y8iTjGnPvEmk3h",
+  "stableUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "migration": {
+    "priorTables": 58,
+    "priorRows": 380,
+    "newTables": 4,
+    "allPriorRowsUnchangedAtMigration": true,
+    "backupReadable": true,
+    "backupBytes": 766198,
+    "backupSha256": "1e14e703ced840716b42498495f93c64236170acc000b04090e047ff41492afd"
+  },
+  "originalContinuity": {
+    "protectedTables": 61,
+    "protectedOriginalRows": 370,
+    "workspaceAndFinancialRowsUnchanged": true,
+    "newSampleSessions": 5,
+    "permittedGlobalAdmissionCounters": [
+      {
+        "namespace": "public-worldkit",
+        "period": "day",
+        "baselineCount": 19,
+        "currentCount": 24,
+        "delta": 5
+      }
+    ],
+    "initialStrictAudit": "One expected global daily new-workspace count change was identified. Its exact delta matches new Sample sessions; all non-count fields match. The original strict audit is retained."
+  },
+  "deploymentInputScan": {
+    "files": 256,
+    "privateValuesCompared": 58,
+    "findings": 0
+  },
+  "native": {
+    "browser": "In-app browser",
+    "automatedPrivacyReview": true,
+    "independentHumanEngineeringReview": false,
+    "preparedReviewedAndSeparatelyPublished": true,
+    "publicEdition": 3,
+    "kitRevision": 2,
+    "sampleTitle": "Sample studio \u00b7 one disconnected path",
+    "editionHash": "758316a4ec9802cba9aac34f9e105fa9aa853c2fff40904bba6e09dd227f4a2c",
+    "publicUrl": "https://paypal-ai-worldkit.vercel.app/record/13hatdrXPR0cPyMAhipy5QLjkt8MWZbT/e/3",
+    "displayedChecks": {
+      "satisfied": 3,
+      "conflicts": 2,
+      "open": 4,
+      "criticalFactsReviewed": 0,
+      "criticalFacts": 27
+    },
+    "desktop": {
+      "viewport": 1280,
+      "document": 1280
+    },
+    "mobile": {
+      "viewport": 390,
+      "document": 390
+    },
+    "guideKeyboardSpaceToggle": "1 of7 enabled reading reminders; no evidence change",
+    "disabledMic2CheckboxEnabled": false,
+    "temporaryUniqueHostCookiesRemoved": true,
+    "stableOriginalWorkspaceCookieUntouched": true,
+    "nativeSampleEditionLeftPublished": true,
+    "retainedEarlierEditions": "The two automated HTTP editions remain withdrawn."
+  },
+  "print": [
+    {
+      "variant": "guide",
+      "paper": "a4",
+      "pages": 7,
+      "pageSize": [
+        594.96,
+        841.92
+      ],
+      "sha256": "541acbb4be3c9fdbeaae1234c48ffed32d9429a702228fa5035c271ae33c735c",
+      "clippedTextBounds": 0,
+      "printedNavigation": false,
+      "disabledPathPreserved": true,
+      "requirementsPresent": false,
+      "assemblyPresent": true,
+      "allPagesHaveText": true,
+      "identityPage": 7,
+      "identityAndQrTogether": true,
+      "qrPixels": [
+        1190,
+        1684
+      ]
+    },
+    {
+      "variant": "guide",
+      "paper": "letter",
+      "pages": 8,
+      "pageSize": [
+        612.0,
+        792.0
+      ],
+      "sha256": "917d0275529784e2be75cb185c9dab975dd57172503662bc74550a311306275e",
+      "clippedTextBounds": 0,
+      "printedNavigation": false,
+      "disabledPathPreserved": true,
+      "requirementsPresent": false,
+      "assemblyPresent": true,
+      "allPagesHaveText": true,
+      "identityPage": 8,
+      "identityAndQrTogether": true,
+      "qrPixels": [
+        1224,
+        1584
+      ]
+    },
+    {
+      "variant": "complete",
+      "paper": "a4",
+      "pages": 14,
+      "pageSize": [
+        594.96,
+        841.92
+      ],
+      "sha256": "43619782e79230f382cf5e50abddeffddfd4c884f75ebd47f4405e0fb0bf8efe",
+      "clippedTextBounds": 0,
+      "printedNavigation": false,
+      "disabledPathPreserved": true,
+      "requirementsPresent": true,
+      "assemblyPresent": true,
+      "allPagesHaveText": true,
+      "identityPage": 14,
+      "identityAndQrTogether": true,
+      "qrPixels": [
+        1190,
+        1684
+      ]
+    },
+    {
+      "variant": "complete",
+      "paper": "letter",
+      "pages": 16,
+      "pageSize": [
+        612.0,
+        792.0
+      ],
+      "sha256": "21c565b0d50f8bbf11f96a1319cb6fdcb8637b8e1ab5fba2ed286e59c36e9120",
+      "clippedTextBounds": 0,
+      "printedNavigation": false,
+      "disabledPathPreserved": true,
+      "requirementsPresent": true,
+      "assemblyPresent": true,
+      "allPagesHaveText": true,
+      "identityPage": 16,
+      "identityAndQrTogether": true,
+      "qrPixels": [
+        1224,
+        1584
+      ]
+    }
+  ],
+  "renderedPdfQrChecks": 4,
+  "renderedPdfQrTarget": "Exact stable numbered edition3",
+  "nativeExportNote": "Initial exports captured the guide while navigation was still settling; they are retained as guide exports. The complete exports waited for the /print route and confirmed both requirements and assembly sections. Desktop captures above the browser compositor size tiled; final screenshot is1280x720 with no viewport override left."
+}

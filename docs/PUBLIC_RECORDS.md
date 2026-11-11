@@ -2,7 +2,7 @@
 
 WorldKit can prepare a shareable verification record from one saved kit revision. The certificate, connection map, assembly guide, JSON and QR identify the same immutable edition. Preparing or reviewing an edition does not publish it. Publication is an explicit privacy decision, not an independent engineering review or a physical test.
 
-The locally qualified implementation is described below. Native mobile and print review passed and is recorded separately in the evidence ledger. Hosted promotion remains pending; this document does not establish that a deployment has been promoted.
+This implementation is deployed on the stable WorldKit site. The isolated database/HTTP tests, native mobile/print review, additive production migration, hosted MCP/publication checks and original-record continuity are recorded in [the hosted qualification receipt](evidence/certificate-hosted-qualification.json). The public example is a labelled Sample; independent human engineering review and physical testing remain unperformed.
 
 ## Owner workflow
 
