@@ -1,0 +1,111 @@
+{
+  "startedAt": "2026-11-11T08:06:11.746Z",
+  "completedAt": "2026-11-11T08:06:22.226Z",
+  "passed": true,
+  "sourceCommit": "81c27f40934eee796e67189d1daf572445e0467e",
+  "origin": "https://paypal-ai-worldkit.vercel.app",
+  "scope": "Official buyer UI approved exact controlled kit amendment and separate conditional undo; this corroboration used SQL SELECT and three provider resource GETs only.",
+  "runId": "c0bdf738-eafb-48f5-8dbb-7a1955da52e5",
+  "amendmentId": "267ee8aa-b156-4982-9da9-b80c16a52a1c",
+  "proposalDigest": "62b77506a0c19e0725256a49a36946eb0d05643c5e0c82cd3711fdb94665954c",
+  "domainOrderId": "38546715-fad5-4e84-866d-7255b4885235",
+  "providerOrderId": "5JF478860A251353B",
+  "providerOrderStatus": "COMPLETED",
+  "captureId": "5P179814174867548",
+  "captureStatus": "REFUNDED",
+  "refundId": "3ME327802P6805701",
+  "refundStatus": "COMPLETED",
+  "currency": "USD",
+  "capturedMinor": 800,
+  "refundedMinor": 800,
+  "netMinor": 0,
+  "items": [
+    {
+      "sku": "kit-amendment:267ee8aa-b156-4982-9da9-b80c16a52a1c",
+      "name": "Controlled kit demonstration amendment",
+      "quantity": 1,
+      "unitMinor": 800
+    }
+  ],
+  "graph": {
+    "before": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+    "amended": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b",
+    "restored": "55cfa5126b4ed03260d50f4b25e77f02376d0dd636375e3aec2f720ff1ed786b"
+  },
+  "commitmentVersions": [
+    {
+      "version": 1,
+      "kind": "baseline",
+      "digest": "059f49535f9738b81330e65a855db82b19a0bb3a18f4eb129efc13580072f90c"
+    },
+    {
+      "version": 2,
+      "kind": "amendment",
+      "digest": "bd6d99fb462bbca16b0c80cce3d54fcd09108084b208273de29269d5dca84567"
+    },
+    {
+      "version": 3,
+      "kind": "undo",
+      "digest": "3c7811edb4db68a61d79487560a541513eec6b6fa36d560ae43f52636641cb57"
+    }
+  ],
+  "compensation": {
+    "digest": "9ea15d323e08651e2d7f679cb37a68c1826085c5eac9d19feeffa764a98b0789",
+    "consentedAt": "2026-11-11T08:04:15.042Z",
+    "state": "completed",
+    "refundMinor": 800,
+    "supplementalMinor": 0,
+    "originalStockAndCostRechecked": true
+  },
+  "operations": [
+    {
+      "kind": "refund_capture",
+      "status": "succeeded",
+      "source": "live_sandbox",
+      "transport": "apimatic_sdk"
+    },
+    {
+      "kind": "create_order",
+      "status": "succeeded",
+      "source": "live_sandbox",
+      "transport": "apimatic_sdk"
+    },
+    {
+      "kind": "capture_order",
+      "status": "succeeded",
+      "source": "live_sandbox",
+      "transport": "apimatic_sdk"
+    }
+  ],
+  "writeAttempts": [
+    {
+      "operationId": "purchase:38546715-fad5-4e84-866d-7255b4885235",
+      "outcome": "succeeded",
+      "startedAt": "2026-11-11T07:59:16.585Z",
+      "finishedAt": "2026-11-11T07:59:17.906Z"
+    },
+    {
+      "operationId": "capture:38546715-fad5-4e84-866d-7255b4885235",
+      "outcome": "succeeded",
+      "startedAt": "2026-11-11T08:00:58.356Z",
+      "finishedAt": "2026-11-11T08:01:00.298Z"
+    },
+    {
+      "operationId": "kit-refund:0c5c0604-8edf-44e0-aa8e-552bc9db7f5a",
+      "outcome": "succeeded",
+      "startedAt": "2026-11-11T08:04:15.829Z",
+      "finishedAt": "2026-11-11T08:04:19.344Z"
+    }
+  ],
+  "audit": {
+    "providerReads": 3,
+    "financialProviderWrites": 0,
+    "databaseWrites": 0,
+    "applicationInitializersCalled": 0
+  },
+  "limitations": [
+    "Controlled Sample merchant kit; payment resources are actual PayPal sandbox.",
+    "No retailer order, shipment, physical work or independent human compatibility certification.",
+    "No saved-wallet reuse or kit-allowance authority was granted in this scenario."
+  ]
+}

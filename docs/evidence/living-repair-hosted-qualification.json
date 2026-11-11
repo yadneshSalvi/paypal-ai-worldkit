@@ -1,0 +1,106 @@
+{
+  "recordedAt": "2026-11-11T07:58:26.355Z",
+  "sourceCommit": "81c27f40934eee796e67189d1daf572445e0467e",
+  "deploymentId": "dpl_D1baqodrGLVq5SkswJgEBsQcDV5U",
+  "stableUrl": "https://paypal-ai-worldkit.vercel.app",
+  "passed": true,
+  "migration": {
+    "oldTables": 48,
+    "oldRows": 158,
+    "newTables": 10,
+    "originalHashesUnchanged": true
+  },
+  "hostedChecks": [
+    {
+      "name": "Anonymous repair access denied",
+      "passed": true
+    },
+    {
+      "name": "Fresh isolated HTTP workspace created",
+      "passed": true
+    },
+    {
+      "name": "Foreign origin refused",
+      "passed": true
+    },
+    {
+      "name": "Browser money injection refused by strict schema",
+      "passed": true
+    },
+    {
+      "name": "Persisted discovery, thin history summaries and immutable exact proposal",
+      "passed": true
+    },
+    {
+      "name": "Fresh $8 Sample approval commits the controlled merchant change",
+      "passed": true
+    },
+    {
+      "name": "Legacy service controls reject Living Repair orders",
+      "passed": true
+    },
+    {
+      "name": "Exact amendment return resolves its full run",
+      "passed": true
+    },
+    {
+      "name": "Foreign tenant cannot load the run",
+      "passed": true
+    },
+    {
+      "name": "Restoration check creates separate unaccepted exact compensation",
+      "passed": true
+    },
+    {
+      "name": "Separate undo consent refunds $8 and restores a new commitment version",
+      "passed": true
+    },
+    {
+      "name": "Fresh explicit $25 policy automatically applies one qualifying $8 change",
+      "passed": true
+    },
+    {
+      "name": "Same-commitment next $20 change exceeds the original $25 gross allowance",
+      "passed": true
+    }
+  ],
+  "native": {
+    "scenario": "Explicit Sample lost-payment-response",
+    "provider": "local_fixture",
+    "sampleCapturedMinor": 800,
+    "sampleRefundedMinor": 800,
+    "currency": "USD",
+    "sampleReceipts": 3,
+    "executionAttemptOutcomes": [
+      "succeeded",
+      "pending_reconciliation",
+      "succeeded"
+    ],
+    "commitmentVersions": [
+      {
+        "version": 1,
+        "kind": "baseline"
+      },
+      {
+        "version": 2,
+        "kind": "amendment"
+      },
+      {
+        "version": 3,
+        "kind": "undo"
+      }
+    ],
+    "oneOriginalCaptureOperation": true,
+    "separateCompensationApproval": true,
+    "restored": true,
+    "privateScreenshotBasename": "worldkit-repair-hosted-restored.png"
+  },
+  "actualFinancialProviderWrites": 0,
+  "actualSubscriptionProviderWrites": 0,
+  "limitations": [
+    "Automated Sample qualification does not establish real merchant fulfillment, human technical review or physical performance.",
+    "One screen-reader status retained an earlier reconciliation notice after polling reached completion; record this accessibility refinement for the next source update."
+  ],
+  "actualSandboxQualification": "living-repair-paypal-qualification.json",
+  "actualFinancialProviderWritesScope": "This file records the preceding Sample qualification; the separate actual sandbox flow has its own evidence record."
+}
