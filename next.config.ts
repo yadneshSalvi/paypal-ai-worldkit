@@ -8,7 +8,7 @@ const sourceRuntimeFiles = [
   "./node_modules/@napi-rs/canvas-*/**/*",
 ];
 const nextConfig: NextConfig = {
-  distDir: process.env.WORLDKIT_QA_MODE === "certificate" ? ".next-certificate-qa" : ".next",
+  distDir: process.env.WORLDKIT_QA_MODE === "certificate" ? ".next-certificate-qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? ".next-source-impact-qa" : ".next",
   poweredByHeader: false,
   serverExternalPackages: ["pg", "@fracture/paypal-core", "paypal", "better-sqlite3", "pdf-parse", "pdfjs-dist", "@napi-rs/canvas"],
   outputFileTracingIncludes: Object.fromEntries(["/api/evidence", "/api/jobs", "/api/jobs/recover", "/api/planner", "/api/inventory"].map(route => [route, sourceRuntimeFiles])),

@@ -8,7 +8,8 @@ import { createMcpServer, readScopedRecord } from "../src/server/mcp";
 import { mutatePublicRecord, publicRecordDesk } from "../src/server/public-records";
 import { closeDatabase, database } from "../src/server/db";
 
-if (process.env.WORLDKIT_QA_MODE !== "certificate") throw new Error("Use the isolated certificate QA launcher.");
+import { requireIsolatedDatabase } from "./support/isolated-database";
+requireIsolatedDatabase();
 after(closeDatabase);
 async function fixture() {
   const { session } = await createSession(), desk = await publicRecordDesk(session);

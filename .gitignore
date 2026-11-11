@@ -12,6 +12,7 @@
 node_modules/
 .next/
 .next-certificate-qa/
+.next-source-impact-qa/
 .vercel/
 out/
 dist/

@@ -1,0 +1,46 @@
+import { readFile, mkdir, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { randomBytes } from "node:crypto";
+import { userInfo } from "node:os";
+import { fileURLToPath } from "node:url";
+import { resolve, dirname } from "node:path";
+import pg from "pg";
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const stateDir = resolve(root, ".local/source-impact-qa"), configPath = resolve(stateDir, "runtime-private.json");
+await mkdir(stateDir, { recursive: true, mode: 0o700 });
+const args = process.argv.slice(2);
+if (args[0] === "--init") {
+  let existing;
+  try { existing = JSON.parse(await readFile(configPath, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
+  if (existing) { console.log("Existing isolated source-impact configuration retained; no database reset."); process.exit(0); }
+  const suffix = randomBytes(6).toString("hex"), name = `wk_source_impact_${suffix}`, role = `wksi_${suffix}`, password = randomBytes(32).toString("hex");
+  const admin = new pg.Client({ host: "127.0.0.1", port: 5432, user: userInfo().username, database: "postgres" });
+  await admin.connect();
+  try {
+    await admin.query(`CREATE ROLE ${role} LOGIN PASSWORD '${password}' NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT`);
+    await admin.query(`CREATE DATABASE ${name} OWNER ${role}`);
+    await writeFile(configPath, JSON.stringify({ databaseUrl: `postgresql://${role}:${password}@127.0.0.1:5432/${name}`, authSecret: randomBytes(48).toString("base64url"), createdAt: new Date().toISOString() }, null, 2), { mode: 0o600, flag: "wx" });
+  } finally { await admin.end(); }
+  console.log("Created a separate source-impact QA database and restricted role. Providers disabled; port 4520."); process.exit(0);
+}
+const config = JSON.parse(await readFile(configPath, "utf8"));
+const env = Object.fromEntries(["PATH", "HOME", "USER", "TMPDIR", "LANG", "TERM"].flatMap(key => process.env[key] ? [[key, process.env[key]]] : []));
+// Blank every project dotenv name before Next can load it. The qualification
+// gets only its dedicated database, separate signing secret and no providers.
+for (const name of [".env", ".env.local", ".env.production", ".env.production.local", ".env.development", ".env.development.local"]) {
+  const content = await readFile(resolve(root, name), "utf8").catch(() => "");
+  for (const match of content.matchAll(/^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=/gm)) env[match[1]] = "";
+}
+Object.assign(env, { DATABASE_URL: config.databaseUrl, AUTH_SECRET: config.authSecret, WORLDKIT_PUBLIC_URL: "http://127.0.0.1:4520",
+  WORLDKIT_QA_MODE: "source-impact", WORLDKIT_DISABLE_PROVIDERS: "true", NEXT_TELEMETRY_DISABLED: "1",
+  PAYPAL_CLIENT_ID: "", PAYPAL_CLIENT_SECRET: "", CHANNEL3_API_KEY: "", OPENAI_API_KEY: "", GEMINI_API_KEY: "", BLOB_READ_WRITE_TOKEN: "", CRON_SECRET: "" });
+let command;
+if (args[0] === "--test") command = ["--import", "tsx", "--test", "--test-concurrency=1", ...args.slice(1)];
+else if (args[0] === "--script" && args[1]) command = ["--import", "tsx", ...args.slice(1)];
+else if (args[0] === "--build") { env.NODE_ENV = "production"; command = ["node_modules/next/dist/bin/next", "build"]; }
+else if (args[0] === "--start") { env.NODE_ENV = "production"; command = ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", "4520"]; }
+else throw new Error("Use --init, --test <files>, --script <file>, --build or --start. No reset operation is provided.");
+const child = spawn(process.execPath, command, { cwd: root, env, stdio: "inherit" });
+for (const signal of ["SIGTERM", "SIGINT"]) process.on(signal, () => child.kill(signal));
+child.on("exit", code => process.exit(code ?? 1));

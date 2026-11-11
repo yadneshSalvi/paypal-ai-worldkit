@@ -13,7 +13,8 @@ import { publicRecordOrigin, publicRecordUrl } from "../src/server/public-record
 import { GET } from "../src/app/api/public-records/[slug]/[[...asset]]/route";
 import { paymentProvider } from "../src/server/payment-provider";
 
-if (process.env.WORLDKIT_QA_MODE !== "certificate" || !process.env.DATABASE_URL?.endsWith("/worldkit_certificate_qa")) throw new Error("Run this suite with scripts/certificate-qa.mjs; it must not use an existing application database.");
+import { requireIsolatedDatabase } from "./support/isolated-database";
+requireIsolatedDatabase();
 after(closeDatabase);
 const workspace = async () => (await createSession()).session;
 async function prepare(session: Session, title = "A fictional Sample studio") {

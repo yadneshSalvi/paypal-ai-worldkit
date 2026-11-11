@@ -6,6 +6,7 @@ import type { EvidenceDetail, EvidenceDraftDetail, EvidenceWorkspace } from "../
 import type { Job } from "@/server/jobs";
 import { BackgroundJob } from "./background-job";
 import { DeviceArt } from "./device-art";
+import { SourceImpactView } from "./source-impact";
 import { api, Busy, downloadJSON, shortTime } from "./ui";
 
 function locationValue(key: string) { return new URL(window.location.href).searchParams.get(key); }
@@ -101,6 +102,7 @@ function SourceDesk({ profileId, onBack, onRefresh }: { profileId: string; onBac
       {draftLoading ? <div className="research-loading"><Busy text="Opening the saved source proposal…"/></div> : draft ? <SourceProposal detail={draft} onSaved={async message => { setNotice(message); setDraft(await api<EvidenceDraftDetail>(`/api/evidence?draftId=${draft.draft.id}`)); await load(); await onRefresh(); }}/>
         : <><div className="source-proposal-empty"><div className="source-paper-stack" aria-hidden="true"><FileText size={43} strokeWidth={1.2}/><Fingerprint size={27} strokeWidth={1.4}/></div><h4>A quote is a starting point.</h4><p>A source reading separates located claims, unknowns and contradictions. Saving a candidate keeps that trail; technical review remains open.</p><div><span><FileText size={14}/> Pinned source</span><ChevronRight size={12}/><span><Sparkles size={14}/> Proposed facts</span><ChevronRight size={12}/><span><ShieldCheck size={14}/> Human review</span></div></div>{detail.libraryProfile && <LibraryReading profile={detail.libraryProfile} sourceUrl={detail.librarySource?.url ?? candidate.source.url}/>}</>}
       {detail.reviewRequests.length > 0 && <section className="source-review-queue"><header><BookOpen size={20}/><div><h4>Questions for independent review</h4><p>{detail.reviewRequests.length} saved {detail.reviewRequests.length === 1 ? "question" : "questions"} · no review decisions recorded here</p></div></header>{detail.reviewRequests.map(review => <article key={review.id}><p>{review.question}</p><small>{review.assertionIds.length} exact assertions · {shortTime(review.createdAt)} · Awaiting review</small></article>)}</section>}
+      <SourceImpactView profileId={profileId} documentId={documentId} version={`${detail.candidate.currentDocument?.headVersion ?? 0}:${document?.status ?? "library"}:${detail.documents.length}`}/>
     </div></div>
   </div>;
 }

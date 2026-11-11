@@ -11,6 +11,8 @@ plans/
 artifacts/private/
 node_modules/
 .next/
+.next-certificate-qa/
+.next-source-impact-qa/
 coverage/
 test-results/
 playwright-report/

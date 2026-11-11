@@ -1,0 +1,44 @@
+{
+  "version": "source-impact-qualification.v1",
+  "observedAt": "2026-11-11T12:49:39.091493+00:00",
+  "scope": "Read-only exact source dependencies across private saved kit revisions",
+  "sourceHashes": {
+    "packages/spec-evidence/impact.ts": "7378c2106a4965cfaeea00811aa6baffdb86b9ba99b3f8349129ec04a877348d",
+    "src/server/source-impact.ts": "487dcdd045a9f407808dbbf29b9dc2b41204eac09ef1719c682a284df8f9181b",
+    "src/app/api/evidence/impact/route.ts": "288355a3669d48740dee03cf1dad3cb9374cae7477f37afdc45d96755ccfbbb0",
+    "src/components/source-impact.tsx": "699f95328853b338886d779d7c3c9972fcb122907468594a31e315cb97735c6e",
+    "src/components/source-library.tsx": "5475f0073190dd98e9fe83ed4f544af4853fbcd2549a6cbe3cb4915974b1f44a",
+    "src/app/source-library.css": "529abd47ee3b73b59b890b48e42af4c7ae7df2ba11f56f327c79e7a7439337b0"
+  },
+  "unitTests": 128,
+  "databaseTests": 124,
+  "testsTransport": "Provider-disabled local PostgreSQL with a separate restricted role",
+  "nativeChecks": {
+    "fixture": "Synthetic historical document fingerprints; not an observed manufacturer change",
+    "revisions": 3,
+    "currentSource": "same_document",
+    "olderSource": "changed_document",
+    "disabledConnectionAbsent": true,
+    "enabledPathsInOldRevision": 4,
+    "historicalCertificateUnchanged": true,
+    "viewportWidths": [
+      1280,
+      390,
+      360
+    ],
+    "horizontalOverflow": false,
+    "keyboardDisclosure": true,
+    "privateExport": "source-impact.v1"
+  },
+  "limits": [
+    "At most 100 saved revisions; current kits prioritized then recent history; partial coverage explicitly disclosed",
+    "Review targets only; no new hardware incompatibility or compatibility conclusion",
+    "No independent source review or physical test performed"
+  ],
+  "initialFailuresRetained": [
+    "Test fixture omitted required source job binding; fixed fixture",
+    "Type check rejected nullable fingerprint; fixed test",
+    "Two certificate suites refused the new QA database before dispatch; isolated database guard expanded to the new restricted local role, all12 then passed"
+  ],
+  "downloadSha256": "0d3fcae6d8d922d1ca2989f635733fa5c7bffb6fa01bd051d9d1880039fbb471"
+}
