@@ -13,6 +13,8 @@ import { initializePublicRecords } from "./public-record-db";
 import { database } from "./db";
 import { ToolkitReadInput } from "../../packages/commerce/toolkit-contracts";
 import { readPaymentEvidence } from "./payment-evidence";
+import { initializeSynthesis } from "./synthesis-db";
+import { synthesisHome, synthesisOwner } from "./synthesis";
 
 export async function authorizeKit(principal: Principal, scope: ToolScope, revisionId: string, expectedHash: string) {
   if (!principal.scopes.includes(scope) || Date.parse(principal.expiresAt) <= Date.now()) throw new WorldKitError("forbidden", "The current grant does not allow this operation.", 403);
@@ -71,7 +73,37 @@ export function createMcpServer(principal: Principal): McpServer {
       } finally { if (lease) await releaseTool(principal, lease); }
     });
   }
+  for (const kind of ["comparison", "upgrades"] as const) {
+    const template = new ResourceTemplate(`worldkit://systems/{revisionId}/{graphHash}/{editionId}/${kind}`, { list: async () => {
+      const current = await currentAccess(principal, "kit:verify"); await initializeSynthesis();
+      const rows = (await database().query("SELECT id,sequence,payload->'basis'->>'revisionId' AS revision_id,payload->'basis'->>'graphHash' AS graph_hash,payload->'goal'->>'title' AS title FROM wk_synthesis_editions WHERE tenant_id=$1 AND kit_id=ANY($2::text[]) ORDER BY created_at DESC,id LIMIT 100", [current.tenantId, current.allowedKitIds])).rows;
+      await currentAccess(principal, "kit:verify");
+      return { resources: rows.map(row => ({ uri: `worldkit://systems/${encodeURIComponent(row.revision_id)}/${row.graph_hash}/${encodeURIComponent(row.id)}/${kind}`, name: `${kind}-${row.id}`, title: `${row.title} · comparison ${row.sequence} · ${kind}`, mimeType: "application/json", description: "An exact immutable planning edition with current freshness, scoped to this kit. No purchase, approval or physical verification." })) };
+    } });
+    server.registerResource(`system-${kind}`, template, { title: kind === "comparison" ? "Complete system comparison" : "Proposed upgrade journey", mimeType: "application/json", description: "Read the exact system alternatives or proposed upgrade stages and their current staleness. Requires current kit:verify access; grants no modification, repair, payment or fulfillment authority." }, async (uri, variables) => {
+      let lease: string | null = null;
+      try {
+        lease = await claimTool(principal, "verify_kit");
+        if (typeof variables.revisionId !== "string" || typeof variables.graphHash !== "string" || typeof variables.editionId !== "string") throw new WorldKitError("invalid_request", "Use an exact saved graph and comparison edition.");
+        const value = await readScopedSynthesis(principal, variables.revisionId, variables.graphHash, variables.editionId, kind);
+        return { contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(value) }] };
+      } catch (error) {
+        throw new McpError(ErrorCode.InvalidRequest, error instanceof WorldKitError ? error.message : "The scoped system facts could not be read.", { code: error instanceof WorldKitError ? error.code : "invalid_request" });
+      } finally { if (lease) await releaseTool(principal, lease); }
+    });
+  }
   return server;
+}
+
+export async function readScopedSynthesis(principal: Principal, revisionId: string, expectedHash: string, editionId: string, kind: "comparison" | "upgrades") {
+  const bundle = await authorizeKit(principal, "kit:verify", revisionId, expectedHash);
+  const home = await synthesisHome(synthesisOwner({ id: principal.tenantId, expiresAt: principal.expiresAt, discoveryRequests: 0, liveRebuilds: 0 }), editionId);
+  const detail = home.current;
+  if (!detail || detail.edition.kitId !== bundle.kit.kitId || detail.edition.basis.revisionId !== revisionId || detail.edition.basis.graphHash !== expectedHash) throw new WorldKitError("stale_revision", "This comparison belongs to a different exact source graph.", 409);
+  await currentAccess(principal, "kit:verify");
+  return { schema: `worldkit.scoped-${kind}.v1`, access: "scoped_private", editionId, editionHash: detail.edition.hash, revisionId, graphHash: expectedHash,
+    sourceMode: detail.edition.sourceMode, freshness: detail.freshness, physicalTest: "not_performed", authority: "Read-only planning facts; no purchase, funding, fulfillment or repair permission.",
+    ...(kind === "comparison" ? { edition: detail.edition, choice: detail.choice, choiceHistory: detail.choiceHistory } : { journeys: detail.journeys }) };
 }
 
 export async function readScopedRecord(principal: Principal, revisionId: string, expectedHash: string, recordId: string, kind: "certificate" | "assembly") {

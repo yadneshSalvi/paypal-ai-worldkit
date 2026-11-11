@@ -29,7 +29,8 @@ The core test suite uses deterministic sample providers. Credentialed qualificat
 
 ## What works
 
-- A spatial graph and accessible connection list, four architecture comparisons, requirement editing, source inspection, explicit failure witnesses and deterministic repairs.
+- A spatial graph and accessible connection list, requirement editing, source inspection, explicit failure witnesses and deterministic repairs.
+- Persisted complete-system comparison editions with whole-graph costs and resource checks, distinct Pareto choices, visible rejected candidates, explicit hard-goal relaxations, separate preference/application, stale-evidence rebase, immutable choice history and conditional staged upgrades. The local Sample qualification creates no purchase or repair authority. [System synthesis contract](docs/SYSTEM_SYNTHESIS.md).
 - Immutable PostgreSQL revisions/certificates, optimistic version checks, tenant isolation, append-only events and resumable jobs with leased workers, bounded retries, cancellation and durable attempt receipts.
 - Real Channel3 discovery, exact variant refresh, category/attribute browsing, condition/price/dimension filters, observed price history, product URL lookup and workspace-scoped attribution. Fresh retailer URLs are excluded from persisted snapshots; original diagrams are used instead of unlicensed product images.
 - An equipment passport with private photo upload, editable model region proposals, user-confirmed crop search, exact model/ownership review, quantities, accessories, condition and history. Placing or correcting an item previews the whole kit, commits an immutable profile and preserves older proofs. Unknown engineering facts remain unknown.

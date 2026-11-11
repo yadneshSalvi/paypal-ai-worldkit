@@ -56,7 +56,7 @@ export function connectionIssues(kit: KitRevision, profiles: DeviceProfile[]): {
 function evaluate(ctx: Context, requirement: Requirement): Evaluation {
   const { kit } = ctx; const audio = kit.components.find(c => c.role === "audio"); const audioProfile = getDevice(ctx, audio);
   const host = kit.components.find(c => c.role === "host"); const hostProfile = getDevice(ctx, host);
-  const mics = kit.components.filter(c => ["voice-1", "voice-2"].includes(c.role));
+  const mics = kit.components.filter(c => /^voice-\d+$/.test(c.role));
   if (!requirement.confirmed) return { status: "unknown", title: "Confirm this goal", explanation: "This requirement was proposed and has not been confirmed.", action: "Review the goal" };
   switch (requirement.kind) {
     case "isolated_tracks": {
@@ -70,7 +70,7 @@ function evaluate(ctx: Context, requirement: Requirement): Evaluation {
       const fact = kit.templateId === "T1" ? hostProfile?.facts.hostIsolatedWhileStreaming : audioProfile?.facts.onboardIsolated;
       if (factState(ctx, fact) === "unknown") return { status: "unknown", title: "Two inputs aren’t proof of two files", explanation: kit.templateId === "T1" ? "No reviewed source confirms that this exact tablet app records isolated microphone tracks while streaming." : "The selected recording device needs an exact isolated-track recording source.", components: [kit.templateId === "T1" ? host!.id : audio.id], facts: fact ? [fact] : [], action: "Compare a recorder architecture" };
       if (fact?.value !== true) return { status: "violated", title: "This route does not record separate files", explanation: "The selected recording destination lacks onboard isolated recording.", components: [audio.id], facts: fact ? [fact] : [] };
-      return { status: "satisfied", title: "Each voice keeps its own track", explanation: "Two different inputs reach the recorder. The documented recording mode writes selected tracks separately.", components: [...mics.map(m => m.id), audio.id], connections: edges.map(e => e.id), facts: [channels!, fact!] };
+      return { status: "satisfied", title: "Each voice keeps its own track", explanation: `${target} independent inputs reach the recording path. The documented recording mode writes the selected tracks separately.`, components: [...mics.map(m => m.id), audio.id], connections: edges.map(e => e.id), facts: [channels!, fact!] };
     }
     case "camera_stream": {
       const camera = kit.components.find(c => c.role === "camera"); const capture = kit.components.find(c => c.role === "capture");

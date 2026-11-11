@@ -1,0 +1,128 @@
+{
+  "schema": "worldkit.system-synthesis-local-qualification.1",
+  "checkedAt": "2026-11-11T23:53:51.378904+00:00",
+  "status": "local_software_checks_passed_native_acceptance_pending",
+  "baseCommit": "cd6d647c9f259baeec9f672e9a88ad077fea642b",
+  "ruleVersion": "worldkit.synthesis.2",
+  "sourceMode": "sample",
+  "actualHumanReviews": 0,
+  "physicalTests": 0,
+  "providerModelDispatch": "disabled",
+  "tests": {
+    "unitSuite": {
+      "passed": 171,
+      "failed": 0
+    },
+    "finalSynthesisDomain": {
+      "passed": 19,
+      "failed": 0
+    },
+    "affectedExistingPostgres": {
+      "passed": 38,
+      "failed": 0
+    },
+    "finalSynthesisAndScopedPostgres": {
+      "passed": 16,
+      "failed": 0
+    },
+    "productionHttpGroups": {
+      "passed": 10,
+      "failed": 0
+    },
+    "nativeEntryHttpChecks": {
+      "passed": 9,
+      "failed": 0,
+      "positiveEntries": 6,
+      "negativeGuards": 3
+    },
+    "strictTypescript": "passed"
+  },
+  "build": {
+    "framework": "Next.js 16.4.6",
+    "node": "22.22.3",
+    "directory": ".next-synthesis-qa",
+    "buildId": "l0v5UF5Wcq9ITCNtnqgCS",
+    "production": "passed",
+    "containsLocalHarnessOverlay": true
+  },
+  "solverScope": {
+    "architectures": 4,
+    "maxAudioChoicesPerArchitecture": 6,
+    "maxMicrophoneChoices": 3,
+    "maxModeledVoicePositions": 32,
+    "marketExhaustive": false,
+    "sameGoalPreserved": true,
+    "minimalRelaxations": "Within the disclosed evaluated catalog only",
+    "sampleLabeledCostsMinor": [
+      25300,
+      30900,
+      42400
+    ],
+    "sampleRejectedIncompatibleMicrophoneSystems": 4
+  },
+  "preservation": {
+    "immutableOriginalGraphsAndCertificates": "passed",
+    "nonemptyFictionalFinancialRows": "unchanged",
+    "newProviderModelEffects": 0,
+    "protectedMainHead": "cd6d647c9f259baeec9f672e9a88ad077fea642b",
+    "protectedMainClean": true,
+    "protected4520StaticHttp": 200,
+    "protected4539StaticHttp": 200,
+    "protectedBuildByteContinuity": "No pre-task snapshot; not claimed"
+  },
+  "retainedAttempts": [
+    {
+      "name": "pg-v1",
+      "passed": 9,
+      "failed": 3,
+      "reason": "Fixture SQL errors: operation-scoped observation join and required inventory request fields",
+      "correction": "Fixture queries corrected; original log and rows retained"
+    },
+    {
+      "name": "production-build-v1",
+      "result": "compiled successfully",
+      "limitation": "Underscore private folder excluded local QA entry; corrected with documented encoded route folder"
+    },
+    {
+      "name": "production-build-v2",
+      "result": "strict_typecheck_failed",
+      "reason": "HTTP helper name shadow and overly broad command union",
+      "correction": "Helper fixed; failed build and log retained"
+    },
+    {
+      "name": "production-build-v3",
+      "result": "passed_with_10_http_groups",
+      "continuation": "Typed-goal bounds/consistency, explicit rule identity and keyboard error recovery led to the final build and fresh preserved native fixtures"
+    },
+    {
+      "name": "production-build-v4",
+      "result": "passed_with_10_final_http_groups"
+    },
+    {
+      "name": "native-entry-http-v1",
+      "result": "failed_404_expected_303",
+      "reason": "Next.js normalizes loopback request URLs to localhost, while the first local harness required literal 127.0.0.1",
+      "correction": "Use canonical localhost for the isolated public origin; exact host/site guards retained; listener remains IPv4 loopback; fixture session/expiry unchanged"
+    },
+    {
+      "name": "production-build-v5",
+      "result": "passed_with_10_final_http_groups_and_9_native_entry_checks",
+      "change": "Local harness canonical origin only; complete product code unchanged from v4"
+    }
+  ],
+  "remainingGates": [
+    "Root desktop/390/360/keyboard/audio/concurrency native acceptance",
+    "Product-only integration and hosted additive migration/deployment",
+    "Actual model/provider and external deployed-client qualification",
+    "Genuine human engineering review and physical study",
+    "Broader domain packs, research, Store Sync, authentic events/subscriptions, media and release work"
+  ],
+  "evidenceFiles": {
+    "finalBuild": "production-build-v5.log",
+    "finalStrictTypescript": "typecheck-freeze-v2.log",
+    "finalProductionHttp": ".local/synthesis-qa/http-2026-11-11T23-52-01.961Z-1b4f67.json",
+    "finalNativeEntries": ".local/synthesis-qa/native-entry-2026-11-11T23-52-01.628Z-f78a9a.json",
+    "protectedContinuity": "protected-continuity-final.json",
+    "nativeAcceptance": "prepared, not performed"
+  }
+}

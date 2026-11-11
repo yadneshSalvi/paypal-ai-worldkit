@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
       { key: "X-Frame-Options", value: "DENY" }
-    ] }, ...["/record/:path*", "/api/public-records/:path*", "/api/records", "/review/:path*", "/api/engineering-review/:path*"].map(source => ({ source, headers: [
+    ] }, ...["/record/:path*", "/api/public-records/:path*", "/api/records", "/review/:path*", "/api/engineering-review/:path*", "/api/synthesis"].map(source => ({ source, headers: [
       { key: "Cache-Control", value: "private, no-store, max-age=0, must-revalidate" },
       { key: "CDN-Cache-Control", value: "no-store" },
       { key: "Vercel-CDN-Cache-Control", value: "no-store" },

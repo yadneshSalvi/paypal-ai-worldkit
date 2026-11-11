@@ -23,7 +23,7 @@ test("an actual MCP SDK client lists and reads certificate and assembly resource
   await Promise.all([server.connect(serverTransport), client.connect(clientTransport)]);
   try {
     const tools = await client.listTools(); assert.deepEqual(tools.tools.map(tool => tool.name).sort(), ["quote_kit", "repair_kit", "verify_kit"]);
-    const templates = await client.listResourceTemplates(); assert.equal(templates.resourceTemplates.length, 2);
+    const templates = await client.listResourceTemplates(); assert.equal(templates.resourceTemplates.length, 4);
     const list = await client.listResources(); assert.equal(list.resources.length, 2);
     for (const resource of list.resources) {
       assert.equal(resource.uri.includes(f.grant.token), false);
