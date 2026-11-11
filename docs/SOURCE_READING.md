@@ -22,7 +22,7 @@ Gemini's synchronous transport also records intent before dispatch and its respo
 
 These guarantees are exercised by the [actual workflow](evidence/source-workflow-qualification.json), [transport qualification](evidence/source-provider-transport-qualification.json), and synthetic persistence/concurrency tests. The original interrupted transport attempts are preserved in [their separate record](evidence/source-extraction-transport-v1-interrupted.json).
 
-The [browser qualification](evidence/source-browser-qualification.json) records an actual Gemini reading, reload recovery, an unanswered review question and the exact saved candidate appearing in Equipment. Responsive and keyboard checks are recorded separately from those provider observations. [HTTP checks](evidence/source-http-qualification.json) exercise session/origin isolation and the compact identity selector. The [runtime packaging check](evidence/source-runtime-qualification.json) reconstructs Next.js's traced PDF dependencies and parses the recorded manufacturer PDF with filesystem access outside that package denied. This local macOS check does not establish that the hosted Linux parser works; that remains a deployment check.
+The [browser qualification](evidence/source-browser-qualification.json) records an actual Gemini reading, reload recovery, an unanswered review question and the exact saved candidate appearing in Equipment. Responsive and keyboard checks are recorded separately from those provider observations. [HTTP checks](evidence/source-http-qualification.json) exercise session/origin isolation and the compact identity selector. The [runtime packaging check](evidence/source-runtime-qualification.json) reconstructs Next.js's traced PDF dependencies and parses the recorded manufacturer PDF with filesystem access outside that package denied. A separate [hosted Linux qualification](evidence/source-hosted-qualification.json) passed ten checks, including actual PDF parsing, private storage, Gemini reading, idempotent candidate save and tenant isolation. That source checkpoint is deployed; the later corpus data update has its own release identity.
 
 ## Frozen evaluation
 
@@ -31,6 +31,10 @@ The corpus has 30 development and 30 held-out devices with no family overlap. Th
 The evaluator measures typed agreement with that draft, explicit abstention, validator rejection and quotation location. It does not report human source-support precision or technical accuracy; those values remain null. Source hashes, reference hash, instruction hash, provider IDs, token counts, durations and failed attempts remain recorded. The reference and model instruction are not revised to improve agreement after seeing held-out answers. OpenAI was selected as the primary library proposal source before this run; Gemini alternatives are retained separately rather than selected by answer agreement.
 
 The current machine-readable state is in [the evaluation record](evidence/source-extraction-evaluation.json); `completion` distinguishes an active batch from a finished one. A successful provider response still may contain unknown, rejected or mistaken claims. The library can therefore contain useful source proposals while every critical human-review gate remains open.
+
+The held-out run is finished: 30 Astra and 30 Gemini requests returned retained responses. Astra located 295 of its supported predictions; four draft-supported answers were not established. Gemini located 284 and rejected 15 proposals. These figures describe the validator and agreement with an unreviewed reference, not semantic accuracy. The earlier interrupted transport attempts remain in their original record.
+
+Thirty additional development-family Astra requests also finished. Together, the predeclared primary-provider drafts populate all 60 library candidates with 478 located proposals, 216 unknowns, three conflicts and one rejected proposal. The [corpus audit](evidence/corpus-library-qualification.json) rechecks all 858 anchors against the retained raw/text fingerprints and exact UTF-16 positions. Candidate identities include their source and draft versions. Previous private candidates and kit revisions keep their original identities. Full engineering port maps, independent reviews and physical tests remain open.
 
 ## Reproduce with your own credentials
 
@@ -46,5 +50,7 @@ node --env-file=.env --import tsx scripts/qualify-source-workflow.ts
 ```
 
 Run one process per batch directory. Restarting a batch uses its existing case/provider identities and retains terminal failures. `--retry-failed` is deliberately refused: a changed transport requires a separately versioned run. Export requires every primary-provider case to have reached a terminal state; failures remain unknown candidates and are disclosed, not replaced with invented facts.
+
+After export, `node --import tsx scripts/validate-corpus-proposals.ts` checks the retained private copies without making provider calls. A fresh clone must recover matching source copies before running this private-source audit; the unit tests do not require them.
 
 Upstream documents may change or become unavailable. Retrieval failures are preserved as availability records. A new download must match the frozen raw and text fingerprints before it can reproduce the original evaluation. Otherwise preserve it as a new source version and keep the original evaluation's availability limit explicit.

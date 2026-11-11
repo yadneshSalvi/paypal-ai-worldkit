@@ -1,0 +1,914 @@
+{
+  "version": 1,
+  "completedAt": "2026-11-11T03:51:50.118Z",
+  "sourceMode": "live_provider_calls",
+  "purpose": "Source proposals for the development half of the corpus; not a held-out accuracy evaluation.",
+  "primaryProvider": "openai",
+  "providerSelection": "Declared before the run. Gemini held-out alternatives are retained separately, not chosen by answer agreement.",
+  "transportVersion": "source-transport.2",
+  "humanReviews": 0,
+  "verifiedPromotions": 0,
+  "physicalTests": 0,
+  "jobs": [
+    {
+      "profileId": "zoom-h4essential",
+      "status": "succeeded",
+      "sourceHash": "1821e2980d2651f19d066ccedca936c1a361839b2791e6f945ccfcbfcf104caa",
+      "requestedAt": "2026-11-11T02:34:15.472Z",
+      "completedAt": "2026-11-11T02:42:56.979Z",
+      "counts": {
+        "located": 17,
+        "unknown": 1,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "7924658f-1e8f-48af-97f4-9a60f76ca7f3",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "fad95cdb621eaab6a9983ae4f4d94fab2447381e2ba03323ce031fff5093e017",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "27b94c023ab6a1540f8a5198b437aebdeacc007148c8b43d52773ecb7855d99d",
+        "requestedAt": "2026-11-11T02:34:15.477Z",
+        "completedAt": "2026-11-11T02:42:56.979Z",
+        "durationMs": 521502,
+        "requestId": "resp_0b747e37ee05846f006af3d427b0e887d2b018dca0da129f06",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 24252,
+        "outputTokens": 27000
+      },
+      "error": null
+    },
+    {
+      "profileId": "focusrite-2i2-4",
+      "status": "succeeded",
+      "sourceHash": "ea40bf8cfa8ef524673060c09b630d672098389bfd23374965cc3439c7d75f6d",
+      "requestedAt": "2026-11-11T02:34:15.500Z",
+      "completedAt": "2026-11-11T02:47:06.440Z",
+      "counts": {
+        "located": 13,
+        "unknown": 5,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "39a1d130-3632-4d3c-9282-e17cdc0a806a",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "5fecc33b5ab43d1584d8705d3ed3786d2e9088a944c0479d555e3b637d77ccd0",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "a13975c18e50760aa0ec169c6f1a376b0a34f98511686f985c7077ed02985bd4",
+        "requestedAt": "2026-11-11T02:34:15.502Z",
+        "completedAt": "2026-11-11T02:47:06.440Z",
+        "durationMs": 770938,
+        "requestId": "resp_0e9d144c714e704c006af3d427b0bc87d2bd5baa3148c38af7",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 31443,
+        "outputTokens": 32695
+      },
+      "error": null
+    },
+    {
+      "profileId": "zoom-livetrak-l8",
+      "status": "succeeded",
+      "sourceHash": "fcf749745339f1e64978889975cefd87f86da9e5de83538106e8e75f42f0218e",
+      "requestedAt": "2026-11-11T02:42:56.982Z",
+      "completedAt": "2026-11-11T02:47:06.962Z",
+      "counts": {
+        "located": 7,
+        "unknown": 11,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "9303a0a7-9177-4623-80d5-941301b80c1b",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "88983d908d4dbdd88e66c6744f70e1defbc1ff33c1dcf0f25065a7ab1bb45ef1",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "f10a9bd5d21783c7557657439772dffce0c46e0257fbd90bfd7d0503e3535969",
+        "requestedAt": "2026-11-11T02:42:56.982Z",
+        "completedAt": "2026-11-11T02:47:06.962Z",
+        "durationMs": 249980,
+        "requestId": "resp_02af50b854943a2d006af3d6311d5887d2b6abd2ef40e32e38",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3339,
+        "outputTokens": 13328
+      },
+      "error": null
+    },
+    {
+      "profileId": "zoom-h1essential",
+      "status": "succeeded",
+      "sourceHash": "b39c5ab3513fd1b9bb1835f343c3c4862f707b82fd1302239311ee185338f36a",
+      "requestedAt": "2026-11-11T02:47:06.442Z",
+      "completedAt": "2026-11-11T02:54:13.574Z",
+      "counts": {
+        "located": 13,
+        "unknown": 5,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "5ae5973d-6ad8-428f-bec8-78bcc9080b36",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "ed4ee3c3eb5527ab8d248dee1397b4dcbe1b820670852774e2a7571a32ab5d22",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "3049b2e1fadf1046a1b7c6d9f6f4ade0c06652daa2102989138ca099373ef139",
+        "requestedAt": "2026-11-11T02:47:06.443Z",
+        "completedAt": "2026-11-11T02:54:13.574Z",
+        "durationMs": 427131,
+        "requestId": "resp_0956d15d9807f3f2006af3d72a9bdc87d28552527230798e28",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 20851,
+        "outputTokens": 23107
+      },
+      "error": null
+    },
+    {
+      "profileId": "zoom-h6essential",
+      "status": "succeeded",
+      "sourceHash": "c8f8acac93c9e26d626ad910fa7eee3b97aeed26ba1ac39a7ab86d335f83a4f4",
+      "requestedAt": "2026-11-11T02:47:06.963Z",
+      "completedAt": "2026-11-11T03:22:07.493Z",
+      "counts": {
+        "located": 18,
+        "unknown": 0,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "c6c99d02-8345-4d94-b382-87caf3c2ac29",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "be52df920c58d369138574437bd9c9e2de61d8f3e1ce872ddc766a277e38e7b1",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "a995f5f3e2731fcce2fe5e9ecdf355c89d7531ffa6d14383997c05708eb6d80c",
+        "requestedAt": "2026-11-11T02:47:06.964Z",
+        "completedAt": "2026-11-11T03:22:07.493Z",
+        "durationMs": 2100529,
+        "requestId": "resp_05cfe06608b06f01006af3d72b1d1887d2a8f33dcc8d325531",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 24035,
+        "outputTokens": 23605
+      },
+      "error": null
+    },
+    {
+      "profileId": "shure-sm58-lc",
+      "status": "succeeded",
+      "sourceHash": "5932523424328412b0b7c0adb28e9cc25d73b9d15c1a3d5db1e59e6a94360344",
+      "requestedAt": "2026-11-11T02:54:13.577Z",
+      "completedAt": "2026-11-11T02:55:37.864Z",
+      "counts": {
+        "located": 7,
+        "unknown": 6,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "a4bdf913-1a58-4785-b1bf-ce0975b84612",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "afa0a347fb344d9b501dc64d0f19e44f517fbcd93c53b26e306d4429dc5bfba3",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "f93f0ea7e6a17bb3b1f166a87bf59e271b454f0283f193547221fc25453c01c6",
+        "requestedAt": "2026-11-11T02:54:13.578Z",
+        "completedAt": "2026-11-11T02:55:37.864Z",
+        "durationMs": 84286,
+        "requestId": "resp_0cbc4f10d98fa87a006af3d8d5b83887d2b36eead94f811ffb",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3329,
+        "outputTokens": 4695
+      },
+      "error": null
+    },
+    {
+      "profileId": "shure-sm57-lc",
+      "status": "succeeded",
+      "sourceHash": "af4873b2e14e4c1541e077d3269dd4d46f3df074d261222f1f58dda306c36733",
+      "requestedAt": "2026-11-11T02:55:37.866Z",
+      "completedAt": "2026-11-11T02:57:02.102Z",
+      "counts": {
+        "located": 7,
+        "unknown": 6,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "6783d2a2-2945-4cf6-980e-5479fa548789",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "6ef27cd6f3561c542239fa3187b3f9518b3925a544f0f5ba8912b8ab22d3fb3f",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "f8507969a1ce7597f173e0bad8e3b00a35ef3344ab6be669edb5513bbf4331aa",
+        "requestedAt": "2026-11-11T02:55:37.867Z",
+        "completedAt": "2026-11-11T02:57:02.102Z",
+        "durationMs": 84235,
+        "requestId": "resp_040a4b09f569d107006af3d92a007c87d2bffbcf58ca0015c8",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3389,
+        "outputTokens": 4841
+      },
+      "error": null
+    },
+    {
+      "profileId": "shure-sm7b",
+      "status": "succeeded",
+      "sourceHash": "cfda1c5f69fbd03a671f6b9baf35b9c713eed922359ccacca10befd646b0b36f",
+      "requestedAt": "2026-11-11T02:57:02.105Z",
+      "completedAt": "2026-11-11T02:59:07.953Z",
+      "counts": {
+        "located": 7,
+        "unknown": 6,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "52317920-a18a-4452-807f-00ecd91ca1a7",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "cf0e6e648311ceea2a3b4f7e5ff733b5dd0de90aa3b0cc6a323d91f09bf26a8b",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "e59682a28607785a9514f149758d501a2417f27961fc195500691321657d861e",
+        "requestedAt": "2026-11-11T02:57:02.105Z",
+        "completedAt": "2026-11-11T02:59:07.953Z",
+        "durationMs": 125848,
+        "requestId": "resp_0e7dfd4ae76c084d006af3d97e3b4087d2b25d111eed47a430",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3536,
+        "outputTokens": 6566
+      },
+      "error": null
+    },
+    {
+      "profileId": "shure-mv7x",
+      "status": "succeeded",
+      "sourceHash": "e96f71f098c8b42240730f64a894ae4ff927fa9c657ed3d6ad49b77f2943d703",
+      "requestedAt": "2026-11-11T02:59:07.956Z",
+      "completedAt": "2026-11-11T03:00:32.772Z",
+      "counts": {
+        "located": 8,
+        "unknown": 5,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "a0fc5ed8-deed-4848-ab96-76bb24023851",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "2cb72679c9dadbfccf5a4c37a6005c3d35a15e788ed35c190e724b1ff6fdd0ff",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "1fc37b71f85fa9e26c5408ba6f51fd28988092e272f39dc9fad17af6488fc97d",
+        "requestedAt": "2026-11-11T02:59:07.957Z",
+        "completedAt": "2026-11-11T03:00:32.772Z",
+        "durationMs": 84815,
+        "requestId": "resp_08d22126b376e539006af3d9fc17f087d28119842c912fd785",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2802,
+        "outputTokens": 4219
+      },
+      "error": null
+    },
+    {
+      "profileId": "shure-beta58a",
+      "status": "succeeded",
+      "sourceHash": "5dd5c422cf93312f0a02a153bc83b82a015f0d24ac32f56404526f93f1779031",
+      "requestedAt": "2026-11-11T03:00:32.774Z",
+      "completedAt": "2026-11-11T03:02:52.074Z",
+      "counts": {
+        "located": 5,
+        "unknown": 7,
+        "rejected": 0,
+        "conflicted": 1
+      },
+      "receipt": {
+        "id": "4585c50d-6b36-4dd5-b888-1bbb1c466f5f",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "80bf9523746bb57826858405fd21e78db89b9c17e128d6c52643dac095121cbf",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "7831fd10d89e30924e4b21258a12a07436a2caeaeec3cb4904a898d7586a8363",
+        "requestedAt": "2026-11-11T03:00:32.775Z",
+        "completedAt": "2026-11-11T03:02:52.074Z",
+        "durationMs": 139299,
+        "requestId": "resp_0d0fc41818aba65a006af3da50ed8487d2b8f7068eb88007d3",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 12640,
+        "outputTokens": 7798
+      },
+      "error": null
+    },
+    {
+      "profileId": "at2020-xlr",
+      "status": "succeeded",
+      "sourceHash": "527f0454027f1ba141c2a89cabb3c2c365465387bf09c45a96dc178195842e28",
+      "requestedAt": "2026-11-11T03:02:52.075Z",
+      "completedAt": "2026-11-11T03:04:37.206Z",
+      "counts": {
+        "located": 10,
+        "unknown": 3,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "d083310a-4f95-43e1-9621-fba60310887b",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "7ef9392f2824b8919e43bfe950a89aa9bcaf5cf9be221f86cbebe41c406b63fd",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "26ecd152f9460669133b20f5db4d0af9829541664352333ff5d09a4b6f8f3056",
+        "requestedAt": "2026-11-11T03:02:52.076Z",
+        "completedAt": "2026-11-11T03:04:37.206Z",
+        "durationMs": 105130,
+        "requestId": "resp_0c2ce6001a772dff006af3dadc33d487d2ad09d9a74e45e0d3",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2469,
+        "outputTokens": 6010
+      },
+      "error": null
+    },
+    {
+      "profileId": "at2040-xlr",
+      "status": "succeeded",
+      "sourceHash": "d71be7f9de2eee01d6dcb940e023fba3309ea3d9b529c525e4d0ab55dd4c38df",
+      "requestedAt": "2026-11-11T03:04:37.209Z",
+      "completedAt": "2026-11-11T03:06:23.010Z",
+      "counts": {
+        "located": 7,
+        "unknown": 6,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "f38a0671-2c42-4dcc-ac92-2dd9573a36af",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "71efd4f999f8b57f3a6041f11f1ec7293e777066d0fc39ae24069f9be2d89a7c",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "87da29549d2df1ee75b476bfd6086b58a564f4490d16f8b5c51312f0e0f2600a",
+        "requestedAt": "2026-11-11T03:04:37.210Z",
+        "completedAt": "2026-11-11T03:06:23.010Z",
+        "durationMs": 105800,
+        "requestId": "resp_01f7a3a18adef4d7006af3db455a4087d287bf7e29edbfa2d7",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 13303,
+        "outputTokens": 6102
+      },
+      "error": null
+    },
+    {
+      "profileId": "apple-ipad-air5",
+      "status": "succeeded",
+      "sourceHash": "71e9376e7d5584de32f75ee8fc9ca4dab9a533ea5a0d53686573f4dbcedbac2d",
+      "requestedAt": "2026-11-11T03:06:23.012Z",
+      "completedAt": "2026-11-11T03:08:59.359Z",
+      "counts": {
+        "located": 7,
+        "unknown": 4,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "648b9f81-93f3-4ef1-81cd-9c2209d8a21a",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "eae1338c7007d17cf5f43ac51379aaa28bac7e5f7facf9d61dc3c70c9e2217ce",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "c782d64815767075923a0f4a42418d0e8ddd7f8be2e3e0ba5be4774b72982cb3",
+        "requestedAt": "2026-11-11T03:06:23.012Z",
+        "completedAt": "2026-11-11T03:08:59.359Z",
+        "durationMs": 156347,
+        "requestId": "resp_0733ffc4d3b80e5a006af3dbaf244c87d2b96044092dc16285",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 7682,
+        "outputTokens": 9059
+      },
+      "error": null
+    },
+    {
+      "profileId": "apple-ipad10",
+      "status": "succeeded",
+      "sourceHash": "b6ae3ae8e3b985fafed5c472a320acf0349c209b1fc6003092ee17e7295ad6ab",
+      "requestedAt": "2026-11-11T03:08:59.362Z",
+      "completedAt": "2026-11-11T03:11:57.012Z",
+      "counts": {
+        "located": 7,
+        "unknown": 4,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "6f07d860-44fe-4594-a090-ca265424c663",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "35f75ef47d666f5d1d81754b8fb50ad0302cbb289312ddd8358f146a90ad3316",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "0a64f1fb0e9b3e8d4b4a701b57de8325c08eca5e24ba56858e034488fac88b88",
+        "requestedAt": "2026-11-11T03:08:59.363Z",
+        "completedAt": "2026-11-11T03:11:57.012Z",
+        "durationMs": 177649,
+        "requestId": "resp_06e262ce56ec23c2006af3dc4b808887d295d24105c37131e6",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 7613,
+        "outputTokens": 9581
+      },
+      "error": null
+    },
+    {
+      "profileId": "sony-zve10",
+      "status": "succeeded",
+      "sourceHash": "006c936ba4ebd431180ff9ee4331fda6c8a2080ce4923491e36eb898d1e9a519",
+      "requestedAt": "2026-11-11T03:11:57.014Z",
+      "completedAt": "2026-11-11T03:13:42.433Z",
+      "counts": {
+        "located": 8,
+        "unknown": 4,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "0a5667c0-28e3-4dcb-8d11-e77e49d5e4c8",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "0f109d4f9b832ffea4f2ad60eaf972f7156e2704d843c46bafa94a4bd1c4203b",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "466eb7d43d51ccbe62654bf416420d32a6449d037f97942edb1c79d0123d9c76",
+        "requestedAt": "2026-11-11T03:11:57.015Z",
+        "completedAt": "2026-11-11T03:13:42.433Z",
+        "durationMs": 105418,
+        "requestId": "resp_07f1808ca376b3dc006af3dcfd286087d299b8da6273578962",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2973,
+        "outputTokens": 6148
+      },
+      "error": null
+    },
+    {
+      "profileId": "sony-zve10-ii",
+      "status": "succeeded",
+      "sourceHash": "36f72cbd39279daf277e2f0a44c088d480ef4698892a0f744be1a7c9aec51c26",
+      "requestedAt": "2026-11-11T03:13:42.434Z",
+      "completedAt": "2026-11-11T03:16:30.547Z",
+      "counts": {
+        "located": 8,
+        "unknown": 4,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "23b94944-c78c-442d-8d39-684b67ca1209",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "9cef7c79b299b2cb6552b2bc94f9d890b1d03ed318d46d59b7dfb96df51e214e",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "e5828dad28538f1a49beac5153d02bbd3d83bbdf3b35df41a10d5b3e179d5b13",
+        "requestedAt": "2026-11-11T03:13:42.435Z",
+        "completedAt": "2026-11-11T03:16:30.547Z",
+        "durationMs": 168112,
+        "requestId": "resp_0a63c026de3c2b23006af3dd6693ec87d2bc0f1f9e8001c63e",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3304,
+        "outputTokens": 8652
+      },
+      "error": null
+    },
+    {
+      "profileId": "elgato-camlink-4k",
+      "status": "succeeded",
+      "sourceHash": "53f6b251959c872cef2933b2873e7af835cc355b36f5982b6b229422fcc6ecfe",
+      "requestedAt": "2026-11-11T03:16:30.549Z",
+      "completedAt": "2026-11-11T03:19:18.684Z",
+      "counts": {
+        "located": 2,
+        "unknown": 10,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "04a3221b-37b0-4f94-ad16-bf6977448318",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "5dc7df6bc56890eefbe70551aaf07d601542b936c6fbcaddb569af4c81926f7a",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "95c99f8f48a06410c36b377f564f030556bfb810cace07c21d6e589967ba63ee",
+        "requestedAt": "2026-11-11T03:16:30.549Z",
+        "completedAt": "2026-11-11T03:19:18.684Z",
+        "durationMs": 168135,
+        "requestId": "resp_0a86cf62f16dfef9006af3de0eaa5c87d2a12799c2f14a0f84",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1984,
+        "outputTokens": 5545
+      },
+      "error": null
+    },
+    {
+      "profileId": "anker-555-a8383",
+      "status": "succeeded",
+      "sourceHash": "d8e6c65285bdedfe7e37751551545397f75b3296f897c3da3575b3eddbd8b6d6",
+      "requestedAt": "2026-11-11T03:19:18.686Z",
+      "completedAt": "2026-11-11T03:23:19.293Z",
+      "counts": {
+        "located": 5,
+        "unknown": 6,
+        "rejected": 0,
+        "conflicted": 1
+      },
+      "receipt": {
+        "id": "49fa4d13-6162-4a9c-a487-82a1d975e424",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "8457e492ecd1a26d9a200995432c3a02e2dba1c133150751c7383fed36041cfb",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "3ec9545b394c4170faf935013b5b9914906b4ac7de7141421ed8cd37519b0c44",
+        "requestedAt": "2026-11-11T03:19:18.687Z",
+        "completedAt": "2026-11-11T03:23:19.293Z",
+        "durationMs": 240606,
+        "requestId": "resp_085e766c6ffc4c5a006af3deb6d1ac87d2ac341126e79569cd",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3124,
+        "outputTokens": 13092
+      },
+      "error": null
+    },
+    {
+      "profileId": "elgato-hd60x",
+      "status": "succeeded",
+      "sourceHash": "0a0534564d70e972cf88330b07d475ed87a4869dc0c7947c789f28e901f6beb3",
+      "requestedAt": "2026-11-11T03:22:07.495Z",
+      "completedAt": "2026-11-11T03:28:21.996Z",
+      "counts": {
+        "located": 4,
+        "unknown": 8,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "adabeb63-27eb-407a-996b-17824de1825c",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "f3092b7feb34751dfc9b15eb8863228890908075fe014bfa35e4eb2d5bb6713a",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "8619faf3bb18292f54b9487322444331a7e2ba96d49c0e86ed29ab268b7acb23",
+        "requestedAt": "2026-11-11T03:22:07.496Z",
+        "completedAt": "2026-11-11T03:28:21.996Z",
+        "durationMs": 374500,
+        "requestId": "resp_0311e3e847b11fca006af3df5f9e4487d2bef043f8425ce834",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2057,
+        "outputTokens": 6001
+      },
+      "error": null
+    },
+    {
+      "profileId": "elgato-4kx",
+      "status": "succeeded",
+      "sourceHash": "5939dc89626786b2f3d8e9cfeda2bc89238591f3356e5c6a2d9b3bc709cef88b",
+      "requestedAt": "2026-11-11T03:23:19.293Z",
+      "completedAt": "2026-11-11T03:25:25.025Z",
+      "counts": {
+        "located": 3,
+        "unknown": 9,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "ad25ab20-80fd-4785-aeea-d759c17ecb44",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "0f53641a7d936ccffe845fc86edd7605c7505dc54272eff7053ae1327d6f5ea7",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "45ddad82d40542d2d6f8879d91b6364b34ea3c049e5b2b7ed3e7121f3adeb212",
+        "requestedAt": "2026-11-11T03:23:19.294Z",
+        "completedAt": "2026-11-11T03:25:25.025Z",
+        "durationMs": 125731,
+        "requestId": "resp_0587d7b770b157c7006af3dfa76a9c87d29e3efa646c72a151",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2157,
+        "outputTokens": 6854
+      },
+      "error": null
+    },
+    {
+      "profileId": "hosa-hmic010",
+      "status": "succeeded",
+      "sourceHash": "bbe64062e00146eff0759d97d2b06c52c32fbc1652400231eb8b106661d900ea",
+      "requestedAt": "2026-11-11T03:25:25.027Z",
+      "completedAt": "2026-11-11T03:27:20.538Z",
+      "counts": {
+        "located": 0,
+        "unknown": 10,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "f056a2e9-87f2-47e3-b975-46864b71a2ac",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "07c5c1444e87b6db2b881afb191f1e0b95d43aebdeddc8e177445d39a0d732c9",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "55924317857b2594e7f6e11698984ea601b087254f8a9f13c550d76c376f8040",
+        "requestedAt": "2026-11-11T03:25:25.027Z",
+        "completedAt": "2026-11-11T03:27:20.538Z",
+        "durationMs": 115511,
+        "requestId": "resp_0d4eda0953b309f7006af3e02524d087d2a3538721809c362c",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1906,
+        "outputTokens": 5879
+      },
+      "error": null
+    },
+    {
+      "profileId": "hosa-gpm103",
+      "status": "succeeded",
+      "sourceHash": "df5814387ac398361ffb7898fedae39417bcc2d478b3e7703afeeb411e136a96",
+      "requestedAt": "2026-11-11T03:27:20.539Z",
+      "completedAt": "2026-11-11T03:29:05.597Z",
+      "counts": {
+        "located": 2,
+        "unknown": 8,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "84db228a-e56a-4a94-aa67-d4829f4b1093",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "b3a2756631e82afab2c6c42f676e13c8bc4b5c06904643d56b4a847b856eb094",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "6249bdd96110a1025eed55c023736b9166de535d23b64544907a5a6c5b8b177a",
+        "requestedAt": "2026-11-11T03:27:20.540Z",
+        "completedAt": "2026-11-11T03:29:05.597Z",
+        "durationMs": 105057,
+        "requestId": "resp_0992c30d49f01f0c006af3e098aadc87d2917ff10ff28e5ce7",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1796,
+        "outputTokens": 5247
+      },
+      "error": null
+    },
+    {
+      "profileId": "hosa-cmp159",
+      "status": "succeeded",
+      "sourceHash": "40ac245b29aa4c096e6867a6277fe883da0c50ede93ca1d576beb3fa2b223e2d",
+      "requestedAt": "2026-11-11T03:28:21.997Z",
+      "completedAt": "2026-11-11T03:29:26.610Z",
+      "counts": {
+        "located": 0,
+        "unknown": 10,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "77fd8bc9-7564-442c-9859-fa42194592c3",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "b701cf0cc8b515de6162c745aee92fafb34b98971eef7ff339cf08a4ed1c8ebb",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "63809285654d290c42ca91cca30e70afde11c42a135a112d04bbed20a2f04def",
+        "requestedAt": "2026-11-11T03:28:21.998Z",
+        "completedAt": "2026-11-11T03:29:26.610Z",
+        "durationMs": 64612,
+        "requestId": "resp_0be1496792949ae4006af3e0d622f487d29e0b8b0709a151fe",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1917,
+        "outputTokens": 3311
+      },
+      "error": null
+    },
+    {
+      "profileId": "rode-sc4",
+      "status": "succeeded",
+      "sourceHash": "37e566d3ab21bdf12c3a06ee2fea272f948752d0258367b55bac5ca1d912afc8",
+      "requestedAt": "2026-11-11T03:29:05.599Z",
+      "completedAt": "2026-11-11T03:30:09.374Z",
+      "counts": {
+        "located": 1,
+        "unknown": 9,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "8295a467-4939-46ba-9546-147cb3cc88f9",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "5e440d2cae7db5e9a3d6a062bdece971a71af229967d74c688d1b705e59ff76a",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "b40bb022d4bf553a874d58d5026bc06d025ab4757d5220e97221c9d347023350",
+        "requestedAt": "2026-11-11T03:29:05.600Z",
+        "completedAt": "2026-11-11T03:30:09.374Z",
+        "durationMs": 63774,
+        "requestId": "resp_0e996545b4a67a62006af3e101b8c087d297929675fdef6a63",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1762,
+        "outputTokens": 3722
+      },
+      "error": null
+    },
+    {
+      "profileId": "rode-sc7",
+      "status": "succeeded",
+      "sourceHash": "6c7de41ef27736ae6e7dab92b3519afe3039967c40755b996e4e243b146a8198",
+      "requestedAt": "2026-11-11T03:29:26.611Z",
+      "completedAt": "2026-11-11T03:32:24.930Z",
+      "counts": {
+        "located": 1,
+        "unknown": 9,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "a4b6d9c5-b3fd-42c7-9fde-2063c3f41306",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "4b76f5cc69bccb57b4173cf1f0a0b04b69946a6dda0dc6979966cf6b91075938",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "65ce1eda0e6a6fc0a4ccef662382296c509921eadf2ca2ded1e0597e7317a3f5",
+        "requestedAt": "2026-11-11T03:29:26.613Z",
+        "completedAt": "2026-11-11T03:32:24.930Z",
+        "durationMs": 178317,
+        "requestId": "resp_06a896b55ec00df3006af3e116bf2c87d29b2bc633fd4406da",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1834,
+        "outputTokens": 7961
+      },
+      "error": null
+    },
+    {
+      "profileId": "rode-sc16",
+      "status": "succeeded",
+      "sourceHash": "85fc1f65e5c522025590b6e063f97fbb3df32911e614b0688c4cecfc01b70318",
+      "requestedAt": "2026-11-11T03:30:09.376Z",
+      "completedAt": "2026-11-11T03:31:02.675Z",
+      "counts": {
+        "located": 1,
+        "unknown": 9,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "ff195bb9-6a36-45a3-9367-521607eb7112",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "a187fe7ed4dd698d9d0fd8797b2ffc06806a4b1cfdc43655c2ba5c21eff7fbd9",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "37d94f460f3ad708f2bc7677992e31c79c30928ebc7b2da81224069174abc523",
+        "requestedAt": "2026-11-11T03:30:09.376Z",
+        "completedAt": "2026-11-11T03:31:02.675Z",
+        "durationMs": 53299,
+        "requestId": "resp_073c3d4fb2399c6c006af3e1417e9887d2aa0bb76b37fff7f8",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1805,
+        "outputTokens": 2592
+      },
+      "error": null
+    },
+    {
+      "profileId": "apple-60w-usbc1m",
+      "status": "succeeded",
+      "sourceHash": "a90c853c6ab81cdb9b65d7d4db114972ae51a66fca1d9305cf0572501702620e",
+      "requestedAt": "2026-11-11T03:31:02.676Z",
+      "completedAt": "2026-11-11T03:51:50.118Z",
+      "counts": {
+        "located": 2,
+        "unknown": 8,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "93d1aa1b-e699-407d-9016-74ef2c5e554b",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "21f92da74aef5571b8153c654bd3e49fef1c3bdb08c0560ff480f80564abe73c",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "598ca58f14c6a5acfe9f09986f10b781d6bbbf0453f827e629034b18dd27bd4e",
+        "requestedAt": "2026-11-11T03:31:02.677Z",
+        "completedAt": "2026-11-11T03:51:50.118Z",
+        "durationMs": 1247441,
+        "requestId": "resp_09c7db40a6deecdc006af3e176cdcc87d2ab487c7167594518",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 1674,
+        "outputTokens": 5584
+      },
+      "error": null
+    },
+    {
+      "profileId": "anker-735-a2668",
+      "status": "succeeded",
+      "sourceHash": "dffcbf4acefbe45ea426cb1a32e6b8f73f4c53265f2027098e6ea7d6940b1527",
+      "requestedAt": "2026-11-11T03:32:24.931Z",
+      "completedAt": "2026-11-11T03:35:02.707Z",
+      "counts": {
+        "located": 4,
+        "unknown": 5,
+        "rejected": 1,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "4d259d97-c36b-4287-a8d0-9957be55b56c",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "0db2c6005b15aad90f0e7b701b84842c37be13fa33ad64540936f06da6462788",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "a96fa431c81f9db80e93093fdd0940c39ce05f918e60ce4d940277b06529f987",
+        "requestedAt": "2026-11-11T03:32:24.932Z",
+        "completedAt": "2026-11-11T03:35:02.707Z",
+        "durationMs": 157775,
+        "requestId": "resp_0b75b763cf18ff88006af3e1c9124c87d2b0acbb1e08a63922",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2100,
+        "outputTokens": 8291
+      },
+      "error": null
+    },
+    {
+      "profileId": "anker-737-a2148",
+      "status": "succeeded",
+      "sourceHash": "962d5e6bfc255eab41af531b74e624d79b73dfb0489f1efc641cf258af5bf725",
+      "requestedAt": "2026-11-11T03:35:02.709Z",
+      "completedAt": "2026-11-11T03:37:19.056Z",
+      "counts": {
+        "located": 4,
+        "unknown": 6,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "d4e5fc8a-c8e9-4511-b9fe-b417895cfb97",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "4c51518152e78b352be6da0dc6420690c9e6d0a4a3f4180082e3875fde696cb1",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "e195ce94e917751127b58fd36b93c193cedd5421a5b1bedd7e38790669c89a63",
+        "requestedAt": "2026-11-11T03:35:02.710Z",
+        "completedAt": "2026-11-11T03:37:19.056Z",
+        "durationMs": 136346,
+        "requestId": "resp_034e8d0438dc904d006af3e266d46087d2a2e120bd21aef05f",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 2002,
+        "outputTokens": 7538
+      },
+      "error": null
+    },
+    {
+      "profileId": "anker-715-a2663",
+      "status": "succeeded",
+      "sourceHash": "03c7bc1c953aa1010613da08aa87ade82bcd6d84f4b965f82f239c380b2ee094",
+      "requestedAt": "2026-11-11T03:37:19.058Z",
+      "completedAt": "2026-11-11T03:39:55.756Z",
+      "counts": {
+        "located": 5,
+        "unknown": 5,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "receipt": {
+        "id": "b78887de-e9f1-4891-8174-e70b9b2573ba",
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputHash": "d73cdf07b7463024e93461b1b5badada06e99a67743ced60a3a0ef0503aa2003",
+        "promptHash": "9eae534909722ede456477d44601cb33e905a1feed9e2841ce9cb9ac8cc931a6",
+        "outputHash": "bbb31d332c1afdca83c293a678c77ef3da38415586355890e0ad1e6331baeb6a",
+        "requestedAt": "2026-11-11T03:37:19.059Z",
+        "completedAt": "2026-11-11T03:39:55.756Z",
+        "durationMs": 156697,
+        "requestId": "resp_0ad4706a65f877dc006af3e2ef2fac87d2a0597022c292caa6",
+        "mode": "live",
+        "status": "succeeded",
+        "inputTokens": 3659,
+        "outputTokens": 9079
+      },
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-11-11T03:38:24.245Z",
+  "url": "https://paypal-ai-worldkit-4dymul0vf-yadneshsalvis-projects.vercel.app",
+  "deploymentId": "dpl_G3Jv6aBDuPuu8UvbV7W92C1UXecU",
+  "source": "6df86e21368b5fe7bec9079aaf5a04b27ef8fcff",
+  "checks": [
+    {
+      "name": "anonymous and foreign-origin guards"
+    },
+    {
+      "name": "isolated hosted workspaces"
+    },
+    {
+      "name": "60-document library retains pending review"
+    },
+    {
+      "name": "compact hosted profile selector",
+      "bytes": 20172
+    },
+    {
+      "name": "actual manufacturer PDF parsed on hosted Linux",
+      "pages": 1,
+      "characters": 2854,
+      "bytes": 112083,
+      "hash": "527f0454027f1ba141c2a89cabb3c2c365465387bf09c45a96dc178195842e28"
+    },
+    {
+      "name": "tenant and document fingerprint block foreign/stale extraction"
+    },
+    {
+      "name": "actual hosted Gemini proposal with exact source anchors and pending review",
+      "counts": {
+        "located": 10,
+        "unknown": 3,
+        "rejected": 0,
+        "conflicted": 0
+      },
+      "provider": "gemini",
+      "model": "gemini-3.8-flash"
+    },
+    {
+      "name": "exact preview bound save persists idempotently"
+    },
+    {
+      "name": "review question remains open without approval"
+    },
+    {
+      "name": "no financial dispatch"
+    }
+  ],
+  "passed": true,
+  "financialDispatches": 0,
+  "limits": [
+    "Actual hosted PDF/Gemini/candidate workflow only; facts remain pending human review, no physical test."
+  ]
+}

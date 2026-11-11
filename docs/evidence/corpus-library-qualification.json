@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-11T03:53:36.418Z",
+  "providerCallsInThisAudit": 0,
+  "sourceProfiles": 60,
+  "actualPrimaryProviderProposals": 60,
+  "primaryProvider": "openai",
+  "proposalFileHash": "70249638453244ff5d61b1051a8e6a5ab5ce20b44e219d1dd8bf3b8387b27725",
+  "counts": {
+    "located": 478,
+    "unknown": 216,
+    "conflicted": 3,
+    "rejected": 1
+  },
+  "locatedAnchorsCheckedAgainstRetainedSource": 858,
+  "compactIdentityBytes": 18661,
+  "humanReviews": 0,
+  "verifiedPromotions": 0,
+  "physicalTests": 0,
+  "limitations": [
+    "Exact UTF-16 source locations and fingerprints were checked. Semantic support and engineering correctness remain unreviewed.",
+    "A library candidate is not a complete port map or a physical test.",
+    "Held-out reference agreement is reported separately and is not human-gold accuracy."
+  ]
+}
