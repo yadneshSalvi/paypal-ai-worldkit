@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Cable, ChevronRight, CircleHelp, Columns3, Compass, Fingerprint, Grid2X2, Headphones, LayoutGrid, List, LoaderCircle, LockKeyhole, Mic2, Play, RefreshCw, Search, Settings2, ShieldCheck, Sparkles, Video, Wallet, X } from "lucide-react";
+import { Activity, ArrowRight, Cable, ChevronRight, CircleHelp, Columns3, Compass, Fingerprint, Grid2X2, Headphones, LayoutGrid, List, LoaderCircle, LockKeyhole, Mic2, Play, RefreshCw, Search, Settings2, ShieldCheck, Sparkles, Video, Wallet, X } from "lucide-react";
 import type { Workspace } from "../../packages/contracts/index";
 import type { Edit } from "../../packages/workbench/index";
 import { DeviceArt } from "./device-art";
@@ -16,9 +16,10 @@ const Assembly = dynamic(() => import("./views").then(m => m.Assembly));
 const Evidence = dynamic(() => import("./views").then(m => m.Evidence));
 const GoalEditor = dynamic(() => import("./goal-editor").then(m => m.GoalEditor));
 const Studio = dynamic(() => import("./studio").then(m => m.Studio));
+const LivingKit = dynamic(() => import("./living-kit").then(m => m.LivingKit), { loading: () => <div className="living-loading"><Busy text="Opening your living kit…"/></div> });
 const Soundcheck = dynamic(() => import("./soundcheck").then(m => m.Soundcheck));
-type Tab = "workbench" | "inventory" | "explore" | "compare" | "assembly" | "evidence" | "studio";
-const tabs = [ { id: "workbench", title: "Workbench", icon: LayoutGrid }, { id: "inventory", title: "Equipment", icon: Fingerprint }, { id: "explore", title: "Explore", icon: Compass }, { id: "compare", title: "Compare", icon: Columns3 }, { id: "assembly", title: "Set up", icon: Cable }, { id: "studio", title: "Studio", icon: Wallet }, { id: "evidence", title: "Proof", icon: Fingerprint } ] as const;
+type Tab = "workbench" | "inventory" | "explore" | "compare" | "assembly" | "evidence" | "studio" | "living";
+const tabs = [ { id: "workbench", title: "Workbench", icon: LayoutGrid }, { id: "inventory", title: "Equipment", icon: Fingerprint }, { id: "explore", title: "Explore", icon: Compass }, { id: "compare", title: "Compare", icon: Columns3 }, { id: "assembly", title: "Set up", icon: Cable }, { id: "studio", title: "Studio", icon: Wallet }, { id: "living", title: "Living kit", icon: Activity }, { id: "evidence", title: "Proof", icon: Fingerprint } ] as const;
 
 export function Brand() { return <span className="brand"><svg viewBox="0 0 31 31" aria-hidden="true"><path d="M5 8l6 15 5-12 5 12 5-15" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="5" cy="8" r="3" fill="currentColor"/><circle cx="26" cy="8" r="3" fill="currentColor"/><circle cx="16" cy="11" r="3" fill="#c2d9d0"/></svg><b>worldkit</b></span>; }
 export function WorldKitApp({ initialWorkspace }: { initialWorkspace: Workspace | null }) {
@@ -68,6 +69,7 @@ export function WorldKitApp({ initialWorkspace }: { initialWorkspace: Workspace 
     {tab === "compare" && <Compare workspace={w} onEdit={safeEdit} busy={busy}/>}
     {tab === "assembly" && <Assembly workspace={w} onRefresh={refresh}/>}
     {tab === "studio" && <Studio workspace={w}/>}
+    {tab === "living" && <LivingKit workspace={w} onExplore={explore} onEquipment={() => setTab("inventory")} onWorkbench={() => setTab("workbench")} onStudio={() => setTab("studio")}/>}
     {tab === "evidence" && <Evidence workspace={w} onRefresh={refresh}/>}
     </main><footer className="app-footer"><Brand/><p>Thoughtfully connected. Honestly verified.</p><span>Computational checks · physical performance not tested</span></footer>
     {goalOpen && <GoalEditor workspace={w} onClose={() => setGoalOpen(false)} onEdit={edit}/>}

@@ -10,6 +10,9 @@ import { getRevision, type Session, type RevisionBundle } from "./repository";
 import { paymentProvider } from "./payment-provider";
 import { adoptCheckoutWallet, createWalletConsent, loadWallet } from "./wallets";
 import { seal, unseal } from "./secrets";
+import { paymentNeedsReview, projectPaymentResources } from "../../packages/commerce/observations";
+import { orderResources, storeOwnedPaymentResource } from "./payment-resources";
+import { unresolvedPaymentEvents } from "./payment-event-holds";
 
 type Db = Pick<PoolClient, "query">;
 const now = () => new Date().toISOString();
@@ -68,6 +71,8 @@ export async function authorizePayment(command: PaymentCommand, provider: Provid
   if (!session) return refuse("This private workspace has expired.");
   const order = await loadOrder(command.scope.tenantId, authority.orderId); const action = command.action;
   if (order.state === "cancelled") return refuse("This order was cancelled.");
+  if ((await unresolvedPaymentEvents([order])).has(order.id)) return refuse("An authenticated provider update is awaiting reconciliation. Refresh the retained payment state before another action.");
+  if (paymentNeedsReview(order)) return refuse("A current provider observation needs reconciliation before this order can authorize another payment action.");
   if (action.kind !== "refund_capture") {
     const current = await getRevision(order.tenantId);
     if (current.certificate.graphHash !== order.graphHash) return refuse("The kit changed after this quote. Review a fresh quote before paying.");
@@ -88,6 +93,7 @@ export async function authorizePayment(command: PaymentCommand, provider: Provid
       const others = (await database().query("SELECT payload FROM wk_repair_claims WHERE policy_id=$1 AND id<>$2", [policy.id, claim.id])).rows.map(r => r.payload as RepairClaim);
       const consumedMinor = others.filter(c => !["refused", "escalated"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0);
       const base = await loadOrder(order.tenantId, policy.baseOrderId);
+      if ((await unresolvedPaymentEvents([base])).has(base.id)) return refuse("The original purchase has an unfinished provider update. Its existing money and allowance remain recorded while reconciliation finishes.");
       if (base.state !== "paid" || base.refundedMinor > 0) return refuse("The original Studio order is no longer an active paid purchase. Its repair authority has ended.");
       const [original, proposed] = await Promise.all([getRevision(order.tenantId, policy.baseRevisionId), getRevision(order.tenantId, order.revisionId)]);
       const evaluation = evaluateRepair({ policy, wallet, original: original.kit, proposed: proposed.kit, merchant: "worldkit-studio", category: "setup-service", additionalMinor: claim.additionalMinor, consumedMinor, fulfilled: Boolean(base.fulfilledAt) });
@@ -140,20 +146,23 @@ export async function acceptCheckout(session: Session, quoteId: string, expected
 export async function syncOperation(session: Session, orderId: string, operation: PaymentOperation): Promise<CommerceOrder> {
   const order = await commerceTransaction(async db => {
     await db.query("SELECT id FROM wk_commerce_orders WHERE id=$1 AND tenant_id=$2 FOR UPDATE", [orderId, session.id]);
-    const order = await loadOrder(session.id, orderId, db);
-    if (!order.operationIds.includes(operation.command.operationId) || operation.command.scope.tenantId !== session.id) throw new WorldKitError("forbidden", "The payment observation is outside this order.", 403);
-    for (const resource of operation.receipt?.resources ?? []) {
-      const existing = (await db.query("SELECT tenant_id,order_id FROM wk_payment_resources WHERE provider_id=$1", [resource.id])).rows[0];
-      if (existing && (existing.tenant_id !== session.id || existing.order_id !== orderId)) throw new WorldKitError("forbidden", "This payment resource already belongs to another order.", 403);
-      await db.query("INSERT INTO wk_payment_resources(provider_id,tenant_id,order_id,kind,payload) VALUES($1,$2,$3,$4,$5) ON CONFLICT(provider_id) DO UPDATE SET payload=EXCLUDED.payload,updated_at=now()", [resource.id, session.id, orderId, resource.kind, resource]);
-      if (resource.kind === "order") { order.providerOrderId = resource.id; order.approvalUrl = safeApprovalUrl(resource.links.find(l => ["approve", "payer-action"].includes(l.rel))?.href); }
-      if (resource.kind === "capture" && resource.status === "COMPLETED" && resource.money?.minor === order.quote.total.minor && resource.money.currency === "USD") { order.captureId = resource.id; order.capturedMinor = resource.money.minor; order.approvalUrl = null; }
+    let order = await loadOrder(session.id, orderId, db);
+    if (!order.operationIds.includes(operation.command.operationId) || operation.command.scope.tenantId !== session.id || operation.command.scope.projectId !== PROJECT_ID) throw new WorldKitError("forbidden", "The payment observation is outside this order.", 403);
+    if (operation.receipt) {
+      const existing = await orderResources(db, order);
+      if (existing.some(resource => resource.source !== operation.receipt!.source)) throw new WorldKitError("forbidden", "Payment observations from different evidence modes cannot share an order.", 403);
+      order.sourceMode = operation.receipt.source;
     }
-    const refunds = (await db.query("SELECT payload FROM wk_payment_resources WHERE tenant_id=$1 AND order_id=$2 AND kind='refund'", [session.id, orderId])).rows.map(r => r.payload as ProviderResource);
-    order.refundedMinor = refunds.filter(r => r.status === "COMPLETED" && r.money?.currency === "USD").reduce((sum, r) => sum + r.money!.minor, 0);
+    for (const resource of operation.receipt?.resources ?? []) {
+      await storeOwnedPaymentResource(db, order, resource);
+    }
+    const currentResources = await orderResources(db, order);
+    const providerOrders = currentResources.filter(resource => resource.kind === "order");
+    if (providerOrders.length === 1) { const resource = providerOrders[0]!; order.providerOrderId = resource.id; order.approvalUrl = safeApprovalUrl(resource.links.find(link => ["approve", "payer-action"].includes(link.rel))?.href); }
     order.error = operation.error?.message ?? null;
-    order.state = order.refundedMinor >= order.capturedMinor && order.capturedMinor > 0 ? "refunded" : order.refundedMinor > 0 ? "partially_refunded" : order.capturedMinor > 0 ? "paid" : ["refused", "not_sent"].includes(operation.status) ? "refused" : order.approvalUrl ? "awaiting_approval" : "payment_pending";
-    if (operation.command.action.kind === "refund_capture" && ["claimed", "dispatching", "pending_reconciliation"].includes(operation.status)) order.state = "payment_pending";
+    order = projectPaymentResources(order, currentResources);
+    if (!order.capturedMinor && !order.approvalUrl && ["refused", "not_sent"].includes(operation.status)) order.state = "refused";
+    if (operation.command.action.kind === "refund_capture" && ["claimed", "dispatching", "pending_reconciliation"].includes(operation.status) && order.refundedMinor < order.capturedMinor) order.state = "payment_pending";
     await saveOrder(db, order);
     if (order.repairClaimId) {
       const row = (await db.query("SELECT payload FROM wk_repair_claims WHERE id=$1 AND tenant_id=$2 FOR UPDATE", [order.repairClaimId, session.id])).rows[0];
@@ -174,6 +183,7 @@ export async function enableRepairPolicy(session: Session, orderId: string, wall
   return commerceTransaction(async db => {
     await db.query("SELECT id FROM wk_commerce_orders WHERE id=$1 AND tenant_id=$2 FOR UPDATE", [orderId, session.id]);
     const order = await loadOrder(session.id, orderId, db); const wallet = await loadWallet(session.id, walletId, db);
+    if ((await unresolvedPaymentEvents([order], db)).has(order.id)) throw new WorldKitError("needs_evidence", "Reconcile the pending provider update before enabling a new repair policy.", 409);
     if (order.kind !== "initial" || order.state !== "paid" || order.fulfilledAt) throw new WorldKitError("invalid_request", "Choose a completed, unfulfilled Studio order before enabling repair authority.", 409);
     if (wallet.state !== "active" || wallet.revokedAt || wallet.digest !== walletDigest || !wallet.verifiedAt || !wallet.tokenId || Date.parse(wallet.expiresAt) <= Date.now()) throw new WorldKitError("forbidden", "A current verified wallet and its exact consent are required.", 403);
     const prior = (await db.query("SELECT payload FROM wk_repair_policies WHERE tenant_id=$1 AND payload->>'baseOrderId'=$2", [session.id, orderId])).rows[0]?.payload as RepairPolicy | undefined;
@@ -210,7 +220,8 @@ export async function reserveRepair(session: Session, policyId: string, proposal
     if (!latest || latest.certificate.graphHash !== proposal.revision.certificate.graphHash) throw new WorldKitError("stale_revision", "Refresh this repair against the current saved graph.", 409);
     const other = (await db.query("SELECT payload FROM wk_repair_claims WHERE policy_id=$1", [policy.id])).rows.map(r => r.payload as RepairClaim);
     const consumedMinor = other.filter(c => !["refused", "escalated"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0);
-    const evaluation = base.state !== "paid" || base.refundedMinor > 0
+    const pendingEvent = (await unresolvedPaymentEvents([base], db)).has(base.id);
+    const evaluation = pendingEvent ? { allowed: false, reason: "The original payment has an authenticated update awaiting reconciliation. Its allowance is not available for a new amendment yet.", remainingMinor: Math.max(0, policy.capMinor - consumedMinor) } : base.state !== "paid" || base.refundedMinor > 0
       ? { allowed: false, reason: "The original Studio order is no longer an active paid purchase. Its repair authority has ended.", remainingMinor: Math.max(0, policy.capMinor - consumedMinor) }
       : evaluateRepair({ policy, wallet, original, proposed: proposal.revision.kit, merchant: "worldkit-studio", category: "setup-service", additionalMinor: proposal.minor, consumedMinor, fulfilled: Boolean(base.fulfilledAt) });
     const claim: RepairClaim = { id: randomUUID(), tenantId: session.id, policyId, orderId: null, revisionId: proposal.revision.kit.id, scenarioId: proposal.scenarioId, additionalMinor: proposal.minor, state: evaluation.allowed ? "reserved" : "escalated", createdAt: now(), explanation: evaluation.reason, sourceMode: "sample", reversedAt: null };
@@ -293,7 +304,9 @@ export async function commerceView(session: Session): Promise<CommerceView> {
     runtime.store.list(scope(session.id)),
   ]);
   const claims = repairs.rows.map(r => r.payload as RepairClaim);
-  return { orders: orders.rows.map(r => r.payload), wallets: wallets.rows.map(r => walletView(unseal<WalletConsent>(session.id, r.payload))), policies: policies.rows.map(r => { const p = r.payload as RepairPolicy; const active = claims.filter(c => c.policyId === p.id && !["escalated", "refused"].includes(c.state)); return { ...p, consumedMinor: active.reduce((sum, c) => sum + c.additionalMinor, 0), pendingMinor: active.filter(c => ["reserved", "payment_pending"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0) }; }), repairs: claims,
+  const savedOrders = orders.rows.map(row => row.payload as CommerceOrder); const holds = await unresolvedPaymentEvents(savedOrders);
+  const visibleOrders = savedOrders.map(order => holds.has(order.id) ? { ...order, state: "payment_pending" as const, error: "An authenticated provider update is awaiting reconciliation. The original payment history remains saved." } : order);
+  return { orders: visibleOrders, wallets: wallets.rows.map(r => walletView(unseal<WalletConsent>(session.id, r.payload))), policies: policies.rows.map(r => { const p = r.payload as RepairPolicy; const active = claims.filter(c => c.policyId === p.id && !["escalated", "refused"].includes(c.state)); return { ...p, consumedMinor: active.reduce((sum, c) => sum + c.additionalMinor, 0), pendingMinor: active.filter(c => ["reserved", "payment_pending"].includes(c.state)).reduce((sum, c) => sum + c.additionalMinor, 0) }; }), repairs: claims,
     receipts: operations.flatMap(o => o.receipt ? [o.receipt] : []), operations: operations.map(o => ({ id: o.command.operationId, kind: o.command.action.kind, status: o.status, observedAt: o.updatedAt, message: o.error?.message ?? null })),
     merchant: { name: "WorldKit Studio", offer: "Digital routing dossier + connection guide", environment: "sandbox", currency: "USD", automaticRepairCapMinor: REPAIR_CAP_MINOR, scope: "A complete source-linked setup dossier. Physical equipment, retailer procurement and a physical compatibility guarantee are not included." }, scenarios: repairScenarios };
 }
@@ -309,12 +322,14 @@ export async function cancelCheckout(session: Session, id: string) {
 }
 export async function deliverDossier(session: Session, id: string) {
   const order = await loadOrder(session.id, id);
+  if ((await unresolvedPaymentEvents([order])).has(order.id)) throw new WorldKitError("needs_evidence", "Wait for the authenticated payment update to be reconciled before delivery.", 409);
   if (order.state !== "paid" || order.capturedMinor !== order.quote.total.minor || order.refundedMinor) throw new WorldKitError("forbidden", "A completed, unrefunded Studio purchase is required to deliver this dossier.", 403);
   const bundle = await getRevision(session.id, order.revisionId);
   const { generateAssembly } = await import("../../packages/compatibility/index");
   const content = { format: "worldkit-studio-dossier.v1", merchant: "WorldKit Studio", createdAt: now(), scope: "Digital source-linked planning dossier; physical performance not tested. Open evidence is preserved.", order: { id: order.id, graphHash: order.graphHash, quote: order.quote, payment: { providerOrderId: order.providerOrderId, captureId: order.captureId, capturedMinor: order.capturedMinor, currency: "USD", environment: "sandbox" } }, ...bundle, assembly: generateAssembly(bundle.kit, bundle.profiles) };
   await commerceTransaction(async db => {
     await db.query("SELECT id FROM wk_commerce_orders WHERE id=$1 FOR UPDATE", [id]); const latest = await loadOrder(session.id, id, db);
+    if ((await unresolvedPaymentEvents([latest], db)).has(latest.id)) throw new WorldKitError("needs_evidence", "A payment update arrived before delivery. Reconcile it first.", 409);
     if (latest.state !== "paid" || latest.refundedMinor) throw new WorldKitError("forbidden", "Refresh the order before opening its dossier.", 409);
     await saveOrder(db, { ...latest, fulfilledAt: latest.fulfilledAt ?? now() });
     await event(db, session.id, "dossier.delivered", "Your purchased dossier was delivered", `Immutable kit ${order.graphHash.slice(0, 12)} with its certificate, sources and connection guide. Automatic changes and automatic cancellation are now closed for this order.`, order.revisionId);
@@ -328,11 +343,11 @@ export async function retireIneligiblePolicies(tenantId: string) {
     let retired = 0;
     for (const row of rows.rows) {
       const policy = row.payload as RepairPolicy; const base = await loadOrder(tenantId, policy.baseOrderId, db); const wallet = await loadWallet(tenantId, policy.walletConsentId, db);
-      const reason: RepairPolicy["endedReason"] = base.refundedMinor > 0 || base.state === "refunded" || base.state === "cancelled" ? "base_refunded" : base.fulfilledAt ? "base_fulfilled" : wallet.revokedAt ? "wallet_revoked" : Date.parse(policy.expiresAt) <= Date.now() ? "expired" : undefined;
+      const reason: RepairPolicy["endedReason"] = base.refundedMinor > 0 || base.state === "refunded" || base.state === "cancelled" ? "base_refunded" : paymentNeedsReview(base) ? "payment_review" : base.fulfilledAt ? "base_fulfilled" : wallet.revokedAt ? "wallet_revoked" : Date.parse(policy.expiresAt) <= Date.now() ? "expired" : undefined;
       if (!reason) continue;
       const ended = { ...policy, revokedAt: now(), endedReason: reason };
       await db.query("UPDATE wk_repair_policies SET payload=$1 WHERE id=$2", [ended, policy.id]);
-      await event(db, tenantId, "policy.ended", "Automatic setup changes ended", reason === "base_refunded" ? "The original Studio purchase was refunded. Its repair policy is closed; gross spent and pending history remains preserved." : reason === "base_fulfilled" ? "The purchased dossier was delivered. Its automatic repair policy is closed." : reason === "wallet_revoked" ? "Wallet consent was revoked. Its automatic repair policy is closed." : "The repair authority expired.", policy.baseRevisionId);
+      await event(db, tenantId, "policy.ended", "Automatic setup changes ended", reason === "base_refunded" ? "The original Studio purchase was refunded. Its repair policy is closed; gross spent and pending history remains preserved." : reason === "payment_review" ? "A current provider observation needs reconciliation. This repair policy is closed; a later receipt cannot silently restore its allowance." : reason === "base_fulfilled" ? "The purchased dossier was delivered. Its automatic repair policy is closed." : reason === "wallet_revoked" ? "Wallet consent was revoked. Its automatic repair policy is closed." : "The repair authority expired.", policy.baseRevisionId);
       retired++;
     }
     return retired;

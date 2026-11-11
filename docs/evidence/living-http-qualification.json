@@ -1,0 +1,80 @@
+{
+  "qualifiedAt": "2026-11-11T04:35:30.420Z",
+  "environment": "local_production_build",
+  "sourceMode": "sample",
+  "checks": [
+    {
+      "name": "Anonymous Living Kit access denied",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Same-origin requirement enforced",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "name": "Foreign origin denied",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "name": "Own Sample provenance and exact variant retained",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Second tenant sees no foreign alerts or event receipts",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Foreign watch mutation denied",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "name": "Browser cannot select Sample or replay intake",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "name": "Unsigned PayPal delivery rejected before postback",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "name": "Unsigned or unconfigured Channel3 delivery not accepted",
+      "status": 503,
+      "passed": true
+    },
+    {
+      "name": "Wrong media type rejected",
+      "status": 415,
+      "passed": true
+    },
+    {
+      "name": "Oversized raw delivery rejected",
+      "status": 413,
+      "passed": true
+    },
+    {
+      "name": "Unauthenticated maintenance denied",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Stopping an owned Sample alert persists immediately",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Stopped alert survives a new request",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "financialOrdersCreated": 0,
+  "providerMutations": 0,
+  "authenticProviderDeliveries": 0
+}

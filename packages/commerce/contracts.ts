@@ -1,4 +1,4 @@
-import type { PaymentCommand, PaymentOperation, ProviderReceipt } from "@fracture/paypal-core";
+import type { EvidenceMode, PaymentCommand, PaymentOperation, ProviderReceipt } from "@fracture/paypal-core";
 import type { Quote } from "../contracts/index";
 
 export const MERCHANT_ID = "worldkit-studio";
@@ -21,7 +21,7 @@ export interface RepairPolicy {
   id: string; tenantId: string; kitId: string; baseOrderId: string; baseRevisionId: string;
   walletConsentId: string; walletConsentDigest: string; walletConsentVersion: number;
   version: number; digest: string; createdAt: string; expiresAt: string; revokedAt: string | null;
-  endedReason?: "owner_revoked" | "base_refunded" | "base_fulfilled" | "wallet_revoked" | "expired";
+  endedReason?: "owner_revoked" | "base_refunded" | "base_fulfilled" | "wallet_revoked" | "expired" | "payment_review";
   capMinor: number; currency: "USD"; merchants: string[]; categories: string[];
   scope: "digital_setup_amendments"; preserveOwned: true; preserveGoal: true; stopAfterFulfillment: true;
 }
@@ -37,6 +37,7 @@ export const repairScenarios = [
   { id: "expanded-revision", title: "Expand the setup dossier", detail: "Sample merchant event: a substantial setup revision exceeds automatic authority. Requires new explicit approval.", minor: 6000 },
 ] as const;
 export type CommerceState = "creating" | "awaiting_approval" | "payment_pending" | "paid" | "partially_refunded" | "refunded" | "refused" | "cancelled";
+export type PaymentHealth = { status: "clear" | "pending" | "needs_review" | "reversed"; reason: string; observedAt: string; webhookId: string | null };
 export interface CommerceOrder {
   id: string; tenantId: string; kitId: string; revisionId: string; graphHash: string; quote: Quote;
   createdAt: string; updatedAt: string; origin: string; state: CommerceState;
@@ -44,7 +45,7 @@ export interface CommerceOrder {
   approval: PaymentCommand["approval"]; walletConsentId: string | null;
   providerOrderId: string | null; captureId: string | null; approvalUrl: string | null;
   capturedMinor: number; refundedMinor: number; fulfilledAt: string | null;
-  operationIds: string[]; error: string | null; sourceMode: "live_sandbox";
+  operationIds: string[]; error: string | null; sourceMode: EvidenceMode; paymentHealth?: PaymentHealth;
 }
 export interface FinancialAuthority {
   id: string; tenantId: string; orderId: string; kind: "purchase" | "capture" | "refund";

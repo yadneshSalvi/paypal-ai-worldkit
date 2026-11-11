@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-11-11T04:01:57.261Z",
+  "url": "https://paypal-ai-worldkit-gqlexv706-yadneshsalvis-projects.vercel.app",
+  "deploymentId": "dpl_3hUitGV7w3SJVZxcxWWKU347V2cs",
+  "source": "fb1c42ac88e7f0e40829f7ad339d754d1195d37e",
+  "checks": [
+    {
+      "name": "anonymous and foreign-origin guards"
+    },
+    {
+      "name": "60 source candidates preserve human and physical review boundaries"
+    },
+    {
+      "name": "bound primary draft zoom-f3",
+      "located": 12,
+      "unknown": 1,
+      "technicalScope": "unknown",
+      "review": "pending"
+    },
+    {
+      "name": "bound primary draft apple-60w-usbc1m",
+      "located": 2,
+      "unknown": 8,
+      "technicalScope": "unknown",
+      "review": "pending"
+    },
+    {
+      "name": "compact equipment selector",
+      "bytes": 20172
+    },
+    {
+      "name": "zero financial dispatch"
+    }
+  ],
+  "passed": true,
+  "financialDispatches": 0,
+  "limits": [
+    "Data-only successor qualification. Original hosted PDF/Gemini workflow is separately qualified at source6df86e. No human semantic accuracy or physical-proof claim."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "qualifiedAt": "2026-11-11T04:38:54.815873+00:00",
+  "environment": "local production build and PostgreSQL",
+  "unitSdkChecks": {
+    "passed": 101,
+    "failed": 0
+  },
+  "postgresChecks": {
+    "passed": 78,
+    "failed": 0
+  },
+  "focusedPaymentObservationChecks": {
+    "passed": 11,
+    "failed": 0
+  },
+  "httpChecks": {
+    "passed": 14,
+    "failed": 0
+  },
+  "typescript": "passed",
+  "productionBuild": "passed",
+  "auditProductionVulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "evidenceMode": "sample",
+  "authenticProviderDeliveries": 0,
+  "providerSubscriptionMutations": 0,
+  "financialProviderMutations": 0,
+  "browserQualification": "pending root review; this subagent has no available browser surface",
+  "hostingQualification": "pending",
+  "coveredInvariants": [
+    "raw signature and timestamp validation",
+    "canonical event and separate delivery receipts",
+    "same-transmission replay and changed-body quarantine",
+    "exact product/variant/domain ownership",
+    "sample/live namespace separation",
+    "durable create/cancel intent and unknown outcome reconciliation",
+    "shared ownership and zero-consumer cancellation",
+    "expired-lease fencing",
+    "fresh stock check before incident",
+    "private in-app notifications",
+    "read-only accepted-payment recovery",
+    "gross capture/refund/claim retention",
+    "pending/adverse payment authority holds",
+    "tenant isolation",
+    "body size, origin and authentication guards"
+  ],
+  "remainingGates": [
+    "authentic deployed callbacks and retries",
+    "actual scoped Channel3 subscription lifecycle",
+    "full stock alternative/amendment/undo saga",
+    "conditional merchant restoration and partial compensation",
+    "raw receipt retention/purge and broader operator tooling"
+  ]
+}
