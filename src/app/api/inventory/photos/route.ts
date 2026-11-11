@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export const maxDuration = 60;
 export async function POST(request: Request) {
   try {
-    if (!trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL)) throw new WorldKitError("forbidden", "Upload from your WorldKit equipment passport.", 403);
+    if (!trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL, process.env.VERCEL_URL)) throw new WorldKitError("forbidden", "Upload from your WorldKit equipment passport.", 403);
     const session = await requireSession();
     if (!/^image\/(jpeg|png|webp)$/.test(request.headers.get("content-type") ?? "")) throw new WorldKitError("invalid_request", "Choose a JPEG, PNG or WebP photo.", 415);
     if (Number(request.headers.get("content-length") ?? 0) > MAX_PHOTO_BYTES) throw new WorldKitError("invalid_request", "This photo is too large. Resize it before uploading.", 413);

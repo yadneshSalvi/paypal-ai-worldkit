@@ -11,7 +11,7 @@ export async function requireSession(): Promise<Session> {
   return session;
 }
 export function sameOrigin(request: Request) {
-  if (!trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL)) throw new WorldKitError("forbidden", "This action must start from your WorldKit workbench.", 403);
+  if (!trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL, process.env.VERCEL_URL)) throw new WorldKitError("forbidden", "This action must start from your WorldKit workbench.", 403);
   if (!request.headers.get("content-type")?.startsWith("application/json")) throw new WorldKitError("invalid_request", "Send a JSON request.", 415);
   if (Number(request.headers.get("content-length") ?? 0) > 20_000) throw new WorldKitError("invalid_request", "This request is too large.", 413);
 }

@@ -49,7 +49,7 @@ export function createMcpServer(principal: Principal): McpServer {
 }
 export async function handleMcp(request: Request): Promise<Response> {
   const origin = request.headers.get("origin");
-  if (origin && !trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL)) return Response.json({ error: "Origin is not permitted" }, { status: 403 });
+  if (origin && !trustedOrigin(request, process.env.WORLDKIT_PUBLIC_URL, process.env.VERCEL_URL)) return Response.json({ error: "Origin is not permitted" }, { status: 403 });
   const header = request.headers.get("authorization");
   const principal = header?.startsWith("Bearer ") ? await authenticateAccess(header.slice(7)) : null;
   if (!principal) return Response.json({ error: "An active scoped WorldKit token is required" }, { status: 401, headers: { "WWW-Authenticate": "Bearer", "Cache-Control": "no-store" } });

@@ -1,6 +1,6 @@
 /** Browser writes must come from this deployment. Local aliases are allowed only
  * when both the actual Host and the handler URL are loopback on the project port. */
-export function trustedOrigin(request: Request, configured?: string): boolean {
+export function trustedOrigin(request: Request, configured?: string, deploymentHost?: string): boolean {
   const rawOrigin = request.headers.get("origin");
   if (!rawOrigin) return false;
   let origin: URL; let target: URL; let publicUrl: URL | null;
@@ -12,6 +12,12 @@ export function trustedOrigin(request: Request, configured?: string): boolean {
   if (localHosts.has(host) && localHosts.has(target.host) && localHosts.has(origin.host)) {
     return target.protocol === "http:" && origin.protocol === "http:";
   }
-  if (publicUrl) return host === publicUrl.host && origin.origin === publicUrl.origin;
+  if (publicUrl && host === publicUrl.host && origin.origin === publicUrl.origin) return true;
+  // VERCEL_URL is a server-provided hostname, without a scheme. Each deployment
+  // admits only its own exact host; other preview and branch aliases stay closed.
+  if (deploymentHost && /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.vercel\.app$/.test(deploymentHost)) {
+    if (request.headers.has("host") && host === deploymentHost && origin.origin === `https://${deploymentHost}`) return true;
+  }
+  if (publicUrl || deploymentHost) return false;
   return host === target.host && origin.origin === target.origin;
 }

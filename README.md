@@ -16,7 +16,7 @@ npm run db:migrate
 npm run dev
 ```
 
-Open http://localhost:4106. Each browser gets a private, durable sample workspace with a seven-day opaque session. A deployment-wide PostgreSQL backstop admits at most 30 new workspaces/hour and 200/day; an existing cookie reopens its current workspace and existing work remains usable. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require the exact configured public origin.
+Open http://localhost:4106. Each browser gets a private, durable sample workspace with a seven-day opaque session. A deployment-wide PostgreSQL backstop admits at most 30 new workspaces/hour and 200/day; an existing cookie reopens its current workspace and existing work remains usable. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require matching Host and Origin for the configured public URL or the exact server-provided Vercel deployment hostname. Other preview or branch aliases are not automatically trusted.
 
 ```sh
 npm test

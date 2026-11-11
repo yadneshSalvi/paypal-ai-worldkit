@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-11T03:34:23.578071+00:00",
+  "trigger": "Pre-promotion workspace creation on the unique deployment hostname returned 403 before any session or provider call.",
+  "change": "Allow only the exact server-provided VERCEL_URL hostname alongside the configured public origin; require the actual Host and Origin to match the same allowed entry.",
+  "checks": {
+    "originTests": 8,
+    "fullUnitSuite": {
+      "tests": 90,
+      "pass": 90,
+      "fail": 0
+    },
+    "typecheck": "passed"
+  },
+  "denied": [
+    "Foreign deployment and branch aliases",
+    "Cross-origin writes between the two allowed hosts",
+    "Foreign or missing actual Host",
+    "Forwarded-host spoofing",
+    "Suffix, scheme, port, path and null-Origin tricks",
+    "Malformed or absent deployment hostname"
+  ],
+  "callers": [
+    "JSON mutations",
+    "Private image upload",
+    "Browser-origin MCP requests"
+  ],
+  "newProviderCalls": 0,
+  "financialWrites": 0,
+  "unchanged": [
+    "Stable URL configuration",
+    "PayPal authority",
+    "Hosted runtime environment",
+    "Webhook work in progress"
+  ],
+  "upstream": "https://vercel.com/docs/environment-variables/system-environment-variables#vercel_url",
+  "productionBuild": "Next deployment build is the integration gate; the previous source build passed before this isolated origin patch."
+}
