@@ -98,9 +98,16 @@
   "actualFinancialProviderWrites": 0,
   "actualSubscriptionProviderWrites": 0,
   "limitations": [
-    "Automated Sample qualification does not establish real merchant fulfillment, human technical review or physical performance.",
-    "One screen-reader status retained an earlier reconciliation notice after polling reached completion; record this accessibility refinement for the next source update."
+    "Automated Sample qualification does not establish real merchant fulfillment, human technical review or physical performance."
   ],
   "actualSandboxQualification": "living-repair-paypal-qualification.json",
-  "actualFinancialProviderWritesScope": "This file records the preceding Sample qualification; the separate actual sandbox flow has its own evidence record."
+  "actualFinancialProviderWritesScope": "This file records the preceding Sample qualification; the separate actual sandbox flow has its own evidence record.",
+  "subsequentAccessibilityCorrection": {
+    "sourceCommit": "68beb3295b7fcf2fb0e3e747214da1c428bca601",
+    "deploymentId": "dpl_Bpf3SPuponXyp4k6S9KrXaHcQeDA",
+    "stableUrl": "https://paypal-ai-worldkit.vercel.app",
+    "localNativeQualification": "living-repair-status-qualification.json",
+    "hostedNativeObserved": "The current persisted undone state, 8 USD captured and 8 USD refunded were displayed with the updated live-status logic. The earlier stale reconciliation announcement is superseded.",
+    "privateScreenshotBasename": "worldkit-repair-status-hosted.png"
+  }
 }
