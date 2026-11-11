@@ -1,0 +1,377 @@
+{
+  "observedAt": "2026-11-11T01:28:38.916Z",
+  "completedAt": "2026-11-11T01:29:15.527Z",
+  "checks": [
+    {
+      "name": "private_blob_upload_read_and_tenant_boundary",
+      "status": "succeeded",
+      "sourceMode": "sample",
+      "imageHash": "8ad403ba5ec91842fdfcf3b18d5e4bee68848e0d6f5208b5f9af65a1ab7e22b8",
+      "width": 1200,
+      "height": 800,
+      "bytes": 21886,
+      "unauthenticatedBlobStatus": 403,
+      "foreignTenantDenied": true,
+      "originalFileMetadataRetained": false
+    },
+    {
+      "name": "real_catalog_identity_bound_to_immutable_profile",
+      "status": "succeeded",
+      "receipts": [
+        {
+          "id": "1af4f1e1-0c80-4ced-a144-2ef6f1f35b58",
+          "operation": "search",
+          "query": "Zoom H4essential portable recorder",
+          "requestedAt": "2026-11-11T01:28:40.496Z",
+          "mode": "live",
+          "estimatedCredits": 1,
+          "completedAt": "2026-11-11T01:28:42.892Z",
+          "durationMs": 2396,
+          "resultIds": [
+            "uVm9wcV",
+            "aAoW00h",
+            "qrWD2eB",
+            "ebBrlqh",
+            "MJDpHTK",
+            "a9gfY14",
+            "J8hFTrP",
+            "Cp9fVUI"
+          ],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        },
+        {
+          "id": "ba463e28-0b1b-4240-b09a-11e6858cf00f",
+          "operation": "details",
+          "query": "uVm9wcV",
+          "requestedAt": "2026-11-11T01:28:42.895Z",
+          "mode": "live",
+          "estimatedCredits": 0,
+          "completedAt": "2026-11-11T01:28:43.243Z",
+          "durationMs": 348,
+          "resultIds": [
+            "uVm9wcV"
+          ],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        }
+      ],
+      "productId": "uVm9wcV",
+      "selectedOptions": [],
+      "baseProfileId": "zoom-h4essential",
+      "profileVersion": 1,
+      "variantExact": true,
+      "reviewedFacts": 0,
+      "counts": {
+        "unknown": 4,
+        "violated": 0,
+        "satisfied": 5
+      },
+      "physicalTest": "not_performed",
+      "oldRevisionPreserved": true,
+      "idempotentConfirmation": true
+    },
+    {
+      "name": "real_url_lookup",
+      "status": "failed",
+      "message": "Channel3 returned HTTP 422. Please retry or use your saved evidence.",
+      "receipt": {
+        "id": "72f7a4f2-eb74-4984-acd3-72b155d7cdd4",
+        "operation": "url_lookup",
+        "query": "www.sweetwater.com/store/detail/H4essential--zoom-h4essential-4-track-handy-recorder",
+        "requestedAt": "2026-11-11T01:28:43.347Z",
+        "mode": "live",
+        "estimatedCredits": 1,
+        "completedAt": "2026-11-11T01:28:43.658Z",
+        "durationMs": 311,
+        "resultIds": [],
+        "providerRequestId": null,
+        "status": "failed",
+        "error": "Channel3 returned HTTP 422. Please retry or use your saved evidence."
+      }
+    },
+    {
+      "name": "real_category_attributes_and_browse",
+      "status": "succeeded",
+      "receipts": [
+        {
+          "id": "e89b0dd9-e1f9-4629-aac4-f6661562da17",
+          "operation": "categories",
+          "query": "microphones",
+          "requestedAt": "2026-11-11T01:28:43.659Z",
+          "mode": "live",
+          "estimatedCredits": 0,
+          "completedAt": "2026-11-11T01:28:45.275Z",
+          "durationMs": 1616,
+          "resultIds": [],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        },
+        {
+          "id": "6e3fe519-53cb-4bfd-a1d2-adaa47ca422c",
+          "operation": "category_attributes",
+          "query": "microphones",
+          "requestedAt": "2026-11-11T01:28:45.275Z",
+          "mode": "live",
+          "estimatedCredits": 0,
+          "completedAt": "2026-11-11T01:28:45.566Z",
+          "durationMs": 291,
+          "resultIds": [],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        },
+        {
+          "id": "6188ee23-a25a-4e22-8282-70361b7522f7",
+          "operation": "category_browse",
+          "query": "microphones",
+          "requestedAt": "2026-11-11T01:28:45.566Z",
+          "mode": "live",
+          "estimatedCredits": 1,
+          "completedAt": "2026-11-11T01:28:46.987Z",
+          "durationMs": 1421,
+          "resultIds": [
+            "8NuVHRa",
+            "t74bM2o",
+            "XNmP469",
+            "3krpIA9",
+            "91pQz72",
+            "FR3HXUu",
+            "PG6LIdl",
+            "T3V8QGm",
+            "ovqcX6v",
+            "j8wniMW",
+            "c3WoVEy",
+            "xeOeVEA"
+          ],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        }
+      ],
+      "category": "microphones",
+      "attributeCount": 13,
+      "productCount": 12
+    },
+    {
+      "name": "real_price_history",
+      "status": "succeeded",
+      "receipt": {
+        "id": "2610e5a4-c929-4d5b-be19-539706d63541",
+        "operation": "price_history",
+        "query": "uVm9wcV",
+        "requestedAt": "2026-11-11T01:28:46.993Z",
+        "mode": "live",
+        "estimatedCredits": 0,
+        "completedAt": "2026-11-11T01:28:47.305Z",
+        "durationMs": 312,
+        "resultIds": [
+          "uVm9wcV"
+        ],
+        "providerRequestId": null,
+        "status": "succeeded",
+        "error": null
+      },
+      "productId": "uVm9wcV",
+      "observations": 90,
+      "statistics": {
+        "lowMinor": 35198,
+        "highMinor": 39095,
+        "meanMinor": 37591,
+        "currentMinor": 38995,
+        "status": "typical",
+        "currency": "USD"
+      }
+    },
+    {
+      "name": "real_workspace_scoped_attribution",
+      "status": "succeeded",
+      "receipts": [
+        {
+          "id": "abff6175-129e-44f7-a41d-13d158fef510",
+          "operation": "attributed_clicks",
+          "query": "This workspace · last 30 days",
+          "requestedAt": "2026-11-11T01:28:47.305Z",
+          "mode": "live",
+          "estimatedCredits": 0,
+          "completedAt": "2026-11-11T01:28:47.733Z",
+          "durationMs": 428,
+          "resultIds": [],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        },
+        {
+          "id": "cc7e4ef4-c7b7-4ae6-9729-101c076b5e5b",
+          "operation": "attributed_transactions",
+          "query": "This workspace · last 30 days",
+          "requestedAt": "2026-11-11T01:28:47.306Z",
+          "mode": "live",
+          "estimatedCredits": 0,
+          "completedAt": "2026-11-11T01:28:48.746Z",
+          "durationMs": 1440,
+          "resultIds": [],
+          "providerRequestId": null,
+          "status": "succeeded",
+          "error": null
+        }
+      ],
+      "clickCount": 0,
+      "transactionCount": 0,
+      "scope": "this_workspace_only",
+      "amountPolicy": "omitted_provider_currency_not_returned"
+    },
+    {
+      "name": "real_openai_photo_region_job",
+      "status": "succeeded",
+      "receipt": {
+        "id": "261c94de-1a25-4ced-b6f5-5eafb339b5cd",
+        "mode": "live",
+        "model": "gpt-6-astra",
+        "status": "succeeded",
+        "provider": "openai",
+        "inputHash": "96994e703bbb71a269765bb6509454b40d7e03f9c6e02b062ddd19ab6f1a7a10",
+        "requestId": "resp_0ab60b27500fc361016af3c4d1720887d2b4f6289a9c536a56",
+        "durationMs": 15641,
+        "outputHash": "24f524198f2af38fbbd1f03aec54233f1d2236a2f0fac69c4d2638759a089019",
+        "promptHash": "69bafc240189dc20682dc7d80205f6a33d71dbb8bbe0e5ad0a77f3131ef41c0d",
+        "completedAt": "2026-11-11T01:29:04.898Z",
+        "inputTokens": 1546,
+        "requestedAt": "2026-11-11T01:28:49.257Z",
+        "outputTokens": 561
+      },
+      "regionCount": 0,
+      "inputSourceMode": "sample",
+      "cropConfirmationRequired": true,
+      "identityConfirmed": false,
+      "accuracyClaim": "not_measured"
+    },
+    {
+      "name": "real_gemini_photo_region_job",
+      "status": "succeeded",
+      "receipt": {
+        "id": "f8430b75-b4eb-4dbf-ae89-f1536c464fce",
+        "mode": "live",
+        "model": "gemini-3.8-flash",
+        "status": "succeeded",
+        "provider": "gemini",
+        "inputHash": "96994e703bbb71a269765bb6509454b40d7e03f9c6e02b062ddd19ab6f1a7a10",
+        "requestId": "4cTzatL6JPvVqfkPr8fAkQs",
+        "durationMs": 7066,
+        "outputHash": "2894ace4ac5ef37e734e87ebce3eb8ce9b3ba463e6dcdb86342f5b0f79829ae6",
+        "promptHash": "69bafc240189dc20682dc7d80205f6a33d71dbb8bbe0e5ad0a77f3131ef41c0d",
+        "completedAt": "2026-11-11T01:29:12.289Z",
+        "inputTokens": 1291,
+        "requestedAt": "2026-11-11T01:29:05.223Z",
+        "outputTokens": 241
+      },
+      "regionCount": 2,
+      "inputSourceMode": "sample",
+      "cropConfirmationRequired": true,
+      "identityConfirmed": false,
+      "accuracyClaim": "not_measured"
+    },
+    {
+      "name": "real_confirmed_crop_search_job",
+      "status": "succeeded",
+      "receipt": {
+        "id": "3c600a29-5c58-482e-b4eb-7665a8dbea2a",
+        "mode": "live",
+        "error": null,
+        "query": "Confirmed crop f6048f2bc026 · Zoom H4essential recorder",
+        "status": "succeeded",
+        "operation": "confirmed_crop_search",
+        "resultIds": [
+          "uVm9wcV",
+          "aAoW00h",
+          "qrWD2eB",
+          "ebBrlqh",
+          "MJDpHTK",
+          "SFEo2fJ",
+          "Z6fzjnd",
+          "a9gfY14"
+        ],
+        "durationMs": 2614,
+        "completedAt": "2026-11-11T01:29:15.235Z",
+        "requestedAt": "2026-11-11T01:29:12.621Z",
+        "estimatedCredits": 1,
+        "providerRequestId": null
+      },
+      "candidateCount": 8,
+      "productIds": [
+        "uVm9wcV",
+        "aAoW00h",
+        "qrWD2eB",
+        "ebBrlqh",
+        "MJDpHTK",
+        "SFEo2fJ",
+        "Z6fzjnd",
+        "a9gfY14"
+      ],
+      "inputSourceMode": "sample",
+      "identityConfirmed": false,
+      "matchingAccuracy": "not_measured"
+    },
+    {
+      "name": "private_blob_deletion",
+      "status": "succeeded",
+      "jobStatus": "succeeded",
+      "photoAccessRemoved": true,
+      "equipmentHistoryPreserved": true
+    }
+  ],
+  "failures": 1,
+  "scope": "Real provider operations on a clearly synthetic original image and a private qualification workspace. No purchase, ownership, physical compatibility, human engineering review or extraction accuracy is asserted.",
+  "followups": [
+    {
+      "at": "2026-11-11T01:30:50.827Z",
+      "name": "real_url_lookup_after_runtime_contract_correction",
+      "status": "failed",
+      "message": "Channel3 returned HTTP 500. Please retry or use your saved evidence.",
+      "receipt": {
+        "id": "c30d8fc1-8b35-4bb5-9128-e911cd85e98c",
+        "operation": "url_lookup",
+        "query": "www.sweetwater.com/store/detail/H4essential--zoom-h4essential-4-track-handy-recorder",
+        "requestedAt": "2026-11-11T01:30:29.287Z",
+        "mode": "live",
+        "estimatedCredits": 1,
+        "completedAt": "2026-11-11T01:30:50.827Z",
+        "durationMs": 21540,
+        "resultIds": [],
+        "providerRequestId": null,
+        "status": "failed",
+        "error": "Channel3 returned HTTP 500. Please retry or use your saved evidence."
+      }
+    },
+    {
+      "at": "2026-11-11T01:32:15.661Z",
+      "name": "real_url_lookup_with_provider_observed_offer",
+      "status": "succeeded",
+      "source": "URL from a fresh Channel3 detail response; reusable affiliate URL not retained.",
+      "offerDomain": "bestbuy.com",
+      "receipt": {
+        "id": "c239067d-62a0-4543-8c70-a6a047c78c06",
+        "operation": "url_lookup",
+        "query": "buy.trychannel3.com/uVm9wcV-p1PB-a7Jz6q",
+        "requestedAt": "2026-11-11T01:32:15.239Z",
+        "mode": "live",
+        "estimatedCredits": 1,
+        "completedAt": "2026-11-11T01:32:15.658Z",
+        "durationMs": 419,
+        "resultIds": [
+          "uVm9wcV"
+        ],
+        "providerRequestId": null,
+        "status": "succeeded",
+        "error": null
+      },
+      "productIds": [
+        "uVm9wcV"
+      ]
+    }
+  ],
+  "unresolvedFailures": 0
+}

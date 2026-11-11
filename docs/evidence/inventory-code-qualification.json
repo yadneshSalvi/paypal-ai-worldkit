@@ -1,0 +1,58 @@
+{
+  "observedAt": "2026-11-11T01:38:37.119363+00:00",
+  "sourceMode": "sample",
+  "node": "22.22.3",
+  "next": "16.4.6",
+  "core": "0.2.4",
+  "unitAndSdkWireTests": {
+    "passed": 58,
+    "failed": 0
+  },
+  "postgresIntegrationTests": {
+    "passed": 44,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "routes": 17,
+  "browserInventoryQa": "pending_root",
+  "hostedInventoryDeployment": "pending_root",
+  "hostedCron": "pending_root",
+  "actualProviderEvidence": "inventory-qualification.json",
+  "physicalTest": "not_performed",
+  "humanSourceReview": "pending",
+  "browserReview": {
+    "reviewer": "root agent using in-app browser",
+    "initialResult": "passed with UX corrections",
+    "widths": [
+      390,
+      768,
+      1280,
+      1920
+    ],
+    "noHorizontalOverflow": true,
+    "observations": [
+      "Planned SM58 exact identity persisted; a second position exceeding quantity was refused.",
+      "AT2020 correction exposed phantom-power conflict and retained history.",
+      "Gemini two proposed regions and manual confirmed crop with eight real catalog candidates survived reload.",
+      "Exact catalog details, in-stock handoff gating and sixty historical observations worked.",
+      "Keyboard focus loop, Escape restoration and scrolling worked.",
+      "Equipment URL and active section survived reload.",
+      "Only planned equipment left the three sample-owned placeholders explicitly unconfirmed.",
+      "Real Gemini proposal recovered after close/reload/reopen, then explicit acceptance saved revision 4 with 5 satisfied, 1 violated, 3 unknown.",
+      "A separate real OpenAI background task was cancelled; the new-proposal action was immediately available."
+    ],
+    "corrections": [
+      "Selected section now persists in the URL with browser back/forward support.",
+      "All sample-owned pieces keep explicit sample/ownership-unconfirmed labels, even when the plan contains confirmed planned identities.",
+      "Cancellation/failure updates the goal planner action state; offline product links require refresh after reconnection.",
+      "Passport counts display a loading dash before saved entries arrive."
+    ],
+    "focusedRetest": "passed",
+    "financialWrites": 0
+  },
+  "limitations": [
+    "Deployment and scheduled recovery activation remain root-owned follow-up.",
+    "Manufacturer review and physical testing have not been performed."
+  ]
+}

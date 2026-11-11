@@ -17,13 +17,15 @@
     "db:migrate": "node --env-file=.env --import tsx scripts/migrate.ts",
     "qualify:catalog": "node --env-file=.env --import tsx scripts/qualify-catalog.ts",
     "qualify:models": "node --env-file=.env --import tsx scripts/qualify-models.ts",
-    "verify:mcp": "node --env-file=.env --import tsx scripts/verify-mcp.ts"
+    "verify:mcp": "node --env-file=.env --import tsx scripts/verify-mcp.ts",
+    "qualify:inventory": "node --env-file=.env --import tsx scripts/qualify-inventory.ts"
   },
   "dependencies": {
     "@channel3/sdk": "4.9.0",
     "@fracture/paypal-core": "file:vendor/fracture-paypal-core-0.2.4.tgz",
     "@google/genai": "3.0.0",
     "@modelcontextprotocol/sdk": "1.32.2",
+    "@vercel/blob": "2.9.0",
     "@xyflow/react": "12.12.1",
     "lucide-react": "^0.468.0",
     "next": "16.4.6",
@@ -31,7 +33,11 @@
     "pg": "8.16.3",
     "react": "19.3.1",
     "react-dom": "19.3.1",
+    "sharp": "0.35.5",
     "zod": "^4.1.0"
+  },
+  "overrides": {
+    "@vercel/cli-config": "0.3.8"
   },
   "devDependencies": {
     "@types/node": "^22.19.0",

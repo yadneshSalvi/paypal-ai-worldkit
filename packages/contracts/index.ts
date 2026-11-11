@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const CONTRACT_VERSION = "worldkit.v1" as const;
-export const RULE_VERSION = "creator-audio.1.0.0" as const;
+export const RULE_VERSION = "creator-audio.1.1.0" as const;
 export const ProvenanceSchema = z.enum(["live", "replay", "modelled", "sample"]);
 export type Provenance = z.infer<typeof ProvenanceSchema>;
 export const TruthSchema = z.enum(["satisfied", "violated", "unknown"]);
@@ -33,11 +33,16 @@ export type Port = z.infer<typeof PortSchema>;
 export const DeviceKindSchema = z.enum(["microphone", "recorder", "interface", "mixer", "camera", "capture", "host", "hub", "headphones", "power", "cable", "storage", "stand"]);
 export type DeviceKind = z.infer<typeof DeviceKindSchema>;
 export const SelectedOptionSchema = z.object({ name: z.string(), value: z.string() });
+export const CatalogBindingSchema = z.object({
+  snapshotId: z.string(), productId: z.string(), selectedOptions: z.array(SelectedOptionSchema),
+  confirmedAt: z.string(), confirmation: z.literal("user_confirmed_exact_identity"),
+});
 export const DeviceSchema = z.object({
   id: z.string(), manufacturer: z.string(), model: z.string(), variant: z.string(), kind: DeviceKindSchema,
   version: z.number().int().positive(), shortName: z.string(), description: z.string(),
   ports: z.array(PortSchema), facts: z.record(z.string(), FactSchema),
   catalogId: z.string().nullable(), selectedOptions: z.array(SelectedOptionSchema),
+  baseProfileId: z.string().optional(), catalogBinding: CatalogBindingSchema.optional(),
   reviewState: z.enum(["candidate", "sources_collected", "review_pending", "verified_scope", "conflicted"]),
   art: z.literal("original_line_art"), accent: z.string(),
 });
@@ -59,6 +64,7 @@ export const ComponentSchema = z.object({
   id: z.string(), profileId: z.string(), role: z.string(), owned: z.boolean(), quantity: z.number().int().min(1).max(99),
   position: z.object({ x: z.number(), y: z.number() }),
   settings: z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])),
+  inventoryItemId: z.string().optional(), ownershipSource: z.enum(["sample", "user_confirmed"]).optional(),
 });
 export type Component = z.infer<typeof ComponentSchema>;
 export const ConnectionSchema = z.object({
@@ -99,11 +105,14 @@ export type Certificate = z.infer<typeof CertificateSchema>;
 export const CatalogOfferSchema = z.object({
   id: z.string(), retailer: z.string(), domain: z.string(), price: MoneySchema.nullable(), availability: z.string(),
   condition: z.string(), observedAt: z.string(), shipping: z.literal("unknown"),
+  dimensions: z.object({ length: z.number().nullable(), width: z.number().nullable(), height: z.number().nullable(), unit: z.string() }).optional(),
 });
 export type CatalogOffer = z.infer<typeof CatalogOfferSchema>;
 export const CatalogSnapshotSchema = z.object({
   id: z.string(), productId: z.string(), title: z.string(), brand: z.string().nullable(), description: z.string(),
   selectedOptions: z.array(SelectedOptionSchema), variantExact: z.boolean(), offers: z.array(CatalogOfferSchema),
+  detailChecked: z.boolean().optional(),
+  variantOptions: z.array(z.object({ name: z.string(), values: z.array(z.object({ value: z.string(), exists: z.boolean(), availability: z.string().nullable(), productId: z.string().nullable() })) })).optional(),
   categoryIds: z.array(z.string()), observedAt: z.string(), source: z.literal("channel3"),
   responseHash: z.string(), sourceMode: z.literal("live"),
 });

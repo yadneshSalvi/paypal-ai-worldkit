@@ -11,11 +11,11 @@ export type RevisionBundle = { kit: KitRevision; certificate: Certificate; profi
 const tokenHash = (token: string) => createHash("sha256").update(token).digest("hex");
 const limits = { discoveryRequests: 80, liveRebuilds: 12 };
 const now = () => new Date().toISOString();
-async function appendEvent(db: PoolClient, tenantId: string, type: string, title: string, detail: string, revisionId: string | null, sourceMode: Event["sourceMode"] = "modelled") {
+export async function appendEvent(db: PoolClient, tenantId: string, type: string, title: string, detail: string, revisionId: string | null, sourceMode: Event["sourceMode"] = "modelled") {
   const payload = { id: randomUUID(), type, at: now(), title, detail, sourceMode, revisionId };
   await db.query("INSERT INTO wk_events(id,tenant_id,payload) VALUES($1,$2,$3)", [payload.id, tenantId, payload]);
 }
-async function saveRevision(db: PoolClient, tenantId: string, bundle: RevisionBundle) {
+export async function saveRevision(db: PoolClient, tenantId: string, bundle: RevisionBundle) {
   KitSchema.parse(bundle.kit); CertificateSchema.parse(bundle.certificate);
   await db.query("INSERT INTO wk_revisions(id,kit_id,tenant_id,revision,kit,certificate,profiles,sources) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [bundle.kit.id, bundle.kit.kitId, tenantId, bundle.kit.revision, bundle.kit, bundle.certificate, JSON.stringify(bundle.profiles), JSON.stringify(bundle.sources)]);
 }
@@ -58,12 +58,12 @@ export async function getWorkspace(session: Session): Promise<Workspace> {
   ]);
   const checks = await database().query("SELECT step_id FROM wk_step_checks WHERE tenant_id=$1 AND revision_id=$2 AND completed=true", [session.id, bundle.kit.id]);
   const alternatives = architectures.map(template => {
-    const kit = { ...seedKit(template.id, `${bundle.kit.id}:compare:${template.id}`, structuredClone(bundle.kit.goal)), kitId: bundle.kit.kitId };
+    const kit = { ...editKit(bundle.kit, bundle.certificate, { kind: "template", templateId: template.id }, bundle.profiles), id: `${bundle.kit.id}:compare:${template.id}` };
     return { kit, certificate: verifyKit(kit, bundle.profiles, bundle.sources, architectures, snapshots, bundle.certificate.issuedAt) };
   });
   return { session: { id: session.id, expiresAt: session.expiresAt }, ...bundle, architectures, alternatives, snapshots,
     receipts: receipts.rows.map(r => r.payload as CatalogReceipt), events: events.rows.map(r => ({ ...r.payload, sequence: Number(r.sequence) })),
-    assembly: generateAssembly(bundle.kit, bundle.profiles), completedSteps: checks.rows.map(r => r.step_id), repairOptions: suggestRepairs(bundle.kit, bundle.certificate),
+    assembly: generateAssembly(bundle.kit, bundle.profiles), completedSteps: checks.rows.map(r => r.step_id), repairOptions: suggestRepairs(bundle.kit, bundle.certificate, bundle.profiles),
     usage: { discoveryRequests: usage.rows[0].discovery_requests, maxDiscoveryRequests: limits.discoveryRequests, liveRebuilds: usage.rows[0].live_rebuilds, maxLiveRebuilds: limits.liveRebuilds } };
 }
 export async function commitEdit(session: Session, expectedRevisionId: string, expectedGraphHash: string, edit: Edit): Promise<RevisionBundle> {
@@ -74,7 +74,7 @@ export async function commitEdit(session: Session, expectedRevisionId: string, e
     const result = await db.query("SELECT kit,certificate,profiles,sources FROM wk_revisions WHERE id=$1 AND tenant_id=$2", [expectedRevisionId, session.id]);
     const previous = result.rows[0] as RevisionBundle;
     if (previous.certificate.graphHash !== expectedGraphHash) throw new WorldKitError("stale_revision", "The graph no longer matches that action.", 409);
-    const next = editKit(previous.kit, previous.certificate, edit);
+    const next = editKit(previous.kit, previous.certificate, edit, previous.profiles);
     const kit = { ...next, id: randomUUID(), parentRevisionId: previous.kit.id, revision: previous.kit.revision + 1, createdAt: now(), sourceMode: "modelled" as const };
     const snapshots = await db.query("SELECT snapshot FROM wk_catalog WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 80", [session.id]);
     const bundle = { kit, profiles: previous.profiles, sources: previous.sources, certificate: verifyKit(kit, previous.profiles, previous.sources, architectures, snapshots.rows.map(r => r.snapshot)) };
@@ -93,14 +93,15 @@ export async function reserveUsage(tenantId: string, kind: "discovery" | "model"
   await initialize();
   const column = kind === "discovery" ? "discovery_requests" : "live_rebuilds"; const limit = kind === "discovery" ? limits.discoveryRequests : limits.liveRebuilds;
   const result = await database().query(`UPDATE wk_sessions SET ${column}=${column}+1 WHERE id=$1 AND expires_at>now() AND ${column}<$2 RETURNING id`, [tenantId, limit]);
-  if (!result.rowCount) throw new WorldKitError("rate_limited", `This workspace has used its ${kind === "discovery" ? "catalog request" : "live goal proposal"} allowance. Your saved work is still available.`, 429);
+  if (!result.rowCount) throw new WorldKitError("rate_limited", `This workspace has used its ${kind === "discovery" ? "catalog request" : "model request"} allowance. Your saved work is still available.`, 429);
 }
 export async function saveCatalogResult(tenantId: string, snapshots: CatalogSnapshot[], receipt: CatalogReceipt) {
-  await transaction(async db => {
+  await transaction(db => saveCatalogResultInTransaction(db, tenantId, snapshots, receipt));
+}
+export async function saveCatalogResultInTransaction(db: PoolClient, tenantId: string, snapshots: CatalogSnapshot[], receipt: CatalogReceipt) {
     for (const snapshot of snapshots) await db.query("INSERT INTO wk_catalog(id,tenant_id,product_id,snapshot) VALUES($1,$2,$3,$4) ON CONFLICT(id) DO NOTHING", [snapshot.id, tenantId, snapshot.productId, snapshot]);
     await db.query("INSERT INTO wk_provider_receipts(id,tenant_id,provider,payload) VALUES($1,$2,'channel3',$3) ON CONFLICT(id) DO NOTHING", [receipt.id, tenantId, receipt]);
     await appendEvent(db, tenantId, `catalog.${receipt.operation}`, receipt.status === "succeeded" ? "Current catalog evidence received" : "Catalog request did not complete", receipt.status === "succeeded" ? `${receipt.resultIds.length} product identities returned for “${receipt.query.slice(0, 180)}”. Retailer fulfillment is separate.` : receipt.error ?? "The provider is unavailable.", null, "live");
-  });
 }
 export async function createAccessToken(session: Session, scopes: ToolScope[]) {
   const bundle = await getRevision(session.id); const token = `wk_${randomBytes(32).toString("base64url")}`; const id = randomUUID();

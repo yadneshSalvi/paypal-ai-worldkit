@@ -30,9 +30,10 @@ The core test suite uses deterministic sample providers. Credentialed qualificat
 ## What works
 
 - A spatial graph and accessible connection list, four architecture comparisons, requirement editing, source inspection, explicit failure witnesses and deterministic repairs.
-- Immutable PostgreSQL revisions/certificates, optimistic version checks, tenant isolation, append-only events and durable job records.
-- Real Channel3 discovery, current product details/options, similar products, category and price-history adapters. Fresh retailer URLs are excluded from persisted snapshots; original diagrams are used instead of unlicensed product images.
-- Direct OpenAI and Gemini structured goal proposals. Models propose; the deterministic compiler decides verification.
+- Immutable PostgreSQL revisions/certificates, optimistic version checks, tenant isolation, append-only events and resumable jobs with leased workers, bounded retries, cancellation and durable attempt receipts.
+- Real Channel3 discovery, exact variant refresh, category/attribute browsing, condition/price/dimension filters, observed price history, product URL lookup and workspace-scoped attribution. Fresh retailer URLs are excluded from persisted snapshots; original diagrams are used instead of unlicensed product images.
+- An equipment passport with private photo upload, editable model region proposals, user-confirmed crop search, exact model/ownership review, quantities, accessories, condition and history. Placing or correcting an item previews the whole kit, commits an immutable profile and preserves older proofs. Unknown engineering facts remain unknown.
+- Direct OpenAI and Gemini structured goal and photo-region proposals, saved as recoverable jobs. Models propose; the deterministic compiler decides verification.
 - Actual Web Audio routing from the saved graph, isolated model buses, downstream disconnection behavior and downloadable PCM WAV files. The original test signals are labelled **Modelled**, not a hardware recording.
 - Scoped Streamable HTTP MCP tools: `verify_kit`, `repair_kit`, `quote_kit`. An actual external SDK client has matched the browser's immutable certificate and tested stale/foreign/revoked requests. These tools do not authorize payment or mutate a saved kit. PostgreSQL enforces 60 verifications/minute, 5 repair proposals/hour, 2 quotes/minute and at most 2 concurrent tools per grant.
 - The **Studio** view offers an itemized $12 digital routing dossier and connection guide, with graph-bound PayPal sandbox create/approval/capture, save-during-purchase consent, owned-order/token reads, separately labelled Vault setup fallback, revocation and compensating full refunds before delivery within 24 hours.
@@ -45,14 +46,24 @@ A catalog product is not retailer procurement. The Studio service does not sell 
 | Integration | Current implementation |
 | --- | --- |
 | APIMatic PayPal | `paypal` 2.29.0, Git commit `5d0df8a8817e5fdf2e2cd48e68f790ea4730aab2`; typed Orders, Payments and Vault calls. This is not `@paypal/paypal-server-sdk`. |
-| Shared guarded executor | Immutable `@fracture/paypal-core` 0.2.3 archive, SHA-256 `4cf25ef38b1138a20b561be37cb6a33952c6e96ea7e1eaf33506fb0e8113a341`. Domain policy, PostgreSQL claims, exact cents, supported PayPal request IDs and conservative reconciliation. |
+| Shared guarded executor | Immutable `@fracture/paypal-core` 0.2.4 archive, SHA-256 `5c03e848a603c91f98f213c9bfee2e5e4ccb00fd54946ae349945c55f53c3f0f`. Domain policy, PostgreSQL claims, exact cents, supported PayPal request IDs and conservative reconciliation. |
 | Channel3 | Official `@channel3/sdk` 4.9.0 and real account-qualified product reads. Selected options and offer condition are preserved. |
 | OpenAI / Gemini | Direct server-side SDKs, structured schemas and prompt/input/output hashes; no secrets in prompts. |
 | MCP | Official SDK 1.32.2, exact scopes and schema checks; no financial tools. |
-| Storage | PostgreSQL for authority/state; private object-storage integration remains an active workstream. |
+| Storage | PostgreSQL for authority, immutable revisions and leased jobs; private Vercel Blob for sanitized equipment photos, served only through tenant-authenticated routes. |
 | Hosting | Next.js 16.4.6 / React 19.3.1 on Vercel Node 22. Hosted session/quote isolation, live catalog search and a reviewed OpenAI proposal were independently exercised; see [HTTP checks](docs/evidence/hosted-http-qualification.json) and [provider qualification](docs/evidence/hosted-provider-qualification.json). |
 
 The [PayPal implementation contract](paypal-plan.md) records the actual SDK maps, authority boundaries, error/unknown-state handling and revision history. [APIMatic setup](APIMATIC_SETUP.md) preserves skill provenance. The shared package's provenance is in `vendor/`.
+
+## Equipment and background work
+
+Open **Equipment** to add a labelled photo, public HTTPS product URL or exact model. Photos are re-encoded without original filenames or location metadata, stored in a private Blob store and served through an authenticated route. Model-suggested regions remain proposals; confirm a crop before catalog image search, then confirm the exact model and ownership separately. Removing a photo removes access immediately and queues private-file deletion. Expired seven-day workspaces and interrupted uploads are cleaned by recovery; historical equipment confirmations retain their non-image fingerprints.
+
+Configure `BLOB_READ_WRITE_TOKEN` for a **private** Blob store. `OPENAI_VISION_MODEL` and `GEMINI_VISION_MODEL` optionally override the configured goal models. `POST /api/planner` now accepts `{ brief, provider, requestId }` and returns a saved job with HTTP202; `GET /api/jobs` and `GET /api/jobs?id=…` return only this workspace’s work. Long reads are fenced with a lease, preserve attempt receipts, and cannot apply equipment or goals without confirmation. These workers never dispatch payments.
+
+Configure a supported Vercel cron cadence for `GET /api/jobs/recover`, authenticated by `CRON_SECRET` (at least 24 characters). Browser polling also resumes work. A process crash can repeat a provider read after its lease expires; the old worker cannot commit late output. The recovery trigger still needs hosted deployment qualification.
+
+Run `npm run qualify:inventory` to exercise actual Blob/catalog/model operations on an original, explicitly synthetic equipment illustration. The script makes no equipment purchase or physical-performance claim. The observed qualification and disclosed URL lookup failures are in [inventory evidence](docs/evidence/inventory-qualification.json).
 
 ## Sandbox buyer workflow
 

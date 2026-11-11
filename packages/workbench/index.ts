@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { WorldKitError, type KitRevision, type Certificate } from "../contracts/index";
-import { seedKit } from "../device-library/index";
+import { WorldKitError, type KitRevision, type Certificate, type DeviceProfile, type Component } from "../contracts/index";
+import { seedKit, profiles as libraryProfiles } from "../device-library/index";
 import { suggestRepairs } from "../compatibility/index";
 
 export const EditSchema = z.discriminatedUnion("kind", [
@@ -16,6 +16,7 @@ export type Edit = z.infer<typeof EditSchema>;
 export const MutationSchema = z.object({ expectedRevisionId: z.string(), expectedGraphHash: z.string().length(64), edit: EditSchema }).strict();
 
 function changeTemplate(kit: KitRevision, id: KitRevision["templateId"]) {
+  if (kit.templateId === id) return structuredClone(kit);
   const replacement = seedKit(id, kit.id, structuredClone(kit.goal));
   replacement.components = replacement.components.map(c => {
     const existing = kit.components.find(x => x.id === c.id);
@@ -23,7 +24,8 @@ function changeTemplate(kit: KitRevision, id: KitRevision["templateId"]) {
   });
   return { ...kit, templateId: id, components: replacement.components, connections: replacement.connections };
 }
-export function editKit(previous: KitRevision, certificate: Certificate, edit: Edit): KitRevision {
+function chooseCandidate(component: Component, profileId: string) { component.profileId = profileId; component.owned = false; delete component.inventoryItemId; delete component.ownershipSource; }
+export function editKit(previous: KitRevision, certificate: Certificate, edit: Edit, profiles: DeviceProfile[] = libraryProfiles): KitRevision {
   let next = structuredClone(previous);
   const audio = next.components.find(c => c.role === "audio");
   switch (edit.kind) {
@@ -33,7 +35,7 @@ export function editKit(previous: KitRevision, certificate: Certificate, edit: E
       if (!edge) throw new WorldKitError("not_found", "This connection is not part of the saved revision.", 404);
       edge.enabled = edit.enabled; break;
     }
-    case "microphone": next.components.find(c => c.id === edit.componentId)!.profileId = edit.profileId; break;
+    case "microphone": chooseCandidate(next.components.find(c => c.id === edit.componentId)!, edit.profileId); break;
     case "sample_rate": if (audio) audio.settings.sampleRate = Number(edit.value); break;
     case "goal":
       next.goal = { ...next.goal, title: edit.title, brief: edit.brief, budgetMinor: edit.budgetMinor, version: next.goal.version + 1,
@@ -45,11 +47,11 @@ export function editKit(previous: KitRevision, certificate: Certificate, edit: E
       node.position = { x: edit.x, y: edit.y }; break;
     }
     case "repair": {
-      const repair = suggestRepairs(previous, certificate).find(p => p.id === edit.repairId);
+      const repair = suggestRepairs(previous, certificate, profiles).find(p => p.id === edit.repairId);
       if (!repair) throw new WorldKitError("stale_revision", "That repair is no longer applicable. Refresh the current checks.", 409);
       if (repair.change === "restore_connections") next.connections.forEach(c => { c.enabled = true; });
       if (repair.change === "phantom_on" && audio) audio.settings.phantomEnabled = true;
-      if (repair.change === "dynamic_mic") next.components.filter(c => ["voice-1", "voice-2"].includes(c.role)).forEach(c => { c.profileId = "shure-sm58-lc"; });
+      if (repair.change === "dynamic_mic") next.components.filter(c => ["voice-1", "voice-2"].includes(c.role) && (profiles.find(p => p.id === c.profileId)?.baseProfileId ?? c.profileId) === "at2020-xlr").forEach(c => { chooseCandidate(c, "shure-sm58-lc"); });
       if (repair.change === "recorder_mode" && audio) { audio.settings.sampleRate = 48000; audio.settings.recordingMode = "Audio I/F + REC"; }
       if (repair.change === "template_t2") next = changeTemplate(next, "T2");
       break;

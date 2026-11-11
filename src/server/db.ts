@@ -58,6 +58,55 @@ export function initialize(): Promise<void> {
       status text NOT NULL, input jsonb NOT NULL, output jsonb, error text,
       created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now()
     );
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS managed boolean NOT NULL DEFAULT false;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS idempotency_key text;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS input_hash text;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS attempts integer NOT NULL DEFAULT 0;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS max_attempts integer NOT NULL DEFAULT 3;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS lease_token text;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS lease_expires_at timestamptz;
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS next_attempt_at timestamptz NOT NULL DEFAULT now();
+    ALTER TABLE wk_jobs ADD COLUMN IF NOT EXISTS progress text;
+    CREATE UNIQUE INDEX IF NOT EXISTS wk_jobs_idempotency ON wk_jobs(tenant_id,kind,idempotency_key) WHERE idempotency_key IS NOT NULL;
+    CREATE INDEX IF NOT EXISTS wk_jobs_recovery ON wk_jobs(status,next_attempt_at) WHERE managed=true;
+    CREATE TABLE IF NOT EXISTS wk_job_attempts (
+      job_id text NOT NULL REFERENCES wk_jobs(id), attempt integer NOT NULL, lease_token text NOT NULL,
+      status text NOT NULL, receipt jsonb, error text, started_at timestamptz NOT NULL DEFAULT now(), finished_at timestamptz,
+      PRIMARY KEY(job_id,attempt)
+    );
+    CREATE TABLE IF NOT EXISTS wk_catalog_categories (
+      tenant_id text NOT NULL REFERENCES wk_sessions(id), id text NOT NULL, payload jsonb NOT NULL,
+      created_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(tenant_id,id)
+    );
+    CREATE TABLE IF NOT EXISTS wk_inventory_photos (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), blob_path text NOT NULL,
+      blob_url text, content_hash text NOT NULL, mime text NOT NULL, width integer NOT NULL, height integer NOT NULL,
+      bytes integer NOT NULL, source_mode text NOT NULL DEFAULT 'live', status text NOT NULL DEFAULT 'uploading',
+      created_at timestamptz NOT NULL DEFAULT now(), deleted_at timestamptz
+    );
+    CREATE TABLE IF NOT EXISTS wk_inventory_regions (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), photo_id text NOT NULL REFERENCES wk_inventory_photos(id),
+      payload jsonb NOT NULL, job_id text, created_at timestamptz NOT NULL DEFAULT now()
+    );
+    CREATE TABLE IF NOT EXISTS wk_inventory_items (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), version integer NOT NULL,
+      request_id text NOT NULL, request_hash text NOT NULL, payload jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now(),
+      UNIQUE(tenant_id,request_id)
+    );
+    CREATE TABLE IF NOT EXISTS wk_inventory_history (
+      id text PRIMARY KEY, tenant_id text NOT NULL REFERENCES wk_sessions(id), item_id text NOT NULL REFERENCES wk_inventory_items(id),
+      version integer NOT NULL, payload jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(item_id,version)
+    );
+    CREATE TABLE IF NOT EXISTS wk_inventory_proposals (
+      id text NOT NULL, tenant_id text NOT NULL REFERENCES wk_sessions(id), input_hash text NOT NULL,
+      payload jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now(), expires_at timestamptz NOT NULL,
+      PRIMARY KEY(tenant_id,id)
+    );
+    CREATE TABLE IF NOT EXISTS wk_inventory_confirmations (
+      tenant_id text NOT NULL REFERENCES wk_sessions(id), request_id text NOT NULL, input_hash text NOT NULL,
+      preview_hash text NOT NULL, item_id text NOT NULL REFERENCES wk_inventory_items(id), payload jsonb NOT NULL,
+      created_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(tenant_id,request_id)
+    );
   `).then(() => undefined).catch(error => { globalDb.worldkitSchema = undefined; throw error; });
 }
 export async function closeDatabase() { const pool = globalDb.worldkitPool; globalDb.worldkitPool = undefined; globalDb.worldkitSchema = undefined; if (pool) await pool.end(); }
