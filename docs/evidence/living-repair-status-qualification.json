@@ -1,0 +1,23 @@
+{
+  "observedAt": "2026-11-11T08:11:17.560256+00:00",
+  "baseCommit": "5f30bfa",
+  "componentSha256": "cbd8d113b571c108fae7a28a4d262cf942c8b4fc8575a0ff0f45a901caa1befb",
+  "change": "Derive the aria-live status from the current persisted compensation, amendment or run; remove stale action-local notice.",
+  "localNative": {
+    "origin": "http://127.0.0.1:4506",
+    "isolatedDatabase": true,
+    "financialProviderCredentialsEmpty": true,
+    "scenario": "Sample lost-payment-response",
+    "pendingAnnouncementObserved": true,
+    "automaticReconciliationCompleted": true,
+    "completedAnnouncementMatchesCurrentVisibleState": true,
+    "noSecondApprovalOrPaymentAction": true,
+    "actualProviderWrites": 0,
+    "screenshot": "worldkit-repair-live-status-qa.png"
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "limits": [
+    "Native DOM announcement checked; a full screen-reader audit remains separate."
+  ]
+}
