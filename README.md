@@ -113,7 +113,7 @@ Manufacturer documents and software-publisher documentation are linked and hashe
 
 ### Evidence tiers
 
-Workbench facts are source-linked and remain **review pending** until a recorded human reviews them. Separately, a curated library of 17 real devices has been cross-checked and is labelled **source-checked, not human-reviewed**: each verbatim manufacturer quote was located in the retained source text, then confirmed by an independent second model (Google Gemini). 94 of 110 claims were confirmed; 16 were left unconfirmed and none was refuted. The records are in `packages/device-library/curated/library.json` and `packages/device-library/source-checks.json`. This tier is not a human review and not a physical test, and the workbench certificate does not yet count it.
+Workbench facts are source-linked and remain **review pending** until a recorded human reviews them. Separately, a curated library of 17 real devices has been cross-checked and is labelled **source-checked, not human-reviewed**: each verbatim manufacturer quote was located in the retained source text, then confirmed by an independent second model (Google Gemini). 94 of 110 claims were confirmed; 16 were left unconfirmed and none was refuted. The library is readable at [`/library`](https://paypal-ai-worldkit.vercel.app/library) on the deployed site; the records are in `packages/device-library/curated/library.json` and `packages/device-library/source-checks.json`. This tier is not a human review and not a physical test, and the workbench certificate does not yet count it.
 
 A 170-second demo film has been produced; it is not yet published. Local private plans are not needed to run the source.
 
