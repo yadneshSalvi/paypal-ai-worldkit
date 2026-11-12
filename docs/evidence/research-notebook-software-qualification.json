@@ -107,5 +107,12 @@
   "independentlyVerifiedParticipants": 0,
   "actualPhysicalTests": 0,
   "actualExternalProviderRequests": 0,
-  "claims": "Software qualification with explicitly fictional people, declared consent and observations only. Native browser, hosted deployment, genuine participants and physical execution are separate acceptance gates."
+  "claims": "Software qualification with explicitly fictional people, declared consent and observations only. Native browser, hosted deployment, genuine participants and physical execution are separate acceptance gates.",
+  "productionBuildCorrection": {
+    "firstBuild": "held by a single CSS Modules purity error",
+    "change": "Scoped the research print-only a[href] selector under .notebook",
+    "behavioralGates": "The recorded 36+20 research controls precede this print-only selector correction and are reused; the production rebuild qualifies compilation.",
+    "file": "src/components/research-notebook.module.css",
+    "sha256": "b321017ce6a2902c98642aae74b41e8aa1ca9de8a7fc907499b1fb0501c2684b"
+  }
 }
