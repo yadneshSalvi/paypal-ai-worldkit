@@ -1,0 +1,75 @@
+{
+  "schema": "worldkit.system-synthesis-hosted.1",
+  "qualifiedAt": "2026-11-12T00:59:18.573Z",
+  "sourceCommit": "543f80f087c11097e7379ed5cf62d0ff8387f71a",
+  "deploymentId": "dpl_9kaH444UNToVADMWNkVvigX1hVRG",
+  "url": "https://paypal-ai-worldkit.vercel.app",
+  "runtime": "Node.js 22.x",
+  "http": {
+    "checks": 19,
+    "passed": true,
+    "catalog": {
+      "outcome": "research",
+      "candidates": 54,
+      "feasible": 0,
+      "architectures": 4
+    }
+  },
+  "native": {
+    "browser": "ChatGPT in-app browser",
+    "checks": [
+      "Existing hosted edition opened, 54 evaluated candidates across 4 architectures; no completed verified result",
+      "Previously saved preference restored on initial load",
+      "T1 selected and preference saved once; confirmation P has 2px focus",
+      "Research dialog requires two unchecked acknowledgments and disables Apply",
+      "Escape closes and returns to research-review opener",
+      "Itemized missing prices, shipping and tax remain unknown",
+      "390 and 360 CSS-pixel layouts have no document overflow",
+      "Preference retained after reload",
+      "390px research dialog fits viewport; keyboard trap wraps and Escape returns opener",
+      "No browser warning/error entries",
+      "Temporary viewport cleared; staged cookie state restored exactly",
+      "Original stable workspace viewed without navigation, renewal or writes"
+    ],
+    "consoleWarningsAndErrors": 0,
+    "mobileWidths": [
+      390,
+      360
+    ],
+    "newGraphApplications": 0
+  },
+  "preservation": {
+    "originalTables": 79,
+    "originalRows": 519,
+    "allOriginalRowsRetained": true,
+    "newTables": 7,
+    "newSampleWorkspaces": 3,
+    "originalSavedGraphCertificateAndExpiryUnchanged": true,
+    "financialHistoryUnchanged": true,
+    "immutableComparisonUnchanged": true,
+    "choiceVersion": 3
+  },
+  "execution": {
+    "modelCalls": 0,
+    "paymentProviderCalls": 0,
+    "genuineHumanReviews": 0,
+    "physicalTests": 0
+  },
+  "retainedFailures": [
+    "Two POST /api/workspace HTTP503 responses at 00:50:45Z and 00:50:46Z preceded qualification at 00:52:14Z; exact cause is not established. Zero subsequent runtime error records in the queried window.",
+    "The first continuity harness compared freshly calculated alternatives byte-for-byte. Three alternatives have a newly generalized separate-track explanation and derived certificate ID; all other response fields and original persisted certificates match.",
+    "The 844px mobile capture repeated compositor content below the native surface. DOM has one main header; the 640px research-dialog capture is clear."
+  ],
+  "limits": [
+    "The ordinary hosted catalog evaluates54 candidates across4 architectures and has0 feasible complete results. Missing evidence and costs remain visible; no fictional complete fixture was uploaded.",
+    "Local six-case, native graph application and MCP qualifications are recorded separately. Hosted native checks cover retained preference, research-dialog cancellation, mobile and reload; no hosted graph was applied.",
+    "Physical engineering, actual independent reviews, broader domain packs, Store Sync, authentic callbacks, research and final film remain separate full-product work."
+  ],
+  "promotedAt": "2026-11-12T01:00:24.061Z",
+  "originalWorkspaceContinuity": {
+    "readOnlyChecks": 6,
+    "revision": 2,
+    "originalExpiry": "2026-11-17T21:49:14.202Z",
+    "checkedBeforeAndAfterPromotion": true
+  }
+}
