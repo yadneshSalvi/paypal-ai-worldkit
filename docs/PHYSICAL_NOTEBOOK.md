@@ -34,6 +34,8 @@ WORLDKIT_PHYSICAL_MAINTENANCE=true node --env-file=.env --import tsx \
 
 Schedule that operator command only after the actual private store, retention permissions and delivery/cleanup behavior have been qualified. No configured production schedule or successful production deletion is claimed by the local software tests.
 
+A manually selected generated file keeps its Sample provenance and declared rights while using the ordinary **Send original** step. The separate generated-helper action is identified by the server's retained generator receipt, rather than by the file's provenance label. Refreshing or reopening an intent preserves that distinction; neither action sends bytes automatically or extends its deadline.
+
 ## Evidence and recovery
 
 Every mutation has a workspace/actor-scoped UUID and immutable input identity, with its result stored durably. Changed-body collisions, foreign report IDs, stale editions, expired grants and revoked authority are refused. Browser recovery is explicit with the same command/body; remounting never posts automatically. Refresh/context changes invalidate drafts and checked consent. Private serial values and invitations are excluded from persistent browser journals.

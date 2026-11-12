@@ -70,7 +70,7 @@ export type BenchUpload = {
   id: string; runId: string; file: BenchFileInput; createdAt: string; expiresAt: string;
   phase: "awaiting_upload" | "uploaded" | "queued" | "verifying" | "verified" | "rejected";
   assetId: string | null; failure: string | null; transport: "private_blob" | "controlled_local";
-  pathname: string; attempts: number;
+  pathname: string; attempts: number; generatedSample: boolean;
   withdrawnAt?: string | null; purgedAt?: string | null;
 };
 export const BenchObservationInputSchema = z.object({

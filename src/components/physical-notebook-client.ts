@@ -125,6 +125,7 @@ export function benchExportUrl(detail: BenchDetail, reviewer: boolean, view: "pr
 export type BenchBlobTransport = (pathname: string, file: File, options: { access: "private"; contentType: string; handleUploadUrl: string; multipart: true; clientPayload: string }) => Promise<unknown>;
 export async function sendBenchOriginal(intent: BenchUpload, file: File, runId: string, blobTransport?: BenchBlobTransport): Promise<void> {
   if (intent.runId !== runId || file.name !== intent.file.filename || file.size !== intent.file.bytes) throw new Error("Choose the exact file named in this original upload intent.");
+  if (intent.generatedSample !== false) throw new Error("Only a current manual upload intent can send a file. Generated Sample helpers use their original byte-check path.");
   if (intent.transport === "controlled_local") {
     const response = await fetch(`/api/physical-notebook/uploads/${encodeURIComponent(intent.id)}?${new URLSearchParams({ runId })}`, { method: "PUT", credentials: "same-origin", cache: "no-store", headers: { "Content-Type": intent.file.mediaType }, body: file });
     if (!response.ok) throw new BenchRequestError("The original upload was not acknowledged. Check this same upload before sending anything again.", "upload_unknown", response.status);

@@ -76,7 +76,7 @@ export function Assessment({ detail }: { detail: BenchDetail }) {
     <div className={styles.assessmentTop}><Icon size={23}/><div><span className={styles.eyebrow}>WHAT THIS EVIDENCE SUPPORTS</span><h3>{a.label}</h3></div><span className={styles.badge}>{detail.edition.sourceMode === "sample" ? "Sample" : "Operator report"}</span></div>
     <p>{a.detail}</p>
     <div className={styles.assessmentCounts}><div><strong>{a.actualQualifiedReviews}</strong><span>actual qualified reviews</span></div><div><strong>{a.sampleReviews}</strong><span>Sample reviews</span></div><div><strong>{a.reportedFailures}</strong><span>reported failures retained</span></div></div>
-    {a.missing.length > 0 && <details><summary>{a.missing.length} evidence {a.missing.length === 1 ? "gap" : "gaps"} remains visible</summary><ul>{a.missing.map((item, i) => <li key={i}>{item}</li>)}</ul></details>}
+    {a.missing.length > 0 && <details><summary>{a.missing.length} evidence {a.missing.length === 1 ? "gap remains" : "gaps remain"} visible</summary><ul>{a.missing.map((item, i) => <li key={i}>{item}</li>)}</ul></details>}
     <p className={styles.smallPrint}>Scope: {a.physicalExecution.replaceAll("_", " ")} · existing compatibility certificate unchanged.</p>
   </section>;
 }
