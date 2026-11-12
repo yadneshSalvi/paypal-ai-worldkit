@@ -9,6 +9,7 @@ export function requireIsolatedDatabase() {
   const physicalNotebook = process.env.WORLDKIT_QA_MODE === "physical-notebook" && url.pathname === "/worldkit_physical" && url.username === "worldkit_physical" && url.port === "55576";
   const researchNotebook = process.env.WORLDKIT_QA_MODE === "research-notebook" && url.pathname === "/worldkit_research" && url.username === "worldkit_research" && url.port === "55576";
   const guidedJourney = process.env.WORLDKIT_QA_MODE === "guided-journey" && url.pathname === "/worldkit_guided" && url.username === "worldkit_guided" && url.port === "55576";
-  if (url.hostname !== "127.0.0.1" || process.env.WORLDKIT_DISABLE_PROVIDERS !== "true" || (!certificate && !sourceImpact && !toolkit && !engineering && !domainPacks && !cartInterop && !physicalNotebook && !researchNotebook && !guidedJourney))
+  const releaseFinal = process.env.WORLDKIT_QA_MODE === "release-final" && url.pathname === "/worldkit_release_final" && url.username === "wk_release_final_app" && url.port === "55576";
+  if (url.hostname !== "127.0.0.1" || process.env.WORLDKIT_DISABLE_PROVIDERS !== "true" || (!certificate && !sourceImpact && !toolkit && !engineering && !domainPacks && !cartInterop && !physicalNotebook && !researchNotebook && !guidedJourney && !releaseFinal))
     throw new Error("Use an isolated certificate, source-impact, Toolkit, engineering, domain-packs, cart, physical-notebook, research-notebook or guided-journey QA launcher. Existing application databases and provider calls are forbidden.");
 }

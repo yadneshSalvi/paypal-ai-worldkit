@@ -17,7 +17,7 @@
     "db:migrate": "node --env-file=.env --import tsx scripts/migrate.ts",
     "qualify:catalog": "node --env-file=.env --import tsx scripts/qualify-catalog.ts",
     "qualify:models": "node --env-file=.env --import tsx scripts/qualify-models.ts",
-    "verify:mcp": "node --env-file=.env --import tsx scripts/verify-mcp.ts",
+    "verify:mcp": "node --import tsx scripts/verify-mcp.ts",
     "qualify:inventory": "node --env-file=.env --import tsx scripts/qualify-inventory.ts"
   },
   "dependencies": {
@@ -45,7 +45,13 @@
   },
   "overrides": {
     "@vercel/cli-config": "0.3.8",
-    "mathjs": "15.2.0"
+    "mathjs": "15.2.0",
+    "@paypal/agent-toolkit@1.11.0": {
+      "@langchain/core": "0.3.80"
+    },
+    "@langchain/core@0.3.80": {
+      "langsmith": "0.6.0"
+    }
   },
   "devDependencies": {
     "@types/jsdom": "21.1.7",

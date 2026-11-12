@@ -1,0 +1,32 @@
+{
+  "description": "Exact official Google Fonts OFL file copies; no font files are vendored by this notice inventory.",
+  "fonts": [
+    {
+      "font": "inter",
+      "source": "https://github.com/google/fonts/blob/main/ofl/inter/OFL.txt",
+      "retrievedFrom": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt",
+      "path": "docs/licenses/inter-OFL.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "retrievedAt": "2026-11-12T14:11:34.811Z"
+    },
+    {
+      "font": "sora",
+      "source": "https://github.com/google/fonts/blob/main/ofl/sora/OFL.txt",
+      "retrievedFrom": "https://raw.githubusercontent.com/google/fonts/main/ofl/sora/OFL.txt",
+      "path": "docs/licenses/sora-OFL.txt",
+      "bytes": 4385,
+      "sha256": "ba0b9729c9428ba79a0459ab8ec575791b51509dbec213e383d0316d37fec299",
+      "retrievedAt": "2026-11-12T14:11:34.812Z"
+    },
+    {
+      "font": "jetbrainsmono",
+      "source": "https://github.com/google/fonts/blob/main/ofl/jetbrainsmono/OFL.txt",
+      "retrievedFrom": "https://raw.githubusercontent.com/google/fonts/main/ofl/jetbrainsmono/OFL.txt",
+      "path": "docs/licenses/jetbrainsmono-OFL.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "retrievedAt": "2026-11-12T14:11:34.817Z"
+    }
+  ]
+}

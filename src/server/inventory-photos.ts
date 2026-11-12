@@ -27,9 +27,15 @@ export async function addInventoryPhoto(session: Session, bytes: Buffer, sourceM
   if (!storageReady()) throw new WorldKitError("provider_unavailable", "Private photo storage is not connected yet. You can add equipment by model or URL.", 503);
   const photo = await normalizePhoto(bytes); const id = randomUUID(); const path = `worldkit/${session.id}/inventory/${id}.webp`;
   const row = await transaction(async db => {
-    await db.query("SELECT id FROM wk_sessions WHERE id=$1 FOR UPDATE", [session.id]);
-    const prior = await db.query("SELECT * FROM wk_inventory_photos WHERE tenant_id=$1 AND content_hash=$2 AND status='active'", [session.id, photo.contentHash]);
-    if (prior.rows[0]) return prior.rows[0] as PhotoRow;
+    const owner = await db.query("SELECT id,expires_at FROM wk_sessions WHERE id=$1 FOR UPDATE", [session.id]);
+    if (!owner.rows[0] || new Date(owner.rows[0].expires_at).getTime() <= Date.now()) throw new WorldKitError("forbidden", "This original workspace has expired.", 401);
+    const prior = await db.query("SELECT * FROM wk_inventory_photos WHERE tenant_id=$1 AND content_hash=$2 AND status IN ('uploading','active','deleting') ORDER BY created_at LIMIT 1", [session.id, photo.contentHash]);
+    if (prior.rows[0]) {
+      const existing = prior.rows[0] as PhotoRow;
+      if (existing.source_mode !== sourceMode) throw new WorldKitError("stale_revision", "These image bytes already have a different saved source label. The original label is retained; inspect that image instead of relabeling it.", 409);
+      if (existing.status !== "active") throw new WorldKitError("stale_revision", "These image bytes are already being saved or removed. Inspect the original upload before another attempt.", 409);
+      return existing;
+    }
     const count = await db.query("SELECT count(*)::int AS count FROM wk_inventory_photos WHERE tenant_id=$1 AND status IN ('uploading','active','deleting')", [session.id]);
     if (count.rows[0].count >= 12) throw new WorldKitError("rate_limited", "This workspace holds twelve private photos. Remove one before adding another.", 429);
     const result = await db.query("INSERT INTO wk_inventory_photos(id,tenant_id,blob_path,content_hash,mime,width,height,bytes,source_mode) VALUES($1,$2,$3,$4,'image/webp',$5,$6,$7,$8) RETURNING *", [id, session.id, path, photo.contentHash, photo.width, photo.height, photo.bytes.length, sourceMode]);

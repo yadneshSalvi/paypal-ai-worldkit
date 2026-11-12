@@ -6,26 +6,27 @@ The inventory and source-reading integration checkpoints are running at [WorldKi
 
 ## Run locally
 
-Use Node **22.x** (tested with 22.22.3), npm 10.9.8 and PostgreSQL. The application uses its own database, credentials and PayPal sandbox merchant. Do not point it at another project's payment store or wallet.
+Use Node **22.x** (tested with 22.22.3), npm 10.9.8, Git and PostgreSQL. Start with a fresh database/user and independent local secrets; leave optional provider keys empty for the initial Sample. The [complete setup and release guide](docs/RELEASE_READINESS.md) covers database creation, SDK install/transport, private Blob storage, optional providers and safe staging of existing data.
 
 ```sh
 npm ci
 cp .env.example .env
-# Fill in your own isolated development credentials and PostgreSQL URL.
-npm run db:migrate
-npm run dev
+# Configure the new database, AUTH_SECRET and CRON_SECRET locally.
+# Add WORLDKIT_DISABLE_PROVIDERS=true for the initial Sample run.
 ```
+
+Then use the guide's guarded Sample launch to clear inherited connection/provider values before migration and startup. An empty key in `.env` does not override a key already inherited from your shell.
 
 Open http://localhost:4106 and choose **Start Sample**. Passive visits only check for an existing workspace; they create nothing. The explicit action creates a private, durable Sample workbench with a seven-day opaque session. If its response is lost, **Recover this Sample** uses the original saved request and keeps the original expiry. [Entry and recovery contract](docs/EXPLICIT_SAMPLE_ENTRY.md). A deployment-wide PostgreSQL backstop admits at most 30 new workspaces/hour and 200/day; an existing cookie reopens its current workspace and existing work remains usable. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require matching Host and Origin for the configured public URL or the exact server-provided Vercel deployment hostname. Other preview or branch aliases are not automatically trusted.
 
 ```sh
-npm test
-npm run test:db
-npm run typecheck
-npm run build
+node --experimental-strip-types --test tests/release-inputs.test.ts
+node scripts/check-release.mjs
 ```
 
-The core test suite uses deterministic sample providers. Credentialed qualification scripts (`qualify:catalog`, `qualify:models`) make real read/model requests and may consume the configured account's credits. `verify:mcp` talks to the running local server using a short-lived private grant. It never moves money.
+These bounded source checks use no environment file, database, runtime or provider. [Dependency checks and residual findings](docs/DEPENDENCY_REVIEW.md) are recorded separately; the current full/production audit retains 10 findings (9 high, 1 moderate). Database/build/native qualification needs its own isolated exact-source workflow. Credentialed scripts (`qualify:catalog`, `qualify:models`, `qualify:inventory`) make real external requests and may consume account quota.
+
+Deliberate MCP verification uses `npm run verify:mcp -- --input /absolute/private-input.json --output /absolute/new-receipt.json`, with an existing private grant and exact saved certificate/revision. It loads no implicit `.env`, creates no workspace/grant/quote, and preserves new receipt/journal paths; request counters can change. [Strict input, permissions and recovery contract](docs/RELEASE_READINESS.md#mcp-verification-with-existing-authority).
 
 ## What works
 
@@ -99,7 +100,7 @@ This repository remains private while implementation and evidence are being asse
 
 ## License
 
-Application code is MIT licensed. Bundled third-party context and the immutable payment core retain their original licenses and provenance. Product illustrations and test signals in this implementation are original; no Channel3 product photography or identifiable participant footage is reused.
+Application code is [MIT licensed](LICENSE). The [third-party inventory and preserved notices](docs/THIRD_PARTY_NOTICES.md) cover the payment core, fonts and declared native/data licenses. The installed Channel3 SDK has no declared license; external licensing clarification remains an open release gate. Product illustrations and synthesized test signals are original; no third-party product photography or identifiable participant footage is reused.
 
 ## Additional system packs
 

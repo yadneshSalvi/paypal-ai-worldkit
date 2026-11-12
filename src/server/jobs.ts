@@ -72,16 +72,18 @@ export async function claimJob(scope: { tenantId?: string; id?: string } = {}): 
   return transaction(async db => {
     // A short global claim lock makes tenant concurrency exact across Vercel instances.
     await db.query("SELECT pg_advisory_xact_lock(hashtext('worldkit:job-claim:v1'))");
-    await db.query("UPDATE wk_job_attempts a SET status='interrupted',error='The lease expired before a durable result was saved.',finished_at=now() FROM wk_jobs j WHERE a.job_id=j.id AND a.attempt=j.attempts AND a.status='running' AND j.status='running' AND j.lease_expires_at<now()");
-    await db.query("UPDATE wk_jobs SET status='failed',error='The worker stopped before a durable result was saved.',progress='Needs another attempt',lease_token=NULL,lease_expires_at=NULL,updated_at=now() WHERE managed=true AND status='running' AND lease_expires_at<now() AND attempts-continuations>=max_attempts");
-    await db.query("UPDATE wk_jobs j SET status='cancelled',lease_token=NULL,lease_expires_at=NULL,progress='The workspace expired',updated_at=now() FROM wk_sessions s WHERE j.tenant_id=s.id AND s.expires_at<=now() AND j.managed=true AND j.kind NOT IN ('inventory_photo_delete','source_document_delete') AND j.status IN ('queued','running','retry_wait')");
+    // Recovery has the same scope as selection; a workspace poll cannot maintain another owner's jobs.
+    const scopeValues = [scope.tenantId ?? null, scope.id ?? null];
+    await db.query("UPDATE wk_job_attempts a SET status='interrupted',error='The lease expired before a durable result was saved.',finished_at=now() FROM wk_jobs j WHERE a.job_id=j.id AND a.attempt=j.attempts AND a.status='running' AND j.status='running' AND j.lease_expires_at<now() AND ($1::text IS NULL OR j.tenant_id=$1) AND ($2::text IS NULL OR j.id=$2)", scopeValues);
+    await db.query("UPDATE wk_jobs j SET status='failed',error='The worker stopped before a durable result was saved.',progress='Needs another attempt',lease_token=NULL,lease_expires_at=NULL,updated_at=now() WHERE j.managed=true AND j.status='running' AND j.lease_expires_at<now() AND j.attempts-j.continuations>=j.max_attempts AND ($1::text IS NULL OR j.tenant_id=$1) AND ($2::text IS NULL OR j.id=$2)", scopeValues);
+    await db.query("UPDATE wk_jobs j SET status='cancelled',lease_token=NULL,lease_expires_at=NULL,progress='The workspace expired',updated_at=now() FROM wk_sessions s WHERE j.tenant_id=s.id AND s.expires_at<=now() AND j.managed=true AND j.kind NOT IN ('inventory_photo_delete','source_document_delete') AND j.status IN ('queued','running','retry_wait') AND ($1::text IS NULL OR j.tenant_id=$1) AND ($2::text IS NULL OR j.id=$2)", scopeValues);
     const result = await db.query(`SELECT j.* FROM wk_jobs j JOIN wk_sessions s ON s.id=j.tenant_id
       WHERE j.managed=true AND j.attempts-j.continuations<j.max_attempts AND (s.expires_at>now() OR j.kind IN ('inventory_photo_delete','source_document_delete'))
       AND (($1::text IS NULL) OR j.tenant_id=$1) AND (($2::text IS NULL) OR j.id=$2)
       AND ((j.status IN ('queued','retry_wait') AND j.next_attempt_at<=now()) OR (j.status='running' AND j.lease_expires_at<now()))
       AND (SELECT count(*) FROM wk_jobs running WHERE running.tenant_id=j.tenant_id AND running.managed=true AND running.status='running' AND running.lease_expires_at>now())<2
       AND (SELECT count(*) FROM wk_jobs running WHERE running.managed=true AND running.status='running' AND running.lease_expires_at>now())<8
-      ORDER BY j.next_attempt_at,j.created_at LIMIT 1 FOR UPDATE OF j SKIP LOCKED`, [scope.tenantId ?? null, scope.id ?? null]);
+      ORDER BY j.next_attempt_at,j.created_at LIMIT 1 FOR UPDATE OF j SKIP LOCKED`, scopeValues);
     const row = result.rows[0]; if (!row) return null;
     const token = randomUUID();
     const updated = await db.query("UPDATE wk_jobs SET status='running',attempts=attempts+1,lease_token=$2,lease_expires_at=now()+interval '210 seconds',progress=CASE WHEN attempts>0 THEN 'Resuming saved work' ELSE progress END,updated_at=now() WHERE id=$1 RETURNING *", [row.id, token]);

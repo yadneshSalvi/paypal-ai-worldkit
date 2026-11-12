@@ -1,0 +1,14 @@
+.dialog { max-width: 100%; }
+.choices { border: 0; padding: 0; margin: 20px 0 12px; min-width: 0; }
+.choices legend { font-size: 11px; font-weight: 600; color: #506443; margin-bottom: 10px; }
+.choice { display: flex; align-items: flex-start; gap: 12px; padding: 15px; border: 1px solid #dce6d2; border-radius: 9px; margin-bottom: 10px; cursor: pointer; }
+.choice:has(input:checked) { border-color: #6b8956; background: #f5f8ef; }
+.choice:focus-within { outline: 2px solid #506f3f; outline-offset: 3px; }
+.choice input { width: 16px; height: 16px; flex: 0 0 16px; margin: 3px 0 0; accent-color: #557541; }
+.choice strong { display: block; font-size: 13px; line-height: 1.65; color: #405333; }
+.choice p { font-size: 11px; line-height: 1.8; color: #6a7660; margin: 3px 0 0; }
+.choices:disabled .choice { cursor: default; }
+.actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 23px; }
+.actions button { min-height: 42px; }
+.progress { margin-top: 15px; }
+@media (max-width: 480px) { .choice { padding: 13px; }.actions { align-items: stretch; flex-direction: column-reverse; gap: 10px; }.actions button { width: 100%; justify-content: center; } }
