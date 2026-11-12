@@ -1,0 +1,98 @@
+{
+  "schema": "worldkit.public-record-hydration-qualification.1",
+  "qualifiedAt": "2026-11-12T16:51:31.492Z",
+  "sourceCommit": "0fc062bfabdc2b30bfdba47f232317ab57b061d5",
+  "deploymentId": "dpl_G7HmbKy4Cfo9kHXtcd6MYZxoEq2z",
+  "canonicalUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "scope": "One rendering-only SVG-title correction across existing public certificate, guide and print views; published payloads and all existing authority remain unchanged.",
+  "cause": "The SVG title had two JSX text children; actual server-rendered HTML and browser hydration disagreed. One string preserves the wording and parsed text node.",
+  "firstFailure": {
+    "nativeErrors": 3,
+    "reactError": 418,
+    "capturedSource": "d79827dd780f91b570fa74f692e2513c5a6cbf2e",
+    "offlineHydrationModesFailed": 3,
+    "retained": true
+  },
+  "qualification": {
+    "hydrationModesPassed": 3,
+    "projectionControlsPassed": 7,
+    "nonincrementalTypecheck": "passed",
+    "localProductionBuild": "passed",
+    "hostedProductionBuild": "passed",
+    "localBuildId": "RWuELBAXaaEGoV86RdRzd",
+    "stageGetRequests": 10,
+    "canonicalOriginalGetRequests": 6,
+    "unchangedOriginalPayloadHashes": 6
+  },
+  "native": {
+    "stage": {
+      "freshModes": 3,
+      "hydrationErrors": 0,
+      "consoleWarnings": 0,
+      "continuousPublicDisplayPassed": false,
+      "reason": "Protected Vercel stage rejects credential-free sharing-state polls with401; content correctly hides on unavailable status.",
+      "firstFalseEqualityChecksRetained": true
+    },
+    "canonical": {
+      "freshModes": 3,
+      "exactGraphCertificateAndEditionInEveryMode": true,
+      "sharingPollResponses": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "contentRetainedInEveryMode": true,
+      "consoleWarningsErrors": 0,
+      "networkEvents": 21,
+      "networkTruncated": false,
+      "initialDocumentRequestsOutsideNetworkWindow": true,
+      "cookieStorageViewportChanges": 0,
+      "mutations": 0
+    }
+  },
+  "release": {
+    "cleanGitArchive": true,
+    "sourceFiles": 522,
+    "archiveSha256": "100cf6d72ba0aeb6b6428b57bd4ddb97d78f2999cd3d635033b56e00cddc816f",
+    "scannedFiles": 523,
+    "retainedPrivateValuesScanned": 7,
+    "exactPrivateValueMatches": 0,
+    "schemaMigrations": 0,
+    "environmentOrProtectionChanges": false,
+    "extraUploadInput": "Excluded local Vercel project link only"
+  },
+  "preservation": {
+    "baselineRows": 844,
+    "currentRows": 844,
+    "tables": 123,
+    "allRowsByteIdentical": true,
+    "originalAndFinalCohortExpiryGraphPublicationPreserved": true,
+    "originalFinancialAndAuthenticProviderHistoryPreserved": true,
+    "originalGrantRevocationPreserved": true,
+    "databaseSnapshotsTaken": 1,
+    "newAdmissions": 0,
+    "newCommands": 0,
+    "newProviderModelFinancialRows": 0
+  },
+  "evidenceHashes": {
+    "qualification.json": "4b6509d0069d0f6a48b02818a05110c4d592d3dfe5a74d5a9d6779940c4a2c52",
+    "stage-qualification.json": "69505055cbbc810b1632044dae54d58d49f53a833e8356886cc9fcd3338a76b2",
+    "root-native/REVIEW.json": "c304cab339c0ec69cefbaeeeabc982a4590c8d71955dedf78e9d3e5eb16a06dd",
+    "root-native/canonical/REVIEW.json": "66f282cb9ab8a951f85526b7e5fc978da70e4354df77b73b5ef94a654e7dd87b",
+    "promoted-identity.json": "ea3fef1193bb40b57c76690968c761b0afdafc00b0a7746d43c8385c6a79fe9b",
+    "promoted-continuity.json": "5201c0f144403851dfa6b702cad4a69bc73d9972ee004523399787852a68f4bf",
+    "promoted-audit.json": "71cc3a2755c7979bb2cfa61048f129b1ac27b0429f17c2de4c87a89d83b80d76"
+  },
+  "limitations": [
+    "The original capture errors remain part of the retained capture record. This correction does not retroactively make that capture console-clean.",
+    "The stage polling limitation was not bypassed or weakened; continuous public display was separately observed after promotion.",
+    "Public records remain subject to their original sharing state and expiry. Physical testing, independent human review and merchant eligibility are not established by this rendering correction."
+  ]
+}

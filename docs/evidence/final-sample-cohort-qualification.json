@@ -1,0 +1,165 @@
+{
+  "schema": "worldkit.final-sample-cohort-qualification.1",
+  "capturedAt": "2026-11-12T16:27:30.558176Z",
+  "attributedAt": "2026-11-12T16:32:08.830Z",
+  "sourceCommit": "d79827dd780f91b570fa74f692e2513c5a6cbf2e",
+  "deploymentId": "dpl_F7T3K2gW7ifL3qYHXMiDDzSDcFR2",
+  "canonicalUrl": "https://paypal-ai-worldkit.vercel.app",
+  "scope": "One explicitly admitted Sample film cohort with actual private image storage, model/catalog transport, saved graph repair, separate scoped MCP verification and one public record. No physical equipment, participant or financial operation is claimed.",
+  "input": {
+    "provenance": "Original neutral illustration, not a photograph or possessions claim",
+    "sourceMode": "sample",
+    "originalSha256": "24783972cd0caffacbc95229f4c9b6fdb5242583e5daed093beb9209304cb039",
+    "normalizedSha256": "bdf6c439d9667660d80b580443715f78b8f624e6096b7c12a7c68a2d424f5e6d",
+    "width": 1200,
+    "height": 800,
+    "normalizedBytes": 23314,
+    "actualPrivateBlobUpload": true
+  },
+  "vision": {
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "attempts": 1,
+    "proposedRegions": 2,
+    "durationMs": 21706,
+    "explicitIllustrationUncertaintyRetained": true,
+    "confirmedEquipmentIdentities": 0
+  },
+  "catalog": {
+    "provider": "channel3",
+    "operation": "confirmed_crop_search",
+    "attempts": 1,
+    "candidateCount": 8,
+    "durationMs": 800,
+    "input": "Owner-reviewed crop from the Sample illustration",
+    "equipmentIdentityOwnershipOrAvailabilityGuaranteed": false
+  },
+  "savedGraph": {
+    "revision": 3,
+    "revisionId": "815b707f-d8e3-494f-9155-6e1c908f6f72",
+    "graphHash": "eeebbcaad6eac1b4f00744227882b3d05b9a669ea78b28f0cd8fae83c0d21e6b",
+    "certificateId": "cert_ff8e0b4ddeb67e08c52d1c7872057c77",
+    "sourceHash": "fef59a1e0de0c3283ddf121d9605ca8d1bcbbf37780ba6561fffff003e94efa0",
+    "checks": {
+      "passed": 5,
+      "conflicts": 0,
+      "unknown": 4,
+      "critical_facts_reviewed": 0,
+      "critical_facts_total": 30,
+      "physical": "not_performed"
+    },
+    "ordinaryPreviews": 2,
+    "explicitSaves": 2,
+    "repair": {
+      "revision1": {
+        "microphone2": "SM58",
+        "passed": 5,
+        "conflicts": 0,
+        "unknown": 4
+      },
+      "revision2": {
+        "microphone2": "AT2020 XLR",
+        "passed": 5,
+        "conflicts": 1,
+        "unknown": 3,
+        "track2_silent": true
+      },
+      "revision3": {
+        "change": "Enable documented 48 V phantom power",
+        "passed": 5,
+        "conflicts": 0,
+        "unknown": 4,
+        "track2_signal": true
+      },
+      "scope": "Two ordinary previews and two explicit saves. This is a modeled connection test, not physical audio."
+    },
+    "comparisonOptionsApplied": false
+  },
+  "modelAudio": {
+    "source": "Original application-generated graph-bound tones",
+    "states": 3,
+    "physicalRecording": false,
+    "audioQualityListeningClaim": false
+  },
+  "mcp": {
+    "sdk": "@modelcontextprotocol/sdk",
+    "sdkVersion": "1.32.2",
+    "transport": "Official MCP SDK Streamable HTTP",
+    "requests": 4,
+    "tool": "verify_kit",
+    "freshnessPolicy": "historical",
+    "equality": {
+      "revision": true,
+      "graphHash": true,
+      "certificate": true
+    },
+    "scopes": [
+      "kit:verify"
+    ],
+    "separatelyIssuedOwnerGrants": 1,
+    "operatorCreatedOwnersOrGrants": 0,
+    "originalGrantExpiry": "2026-11-12T17:17:07.823Z",
+    "ownerRevokedOnceAt": "2026-11-12T16:22:59.298Z",
+    "revokeHttp": 200,
+    "quoteProposalPaymentCalls": 0,
+    "unknownRequests": 0,
+    "automaticRetries": 0
+  },
+  "publicRecord": {
+    "url": "https://paypal-ai-worldkit.vercel.app/record/1dpjUylk5nMV0DnGk3Mu44kgy2vVQPBO/e/1",
+    "guideUrl": "https://paypal-ai-worldkit.vercel.app/record/1dpjUylk5nMV0DnGk3Mu44kgy2vVQPBO/e/1/guide",
+    "edition": 1,
+    "editionHash": "62daf8c1b2726958a349797f428f1fdc6616a15c4540d08363748d5290730f3b",
+    "publishedOnce": true,
+    "expiresAt": "2026-11-19T16:01:23.987Z",
+    "qrSha256": "2213a7915e92265d1590253c241c3263686a43171c4dcba0a54217ca61f21724",
+    "sharingReviewIsIndependentEngineeringReview": false
+  },
+  "preservation": {
+    "baselineRows": 796,
+    "currentRows": 844,
+    "tables": 123,
+    "allPriorNonAdmissionRowsByteIdentical": true,
+    "priorAdmissionCounterChanges": [
+      {
+        "period": "day",
+        "before": 16,
+        "after": 17
+      },
+      {
+        "period": "hour",
+        "before": 0,
+        "after": 1
+      }
+    ],
+    "newCohortRows": 47,
+    "newHourCounterRows": 1,
+    "oneOriginalExpiryPreserved": true,
+    "grantRevoked": true,
+    "newFinancialRows": 0,
+    "newAuthenticEventRows": 0,
+    "databaseSnapshotsTaken": 1
+  },
+  "nativeCapture": {
+    "publicNetworkEvents": 204,
+    "truncated": false,
+    "originalCookiesStorageViewportRestored": true,
+    "publicHydrationErrorsObserved": 3,
+    "publicHydrationIssue": "A subsequent separately qualified rendering-only correction retains this original finding and the unchanged public record."
+  },
+  "evidenceHashes": {
+    "lookup": "5eaf6d55a1daa2325ecb0764d4b562b56bcf02543458b380dcbf3e931737eb81",
+    "mcp": "c43274633a053bdeee8d927786e3328ecd85ac067e9666c08c8439ce23554d4e",
+    "finalFilmFacts": "2a11ee1e329c580450e53e2182e52d24aef30399c5acc8e7548f88c32bf1cb4c",
+    "captureClosed": "c3ca6ee88a184497d76b58ef8019799aceeefccf626b6259b19276771462e66a",
+    "attribution": "89c002d17b26efcea20ecbd769b7994c045c8c6583dcb4fddd642a1b87b3be71"
+  },
+  "limitations": [
+    "Sample illustration and proposed matches do not establish equipment identity, possessions, prices, accuracy or procurement.",
+    "Four unknown requirements and zero of thirty independently reviewed critical facts remain visible.",
+    "The tones are modeled, not original physical recordings. Physical tests and consented novice/engineer research remain unperformed.",
+    "The scoped verifier grant was revoked; no renewal, replacement or payment authority is implied.",
+    "The public record expires with its original workspace. A stored/printed copy does not establish current sharing state.",
+    "Historical $12 and $8 sandbox captures/refunds belong to the dated original service qualification and were not repeated here."
+  ]
+}

@@ -2,7 +2,7 @@
 
 This guide runs from the public source, `.env.example` and checked-in vendor archives. Private plans and historical operator credentials are not prerequisites. Source-input validation and the licensing inventory are bounded release checks; they do not establish provider eligibility, physical results, independent research findings or permission to publish third-party material.
 
-Final source `d79827d` was promoted on 12 November 2026 after its affected controls, joined build, native image-intake review and read-only hosted qualification. The [release receipt](evidence/final-source-release-qualification.json) records the exact scope, preserved original data and residual limits. The documentation receipt is a later source-only update; it does not imply another deployment or a new provider run.
+Final source `d79827d` was promoted on 12 November 2026 after its affected controls, joined build, native image-intake review and read-only hosted qualification. The [release receipt](evidence/final-source-release-qualification.json) retains that original scope. A separately attributed [Sample film cohort](evidence/final-sample-cohort-qualification.json) then exercised actual private Blob, Gemini/Channel3 transport, scoped MCP verification and one public record. Rendering-only successor `0fc062b` fixes the observed public SVG-title hydration defect; [three canonical views and sharing polls passed](evidence/public-record-hydration-qualification.json), with all 844 rows in 123 tables unchanged. These later documentation receipts do not imply another deployment or provider run.
 
 ## Fresh isolated development setup
 
