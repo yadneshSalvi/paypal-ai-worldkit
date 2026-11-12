@@ -1,0 +1,51 @@
+{
+  "schema": "worldkit.system-synthesis-native.1",
+  "qualifiedAt": "2026-11-12T00:48:00.289Z",
+  "productSource": "3a837c28a6378e0419ed91dc0c23585b53abea84",
+  "localSourceUnits": [
+    "c84f0ba0ab44c29977769057a9ed37d713605d84",
+    "4156ee6",
+    "25d18c9"
+  ],
+  "browserEvidence": {
+    "fullUnit": [
+      "root in-app browser",
+      "independent delegated Chrome"
+    ],
+    "focusedCorrection": "root in-app browser",
+    "mobileCardDetailCombinations": 24,
+    "fixtureCases": 6,
+    "focusDestinations": [
+      "visible saved status",
+      "applied graph reading room",
+      "retained error"
+    ],
+    "mobileWidths": [
+      390,
+      360
+    ],
+    "reducedMotion": "observed in full unit; overrides cleared",
+    "budgetHistory": "original10000minor retained, explicit accepted current25300minor"
+  },
+  "preservation": {
+    "originalCertificates": 6,
+    "originalExpiryValues": 6,
+    "financialRowsUnchanged": true,
+    "modelCalls": 0,
+    "paymentProviderCalls": 0,
+    "originalLocalCookieRestored": true,
+    "recordedSourceFiles": 375,
+    "recordedDependencyFiles": 44307,
+    "recordedBuildFiles": 1009,
+    "changedRecordedFiles": 0,
+    "documentedIconCacheAdditions": 2
+  },
+  "retainedFailure": "First animation-frame focus correction left BODY focused; separate post-render correction passed actual browser checks.",
+  "limitations": [
+    "Sample equipment/price/source premises; zero human engineering reviews or physical tests.",
+    "390px hard-goal proposal dialog was not measured in the original full-unit matrix; retained root360 evidence is separately scoped.",
+    "Final delegated network buffer was truncated; it is not a complete request trace.",
+    "Audio play/pause/meters observed; physical audibility/performance were not measured.",
+    "Hosted release and complete-product gates are separate."
+  ]
+}
