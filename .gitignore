@@ -11,6 +11,7 @@
 # Dependencies and generated artifacts
 node_modules/
 .next/
+.next-*/
 .next-certificate-qa/
 .next-source-impact-qa/
 .next-engineering-qa/

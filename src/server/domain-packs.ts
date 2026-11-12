@@ -55,6 +55,7 @@ function freshness(edition: PackEdition, items: InventoryItem[]): PackFreshness 
   for (const source of edition.sources) if (!current.some(s => s.id === source.id && s.contentHash === source.contentHash)) issues.push({ kind: "source", message: `${source.title} has a different current source fingerprint. The historical proof is preserved.`, componentIds: [] });
   return { current: !issues.length, issues };
 }
+export { freshness as domainEditionFreshness };
 function requireFreshOwnership(edition: PackEdition, items: InventoryItem[]) {
   const issues = ownershipIssues(edition, items);
   if (issues.length) throw new WorldKitError("invalid_identity", issues[0]!.message, 409, "Refresh the equipment passport and preview again");
