@@ -1,0 +1,43 @@
+{
+  "schema": "worldkit.domain-hosted-qualification.1",
+  "qualifiedAt": "2026-11-12T06:04:01.307Z",
+  "productCommit": "0395222f04aba1ab28597252f79561c08726e7b2",
+  "deployedCommit": "972deda8362c9e87335d8c9020b6cf4aa829f353",
+  "deploymentId": "dpl_Av2MkDdwD8hqKu5DNpLBj4XTH4St",
+  "deployment": "https://paypal-ai-worldkit.vercel.app",
+  "httpChecks": 74,
+  "freshScriptedWorkspaces": 2,
+  "domainProjects": 2,
+  "retainedEditions": 5,
+  "graphBoundWavs": 3,
+  "exactDossiers": 5,
+  "native": {
+    "savedAndHistoricalViews": true,
+    "keyboardChooserReturn": true,
+    "reloadSelectionPreserved": true,
+    "mobileWidth": 390,
+    "documentWidth": 375,
+    "consoleWarnings": 0,
+    "consoleErrors": 0,
+    "modeledAudioPlayback": "Native ended at5.973333s;144000 PCM samples at24kHz encode6s"
+  },
+  "existingHostedWorkspace": {
+    "graphAndCertificateUnchanged": true,
+    "financialHistoryUnchanged": true,
+    "sessionDeadlineUnchanged": true,
+    "unchangedOriginalCatalogChoices": 71,
+    "addedExactDomainChoices": 6
+  },
+  "provenance": {
+    "automatedSoftwareQualification": true,
+    "providerDispatches": 0,
+    "modelCalls": 0,
+    "actualHumanReviews": 0,
+    "physicalTests": 0
+  },
+  "remaining": [
+    "Agentic cart and Store Sync capability work continues separately",
+    "Physical equipment validation and independent human review remain unperformed",
+    "Full-product demo and release gates remain separate"
+  ]
+}
