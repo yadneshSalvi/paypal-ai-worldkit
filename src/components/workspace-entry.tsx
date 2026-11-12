@@ -79,6 +79,6 @@ export function WorkspaceEntry({ brand, onOpen }: { brand: ReactNode; onOpen: (w
       {!waiting && <button className={`text-button ${styles.check}`} onClick={refresh}>Check saved workbench <RefreshCw size={13}/></button>}
       <p className={styles.boundary}><ShieldCheck size={14}/> Seven-day private workspace. Creating it uses no model calls, merchant purchase or real funds.</p>
     </div>
-    <p className="fine-print">Real sources. Honest unknowns. Physical performance and human findings need their own evidence.</p>
+    <p className="fine-print">Real sources. Honest unknowns. Physical performance and human findings need their own evidence. <a href="/library" style={{ color: "inherit", textDecoration: "underline" }}>See the source-checked device library</a>.</p>
   </main></div>;
 }

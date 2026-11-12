@@ -2,6 +2,8 @@
 
 A creator workbench for turning a goal into a complete physical-system plan, with exact equipment profiles, source-linked checks, an audible routing model and a durable sandbox purchase record.
 
+**Live:** https://paypal-ai-worldkit.vercel.app (PayPal **sandbox** only).
+
 The inventory and source-reading integration checkpoints are running at [WorldKit on Vercel](https://paypal-ai-worldkit.vercel.app). Hosted checks include an actual manufacturer PDF, private storage, Gemini reading, saved candidate and tenant isolation. It remains under active development; physical testing, independent source review, complete engineering port maps, several broader integrations and release assets are still open. See [evidence and limitations](docs/WHAT_VERIFIED_MEANS.md).
 
 ## Run locally
@@ -55,6 +57,19 @@ The deployed **Test notebook** workflow binds a physical report to one saved cre
 
 The deployed **Research notebook** workflow declares tasks and separate dated permissions, records explicit attempts and outcomes, preserves failed first attempts through retries, and reports exact protocol cohorts with private or permitted aggregate exports. It records source changes during repair tasks and withholds private text when current or original consent ends. Sample and operator-recorded studies remain distinct; recruitment and independent human-performance findings are not inferred. [Study workflow, consent and metric definitions](docs/RESEARCH_NOTEBOOK.md), [hosted/native release receipt](docs/evidence/notebooks-hosted-qualification.json).
 
+## How AI uses PayPal
+
+Agents can inspect, propose, quote and read; they cannot spend. Every PayPal call runs server-side against the **sandbox**. Amounts, payee and provider identifiers are resolved by the server from owned records; no browser, model or MCP caller supplies them.
+
+| AI / agent action | PayPal capability | Authority and consent | What actually runs |
+| --- | --- | --- | --- |
+| MCP `verify_kit` / `repair_kit`: an external agent reads a saved certificate or requests repair previews | None | Scoped bearer grant (`kit:verify`, `kit:propose`) for the exact kit revision and graph hash; per-grant rate limits | Returns the immutable certificate or deterministic previews (`movesMoney: false`, `commitsChanges: false`). The saved kit is not changed. |
+| MCP `quote_kit`: an agent prepares a Studio service quote | None at quote time | `kit:quote` grant; the result says `paymentAuthorized: false`, and the buyer must still approve any checkout | Saves an expiring, graph-bound WorldKit Studio sandbox service quote with `hardwareFulfillment: "not_included"`. It is not a retailer equipment quote. |
+| Studio checkout: buyer-present; no MCP tool can start or approve it | Orders create/capture and Payments refund through the APIMatic-generated `paypal` 2.29.0 SDK, behind the guarded `@fracture/paypal-core` executor | The buyer accepts the itemized quote ($8 source-linked routing dossier + $4 connection and assembly guide = $12) and approves in PayPal's sandbox buyer UI. A full compensating refund can be requested before delivery and within 24 hours | Live sandbox: a buyer-approved $12 order was captured and then fully refunded ([evidence](docs/evidence/paypal-worldkit-qualification.json)). This is a digital setup service: no equipment is sold or shipped and no retailer order is placed. |
+| Saved-wallet repair allowance for an unfulfilled Studio order: server-run, triggered by labelled Sample service events | Vault save-during-purchase, then merchant-initiated saved-wallet Orders create/capture | The buyer opts in to wallet saving at checkout and separately enables an explicit $25 cumulative allowance. Pending claims count, refunds do not restore it, a larger change needs new approval and revocation stops use | Live sandbox: an $8 saved-wallet amendment was captured and later refunded; $20 and $60 follow-ups escalated without creating an order; the token was deleted after revocation. The triggering events are Sample, not live stock changes. |
+| Repair workshop kit allowance (Living Repair) | The same guarded Orders/Payments path; saved-wallet use requires an active, independently verified owned wallet | A fresh `controlled_kit_amendments` allowance (for example $25) bound to the commitment, merchant, retailers, categories, expiry and current wallet consent, or a one-off buyer approval. Over-cap changes need new consent | Live sandbox: a buyer-approved $8 controlled kit amendment was created, captured and refunded under a separate undo consent ([evidence](docs/evidence/living-repair-paypal-qualification.json)); that run used neither a saved wallet nor the allowance. The Sample demonstration branch can instead use the clearly labelled **Sample** engine: no network client, no PayPal call and no money moved; its receipts say `sample` / `local_fixture`. |
+| MCP `read_payment_evidence`, or Studio **Read order** / **Read reporting page** | Official PayPal Agent Toolkit `@paypal/agent-toolkit@1.11.0`, limited to `get_order` and `list_transactions` | Separate opt-in `payment:read` grant. Ownership, grant, expiry and order/capture bindings are rechecked before OAuth, before the GET and before disclosure. Repeating a request ID never calls PayPal twice | One OAuth POST and one bounded GET, saved as a read-only observation (`paymentStateChanged: false`). A reporting absence is inconclusive. The hosted app read the owned, refunded $8 amendment ([details](docs/payment-evidence.md)). |
+
 ## Integrations and boundaries
 
 | Integration | Current implementation |
@@ -96,7 +111,11 @@ Secrets, local plans, browser recordings and private evidence are ignored by Git
 
 Manufacturer documents and software-publisher documentation are linked and hashed. A supported-looking value without its source, an unreviewed critical fact, a conflict or an unknown prevents overall verification. **Model verified** and **Physically tested** are separate claims. Current physical tests and human review are not complete.
 
-This repository remains private while implementation and evidence are being assembled. Publication, the final film and submission are separate release steps. Local private plans are not needed to run the source.
+### Evidence tiers
+
+Workbench facts are source-linked and remain **review pending** until a recorded human reviews them. Separately, a curated library of 17 real devices has been cross-checked and is labelled **source-checked, not human-reviewed**: each verbatim manufacturer quote was located in the retained source text, then confirmed by an independent second model (Google Gemini). 94 of 110 claims were confirmed; 16 were left unconfirmed and none was refuted. The records are in `packages/device-library/curated/library.json` and `packages/device-library/source-checks.json`. This tier is not a human review and not a physical test, and the workbench certificate does not yet count it.
+
+A 170-second demo film has been produced; it is not yet published. Local private plans are not needed to run the source.
 
 ## License
 

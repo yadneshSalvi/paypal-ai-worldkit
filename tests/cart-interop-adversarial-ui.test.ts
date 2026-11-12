@@ -2,7 +2,7 @@ import test, { type TestContext } from "node:test";
 import assert from "node:assert/strict";
 import { act, createElement } from "react";
 import { JSDOM } from "jsdom";
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { CART_SPEC, CartCommandSchema, type CartCatalogueLine, type CartCommand, type CartHome, type CartInput, type CartRevision } from "../packages/cart-interop/contracts";
 import { cartHash, evaluateCart } from "../packages/cart-interop/evaluate";
 import { pendingCartCommand } from "../packages/cart-interop/recovery";
@@ -16,6 +16,9 @@ const { CartInterop } = await import("../src/components/cart-interop");
 const aKey = "7".repeat(64); const bKey = "8".repeat(64); const at = "2026-11-12T07:00:00.000Z"; const expiresAt = "2099-01-01T00:00:00.000Z";
 const line: CartCatalogueLine = { id: "wksku_independent_ui", parentId: "wksystem_independent_ui", merchantId: "wkmerchant_independent_ui", title: "Sample · Independent considered system", description: "Synthetic bundle, no equipment order.", productKind: "physical", sourceMode: "sample", priceMinor: 12345, stock: 3, stockVersion: 1, projectId: "pack_independent_ui", editionId: "packrev_independent_ui", graphHash: "9".repeat(64), currentEditionId: "packrev_independent_ui", currentGraphHash: "9".repeat(64), packId: "podcast-classroom", editionNumber: 1, componentCount: 4, modelConflicts: 0, actualHumanReviews: 0, physicalTests: 0, active: true, evidenceCurrent: true };
 const cartId = "wkcart_independent_ui";
+// Private observation receipts go to the Git-ignored .local tree; a fresh clone has no such directory.
+const receiptDir = ".local/cart-interop-unit/independent";
+await mkdir(receiptDir, { recursive: true, mode: 0o700 });
 function home(workspaceKey = aKey, quantity = 1): CartHome {
   const input: CartInput = { items: [{ variant_id: line.id, parent_id: line.parentId, quantity }], customer: { email_address: "independent.scope.a@example.invalid" }, shipping_address: { country_code: "US", address_line_1: "42 Independent Fixture Street", admin_area_2: "Sample City", admin_area_1: "NY", postal_code: "10001" } };
   const evaluation = evaluateCart(input, [line], line.merchantId, cartId);
@@ -66,7 +69,7 @@ test("independent refreshed cart revision cannot inherit a buyer checkbox select
   const checkbox = modal()?.querySelector<HTMLInputElement>("input[type=checkbox]");
   const approve = modal() && Array.from(modal()!.querySelectorAll<HTMLButtonElement>("button")).find(value => text(value) === "Approve this version");
   const reusedConsent = !!checkbox?.checked && !!approve && !disabled(approve);
-  await writeFile(`.local/cart-interop-unit/independent/ui-revision-consent-${process.pid}.private.json`, JSON.stringify({ source: "Actual mounted CartInterop / synthetic HTTP responses", priorVersion: 1, incomingVersion: 2, priorConsentChecked: originalConsent, dialogRetained: !!modal(), displayedApproval: modal()?.querySelector(".cart-approval-total")?.textContent, reusedConsent, mutationRequests: http.posts().length }, null, 2) + "\n", { flag: "wx", mode: 0o600 });
+  await writeFile(`${receiptDir}/ui-revision-consent-${process.pid}.private.json`, JSON.stringify({ source: "Actual mounted CartInterop / synthetic HTTP responses", priorVersion: 1, incomingVersion: 2, priorConsentChecked: originalConsent, dialogRetained: !!modal(), displayedApproval: modal()?.querySelector(".cart-approval-total")?.textContent, reusedConsent, mutationRequests: http.posts().length }, null, 2) + "\n", { flag: "wx", mode: 0o600 });
   assert.equal(reusedConsent, false, "Consent to version one must never leave an enabled approval for the newly arriving version two");
   assert.equal(http.posts().length, 0);
 });
@@ -76,7 +79,7 @@ test("independent refreshed foreign workspace cannot keep the earlier workspace'
   if (!disabled(edit)) await click(edit);
   await resolve(pending, emptyForeign());
   const retainedPriorBuyer = Array.from(document.querySelectorAll<HTMLInputElement>("input")).some(input => input.value === "independent.scope.a@example.invalid");
-  await writeFile(`.local/cart-interop-unit/independent/ui-foreign-editor-${process.pid}.private.json`, JSON.stringify({ source: "Actual mounted CartInterop / synthetic foreign-workspace read", beforeWorkspace: aKey, currentWorkspace: bKey, priorBuyerStillInEditor: retainedPriorBuyer, dialogRetained: !!modal(), currentWelcomeVisible: document.body.textContent?.includes("Open the Sample merchant"), mutationRequests: http.posts().length }, null, 2) + "\n", { flag: "wx", mode: 0o600 });
+  await writeFile(`${receiptDir}/ui-foreign-editor-${process.pid}.private.json`, JSON.stringify({ source: "Actual mounted CartInterop / synthetic foreign-workspace read", beforeWorkspace: aKey, currentWorkspace: bKey, priorBuyerStillInEditor: retainedPriorBuyer, dialogRetained: !!modal(), currentWelcomeVisible: document.body.textContent?.includes("Open the Sample merchant"), mutationRequests: http.posts().length }, null, 2) + "\n", { flag: "wx", mode: 0o600 });
   assert.equal(retainedPriorBuyer, false, "A new workspace identity must not inherit unsaved buyer fields from the earlier scope");
   assert.equal(http.posts().length, 0);
 });

@@ -1,8 +1,372 @@
 {
-  "schema": "worldkit.price-book.1",
-  "capturedAt": null,
-  "provider": "channel3",
-  "merchant": "WorldKit Studio (PayPal sandbox)",
-  "note": "Unit prices are Channel3 offer observations captured at the recorded time and used as WorldKit Studio's sandbox listing. They are not live retailer quotes; shipment is modeled and no retailer order is placed.",
-  "entries": []
+ "schema": "worldkit.price-book.1",
+ "capturedAt": "2026-11-12T19:15:06.028Z",
+ "provider": "channel3",
+ "merchant": "WorldKit Studio (PayPal sandbox)",
+ "note": "Unit prices are Channel3 offer observations captured at the recorded time and used as WorldKit Studio's sandbox listing. They are not live retailer quotes; shipment is modeled and no retailer order is placed.",
+ "entries": [
+  {
+   "profileId": "anker-555-a8383",
+   "query": "Anker 555 USB-C Hub 8-in-1 A8383",
+   "channel3ProductId": "qXUln2B",
+   "title": "555 USB-C Hub (8-in-1) Memory Card Reader",
+   "brand": "Anker",
+   "selectedOptions": [],
+   "offer": {
+    "id": "qXUln2B:0:6d23841d66",
+    "retailer": "officedepot.com",
+    "domain": "officedepot.com",
+    "unitMinor": 8129,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:58.040Z"
+   },
+   "responseHash": "be3839809b035aca4895989f2c9c8d94d7ed1b9ecc4593a9f4f479c730c1582b",
+   "receiptId": "b308c622-e933-4992-9b37-194e456ca25f",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "anker-735-a2668",
+   "query": "Anker 735 Charger GaNPrime 65W A2668",
+   "channel3ProductId": "1lsZ5Tv",
+   "title": "735 Charger (Nano II 65W)",
+   "brand": "Anker",
+   "selectedOptions": [],
+   "offer": {
+    "id": "1lsZ5Tv:0:e9763bb8d3",
+    "retailer": "anker.com",
+    "domain": "anker.com",
+    "unitMinor": 2999,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:59.193Z"
+   },
+   "responseHash": "6c84675d9cfa8e2b86057857ba39fbc507361b87f2bcb3368b5094e4f96bc56b",
+   "receiptId": "909b52ed-eb87-4b87-baed-697a35aa1542",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "apple-ipad-air5",
+   "query": "Apple iPad Air 5th generation M1 64GB Wi-Fi",
+   "channel3ProductId": "p08RWXJ",
+   "title": "Apple iPad Air 5th Gen 10.9\" M1 64GB Starlight Wi-Fi Tablet MM9F3LL/A 2022 Model",
+   "brand": "Apple",
+   "selectedOptions": [],
+   "offer": {
+    "id": "p08RWXJ:0:9b5838416b",
+    "retailer": "6ave.com",
+    "domain": "6ave.com",
+    "unitMinor": 72495,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:15:04.893Z"
+   },
+   "responseHash": "8d129ec1bcc60edd9397e37bc99ef7f0c23fee1dde14f2c09d46ce819f7ef721",
+   "receiptId": "de131bb0-342e-46c9-a493-f7e73a0d8fdc",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "at2020-xlr",
+   "query": "Audio-Technica AT2020 cardioid condenser XLR microphone",
+   "channel3ProductId": "N151roI",
+   "title": "AT2020 Large-Diaphragm Condenser Microphone",
+   "brand": "Audio-Technica",
+   "selectedOptions": [],
+   "offer": {
+    "id": "N151roI:0:7f21b1eb26",
+    "retailer": "musicarts.com",
+    "domain": "musicarts.com",
+    "unitMinor": 11900,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:50.628Z"
+   },
+   "responseHash": "6686971aeadf7fba3006486e060bf98dc2cf21c23cbac335781cd7d567c95eac",
+   "receiptId": "ef13e885-c4a6-4859-89a1-465d758d2a1c",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "elgato-camlink-4k",
+   "query": "Elgato Cam Link 4K HDMI capture",
+   "channel3ProductId": "IOeS5is",
+   "title": "Cam Link 4K",
+   "brand": "ELGATO",
+   "selectedOptions": [],
+   "offer": {
+    "id": "IOeS5is:0:461122584f",
+    "retailer": "elgato.com",
+    "domain": "elgato.com",
+    "unitMinor": 9999,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:56.873Z"
+   },
+   "responseHash": "8f8a4df7c071bddc07b4b85de560c445311816044650428a5268decc0c979319",
+   "receiptId": "d6d3c334-fd15-4b97-9338-a7a81d1feb64",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "focusrite-2i2-4",
+   "query": "Focusrite Scarlett 2i2 4th Gen USB audio interface",
+   "channel3ProductId": "4fBNZlu",
+   "title": "Focusrite Scarlett 2i2 4th Gen 2x2 USB Audio Interface",
+   "brand": "Focusrite",
+   "selectedOptions": [],
+   "offer": {
+    "id": "4fBNZlu:0:f9a36eb8e7",
+    "retailer": "macys.com",
+    "domain": "macys.com",
+    "unitMinor": 22400,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:55.744Z"
+   },
+   "responseHash": "a7bc1389b3d4d5e9d38db61c7d33b83eb93db42756049e6d58f7ae1ea94f9f99",
+   "receiptId": "fa3e5a7c-7353-456e-b4a4-a93aef0ef1e8",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "hosa-hmic010",
+   "query": "Hosa HMIC-010 Pro Microphone Cable XLR 10 ft",
+   "channel3ProductId": "dBE0Bou",
+   "title": "HOSA Pro Microphone Cable REAN XLR3F to XLR3M 10 ft OFC Conductors and Braided Shield",
+   "brand": "Hosa",
+   "selectedOptions": [],
+   "offer": {
+    "id": "none",
+    "retailer": "none",
+    "domain": "none",
+    "unitMinor": 0,
+    "currency": "USD",
+    "availability": "unknown",
+    "condition": "unknown",
+    "observedAt": "2026-11-12T19:15:00.258Z"
+   },
+   "responseHash": "501d40b389c47da375e90b2853a7dd2baa48d4898ece6ba3a0f39f7c2f385e4a",
+   "receiptId": "e8f4f8f5-3437-4ad3-887e-2ba7c21ba77b",
+   "match": "unmatched",
+   "rejected": "No returned product named the exact model with an in-stock new USD offer inside the plausibility bounds."
+  },
+  {
+   "profileId": "rode-podmic",
+   "query": "RODE PodMic dynamic podcasting microphone XLR",
+   "channel3ProductId": "LzsCnEy",
+   "title": "PodMic Dynamic Podcasting Microphone",
+   "brand": "Rode",
+   "selectedOptions": [],
+   "offer": {
+    "id": "LzsCnEy:0:25777e1d90",
+    "retailer": "bhphotovideo.com",
+    "domain": "bhphotovideo.com",
+    "unitMinor": 8600,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:49.550Z"
+   },
+   "responseHash": "92aa33f396d1b34ce51553bb20cf83fe251d4222fe0abdd6f7a3b49852fad4b3",
+   "receiptId": "5b21cfa4-aa52-477e-95f3-90de8674e11c",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "shure-sm58-lc",
+   "query": "Shure SM58-LC dynamic vocal microphone",
+   "channel3ProductId": "a8ibawf",
+   "title": "Shure SM58 Dynamic Microphone",
+   "brand": "Shure",
+   "selectedOptions": [
+    {
+     "name": "Version",
+     "value": "Standard"
+    }
+   ],
+   "offer": {
+    "id": "a8ibawf:0:b7f40a2033",
+    "retailer": "musicarts.com",
+    "domain": "musicarts.com",
+    "unitMinor": 8900,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:47.218Z"
+   },
+   "responseHash": "b148910df3368d8550766e3f473fffd0bad31f1c3d19b9c5862157426832e78a",
+   "receiptId": "9bcde5a9-a595-45a1-8030-36a00a8a6cad",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "sony-mdr7506",
+   "query": "Sony MDR-7506 professional headphones",
+   "channel3ProductId": "gCZVZGC",
+   "title": "MDR-7506 Professional Large Diaphragm Headphones",
+   "brand": "Sony",
+   "selectedOptions": [],
+   "offer": {
+    "id": "gCZVZGC:0:25777e1d90",
+    "retailer": "bhphotovideo.com",
+    "domain": "bhphotovideo.com",
+    "unitMinor": 11300,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:15:06.025Z"
+   },
+   "responseHash": "0e26aa792850d1c35adce10219ef142eee68e6c965c83d5235bafa448dda037e",
+   "receiptId": "81c207e5-b905-49c7-9864-68e1c3027ac7",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "sony-zve10",
+   "query": "Sony ZV-E10 mirrorless vlog camera body",
+   "channel3ProductId": "yUICFSG",
+   "title": "ZV-E10 Mirrorless Camera",
+   "brand": "Sony",
+   "selectedOptions": [],
+   "offer": {
+    "id": "yUICFSG:0:f9a36eb8e7",
+    "retailer": "macys.com",
+    "domain": "macys.com",
+    "unitMinor": 80494,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:15:03.657Z"
+   },
+   "responseHash": "a4b5357b44aeea2da4cb8bfafdd4c0172865d99c56d82ea2f7727e2e6e588aab",
+   "receiptId": "d64596b3-e10a-4093-9ad6-32afab1ce199",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "startech-hdmiadmm3",
+   "query": "StarTech HDMIADMM3 Micro HDMI to HDMI cable 3 ft",
+   "channel3ProductId": "No7VBvu",
+   "title": "StarTech.com HDMIADMM3 3 ft. High Speed HDMI® Cable with Ethernet",
+   "brand": "StarTech.com",
+   "selectedOptions": [],
+   "offer": {
+    "id": "No7VBvu:0:b7b3e1d4ba",
+    "retailer": "newegg.com",
+    "domain": "newegg.com",
+    "unitMinor": 1413,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:15:01.372Z"
+   },
+   "responseHash": "34b85dc22506e0e9a224fc096a1cd81080e067c6e2a367e3d00fb4e6a48ae836",
+   "receiptId": "70622aa2-59ae-4bb5-8071-611b847822e0",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "startech-usb315cc1m",
+   "query": "StarTech USB315CC1M USB-C cable 1m",
+   "channel3ProductId": "fxaIN5Y",
+   "title": "StarTech USB315CC1M USB C to USB C Cable - 3 ft / 1m",
+   "brand": "StarTech.com",
+   "selectedOptions": [],
+   "offer": {
+    "id": "fxaIN5Y:0:b7b3e1d4ba",
+    "retailer": "newegg.com",
+    "domain": "newegg.com",
+    "unitMinor": 2692,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:15:02.608Z"
+   },
+   "responseHash": "e708065bd734cc82f315eb282fa2ebb04cb80e1c3973936539b73afbc221b61f",
+   "receiptId": "dd5e169c-1445-411c-b95b-34d4dfdc0adf",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "zoom-h4essential",
+   "query": "Zoom H4essential handy recorder",
+   "channel3ProductId": "YUtrEJo",
+   "title": "Zoom H4essential 4-Track 32-Bit Float Handy Recorder",
+   "brand": "Zoom",
+   "selectedOptions": [],
+   "offer": {
+    "id": "YUtrEJo:0:13634b905f",
+    "retailer": "adorama.com",
+    "domain": "adorama.com",
+    "unitMinor": 24994,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:51.616Z"
+   },
+   "responseHash": "0e0c39dab97fdd89eb9a2018d377d940f892eebf1c1e573a3a5d5e9f1b468ca2",
+   "receiptId": "1699fc11-f16b-46dc-a6f1-1243ac8c6233",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "zoom-h6essential",
+   "query": "Zoom H6essential handy recorder",
+   "channel3ProductId": "PPQDVOt",
+   "title": "H6essential Handy Recorder",
+   "brand": "Zoom",
+   "selectedOptions": [],
+   "offer": {
+    "id": "PPQDVOt:0:25777e1d90",
+    "retailer": "bhphotovideo.com",
+    "domain": "bhphotovideo.com",
+    "unitMinor": 34266,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:52.663Z"
+   },
+   "responseHash": "f20225acc77e5d9951c9e566a26f6a4b628bec94f99fe0b599667d79ea2b6f79",
+   "receiptId": "dd2cde4e-1ade-4fee-8454-9b427b7acd55",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "zoom-livetrak-l8",
+   "query": "Zoom LiveTrak L-8 digital mixer recorder",
+   "channel3ProductId": "uvh1Zp2",
+   "title": "LiveTrak L-8 Portable 8-Channel Digital Mixer and Multitrack Recorder",
+   "brand": "Zoom",
+   "selectedOptions": [],
+   "offer": {
+    "id": "uvh1Zp2:0:5e49461e21",
+    "retailer": "bestbuy.com",
+    "domain": "bestbuy.com",
+    "unitMinor": 49499,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:54.673Z"
+   },
+   "responseHash": "29c65308641ef9ef5c813d8cad153e8a129420b87c09bd6a0cb8076048bbd2d6",
+   "receiptId": "34d1d0a3-0331-4408-b08f-35b5367b39b1",
+   "match": "exact_model"
+  },
+  {
+   "profileId": "zoom-podtrak-p4",
+   "query": "Zoom PodTrak P4 podcast recorder",
+   "channel3ProductId": "L5mIoNN",
+   "title": "Zoom PodTrak P4",
+   "brand": "Zoom",
+   "selectedOptions": [],
+   "offer": {
+    "id": "L5mIoNN:0:13634b905f",
+    "retailer": "adorama.com",
+    "domain": "adorama.com",
+    "unitMinor": 17999,
+    "currency": "USD",
+    "availability": "InStock",
+    "condition": "new",
+    "observedAt": "2026-11-12T19:14:53.632Z"
+   },
+   "responseHash": "7612a604c2a239bb54c8d596240fd3f315177600b18f337673a85020b507c4a7",
+   "receiptId": "4590faef-529d-438f-8f23-d5ce3d8b891c",
+   "match": "exact_model"
+  }
+ ]
 }
