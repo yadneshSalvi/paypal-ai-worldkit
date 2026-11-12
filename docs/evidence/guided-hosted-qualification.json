@@ -1,0 +1,138 @@
+{
+  "schema": "worldkit.guided.hosted-qualification.1",
+  "qualifiedAt": "2026-11-12T14:29:32.537Z",
+  "sourceCommit": "8ba6e50ce459c53c4d5343739ab9d91512f7a532",
+  "deploymentId": "dpl_9tezd1TVG2oYpLJXXGaQ1ZihmE6K",
+  "canonicalUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "canonicalAliasAndProjectTargetVerified": true,
+  "scope": "Actual hosted planning software and generated graph-bound audio on explicitly admitted Sample workspaces. No physical equipment or participant study.",
+  "release": {
+    "cleanGitArchive": true,
+    "trackedSourceFiles": 492,
+    "sourceManifestSha256": "b9bd1c36dc1eab93dd09c6d1f4c7dad931e69ede0e9716dbdd2d821a3e2af67e",
+    "privateValueMatchesInUpload": 0,
+    "environmentOrProjectSettingsChanged": false
+  },
+  "softwareQualification": {
+    "originalMounted": 26,
+    "actualLoopbackHttpPostgres": 17,
+    "affectedPure": 39,
+    "focusedHeaderAndFocusCorrection": 4,
+    "priorGreenControlsReused": true,
+    "nonincrementalTypecheck": "passed",
+    "localAndHostedProductionBuilds": "passed"
+  },
+  "hostedQualification": {
+    "checks": 32,
+    "applicationRequests": 22,
+    "explicitNewSampleOwners": 2,
+    "workbenchCommands": 2,
+    "savedRevisions": 5,
+    "graphEvents": 5,
+    "originalRequestReplayCannotRewindCurrentGraph": true,
+    "anonymousForeignOriginAndForeignOwnerDenials": "passed",
+    "exactRequestIdentityAndCurrentApproval": "passed",
+    "unsavedPreviewDoesNotChangeGraph": true,
+    "threeGraphBoundGeneratedWavStates": "original signal / condenser conflict silence / repaired signal",
+    "actualPhysicalTest": "not_performed",
+    "modelProviderBlobFinancialCalls": 0
+  },
+  "independentNative": {
+    "fullOriginalLocalFlow": {
+      "previews": 3,
+      "saves": 2,
+      "finalRevision": 3,
+      "condenserConflictAndModeledSilence": true,
+      "documentedPowerRepairRetainsQuestions": true
+    },
+    "narrowLocalCorrection": {
+      "mutatingRequests": 0,
+      "viewportWidths": [
+        360,
+        390
+      ],
+      "documentWidths": [
+        360,
+        390
+      ],
+      "persistentWorkbenchFocusAfterSectionAndReload": true,
+      "ordinaryGuideOpenerFocus": true
+    },
+    "hosted": {
+      "readOnly": true,
+      "networkEvents": 122,
+      "networkLogTruncated": false,
+      "nonReadRequests": 0,
+      "revision": 1,
+      "guideAndExplicitAudioControls": "passed",
+      "viewportWidth": 360,
+      "documentWidth": 360,
+      "evidenceCloseAndReloadFocus": "Workbench",
+      "consoleWarningsOrErrors": 0,
+      "originalScopedCookiesRestored": true,
+      "physicalOrListeningQualityClaim": false
+    }
+  },
+  "preservation": {
+    "backup": {
+      "bytes": 2229638,
+      "sha256": "79357a8e1b9ceaf3446624b6fdbbc7d9dd041246931761ca48fa4a745d704204",
+      "tocEntries": 782,
+      "allDataBlocksReadable": true,
+      "sameExportedSnapshot": true
+    },
+    "additiveMigration": {
+      "tables": 1,
+      "functions": 1,
+      "triggers": 1,
+      "sqlSha256": "1286acecd0aba8137bc4d00849fabb8042664f36a68bfaa76cea605f5cf80637",
+      "oldRowsByteIdenticalImmediatelyAfter": 777
+    },
+    "originalNonCounterRowsByteIdentical": 758,
+    "originalAdmissionRowsByteIdentical": 18,
+    "existingDayCounterIncrement": 2,
+    "newHourCounter": 2,
+    "newNonCounterRowsFullyAttributed": 18,
+    "postNativeAndPostCanonical": {
+      "tables": 123,
+      "rows": 796,
+      "allRowsByteIdentical": true,
+      "newAdmissions": 0,
+      "newCommands": 0,
+      "sourceFilesUnchanged": 492,
+      "originalPhysicalResearchAndAuthenticProviderExampleUnchanged": true
+    },
+    "originalContinuity": {
+      "routes": [
+        "/api/workspace",
+        "/api/commerce",
+        "/api/payment-evidence",
+        "/api/inventory",
+        "/api/records",
+        "/api/engineering-review"
+      ],
+      "beforeAndAfterPromotion": "exact equality",
+      "normalization": "none",
+      "originalExpiry": "2026-11-17T21:49:14.202Z",
+      "revision": 2,
+      "graphHash": "68f130fb23b10e3fae3ee81e8dc777525ffdb63b0e1c41553035985a5eb91c40",
+      "commerceOrders": 0
+    }
+  },
+  "evidenceHashes": {
+    "hosted-qualification/qualification.json": "52f7dd69ffe98a942279312d832e1cf25f02a9a5a3937ff213de169213b086f1",
+    "hosted-audit.json": "3eb8fc3c380ecc6a3c250c8809e38c11492c7dc049c2f6d045613611c9578229",
+    "root-native/observation.json": "59623273bc168ffa1d5357c1ecb7f99f72ffcee507708e388f617513a5782077",
+    "post-native-audit.json": "78838b27d1e0f59e800a588b6d9a369247f5cd1d094c9692ce3a8c372d50d470",
+    "promoted-identity.json": "08ec6da010d391ecdcb8541cac946ee59280c2b1e306022a81d5fe96b9bcdff4",
+    "promoted-continuity.json": "cf4ba4fbf26b907f90c65d5fb910f7404a6933fd8d02ee06f725c741eb606e04",
+    "promoted-audit.json": "72f25757673299825d9ce934bf3dce658582d33fc5fee91a51f2ed39827bba06"
+  },
+  "limitations": [
+    "Generated audio exercises software signal routing; it is not recorded microphones, physical testing or listening-quality evidence.",
+    "Unresolved power/source/compatibility questions remain visible after the documented repair.",
+    "No new PayPal, Channel3, model, Blob, physical merchant or participant operation occurred in this qualification.",
+    "Dependency/setup/operator review and the original complete film remain separate release outputs."
+  ]
+}

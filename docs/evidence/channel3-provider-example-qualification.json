@@ -1,0 +1,39 @@
+{
+  "schema": "worldkit.channel3.provider-example-qualification.1",
+  "observedAt": "2026-11-12T13:54:51.554Z",
+  "receiverSourceCommit": "0ff9d6ad07c24eb15be944be6f7ceb97dbbcac41",
+  "receiver": "https://paypal-ai-worldkit.vercel.app/api/webhooks/channel3",
+  "providerMessageId": "msg_3M0dmvS91EBN75ytw1r3VjKvdHj",
+  "operation": "One unchanged default OfferPriceChangedEvent example from the authenticated provider portal",
+  "providerAttempts": 1,
+  "providerObservedHttpStatus": 200,
+  "signedTransportVerified": true,
+  "rawBodySha256": "d7dbf595101547ee5de101f05a00b0c822ff1534d3b52c8d17752c580431650a",
+  "application": {
+    "newEventRows": 1,
+    "newDeliveryRows": 1,
+    "eventType": "unsupported",
+    "state": "dead_letter",
+    "provider": "channel3",
+    "sourceMode": "live",
+    "declaredProviderEventId": "string",
+    "ownedTenants": 0,
+    "workerAttempts": 0,
+    "businessEffects": 0
+  },
+  "preservation": {
+    "priorRowsByteIdentical": 775,
+    "afterRows": 777,
+    "existingFinancialGraphExpiryAndSubscriptionRowsUnchanged": true,
+    "newAdmissions": 0,
+    "newQuotesOrPayments": 0,
+    "registrationOrSubscriptionChanges": 0
+  },
+  "interpretation": "Actual signed provider-origin test transport. The unchanged example carries literal placeholder identities and has no retailer or owned business effect.",
+  "limitations": [
+    "Not a real retailer price/availability change.",
+    "No duplicate delivery, cancellation, external subscription ownership or genuine physical merchant eligibility is established.",
+    "Deployed secret equality is not inferred from masked configuration."
+  ],
+  "retainedEarlierObservation": "The first immediate portal read preceded asynchronous schema loading and showed no usable example. The subsequent fully loaded schema enabled this one genuine example; both observations were retained."
+}
