@@ -24,16 +24,17 @@ export async function saveRevision(db: PoolClient, tenantId: string, bundle: Rev
   }
   await db.query("INSERT INTO wk_revisions(id,kit_id,tenant_id,revision,kit,certificate,profiles,sources) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [bundle.kit.id, bundle.kit.kitId, tenantId, bundle.kit.revision, bundle.kit, bundle.certificate, JSON.stringify(bundle.profiles), JSON.stringify(bundle.sources)]);
 }
-export async function createSession(): Promise<{ token: string; session: Session }> {
+export async function createSession(client?: PoolClient): Promise<{ token: string; session: Session }> {
   const token = randomBytes(32).toString("base64url"); const id = randomUUID();
   const expiresAt = new Date(Date.now() + 7 * 86400000).toISOString();
   const kitId = randomUUID(); const kit = { ...seedKit("T2", randomUUID()), kitId, createdAt: now() };
-  await transaction(async db => {
+  const save = async (db: PoolClient) => {
     await db.query("INSERT INTO wk_sessions(id,token_hash,expires_at) VALUES($1,$2,$3)", [id, tokenHash(token), expiresAt]);
     await db.query("INSERT INTO wk_kits(id,tenant_id,current_revision_id) VALUES($1,$2,$3)", [kitId, id, kit.id]);
     await saveRevision(db, id, { kit, certificate: verifyKit(kit, profiles, sources, architectures), profiles, sources });
     await appendEvent(db, id, "workspace.created", "Your sample studio is ready", "A private copy of the two-musician scenario. Sample possessions and modeled checks are clearly marked.", kit.id, "sample");
-  });
+  };
+  if (client) await save(client); else await transaction(save);
   return { token, session: { id, expiresAt, discoveryRequests: 0, liveRebuilds: 0 } };
 }
 export async function findSession(token: string | undefined): Promise<Session | null> {

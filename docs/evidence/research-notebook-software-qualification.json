@@ -1,0 +1,111 @@
+{
+  "schema": "worldkit.notebooks-software.1",
+  "observedAt": "2026-11-12T11:47:07.990513+00:00",
+  "sourceParent": "c5ba79d18f4c73ce1c0eb4cf5ac56ee6676bda7c",
+  "research": {
+    "mountedAndPure": {
+      "passed": 36,
+      "failed": 0
+    },
+    "actualLoopbackHttpPostgres": {
+      "passed": 20,
+      "failed": 0
+    },
+    "fullTypecheck": "passed",
+    "researchSourceSetSha256": "c0477b5a675c9de4845550492611bd9966066b03d9a30b77e52de4ffe906ec65",
+    "finalAffectedGateReceiptSha256": "c5d2d215dec4fc60e697086f5bcc5e5e56dfc463bce7351fea735667bb05f3ec",
+    "actualDroppedPostCommitAnswers": 2,
+    "finalDiagnosticFixtures": 20,
+    "requests": 199,
+    "retainedFailures": [
+      "UI expiry privacy and discard focus",
+      "administrative no-outcome closure and original consent scope",
+      "third attempt original retry identity",
+      "read-time consent expiry after actual binding lock",
+      "CSV control-prefixed formula"
+    ],
+    "originalFailuresRetained": true
+  },
+  "explicitSampleEntry": {
+    "mountedControls": {
+      "passed": 12,
+      "failed": 0
+    },
+    "actualLoopbackHttpPostgres": {
+      "passed": 12,
+      "failed": 0
+    },
+    "fullTypecheck": "passed",
+    "requests": 30,
+    "actualDroppedPostCommitAnswers": 1,
+    "diagnosticFixtures": 11,
+    "originalRowsUnchanged": true,
+    "providerModelQuoteRows": {
+      "wk_provider_receipts": 0,
+      "wk_source_model_requests": 0,
+      "wk_quotes": 0
+    },
+    "sourceFiles": [
+      {
+        "path": "packages/workspace-entry/index.ts",
+        "sha256": "68b798bf2ef328cede6ef533348ee4c449d43aec0806268b4f7c106893e78df5"
+      },
+      {
+        "path": "src/server/workspace-admission.ts",
+        "sha256": "f686ba00a8d11246f66084c23c4c45cb12c69847fbe2f2b9aae8a8828a5f889a"
+      },
+      {
+        "path": "src/server/workspace-admission-http.ts",
+        "sha256": "538903f825e8f584e6db63c744c8abc328418a7d98029d6fc76b38aac5854058"
+      },
+      {
+        "path": "src/app/api/workspace/route.ts",
+        "sha256": "72d4ea5bbf0d74c52ca64307e5a64e3648de0669fb58dbbf80412c8592cabcff"
+      },
+      {
+        "path": "src/server/repository.ts",
+        "sha256": "6833692d1bae4386bd350478d608cfb1f03b85d007790c43c0b21458eb9e4163"
+      },
+      {
+        "path": "src/server/session-limits.ts",
+        "sha256": "71deaaab658b9d8691b30d0695bd69cd4b8b7e0c43307a0167e44219ce6846a8"
+      },
+      {
+        "path": "src/components/workspace-entry-client.ts",
+        "sha256": "991b462238b763265e244834f961722d99ede40be44d54c865abe5041f3d25f2"
+      },
+      {
+        "path": "src/components/workspace-entry.tsx",
+        "sha256": "ab6e56360ab8da0267b8e70e1995aa35d30e1029534d543197eb362eeb7c1c90"
+      },
+      {
+        "path": "src/components/workspace-entry.module.css",
+        "sha256": "97d32c2c30a792f68f3dff9cb8e3da239427cf09b74f6908dc7526a4aa633b0f"
+      },
+      {
+        "path": "src/components/worldkit-app.tsx",
+        "sha256": "f9bae4ab3cc0fba09768198d817b2d6cbcdff12e940531bb292def07b2bf417a"
+      },
+      {
+        "path": "tests/workspace-entry-ui.test.ts",
+        "sha256": "1c4229eebf4922da62f7c3b77b008cb6c23a2686a2474fdc7795cf71853cfd8d"
+      },
+      {
+        "path": "tests/workspace-entry.integration.ts",
+        "sha256": "6f024fb1503f07cc6cbe80632c1b2e0d0b6888367cdc43d2ade287db6b50b2f6"
+      }
+    ],
+    "testTypeDiagnostic": "The first post-test typecheck found only BodyInit/null-narrowing issues in the new test harness; exact-byte conversion and explicit narrowing corrected them. The final full typecheck passed."
+  },
+  "preparedRuntimeQualifier": {
+    "executed": false,
+    "offlineControlsPassed": 8,
+    "maxExplicitFreshAdmissions": 2,
+    "unresolvedMutationPolicy": "Stop without redispatch or replacement identity"
+  },
+  "actualPeople": 0,
+  "independentlyVerifiedParticipants": 0,
+  "actualPhysicalTests": 0,
+  "actualExternalProviderRequests": 0,
+  "claims": "Software qualification with explicitly fictional people, declared consent and observations only. Native browser, hosted deployment, genuine participants and physical execution are separate acceptance gates."
+}

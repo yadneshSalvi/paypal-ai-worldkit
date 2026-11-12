@@ -1,0 +1,13 @@
+.entry { min-height: 100dvh; }
+.content { margin-top: clamp(24px, 6vh, 70px); padding: 0 20px 48px; width: min(100%, 680px); }
+.intro { max-width: 410px; margin: 18px auto 24px; font-size: 14px; line-height: 1.7; }
+.card { max-width: 430px; margin: 0 auto 24px; padding: 24px; background: #fffefa; border: 1px solid #dfe5da; border-radius: 16px; box-shadow: 0 10px 40px #29463308; display: flex; align-items: center; flex-direction: column; gap: 16px; }
+.card > p { font-size: 12px; line-height: 1.7; }
+.label { display: flex; gap: 8px; align-items: center; font-weight: 600; color: #315646; font-size: 13px; }
+.card > button { min-height: 44px; white-space: normal; }
+.check { font-size: 11px; }
+.error { color: #8b4f38; background: #fff2e9; border-radius: 8px; padding: 12px; width: 100%; overflow-wrap: anywhere; }
+.recovery { background: #edf3eb; border-radius: 8px; padding: 12px; width: 100%; }
+.card .boundary { display: flex; align-items: flex-start; gap: 8px; padding-top: 16px; border-top: 1px solid #e6e9e0; color: #647064; font-size: 10px; }
+.boundary svg { margin-top: 2px; }
+@media(max-width: 480px) { .content { margin-top: 20px; padding-inline: 18px; } .card { padding: 20px 18px; } .intro { font-size: 12px; } .card > button { max-width: 100%; } }

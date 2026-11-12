@@ -1,0 +1,70 @@
+{
+  "schema": "worldkit.physical-notebook.local-qualification.1",
+  "observedAt": "2026-11-12T11:08:27.213Z",
+  "scope": "Controlled local software and root-operated native browser; no real equipment or qualified human review.",
+  "sourceCommit": "c5ba79d18f4c73ce1c0eb4cf5ac56ee6676bda7c",
+  "buildId": "R8d5RR7wsY9WNgpPc4JeB",
+  "pinnedDependencies": {
+    "node": "22.22.3",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "privateBlobSdk": "2.9.0",
+    "lockSha256": "590e830712593725a6153af3b010813c5eaec1ae1ccd885dcd923b426c2b9651"
+  },
+  "checks": {
+    "originalPureAndRealHttpDatabase": 35,
+    "originalMounted": 22,
+    "finalAffectedMountedAndDto": 31,
+    "finalAffectedFailures": 0,
+    "nonincrementalTypecheck": "passed",
+    "productionBuild": "passed"
+  },
+  "native": {
+    "historyAndCurrentFocus": true,
+    "sampleRunFailureAndEarlyFinishRetained": true,
+    "manualSampleSentOnceThenVerifiedOnce": true,
+    "explicitAttachmentThenSeal": true,
+    "generatedMarkerAndProvenanceVisible": true,
+    "unresolvedEvidenceRemainsVisible": true,
+    "sealedEdition": 7,
+    "sampleOriginalBytes": 128278,
+    "sampleOriginalSha256": "4b0052b9286f4ebebecf52dea9e8967dc03cef93a34b1aefd68c317146ce8b9a",
+    "sampleOriginalChannels": 2,
+    "sampleOriginalDurationSeconds": 2,
+    "actualQualifiedReviews": 0,
+    "sampleReviewerRevokedWithDecisionRetained": true,
+    "emptyWorkspacePreserved": true,
+    "mobileWidths": [
+      390,
+      360
+    ],
+    "consoleErrors": 0,
+    "browserCookiesRestored": true,
+    "mediaEscapeObservation": "Native Escape from an audio-focused control did not close the dialog; Escape from Close editor closed it and restored Inspect original. No universal media-control Escape claim."
+  },
+  "preservation": {
+    "priorRows": 1332,
+    "identicalPriorRows": 1330,
+    "addedRows": 12,
+    "onlyExistingRowChanges": [
+      "existing report head5 to7",
+      "existing upload phase/asset/attempts"
+    ],
+    "allOriginalIdentitiesDeadlinesGraphsCertificatesReviewsProviderRowsExact": true,
+    "sourceFilesExact": 447,
+    "dependencyEntriesExact": 45398,
+    "priorBuiltEntriesExact": 1329,
+    "addedBuildFiles": "Two qualified public icon cache files; body equals tracked icon.",
+    "priorOriginalFilesExact": 43,
+    "addedOriginalFiles": 1
+  },
+  "actualPhysicalTests": 0,
+  "actualHumanReviews": 0,
+  "newProviderOrModelCalls": 0,
+  "pending": [
+    "Production private-Blob delivery and retention qualification",
+    "Actual equipment and original recordings under recorded rights",
+    "Independently established qualified reviewers"
+  ],
+  "privateEvidenceRetained": true
+}

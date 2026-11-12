@@ -16,7 +16,7 @@ npm run db:migrate
 npm run dev
 ```
 
-Open http://localhost:4106. Each browser gets a private, durable sample workspace with a seven-day opaque session. A deployment-wide PostgreSQL backstop admits at most 30 new workspaces/hour and 200/day; an existing cookie reopens its current workspace and existing work remains usable. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require matching Host and Origin for the configured public URL or the exact server-provided Vercel deployment hostname. Other preview or branch aliases are not automatically trusted.
+Open http://localhost:4106 and choose **Start Sample**. Passive visits only check for an existing workspace; they create nothing. The explicit action creates a private, durable Sample workbench with a seven-day opaque session. If its response is lost, **Recover this Sample** uses the original saved request and keeps the original expiry. [Entry and recovery contract](docs/EXPLICIT_SAMPLE_ENTRY.md). A deployment-wide PostgreSQL backstop admits at most 30 new workspaces/hour and 200/day; an existing cookie reopens its current workspace and existing work remains usable. The workbench also supports http://127.0.0.1:4106; loopback aliases are permitted only on that port with matching Host checks. Deployed writes require matching Host and Origin for the configured public URL or the exact server-provided Vercel deployment hostname. Other preview or branch aliases are not automatically trusted.
 
 ```sh
 npm test
@@ -50,6 +50,8 @@ The core test suite uses deterministic sample providers. Credentialed qualificat
 A catalog product is not retailer procurement. The Studio service does not sell or ship physical gear. Its dossier preserves unresolved compatibility facts. WorldKit's own observed buyer-present $12 capture, save-during-purchase, $8 saved-wallet amendment, $20/$60 escalation, full $8+$12 refunds and token deletion are recorded in [project qualification evidence](docs/evidence/paypal-worldkit-qualification.json). These observations remain separate from sample SDK/database tests and another project's payment evidence.
 
 The new **Test notebook** source workflow binds a physical report to one saved creator or domain system, records exact conditions and immutable observations, retains private original bytes with hashes/waveforms, and supports scoped review of a sealed manifest. Generated Samples stay explicit, unknowns and failures remain visible, and no physical test or actual human review is inferred. [Workflow, storage, rights and retention](docs/PHYSICAL_NOTEBOOK.md). Actual production Blob delivery and real equipment/reviewer qualification are separate gates.
+
+The **Research notebook** source workflow declares tasks and separate dated permissions, records explicit attempts and outcomes, preserves failed first attempts through retries, and reports exact protocol cohorts with private or permitted aggregate exports. It records source changes during repair tasks and withholds private text when current or original consent ends. Sample and operator-recorded studies remain distinct; recruitment and independent human-performance findings are not inferred. [Study workflow, consent and metric definitions](docs/RESEARCH_NOTEBOOK.md).
 
 ## Integrations and boundaries
 

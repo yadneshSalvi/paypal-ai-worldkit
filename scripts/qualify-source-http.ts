@@ -1,15 +1,16 @@
 import assert from "node:assert/strict";
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import type { EvidenceDetail, EvidenceWorkspace } from "../packages/spec-evidence/contracts";
 import type { InventoryProfileChoice } from "../packages/inventory/contracts";
 
 const base = "http://127.0.0.1:4106";
 const checks: string[] = [];
+const cookieFile = process.argv.find(value => value.startsWith("--workspace-cookie-file="))?.slice(24);
+assert.ok(cookieFile, "Start a Sample explicitly in the local browser, then provide --workspace-cookie-file with a private file containing its existing Cookie header. This read qualifier never creates or renews a workspace.");
+const cookie = (await readFile(cookieFile, "utf8")).trim();
+assert.ok(/^wk_session=[A-Za-z0-9_-]{32,200}$/.test(cookie), "Use the private original wk_session Cookie header without Set-Cookie attributes.");
 assert.equal((await fetch(`${base}/api/evidence`)).status, 401); checks.push("Anonymous source-library access denied");
 assert.equal((await fetch(`${base}/api/workspace`, { method: "POST", headers: { Origin: base } })).status, 415); checks.push("Non-JSON mutation rejected before workspace creation");
-const created = await fetch(`${base}/api/workspace`, { method: "POST", headers: { Origin: base, "Content-Type": "application/json" }, body: "{}" });
-assert.equal(created.status, 201);
-const cookie = created.headers.get("set-cookie")!.split(";")[0]!;
 const request = async (path: string, init: RequestInit = {}) => fetch(`${base}${path}`, { ...init, headers: { Cookie: cookie, Origin: base, ...init.headers } });
 const libraryResponse = await request("/api/evidence"); assert.equal(libraryResponse.status, 200);
 const library = await libraryResponse.json() as EvidenceWorkspace;
