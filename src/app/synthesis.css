@@ -92,6 +92,8 @@
 .synthesis-alert.stale p,.synthesis-alert.stale small,.synthesis-alert.goal p,.synthesis-alert.goal small{color:#7b6c49}
 .synthesis-notice{display:flex;align-items:flex-start;gap:9px;padding:15px 17px;background:#edf3e6;border:1px solid #d8e5ca;border-radius:7px;color:#507443;font-size:12px;line-height:1.8;margin:18px 0}
 .synthesis-notice>svg{margin-top:3px}
+.synthesis-notice:focus{outline:2px solid #47806d;outline-offset:3px;scroll-margin-top:18px}
+.workbench-brief-label{display:block;margin-bottom:6px;color:#606b65;font-size:11px;letter-spacing:.04em}
 .synthesis-loading{padding:60px 24px;text-align:center;min-height:210px}
 .synthesis-loading p{font-size:12px;margin-top:12px}
 .synthesis-empty{display:grid;grid-template-columns:1fr 1fr;align-items:center;background:#fff;border:1px solid #dbe4d0;border-radius:14px;overflow:hidden;min-height:360px;margin-top:28px}
