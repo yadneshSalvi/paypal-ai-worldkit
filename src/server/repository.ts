@@ -5,6 +5,7 @@ import { architectures, profiles, seedKit, sources } from "../../packages/device
 import { generateAssembly, hash, suggestRepairs, verifyKit } from "../../packages/compatibility/index";
 import { editKit, type Edit } from "../../packages/workbench/index";
 import { database, initialize, transaction } from "./db";
+import { authorizeWorkbench, workbenchLive } from "./workbench-authority";
 
 export type Session = { id: string; expiresAt: string; discoveryRequests: number; liveRebuilds: number };
 export type RevisionBundle = { kit: KitRevision; certificate: Certificate; profiles: DeviceProfile[]; sources: Source[] };
@@ -23,6 +24,16 @@ export async function saveRevision(db: PoolClient, tenantId: string, bundle: Rev
     await assertEngineeringProfilesCurrent(db, tenantId, activeProfiles);
   }
   await db.query("INSERT INTO wk_revisions(id,kit_id,tenant_id,revision,kit,certificate,profiles,sources) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [bundle.kit.id, bundle.kit.kitId, tenantId, bundle.kit.revision, bundle.kit, bundle.certificate, JSON.stringify(bundle.profiles), JSON.stringify(bundle.sources)]);
+}
+/** The caller holds the owner and current-kit locks; receipt writers share this atomic save. */
+export async function persistEditedRevision(db: PoolClient, session: Session, previous: RevisionBundle, draft: KitRevision, checked: Certificate, edit: Edit): Promise<RevisionBundle> {
+  const kit = { ...draft, id: randomUUID(), parentRevisionId: previous.kit.id, revision: previous.kit.revision + 1, createdAt: now(), sourceMode: "modelled" as const };
+  const bundle = { kit, profiles: previous.profiles, sources: previous.sources, certificate: { ...checked, revisionId: kit.id } };
+  await saveRevision(db, session.id, bundle);
+  const moved = await db.query("UPDATE wk_kits SET current_revision_id=$1 WHERE id=$2 AND tenant_id=$3 AND current_revision_id=$4", [kit.id, kit.kitId, session.id, previous.kit.id]);
+  if (moved.rowCount !== 1) throw new WorldKitError("stale_revision", "The current plan changed before this save. The proposed edition was not committed.", 409);
+  await appendEvent(db, session.id, `kit.${edit.kind}`, edit.kind === "repair" ? "Repair applied and checked" : "Plan updated and checked", `Revision ${kit.revision}: ${bundle.certificate.counts.satisfied} checks satisfied, ${bundle.certificate.counts.violated} conflicts, ${bundle.certificate.counts.unknown} open questions. Previous revisions are preserved.`, kit.id);
+  return bundle;
 }
 export async function createSession(client?: PoolClient): Promise<{ token: string; session: Session }> {
   const token = randomBytes(32).toString("base64url"); const id = randomUUID();
@@ -74,6 +85,7 @@ export async function getWorkspace(session: Session): Promise<Workspace> {
 }
 export async function commitEdit(session: Session, expectedRevisionId: string, expectedGraphHash: string, edit: Edit): Promise<RevisionBundle> {
   return transaction(async db => {
+    const authority = await authorizeWorkbench(db, session);
     const lock = await db.query("SELECT id,current_revision_id FROM wk_kits WHERE tenant_id=$1 ORDER BY created_at LIMIT 1 FOR UPDATE", [session.id]);
     const row = lock.rows[0];
     if (!row || row.current_revision_id !== expectedRevisionId) throw new WorldKitError("stale_revision", "This plan changed in another view. Refresh it before editing.", 409, "Refresh the workbench");
@@ -81,12 +93,10 @@ export async function commitEdit(session: Session, expectedRevisionId: string, e
     const previous = result.rows[0] as RevisionBundle;
     if (previous.certificate.graphHash !== expectedGraphHash) throw new WorldKitError("stale_revision", "The graph no longer matches that action.", 409);
     const next = editKit(previous.kit, previous.certificate, edit, previous.profiles);
-    const kit = { ...next, id: randomUUID(), parentRevisionId: previous.kit.id, revision: previous.kit.revision + 1, createdAt: now(), sourceMode: "modelled" as const };
     const snapshots = await db.query("SELECT snapshot FROM wk_catalog WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 80", [session.id]);
-    const bundle = { kit, profiles: previous.profiles, sources: previous.sources, certificate: verifyKit(kit, previous.profiles, previous.sources, architectures, snapshots.rows.map(r => r.snapshot)) };
-    await saveRevision(db, session.id, bundle);
-    await db.query("UPDATE wk_kits SET current_revision_id=$1 WHERE id=$2", [kit.id, kit.kitId]);
-    await appendEvent(db, session.id, `kit.${edit.kind}`, edit.kind === "repair" ? "Repair applied and checked" : "Plan updated and checked", `Revision ${kit.revision}: ${bundle.certificate.counts.satisfied} checks satisfied, ${bundle.certificate.counts.violated} conflicts, ${bundle.certificate.counts.unknown} open questions. Previous revisions are preserved.`, kit.id);
+    const checked = verifyKit(next, previous.profiles, previous.sources, architectures, snapshots.rows.map(r => r.snapshot));
+    const bundle = await persistEditedRevision(db, session, previous, next, checked, edit);
+    workbenchLive(authority.expiresAt);
     return bundle;
   });
 }

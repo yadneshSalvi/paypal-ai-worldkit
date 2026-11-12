@@ -1,19 +1,8 @@
-import { z } from "zod";
 import { WorldKitError, type KitRevision, type Certificate, type DeviceProfile, type Component } from "../contracts/index";
 import { seedKit, profiles as libraryProfiles } from "../device-library/index";
 import { suggestRepairs } from "../compatibility/index";
-
-export const EditSchema = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("template"), templateId: z.enum(["T1", "T2", "T3", "T4"]) }).strict(),
-  z.object({ kind: z.literal("connection"), connectionId: z.string(), enabled: z.boolean() }).strict(),
-  z.object({ kind: z.literal("microphone"), componentId: z.enum(["mic-1", "mic-2"]), profileId: z.enum(["shure-sm58-lc", "at2020-xlr"]) }).strict(),
-  z.object({ kind: z.literal("repair"), repairId: z.string() }).strict(),
-  z.object({ kind: z.literal("sample_rate"), value: z.enum(["48000", "96000"]) }).strict(),
-  z.object({ kind: z.literal("goal"), title: z.string().trim().min(1).max(80), brief: z.string().trim().min(10).max(2000), budgetMinor: z.number().int().min(1).max(1_000_000), tracks: z.number().int().min(1).max(8) }).strict(),
-  z.object({ kind: z.literal("position"), componentId: z.string(), x: z.number().min(-2000).max(4000), y: z.number().min(-2000).max(4000) }).strict(),
-]);
-export type Edit = z.infer<typeof EditSchema>;
-export const MutationSchema = z.object({ expectedRevisionId: z.string(), expectedGraphHash: z.string().length(64), edit: EditSchema }).strict();
+import type { Edit } from "./contracts";
+export { EditSchema, MutationSchema, type Edit } from "./contracts";
 
 function changeTemplate(kit: KitRevision, id: KitRevision["templateId"]) {
   if (kit.templateId === id) return structuredClone(kit);
@@ -35,7 +24,11 @@ export function editKit(previous: KitRevision, certificate: Certificate, edit: E
       if (!edge) throw new WorldKitError("not_found", "This connection is not part of the saved revision.", 404);
       edge.enabled = edit.enabled; break;
     }
-    case "microphone": chooseCandidate(next.components.find(c => c.id === edit.componentId)!, edit.profileId); break;
+    case "microphone": {
+      const microphone = next.components.find(c => c.id === edit.componentId);
+      if (!microphone) throw new WorldKitError("not_found", "This microphone is not part of the saved revision.", 404);
+      chooseCandidate(microphone, edit.profileId); break;
+    }
     case "sample_rate": if (audio) audio.settings.sampleRate = Number(edit.value); break;
     case "goal":
       next.goal = { ...next.goal, title: edit.title, brief: edit.brief, budgetMinor: edit.budgetMinor, version: next.goal.version + 1,

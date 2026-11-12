@@ -10,7 +10,7 @@ const sourceRuntimeFiles = [
 const nextConfig: NextConfig = {
   turbopack: { root: process.cwd() },
   outputFileTracingRoot: process.cwd(),
-  distDir: process.env.WORLDKIT_QA_MODE === "research-notebook" ? ".next-research-qa" : process.env.WORLDKIT_QA_MODE === "physical-notebook" ? ".next-physical-qa" : process.env.WORLDKIT_QA_MODE === "cart-interop" ? ".next-cart-qa" : process.env.WORLDKIT_QA_MODE === "domain-packs" ? ".next-domain-packs-qa" : process.env.WORLDKIT_QA_MODE === "engineering" ? ".next-engineering-qa" : process.env.WORLDKIT_QA_MODE === "certificate" ? ".next-certificate-qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? ".next-source-impact-qa" : ".next",
+  distDir: process.env.WORLDKIT_QA_MODE === "guided-journey" ? ".next-guided-qa" : process.env.WORLDKIT_QA_MODE === "research-notebook" ? ".next-research-qa" : process.env.WORLDKIT_QA_MODE === "physical-notebook" ? ".next-physical-qa" : process.env.WORLDKIT_QA_MODE === "cart-interop" ? ".next-cart-qa" : process.env.WORLDKIT_QA_MODE === "domain-packs" ? ".next-domain-packs-qa" : process.env.WORLDKIT_QA_MODE === "engineering" ? ".next-engineering-qa" : process.env.WORLDKIT_QA_MODE === "certificate" ? ".next-certificate-qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? ".next-source-impact-qa" : ".next",
   poweredByHeader: false,
   serverExternalPackages: ["pg", "@fracture/paypal-core", "paypal", "better-sqlite3", "pdf-parse", "pdfjs-dist", "@napi-rs/canvas", "@paypal/agent-toolkit", "axios"],
   outputFileTracingIncludes: Object.fromEntries(["/api/evidence", "/api/jobs", "/api/jobs/recover", "/api/planner", "/api/inventory"].map(route => [route, sourceRuntimeFiles])),
@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
       { key: "X-Frame-Options", value: "DENY" }
-    ] }, ...["/research/:path*", "/api/research-notebook/:path*", "/bench/:path*", "/api/physical-notebook/:path*", "/record/:path*", "/api/public-records/:path*", "/api/records", "/review/:path*", "/api/engineering-review/:path*", "/api/synthesis", "/api/domain-packs/:path*", "/api/cart-interop", "/api/paypal/v1/:path*"].map(source => ({ source, headers: [
+    ] }, ...["/api/workbench", "/research/:path*", "/api/research-notebook/:path*", "/bench/:path*", "/api/physical-notebook/:path*", "/record/:path*", "/api/public-records/:path*", "/api/records", "/review/:path*", "/api/engineering-review/:path*", "/api/synthesis", "/api/domain-packs/:path*", "/api/cart-interop", "/api/paypal/v1/:path*"].map(source => ({ source, headers: [
       { key: "Cache-Control", value: "private, no-store, max-age=0, must-revalidate" },
       { key: "CDN-Cache-Control", value: "no-store" },
       { key: "Vercel-CDN-Cache-Control", value: "no-store" },
