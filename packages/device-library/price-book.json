@@ -1,0 +1,8 @@
+{
+  "schema": "worldkit.price-book.1",
+  "capturedAt": null,
+  "provider": "channel3",
+  "merchant": "WorldKit Studio (PayPal sandbox)",
+  "note": "Unit prices are Channel3 offer observations captured at the recorded time and used as WorldKit Studio's sandbox listing. They are not live retailer quotes; shipment is modeled and no retailer order is placed.",
+  "entries": []
+}

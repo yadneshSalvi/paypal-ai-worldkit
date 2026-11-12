@@ -15,11 +15,25 @@ export const SourceSchema = z.object({
   summary: z.string(), rights: z.literal("link_and_facts_only"),
 });
 export type Source = z.infer<typeof SourceSchema>;
+/** `reviewed` is reserved for a recorded human reviewer. `source_checked` means the cited passage was located
+ * verbatim in the retained manufacturer source and an independent second model confirmed that it supports the
+ * value. It is never a human review and must always be labelled "source-checked, not human-reviewed". */
+export const ReviewStatusSchema = z.enum(["pending", "reviewed", "rejected", "source_checked"]);
+export type ReviewStatus = z.infer<typeof ReviewStatusSchema>;
+export const SOURCE_CHECK_LABEL = "Source-checked, not human-reviewed" as const;
+export const SourceCheckSchema = z.object({
+  method: z.literal("quote_located+independent_model"), verdict: z.literal("confirmed"),
+  extractor: z.string(), checker: z.string(), checkedAt: z.string(),
+  sourceId: z.string(), contentHash: z.string(), quote: z.string(), quoteHash: z.string(), locator: z.string().nullable(),
+  receiptId: z.string(),
+});
+export type SourceCheck = z.infer<typeof SourceCheckSchema>;
 export const FactSchema = z.object({
   id: z.string(), property: z.string(), value: z.union([z.string(), z.number(), z.boolean(), z.null()]),
   unit: z.string().nullable(), sourceIds: z.array(z.string()), scope: z.string(), conditions: z.array(z.string()),
   state: z.enum(["supported", "unknown", "conflicted"]), critical: z.boolean(),
-  review: z.object({ status: z.enum(["pending", "reviewed", "rejected"]), reviewer: z.string().nullable(), date: z.string().nullable() }),
+  review: z.object({ status: ReviewStatusSchema, reviewer: z.string().nullable(), date: z.string().nullable() }),
+  sourceCheck: SourceCheckSchema.optional(),
   evidence: z.array(z.object({ sourceId: z.string(), contentHash: z.string(), textHash: z.string(), page: z.number().int().positive(), start: z.number().int().nonnegative(), end: z.number().int().positive(), excerptHash: z.string() })).optional(),
   extraction: z.object({ draftId: z.string(), validation: z.enum(["located_pending_review", "abstained", "rejected", "conflicted"]) }).optional(),
   interpretation: z.string().optional(),
@@ -46,8 +60,8 @@ export const DeviceSchema = z.object({
   ports: z.array(PortSchema), facts: z.record(z.string(), FactSchema),
   catalogId: z.string().nullable(), selectedOptions: z.array(SelectedOptionSchema),
   baseProfileId: z.string().optional(), catalogBinding: CatalogBindingSchema.optional(),
-  corpusId: z.string().optional(), sourceVersion: z.string().optional(), basisProfileId: z.string().optional(), portMapStatus: z.enum(["pending", "review_pending", "reviewed"]).optional(),
-  reviewState: z.enum(["candidate", "sources_collected", "review_pending", "verified_scope", "conflicted"]),
+  corpusId: z.string().optional(), sourceVersion: z.string().optional(), basisProfileId: z.string().optional(), portMapStatus: z.enum(["pending", "review_pending", "reviewed", "source_checked"]).optional(),
+  reviewState: z.enum(["candidate", "sources_collected", "review_pending", "verified_scope", "conflicted", "source_checked"]),
   engineeringReview: z.object({ editionId: z.string(), editionHash: z.string(), policy: z.literal("worldkit.engineering-review.1"), provenance: z.enum(["human", "sample"]), verifiedPredicates: z.array(z.string()), conditions: z.array(z.string()), physicalTest: z.literal("not_performed") }).optional(),
   portAnchors: z.array(z.discriminatedUnion("kind", [z.object({ portId: z.string(), kind: z.literal("rail"), reason: z.string() }), z.object({ portId: z.string(), kind: z.literal("image"), assetId: z.string(), imageHash: z.string(), cropHash: z.string(), x: z.number().min(0).max(1), y: z.number().min(0).max(1), facing: z.enum(["front", "back", "left", "right", "top", "bottom"]), labelSide: z.enum(["left", "right", "above", "below"]) })])).optional(),
   art: z.literal("original_line_art"), accent: z.string(),
@@ -103,7 +117,9 @@ export const CertificateSchema = z.object({
   id: z.string(), revisionId: z.string(), graphHash: z.string(), ruleVersion: z.string(), sourceHash: z.string(),
   status: TruthSchema, issuedAt: z.string(), sourceMode: ProvenanceSchema,
   results: z.array(WitnessSchema), counts: z.object({ satisfied: z.number(), violated: z.number(), unknown: z.number() }),
-  review: z.object({ required: z.number(), reviewed: z.number(), pending: z.number() }),
+  review: z.object({ required: z.number(), reviewed: z.number(), pending: z.number(), sourceChecked: z.number().optional() }),
+  /** What kind of evidence carries a satisfied result. Older certificates omit it. */
+  evidenceTier: z.enum(["human_reviewed", "source_checked", "open"]).optional(),
   scope: z.literal("Computational routing and source-backed constraints; physical performance not tested."),
   physicalTest: z.literal("not_performed"),
 });
