@@ -77,10 +77,10 @@ async function mount(t: TestContext, http: Transport, first = workspace(), stric
   window.sessionStorage.clear(); document.body.innerHTML = '<button id="outside">Outside workbench control</button><div id="root"></div>'; const style = document.createElement("style"); style.textContent = css; document.head.append(style);
   const originalFetch = globalThis.fetch; globalThis.fetch = http.fetch; let current = first, replace: (next: Workspace) => void = () => {}, section = "workbench", locks: boolean[] = [], inspected: string[] = [];
   function Host({ initial }: { initial: Workspace }) {
-    const [w, setW] = useState(initial), [activeSection, setSection] = useState("workbench"), ref = useRef(w); ref.current = w; current = w; replace = setW;
+    const [w, setW] = useState(initial), [activeSection, setSection] = useState(section), ref = useRef(w); ref.current = w; current = w; replace = setW;
     const accept = useCallback((next: Workspace) => { if (guidedScope(next) !== guidedScope(ref.current) || next.kit.revision < ref.current.kit.revision) return false; ref.current = next; setW(next); return true; }, []);
     const busy = useCallback((value: boolean) => { locks.push(value); }, []);
-    return createElement(GuidedJourney, { key: guidedScope(w), workspace: w, activeSection, onWorkspace: accept, onBusy: busy, onNavigate: value => { section = value; setSection(value); }, onInspect: value => inspected.push(value) });
+    return createElement(GuidedJourney, { key: guidedScope(w), workspace: w, activeSection, fallbackFocusRef: { current: document.getElementById("outside") }, onWorkspace: accept, onBusy: busy, onNavigate: value => { section = value; setSection(value); }, onInspect: value => inspected.push(value) });
   }
   let root = createRoot(document.getElementById("root")!);
   const render = (initial: Workspace) => strict ? createElement(StrictMode, null, createElement(Host, { initial })) : createElement(Host, { initial });
@@ -213,4 +213,17 @@ test("the new component references only defined CSS module classes", () => {
   const files = ["guided-journey.tsx", "guided-journey-views.tsx"], names = new Set<string>();
   for (const file of files) for (const match of readFileSync(new URL(`../src/components/${file}`, import.meta.url), "utf8").matchAll(/styles\.([A-Za-z][A-Za-z0-9]*)/g)) names.add(match[1]!);
   const defined = new Set([...css.matchAll(/\.([A-Za-z][A-Za-z0-9]*)/g)].map(match => match[1])); assert.deepEqual([...names].filter(name => !defined.has(name)), []); assert.ok(names.size > 45); assert.match(css, /prefers-reduced-motion/);
+});
+
+test("closing the guide after a destination change returns to persistent workspace navigation", async t => {
+  const http = new Transport(), ui = await mount(t, http); await click(button("Guide me")); await click(selectedTab(5)); await click(button("Follow the source evidence")); assert.equal(ui.section, "evidence");
+  await click(button("Close guided journey")); assert.equal(document.querySelector('[aria-label="Guided creator journey"]'), null); assert.equal(document.activeElement, document.getElementById("outside")); assert.equal(http.calls.length, 0);
+});
+test("closing a restored guide on another section keeps a persistent keyboard return target", async t => {
+  const http = new Transport(), ui = await mount(t, http); await click(button("Guide me")); await click(selectedTab(5)); await click(button("Follow the source evidence")); await ui.remount(); assert.equal(ui.section, "evidence");
+  await click(button("Close guided journey")); assert.equal(document.activeElement, document.getElementById("outside")); assert.equal(http.calls.length, 0);
+});
+test("the final Return action navigates to the workbench and focuses its Guide me opener", async t => {
+  const http = new Transport(), ui = await mount(t, http); await click(button("Guide me")); await click(selectedTab(5)); await click(button("Follow the source evidence")); assert.equal(ui.section, "evidence");
+  await click(button("Return to the workbench")); assert.equal(ui.section, "workbench"); assert.equal(document.activeElement, button("Guide me")); assert.equal(http.calls.length, 0);
 });

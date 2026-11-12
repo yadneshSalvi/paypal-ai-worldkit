@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type RefObject } from "react";
 import { ArrowLeft, ArrowRight, AudioLines, CircleHelp, Compass, LoaderCircle, RefreshCw, X } from "lucide-react";
 import type { Workspace } from "../../packages/contracts";
 import type { Edit, WorkbenchPreview } from "../../packages/workbench/contracts";
@@ -8,9 +8,10 @@ import { GuidedPreview, GuidedStep, GUIDED_STEPS, type GuidedSection } from "./g
 import { Soundcheck } from "./soundcheck";
 import styles from "./guided-journey.module.css";
 
-export function GuidedJourney({ workspace: w, activeSection, onNavigate, onWorkspace, onBusy, onInspect }: {
+export function GuidedJourney({ workspace: w, activeSection, onNavigate, onWorkspace, onBusy, onInspect, fallbackFocusRef }: {
   workspace: Workspace; activeSection: string; onNavigate: (section: GuidedSection) => void;
   onWorkspace: (next: Workspace) => boolean; onBusy: (busy: boolean) => void; onInspect: (witnessId: string) => void;
+  fallbackFocusRef?: RefObject<HTMLElement | null>;
 }) {
   const [expanded, setExpanded] = useState(false), [step, setStep] = useState(0), [ready, setReady] = useState(false);
   const [preview, setPreview] = useState<WorkbenchPreview | null>(null), [consent, setConsent] = useState(false), [soundcheck, setSoundcheck] = useState(false);
@@ -38,7 +39,7 @@ export function GuidedJourney({ workspace: w, activeSection, onNavigate, onWorks
   }, [scope]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { setPreview(null); setConsent(false); setSoundcheck(false); }, [context]);
   useEffect(() => { onBusy(busy || !!pending || !!storageError); }, [busy, pending, storageError, onBusy]);
-  useEffect(() => { if (focus.current === "heading" && expanded) { heading.current?.focus(); focus.current = null; } else if (focus.current === "opener" && !expanded) { opener.current?.focus(); focus.current = null; } }, [expanded, step, notice, pending]);
+  useEffect(() => { if (focus.current === "heading" && expanded) { heading.current?.focus(); focus.current = null; } else if (focus.current === "opener" && !expanded) { (opener.current ?? fallbackFocusRef?.current)?.focus(); focus.current = null; } }, [expanded, step, notice, pending, fallbackFocusRef]);
   function remember(nextStep: number, open: boolean) { try { window.sessionStorage.setItem(progressKey, JSON.stringify({ schema: "worldkit.guided-position.v1", step: nextStep, expanded: open })); } catch { /* Position is a convenience; mutation storage is checked separately. */ } }
   function open() { setExpanded(true); remember(step, true); focus.current = "heading"; }
   function close() { setExpanded(false); remember(step, false); focus.current = "opener"; }
@@ -123,7 +124,7 @@ export function GuidedJourney({ workspace: w, activeSection, onNavigate, onWorks
       <div className={styles.steps} role="tablist" aria-label="Guided journey steps">{GUIDED_STEPS.map((item, index) => <button key={item} ref={element => { tabButtons.current[index] = element; }} role="tab" id={`${id}-step-${index}`} aria-selected={step === index} aria-controls={panelId} tabIndex={step === index ? 0 : -1} onClick={() => move(index, true)} onKeyDown={event => tabKey(event, index)}><span>{String(index + 1).padStart(2, "0")}</span>{item}</button>)}</div>
       <div id={panelId} role="tabpanel" aria-labelledby={`${id}-step-${step}`} className={styles.panel}>
         {!live ? <div className={styles.expired}><h2 ref={heading} tabIndex={-1} id={headingId}>This workspace has expired.</h2><p>Its original records and deadline are retained. This guide cannot save, renew or recover a change under expired authority.</p></div> : <GuidedStep workspace={w} step={step} headingRef={heading} headingId={headingId} blocked={blocked} playback={playback?.revisionId === w.kit.id ? playback : null} onPlay={() => setSoundcheck(true)} onPreview={(edit, trigger) => void showPreview(edit, trigger)} onNavigate={onNavigate} onInspect={onInspect}/>}
-        <footer className={styles.progress}><span>Explore step {step + 1} of {GUIDED_STEPS.length}<small>Your saved checks carry the evidence.</small></span><div><button className={styles.secondary} disabled={step === 0} onClick={() => move(step - 1)}><ArrowLeft size={15}/> Previous</button>{step < GUIDED_STEPS.length - 1 ? <button className={styles.primary} onClick={() => move(step + 1)}>Next <ArrowRight size={15}/></button> : <button className={styles.primary} onClick={close}>Return to the workbench <ArrowRight size={15}/></button>}</div></footer>
+        <footer className={styles.progress}><span>Explore step {step + 1} of {GUIDED_STEPS.length}<small>Your saved checks carry the evidence.</small></span><div><button className={styles.secondary} disabled={step === 0} onClick={() => move(step - 1)}><ArrowLeft size={15}/> Previous</button>{step < GUIDED_STEPS.length - 1 ? <button className={styles.primary} onClick={() => move(step + 1)}>Next <ArrowRight size={15}/></button> : <button className={styles.primary} onClick={() => { onNavigate("workbench"); close(); }}>Return to the workbench <ArrowRight size={15}/></button>}</div></footer>
       </div>
     </>}
     {storageError && <div className={styles.warning} role="alert"><CircleHelp size={20}/><div><b>Keep the original save record</b><p>{storageError}</p></div></div>}
