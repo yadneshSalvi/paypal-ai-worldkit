@@ -1,0 +1,27 @@
+{
+  "schema": "worldkit.channel3-configuration-qualification.1",
+  "observedAt": "2026-11-12T08:11:00.189Z",
+  "method": "Independent authenticated portal observation, read-only",
+  "receiver": "https://paypal-ai-worldkit.vercel.app/api/webhooks/channel3",
+  "subscribedEvents": [
+    "offer.price.changed",
+    "offer.availability.changed",
+    "offer.created",
+    "offer.deleted"
+  ],
+  "deliveryAttemptsLastSevenDays": 0,
+  "filteredItems": 0,
+  "testing": {
+    "priceChangedSchemaAvailable": false,
+    "sendExampleEnabled": false,
+    "exampleSent": false
+  },
+  "providerMutations": 0,
+  "secretsRevealed": false,
+  "authenticSignatureAndTransportDelivery": "pending",
+  "resourceOwnershipAndCancellation": "pending",
+  "limitations": [
+    "Endpoint configuration was observed; no authentic offer event was delivered or replayed.",
+    "The original browser tab was returned to its usage page."
+  ]
+}

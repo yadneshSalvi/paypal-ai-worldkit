@@ -6,6 +6,7 @@ export function requireIsolatedDatabase() {
   const engineering = process.env.WORLDKIT_QA_MODE === "engineering" && /^\/wk_engineering_[a-f0-9]{20}$/.test(url.pathname) && url.username === `wke_${url.pathname.slice("/wk_engineering_".length)}` && url.port === "5432";
   const domainPacks = process.env.WORLDKIT_QA_MODE === "domain-packs" && /^\/wk_domain_[a-f0-9]{20}$/.test(url.pathname) && url.username === `wkd_${url.pathname.slice("/wk_domain_".length)}` && url.port === "55565";
   const cartInterop = process.env.WORLDKIT_QA_MODE === "cart-interop" && /^\/wk_cart_[a-f0-9]{20}$/.test(url.pathname) && url.username === `wkc_${url.pathname.slice("/wk_cart_".length)}` && url.port === "55570";
-  if (url.hostname !== "127.0.0.1" || process.env.WORLDKIT_DISABLE_PROVIDERS !== "true" || (!certificate && !sourceImpact && !toolkit && !engineering && !domainPacks && !cartInterop))
-    throw new Error("Use an isolated certificate, source-impact, Toolkit, engineering or domain-packs QA launcher. Existing application databases and provider calls are forbidden.");
+  const physicalNotebook = process.env.WORLDKIT_QA_MODE === "physical-notebook" && url.pathname === "/worldkit_physical" && url.username === "worldkit_physical" && url.port === "55576";
+  if (url.hostname !== "127.0.0.1" || process.env.WORLDKIT_DISABLE_PROVIDERS !== "true" || (!certificate && !sourceImpact && !toolkit && !engineering && !domainPacks && !cartInterop && !physicalNotebook))
+    throw new Error("Use an isolated certificate, source-impact, Toolkit, engineering, domain-packs, cart or physical-notebook QA launcher. Existing application databases and provider calls are forbidden.");
 }

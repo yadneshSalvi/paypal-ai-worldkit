@@ -49,6 +49,8 @@ The core test suite uses deterministic sample providers. Credentialed qualificat
 
 A catalog product is not retailer procurement. The Studio service does not sell or ship physical gear. Its dossier preserves unresolved compatibility facts. WorldKit's own observed buyer-present $12 capture, save-during-purchase, $8 saved-wallet amendment, $20/$60 escalation, full $8+$12 refunds and token deletion are recorded in [project qualification evidence](docs/evidence/paypal-worldkit-qualification.json). These observations remain separate from sample SDK/database tests and another project's payment evidence.
 
+The new **Test notebook** source workflow binds a physical report to one saved creator or domain system, records exact conditions and immutable observations, retains private original bytes with hashes/waveforms, and supports scoped review of a sealed manifest. Generated Samples stay explicit, unknowns and failures remain visible, and no physical test or actual human review is inferred. [Workflow, storage, rights and retention](docs/PHYSICAL_NOTEBOOK.md). Actual production Blob delivery and real equipment/reviewer qualification are separate gates.
+
 ## Integrations and boundaries
 
 | Integration | Current implementation |

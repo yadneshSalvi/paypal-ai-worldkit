@@ -8,6 +8,7 @@ import { initializeEngineeringReview } from "../src/server/engineering-review-db
 import { initializeSynthesis } from "../src/server/synthesis-db";
 import { initializeDomainPacks } from "../src/server/domain-packs-db";
 import { initializeCartInterop } from "../src/server/cart-interop-db";
+import { initializePhysicalNotebook } from "../src/server/physical-notebook-db";
 await initializeLivingRepair();
 await initializePublicRecords();
 await initializePaymentEvidence();
@@ -15,6 +16,7 @@ await initializeEngineeringReview();
 await initializeSynthesis();
 await initializeDomainPacks();
 await initializeCartInterop();
+await initializePhysicalNotebook();
 await new SqlPaymentStore(paymentDatabase).initialize();
-console.log(JSON.stringify({ database: "worldkit", schema: "ready", workflows: ["workspace", "studio", "living-kit", "living-repair", "public-records", "system-synthesis", "domain-packs", "cart-interop"], credentials: "not displayed" }));
+console.log(JSON.stringify({ database: "worldkit", schema: "ready", workflows: ["workspace", "studio", "living-kit", "living-repair", "public-records", "system-synthesis", "domain-packs", "cart-interop", "physical-notebook"], credentials: "not displayed" }));
 await closeDatabase();

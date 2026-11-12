@@ -4,7 +4,7 @@ import { WorldKitError } from "../../packages/contracts/index";
 import { findSession, type Session } from "./repository";
 import { trustedOrigin } from "../../packages/security/origin";
 
-export const sessionCookie = process.env.WORLDKIT_QA_MODE === "cart-interop" ? "wk_cart_qa" : process.env.WORLDKIT_QA_MODE === "domain-packs" ? "wk_domain_packs_qa" : process.env.WORLDKIT_QA_MODE === "engineering" ? "wk_engineering_qa" : process.env.WORLDKIT_QA_MODE === "certificate" ? "wk_certificate_qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? "wk_source_impact_qa" : process.env.WORLDKIT_QA_MODE === "toolkit" ? "wk_payment_evidence_qa" : "wk_session";
+export const sessionCookie = process.env.WORLDKIT_QA_MODE === "physical-notebook" ? "wk_physical_qa" : process.env.WORLDKIT_QA_MODE === "cart-interop" ? "wk_cart_qa" : process.env.WORLDKIT_QA_MODE === "domain-packs" ? "wk_domain_packs_qa" : process.env.WORLDKIT_QA_MODE === "engineering" ? "wk_engineering_qa" : process.env.WORLDKIT_QA_MODE === "certificate" ? "wk_certificate_qa" : process.env.WORLDKIT_QA_MODE === "source-impact" ? "wk_source_impact_qa" : process.env.WORLDKIT_QA_MODE === "toolkit" ? "wk_payment_evidence_qa" : "wk_session";
 export async function requireSession(): Promise<Session> {
   const token = (await cookies()).get(sessionCookie)?.value; const session = await findSession(token);
   if (!session) throw new WorldKitError("forbidden", "Open a private workbench to continue.", 401, "Create a workbench");
