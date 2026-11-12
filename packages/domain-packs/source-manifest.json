@@ -1,0 +1,110 @@
+[
+  {
+    "id": "apple-air-m2",
+    "title": "MacBook Air (M2, 2022) — Technical Specifications",
+    "publisher": "Apple",
+    "url": "https://support.apple.com/en-us/111867",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:14:56.285Z",
+    "contentHash": "0285eecc5c0f744b8534e85611dcd2fe3cee25199e68d7a31940f9f29aec56f6",
+    "location": "Display Support; Charging and Expansion; In the Box",
+    "summary": "Native display limit, DisplayPort-capable ports and included MagSafe power path.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "apple-air-m3",
+    "title": "MacBook Air (13-inch, M3, 2024) — Technical Specifications",
+    "publisher": "Apple",
+    "url": "https://support.apple.com/en-us/118551",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:14:57.595Z",
+    "contentHash": "6c433a9207accbdfcdadd4c91345fcd0680387ad091e4c0442737addcb07998f",
+    "location": "Display Support; Charging and Expansion; In the Box",
+    "summary": "Exact 13-inch M3 Air display modes and included power path.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "apple-dual-m3",
+    "title": "Use dual monitors with your MacBook Air or MacBook Pro with M3 chip",
+    "publisher": "Apple",
+    "url": "https://support.apple.com/en-us/117373",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:14:58.551Z",
+    "contentHash": "7c3aeeac6ab41c644c75fec5aadbde64275efbc80659c578f5c939de6192034d",
+    "location": "Before you begin; Connect displays; Adjust displays",
+    "summary": "Closed-lid dual-display requirements, OS minimum, inputs, power and direct connections.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "dell-u2723qe",
+    "title": "Dell UltraSharp U2723QE / U3223QE data sheet",
+    "publisher": "Dell",
+    "url": "https://www.delltechnologies.com/asset/en-us/products/electronics-and-accessories/technical-support/dell-ultrasharp-27-and-32-usbc-hub-monitors-u2723qe-u3223qe-datasheet.pdf",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:14:59.739Z",
+    "contentHash": "e4667c75728d4e77c5f76e5996b5fcc38d811c10eafe0fe05662dd73586018a1",
+    "location": "Technical specifications; Connectivity; What’s included",
+    "summary": "U2723QE 4K 60 Hz mode, USB-C video upstream port and included C–C cable.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "zoom-p8-guide",
+    "title": "PodTrak P8 Quick Guide",
+    "publisher": "Zoom",
+    "url": "https://zoomcorp.com/media/documents/E_P8_QuickGuide_2.pdf",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:15:06.264Z",
+    "contentHash": "63d3547052b32bd48e9d335d4fd2f7fa92da3203b9d38d8bed9d56ca8d0ba478",
+    "location": "pp. 5–6, 9–10, 14",
+    "summary": "Six-channel routing, power options and separate recording files with Keep Track Files enabled.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "zoom-p4-spec",
+    "title": "PodTrak P4 Specifications",
+    "publisher": "Zoom",
+    "url": "https://zoomcorp.com/documents/3155/E_P4_Specifications.pdf",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:15:07.159Z",
+    "contentHash": "8cb98a233040e14a58a18598a810e471a94e2d89840565963d1681e193a90058",
+    "location": "p. 1",
+    "summary": "Original P4 input and headphone counts, 3.5 mm sockets, USB stereo interface and power options.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "zoom-p8-manual",
+    "title": "PodTrak P8 Operation Manual v2a",
+    "publisher": "Zoom",
+    "url": "https://zoomcorp.com/media/documents/E_P8_v2a.pdf",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:18:42.016Z",
+    "contentHash": "6db0541de834791d83b3edbf929ad49bd12afc9efd82425c30e16c4c67c9e62c",
+    "location": "Introduction; Signal flow; Connecting; Keep Track Files (p. 79); Specifications",
+    "summary": "Six local microphone and headphone paths, SD track files and stereo USB output.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "zoom-p4-manual",
+    "title": "PodTrak P4 Operation Manual v2",
+    "publisher": "Zoom",
+    "url": "https://zoomcorp.com/media/documents/E_P4_v2.pdf",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:18:42.417Z",
+    "contentHash": "255c36b78d1984d5b2f7b4fb7f624ce32fb1ea3890163d4973db3d86a573678a",
+    "location": "pp. 3, 12, 18–22, 25, 32",
+    "summary": "Four local voices, separate SD track files and USB stereo routing; phone/USB switches share inputs.",
+    "rights": "link_and_facts_only"
+  },
+  {
+    "id": "sony-mdr7506-pack",
+    "title": "MDR-7506 professional headphone specifications",
+    "publisher": "Sony",
+    "url": "https://pro.sony/en_NA/pdf/mdr-7506",
+    "kind": "manufacturer",
+    "retrievedAt": "2026-11-12T04:18:43.055Z",
+    "contentHash": "47eb0266c33c82b5d76428df3d6a5b4ffcde6ae9696925e3db8892ffd39f47f1",
+    "location": "p. 1, General Specifications",
+    "summary": "Stereo headphone connection with a 3.5 mm plug and supplied adapter.",
+    "rights": "link_and_facts_only"
+  }
+]

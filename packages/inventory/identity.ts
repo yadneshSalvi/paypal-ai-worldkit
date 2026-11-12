@@ -24,6 +24,11 @@ export function catalogIdentityMatches(snapshot: CatalogSnapshot, profile: Inven
   if (id === "sony-zve10" && /zve10ii|zve10mark2|zve102/.test(title)) return false;
   if (id === "apple-ipad-air5" && !/5th|5thgeneration|air5|m1/.test(title)) return false;
   if (id === "anker-555-a8383" && !/555|a8383/.test(title)) return false;
+  if (id === "pack-podtrak-p4" && /p4next|p4generation2|p4gen2|p4ii/.test(title)) return false;
+  if (id === "pack-podtrak-p8" && /p8next|p8generation2|p8gen2|p8ii/.test(title)) return false;
+  if (id === "pack-air-m2-2022" && (!/2022|13inch|136inch/.test(title) || /15inch|153inch|2023|2024|2025|2026/.test(title))) return false;
+  if (id === "pack-air-m3-2024" && (!/2024|13inch|136inch/.test(title) || /15inch|153inch|2022|2023|2025|2026/.test(title))) return false;
+  if (id === "pack-dell-u2723qe" && /u3223qe/.test(title)) return false;
   return true;
 }
 export function assertExactSelection(snapshot: CatalogSnapshot, selection: { name: string; value: string }[], now = Date.now()) {

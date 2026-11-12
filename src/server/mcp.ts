@@ -15,6 +15,7 @@ import { ToolkitReadInput } from "../../packages/commerce/toolkit-contracts";
 import { readPaymentEvidence } from "./payment-evidence";
 import { initializeSynthesis } from "./synthesis-db";
 import { synthesisHome, synthesisOwner } from "./synthesis";
+import { listScopedDomains, readScopedDomain } from "./domain-packs";
 
 export async function authorizeKit(principal: Principal, scope: ToolScope, revisionId: string, expectedHash: string) {
   if (!principal.scopes.includes(scope) || Date.parse(principal.expiresAt) <= Date.now()) throw new WorldKitError("forbidden", "The current grant does not allow this operation.", 403);
@@ -34,6 +35,11 @@ async function guarded(principal: Principal, tool: LimitedTool, action: () => Pr
 export function createMcpServer(principal: Principal): McpServer {
   const server = new McpServer({ name: "worldkit", version: "0.1.0" }, { instructions: "WorldKit verifies source-backed physical-system plans. A satisfied modeled check is not a physical test. Unknown critical facts block overall verification. Tools inspect kits, propose repairs, create WorldKit Studio sandbox service quotes, and—with a separate payment:read grant—record owned sandbox payment observations. They cannot modify a kit, authorize payment, spend a wallet, place retailer orders, or remove constraints." });
   server.registerTool("verify_kit", { title: "Verify a saved kit", description: "Return the exact immutable certificate for an authorized kit revision. Current-sources mode explicitly re-evaluates source availability and returns a new certificate.", inputSchema: McpVerifyInput, annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false } }, input => guarded(principal, "verify_kit", async () => {
+    if (input.kit_revision_id.startsWith("packrev_")) {
+      const record = await readScopedDomain(principal, input.kit_revision_id, input.expected_graph_hash, "certificate", input.freshness_policy);
+      if (input.requirement_ids?.some(id => !record.certificate.results.some(result => result.requirementId === id))) throw new WorldKitError("invalid_request", "An unknown domain requirement was requested.");
+      return { ...record, selectedResults: input.requirement_ids ? record.certificate.results.filter(result => input.requirement_ids!.includes(result.requirementId)) : record.certificate.results };
+    }
     const bundle = await authorizeKit(principal, "kit:verify", input.kit_revision_id, input.expected_graph_hash);
     if (input.requirement_ids?.some(id => !bundle.kit.goal.requirements.some(r => r.id === id))) throw new WorldKitError("invalid_request", "An unknown requirement was requested.", 400);
     const certificate = input.freshness_policy === "current_sources" ? verifyKit(bundle.kit, bundle.profiles, currentSources, architectures) : bundle.certificate;
@@ -90,6 +96,19 @@ export function createMcpServer(principal: Principal): McpServer {
       } catch (error) {
         throw new McpError(ErrorCode.InvalidRequest, error instanceof WorldKitError ? error.message : "The scoped system facts could not be read.", { code: error instanceof WorldKitError ? error.code : "invalid_request" });
       } finally { if (lease) await releaseTool(principal, lease); }
+    });
+  }
+  for (const kind of ["certificate", "assembly"] as const) {
+    const template = new ResourceTemplate(`worldkit://domains/{projectId}/{editionId}/{graphHash}/${kind}`, { list: () => listScopedDomains(principal, kind) });
+    server.registerResource(`domain-${kind}`, template, { title: kind === "certificate" ? "Domain system certificate" : "Domain assembly guide", mimeType: "application/json", description: "Read an exact saved domain edition with current source and equipment freshness. The explicit project grant is read-only; no modification, review promotion, purchase or physical verification." }, async (uri, variables) => {
+      let lease: string | null = null;
+      try {
+        lease = await claimTool(principal, "verify_kit");
+        if (typeof variables.projectId !== "string" || typeof variables.editionId !== "string" || typeof variables.graphHash !== "string") throw new WorldKitError("invalid_request", "Choose one exact domain system, edition and graph hash.");
+        const value = await readScopedDomain(principal, variables.editionId, variables.graphHash, kind, "historical", variables.projectId);
+        return { contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(value) }] };
+      } catch (error) { throw new McpError(ErrorCode.InvalidRequest, error instanceof WorldKitError ? error.message : "The domain evidence could not be read.", { code: error instanceof WorldKitError ? error.code : "invalid_request" }); }
+      finally { if (lease) await releaseTool(principal, lease); }
     });
   }
   return server;

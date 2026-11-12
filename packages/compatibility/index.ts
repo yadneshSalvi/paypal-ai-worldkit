@@ -32,7 +32,7 @@ function pathExists(ctx: Context, start: string, end: string, kinds?: string[]):
   }
   return false;
 }
-export function connectionIssues(kit: KitRevision, profiles: DeviceProfile[]): { id: string; status: Truth; reason: string }[] {
+export function connectionIssues(kit: Pick<KitRevision, "components" | "connections">, profiles: Pick<DeviceProfile, "id" | "ports" | "reviewState" | "portMapStatus">[]): { id: string; status: Truth; reason: string }[] {
   const issues: { id: string; status: Truth; reason: string }[] = [];
   const consumed = new Set<string>();
   for (const edge of kit.connections) {

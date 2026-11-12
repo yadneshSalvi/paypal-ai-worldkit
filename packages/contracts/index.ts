@@ -33,7 +33,7 @@ export const PortSchema = z.object({
   facts: z.array(z.string()),
 });
 export type Port = z.infer<typeof PortSchema>;
-export const DeviceKindSchema = z.enum(["microphone", "recorder", "interface", "mixer", "camera", "capture", "host", "hub", "headphones", "power", "cable", "storage", "stand"]);
+export const DeviceKindSchema = z.enum(["microphone", "recorder", "interface", "mixer", "camera", "capture", "host", "hub", "headphones", "power", "cable", "storage", "stand", "display", "accessory"]);
 export type DeviceKind = z.infer<typeof DeviceKindSchema>;
 export const SelectedOptionSchema = z.object({ name: z.string(), value: z.string() });
 export const CatalogBindingSchema = z.object({

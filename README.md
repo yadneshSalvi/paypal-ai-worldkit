@@ -94,3 +94,7 @@ This repository remains private while implementation and evidence are being asse
 ## License
 
 Application code is MIT licensed. Bundled third-party context and the immutable payment core retain their original licenses and provenance. Product illustrations and test signals in this implementation are original; no Channel3 product photography or identifiable participant footage is reused.
+
+## Additional system packs
+
+The **Systems** workspace supports a desk with independent displays and a shared two-to-six-person podcast station. Each has exact equipment, source-bound constraints, immutable previewed editions, an assembly guide, equipment-passport bindings and scoped agent reads. The podcast pack also renders a graph-bound synthesized routing audition. Manufacturer review, physical testing and complete hardware cost stay explicitly unresolved. See [the pack workflow and local validation guide](docs/domain-packs.md).

@@ -8,6 +8,7 @@ import "./living-repair.css";
 import "./public-record.css";
 import "./payment-evidence.css";
 import "./synthesis.css";
+import "./domain-packs.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });

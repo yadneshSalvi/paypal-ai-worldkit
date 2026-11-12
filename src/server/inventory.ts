@@ -10,6 +10,9 @@ import { appendEvent, getRevision, getSnapshots, saveRevision, type RevisionBund
 import { photoRecord, publicPhoto, storageReady } from "./inventory-photos";
 import { evidenceLibrary } from "./source-evidence";
 import { assertEngineeringProfilesCurrent, checkEngineeringProfilesCurrent } from "./engineering-review";
+import { packProfiles, packSources } from "../../packages/domain-packs/catalog";
+
+const inventoryLibrary: DeviceProfile[] = [...library, ...packProfiles.filter(profile => !library.some(old => old.id === profile.id))];
 
 type Prepared = { item: InventoryItem; input: InventoryConfirmation; bundle: RevisionBundle | null; preview: InventoryPreview; previewHash: string };
 export async function getInventory(session: Session): Promise<InventoryWorkspace> {
@@ -21,9 +24,9 @@ export async function getInventory(session: Session): Promise<InventoryWorkspace
     database().query("SELECT payload FROM wk_inventory_history WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 100", [session.id]),
     evidenceLibrary(session.id),
   ]);
-  return { items: items.rows.map(row => InventoryItemSchema.parse(row.payload)), photos: photos.rows.map(publicPhoto), regions: regions.rows.map(row => row.payload as InventoryRegion), history: history.rows.map(row => row.payload as InventoryHistory), library: [...library, ...candidates.profiles].map(profileChoice), storageReady: storageReady() };
+  return { items: items.rows.map(row => InventoryItemSchema.parse(row.payload)), photos: photos.rows.map(publicPhoto), regions: regions.rows.map(row => row.payload as InventoryRegion), history: history.rows.map(row => row.payload as InventoryHistory), library: [...inventoryLibrary, ...candidates.profiles].map(profileChoice), storageReady: storageReady() };
 }
-export async function getInventoryProfileChoices(session: Session) { return [...library, ...(await evidenceLibrary(session.id)).profiles].map(profileChoice); }
+export async function getInventoryProfileChoices(session: Session) { return [...inventoryLibrary, ...(await evidenceLibrary(session.id)).profiles].map(profileChoice); }
 export async function getInventoryItem(tenantId: string, id: string): Promise<InventoryItem> {
   await initialize(); const result = await database().query("SELECT payload FROM wk_inventory_items WHERE tenant_id=$1 AND id=$2", [tenantId, id]);
   if (!result.rows[0]) throw new WorldKitError("not_found", "That item is not in this equipment passport.", 404);
@@ -73,7 +76,7 @@ function placeProfile(previous: RevisionBundle, item: InventoryItem, targets: st
   if (allocated > item.quantity) throw new WorldKitError("needs_evidence", `This plan uses ${allocated} pieces of this equipment, but its passport quantity is ${item.quantity}. Confirm the correct quantity before using it in another position.`, 409);
   const profiles = [...previous.profiles.filter(p => p.id !== item.profile.id), item.profile];
   const neededSources = new Set(Object.values(item.profile.facts).flatMap(fact => fact.sourceIds));
-  const additions = [...librarySources, ...candidateSources].filter(source => neededSources.has(source.id) && !previous.sources.some(old => old.id === source.id));
+  const additions = [...librarySources, ...packSources, ...candidateSources].filter(source => neededSources.has(source.id) && !previous.sources.some(old => old.id === source.id));
   const sources: Source[] = [...previous.sources, ...new Map(additions.map(source => [source.id, source])).values()];
   const revision: KitRevision = { ...kit, id: randomUUID(), parentRevisionId: previous.kit.id, revision: previous.kit.revision + 1, createdAt: at, sourceMode: "modelled" };
   return { bundle: { kit: revision, profiles, sources, certificate: verifyKit(revision, profiles, sources, architectures, snapshots, at) }, changesOwnedConstraint };
@@ -84,7 +87,7 @@ export async function previewInventory(session: Session, input: InventoryConfirm
   const oldItem = input.correctItemId ? await getInventoryItem(session.id, input.correctItemId) : null;
   if (oldItem && (oldItem.version !== input.expectedItemVersion || oldItem.status !== "active")) throw new WorldKitError("stale_revision", "This equipment entry changed. Reopen it before correcting the model.", 409);
   const at = new Date().toISOString(); const id = oldItem?.id ?? randomUUID(); const version = (oldItem?.version ?? 0) + 1;
-  const profile = confirmedProfile(`inventory:${id}:v${version}`, input.identity, snapshot, [...previous.profiles, ...library.filter(p => !previous.profiles.some(old => old.id === p.id)), ...candidates.profiles], at); profile.version = version;
+  const profile = confirmedProfile(`inventory:${id}:v${version}`, input.identity, snapshot, [...previous.profiles, ...inventoryLibrary.filter(p => !previous.profiles.some(old => old.id === p.id)), ...candidates.profiles], at); profile.version = version;
   await checkEngineeringProfilesCurrent(session.id, [profile]);
   const item = InventoryItemSchema.parse({ id, version, profile, ownership: input.identity.ownership, quantity: input.identity.quantity, condition: input.identity.condition, accessories: input.identity.accessories, notes: input.identity.notes,
     status: "active", origin: snapshot ? input.photoId ? "photo_crop" : "catalog" : "manual", snapshotId: snapshot?.id ?? null, photoId: input.photoId, regionId: input.regionId, confirmedAt: at, createdAt: oldItem?.createdAt ?? at, updatedAt: at });
