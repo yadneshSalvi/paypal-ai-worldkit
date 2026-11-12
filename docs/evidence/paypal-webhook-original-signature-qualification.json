@@ -1,0 +1,47 @@
+{
+  "schema": "worldkit.original-paypal-webhook-signatures.1",
+  "qualifiedAt": "2026-11-12T08:05:41.698Z",
+  "scope": "Read-only authentication and signature re-verification of three retained original live PayPal sandbox callbacks. This did not request a new delivery or redelivery.",
+  "events": [
+    {
+      "eventType": "CHECKOUT.ORDER.APPROVED",
+      "originalReceivedAt": "2026-11-11T08:01:13.451Z",
+      "storedPayloadHashMatched": true,
+      "paypalPostbackVerified": true
+    },
+    {
+      "eventType": "PAYMENT.CAPTURE.COMPLETED",
+      "originalReceivedAt": "2026-11-11T08:01:10.966Z",
+      "storedPayloadHashMatched": true,
+      "paypalPostbackVerified": true
+    },
+    {
+      "eventType": "PAYMENT.CAPTURE.REFUNDED",
+      "originalReceivedAt": "2026-11-11T08:04:37.306Z",
+      "storedPayloadHashMatched": true,
+      "paypalPostbackVerified": true
+    }
+  ],
+  "originalEncryptedReceiptsAuthenticated": true,
+  "actualProviderRequests": {
+    "oauth": 1,
+    "signaturePostback": 3,
+    "total": 4
+  },
+  "preservation": {
+    "threeCompleteOriginalRowsByteIdentical": true,
+    "databaseWrites": 0,
+    "applicationRequests": 0,
+    "eventResends": 0,
+    "newEventDeliveries": 0,
+    "financialOperations": 0
+  },
+  "deployedSecretEqualityProven": false,
+  "secretBinding": "One already configured key authenticated the retained AES-GCM receipts and exact original body hashes before any provider verification request; no guessing or rotation.",
+  "remainingGates": [
+    "Fresh delivery to the current deployment was not exercised in this qualification.",
+    "Authentic duplicate-delivery behavior remains unqualified.",
+    "Channel3 authentic delivery and exact external subscription ownership remain separate pending gates."
+  ],
+  "privateSummarySha256": "1a218b60756f31064392e98e2587b3bd6fb4dbd23ad079cfde6a4fdec7924fcc"
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "worldkit.cart.hosted-qualification.1",
+  "qualifiedAt": "2026-11-12T08:02:31.228Z",
+  "sourceCommit": "45cb697e68040e85120c8ae1cab3195122c98cf2",
+  "acceptedLocalCommit": "6501402a0c9adc84af4b282e9ab657694f0f2546",
+  "deploymentId": "dpl_GoG28SqLUhfnVDcHnj2tVa863ayD",
+  "canonicalUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "canonicalAliasAndProjectTargetVerified": true,
+  "executionScope": "Explicitly Sample merchant catalogue, buyer approval, stock and settlement on the actual hosted application and PostgreSQL. No genuine Store Sync enrollment, payment or procurement.",
+  "client": {
+    "package": "@paypal/agentic-commerce-spec",
+    "version": "1.1.0",
+    "transport": "official generated Axios client via protected hosted HTTP adapter; owner commands use actual hosted HTTP"
+  },
+  "tests": {
+    "contractAndAuth": 17,
+    "mountedDom": 22,
+    "realLocalHttpAndPostgres": 46,
+    "affectedTotal": 85,
+    "fullTypecheck": "passed",
+    "localProductionBuild": "passed",
+    "hostedProductionBuild": "passed",
+    "hostedAssertions": 63,
+    "hostedJournaledRequests": 50,
+    "unresolvedMutatingRedispatches": 0,
+    "independentNative": "passed",
+    "nativeResponsiveWidths": [
+      390,
+      360
+    ],
+    "nativeConsoleErrors": 0
+  },
+  "qualifiedWorkflow": [
+    "same-body create replay and changed-body collision",
+    "foreign owner, origin and anonymous refusal",
+    "retained USD 427 quote versus current USD 457 projection",
+    "full PUT removes omitted buyer/address fields",
+    "changed merchant data invalidates earlier approval",
+    "explicit current-version reapproval",
+    "one Sample settlement and one stock deduction across repeated checkout",
+    "four immutable cart revisions and exact historical reload",
+    "revoked integration credential cannot read; workspace owner retains receipt"
+  ],
+  "newQualificationData": {
+    "workspaces": 2,
+    "domainProjects": 2,
+    "domainEditions": 4,
+    "sampleCarts": 1,
+    "sampleCartRevisions": 4,
+    "sampleSettlements": 1,
+    "issuedCredentials": 1,
+    "revokedCredentials": 1
+  },
+  "preservation": {
+    "verifiedSnapshotBackup": {
+      "bytes": 1981132,
+      "sha256": "5c89967d47568bb32ecb65d674b90de1e28d4e5dc283c86cce92be9e1add99c6",
+      "tocEntries": 564,
+      "allDataBlocksReadable": true,
+      "sameSnapshotAsBaseline": true
+    },
+    "additiveMigration": {
+      "tables": 10,
+      "triggers": 10,
+      "functions": 5,
+      "sqlSha256": "9d4efd1a699c117e3aa46814c108ef2d02979cda2e89f6209ac6db0fac2c4c0f",
+      "preexistingRowsByteIdenticalImmediatelyAfter": 592
+    },
+    "preexistingNonCounterRowsByteIdentical": 575,
+    "priorAdmissionRowsByteIdentical": 16,
+    "oneExistingDayCounterIncrement": 4,
+    "newHourCounter": 4,
+    "independentAnonymousAdmissions": {
+      "count": 2,
+      "timing": "Immediately after deployment, before scripted qualification",
+      "origin": "unproven",
+      "rowsPerAdmission": 4,
+      "activity": "Only initial session, kit, revision and workspace-created event; zero discovery/live rebuild/provider/model activity"
+    },
+    "priorFinancialGraphAndExpiryRowsUnchanged": true,
+    "originalRouteContinuity": {
+      "routes": [
+        "workspace",
+        "commerce",
+        "payment-evidence",
+        "inventory",
+        "records",
+        "engineering-review"
+      ],
+      "beforeAndAfterPromotion": "exact equality",
+      "normalization": "none"
+    },
+    "postNativeAndPostCanonical": {
+      "tables": 102,
+      "rows": 672,
+      "allOriginalAndFreshRowsByteIdentical": true,
+      "admissionCountersUnchanged": true
+    }
+  },
+  "externalEffects": {
+    "newProviderRows": 0,
+    "newModelRows": 0,
+    "newFinancialRows": 0,
+    "actualMerchantOrders": 0,
+    "fulfillment": "not_performed",
+    "physicalTests": "not_performed",
+    "genuineStoreSyncEnrollment": "unestablished"
+  },
+  "scriptSha256": "6e7782bd04375ee691314fb58e025d2c0bdbc91f9ed41c1e6e8946135c1ed746",
+  "remainingPolish": [
+    "Cart deep links briefly render the default workbench before hydration selects the requested view; retained state and reload correctness passed."
+  ],
+  "limitations": [
+    "Sample RS256 keys do not establish genuine PayPal-issued authority.",
+    "Hosted correctness does not establish public endpoint latency targets.",
+    "Redacted environment-pull values do not establish actual deployed provider or encryption-secret equality.",
+    "Existing Agent Toolkit transitive dependency advisories remain a separate release review."
+  ]
+}
