@@ -26,6 +26,11 @@ export function SystemComparison({ workspace, onRefresh, onWorkbench }: { worksp
   const inspector = useRef<HTMLElement | null>(null);
   const errorNotice = useRef<HTMLDivElement | null>(null);
   const successNotice = useRef<HTMLParagraphElement | null>(null);
+  const focusAppliedGraph = useRef(false);
+  useEffect(() => {
+    if (!notice || busy) return;
+    (focusAppliedGraph.current ? inspector.current : successNotice.current)?.focus();
+  }, [notice, busy]);
   const detail = home?.current ?? null;
   const selected = detail?.edition.candidates.find(candidate => candidate.id === selectedId) ?? detail?.edition.candidates.find(candidate => candidate.id === detail.choice.candidateId) ?? detail?.edition.candidates[0] ?? null;
   const url = (edition: string | null, nextPage: Page = page, candidate?: string | null) => {
@@ -72,11 +77,9 @@ export function SystemComparison({ workspace, onRefresh, onWorkbench }: { worksp
       if (["compare", "relax", "rebase"].includes(command.kind)) setSelectedId(choice ?? value.workspace.current?.edition.candidates[0]?.id ?? null);
       const nextPage = command.kind === "journey" ? "journey" : ["rebase", "compare", "relax"].includes(command.kind) ? "systems" : page;
       setPage(nextPage); url(value.result.editionId, nextPage, choice);
+      focusAppliedGraph.current = Boolean(value.result.appliedRevisionId);
       setNotice(command.kind === "prefer" ? "Preference saved. Your current graph is unchanged." : command.kind === "apply" ? "Your chosen graph is saved. Purchases and repair permissions still need their own review." : command.kind === "journey" ? "Upgrade journey saved. Every stage is a proposal; no equipment is funded or fulfilled." : command.kind === "relax" ? "The proposed goal changes are ready to compare. Your current goal stays in place until you explicitly apply a choice." : command.kind === "rebase" ? "A fresh edition is ready. Your earlier draft and choice are preserved in History." : "Complete systems are ready to compare. Every alternative keeps its own checks and evidence.");
       if (value.result.appliedRevisionId) await onRefresh();
-      requestAnimationFrame(() => {
-        (value.result.appliedRevisionId ? inspector.current : successNotice.current)?.focus();
-      });
     } catch (error) {
       const known = error as Error & { status?: number };
       setError(known.message || "This action did not return a result. Your earlier edition remains saved.");
