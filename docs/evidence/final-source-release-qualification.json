@@ -1,0 +1,228 @@
+{
+  "schema": "worldkit.final-source-release-qualification.1",
+  "qualifiedAt": "2026-11-12T16:00:40.359Z",
+  "sourceCommit": "d79827dd780f91b570fa74f692e2513c5a6cbf2e",
+  "deploymentId": "dpl_F7T3K2gW7ifL3qYHXMiDDzSDcFR2",
+  "canonicalUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "canonicalAliasAndProjectTargetVerified": true,
+  "scope": "Final source release, controlled local upload and MCP execution, and read-only hosted preservation. No new hosted actor, image upload, provider/model lookup or financial operation occurred in this release qualification.",
+  "release": {
+    "cleanGitArchive": true,
+    "sourceFiles": 520,
+    "sourceManifestSha256": "4c3c2c86cc1c984555732ec744a34182bc3b2a51c1c8aa16a9349bfaa68b4a60",
+    "archiveBytes": 7782400,
+    "archiveSha256": "9ac8353811a7f1be2c03897f0e20aa8c91e13947ad6fae3ca35955d07140364e",
+    "scannedInputFiles": 521,
+    "retainedPrivateValuesScanned": 12,
+    "exactPrivateValueMatches": 0,
+    "scanScope": "Entire clean archive plus excluded local project metadata; not an official CLI upload dry run or a general secret audit.",
+    "schemaMigrations": 0,
+    "environmentOrProjectSettingsChanged": false
+  },
+  "softwareQualification": {
+    "dependencyAndActualAdapterControls": 35,
+    "releaseInputControls": 7,
+    "mcpOperatorControls": 12,
+    "imageIntakeMountedControls": 11,
+    "independentActualHttpBlobSdkPostgresControls": 6,
+    "tenantScopedQueueRegression": 1,
+    "originalFailuresRetained": true,
+    "nonincrementalTypecheck": "passed",
+    "localProductionBuild": "passed",
+    "hostedProductionBuild": "passed",
+    "previousPassedControlsReused": true
+  },
+  "implementedChanges": [
+    "Pinned scoped dependency repair with residual findings and override compatibility limits disclosed.",
+    "Self-contained setup, local isolated database guidance, license inventory and read-only source-input checker.",
+    "Explicit existing-grant MCP verifier with exact revision/certificate binding and immutable caller-selected receipt/journal.",
+    "Immutable Photograph or Sample image-source choice; file selection and cancellation send no bytes.",
+    "Exact-workspace and exact-job recovery keep unrelated queues unchanged."
+  ],
+  "localActualMcp": {
+    "transport": "Official MCP SDK Streamable HTTP",
+    "requests": 4,
+    "tool": "verify_kit",
+    "freshnessPolicy": "historical",
+    "certificateEquality": "exact",
+    "certificateCounts": {
+      "satisfied": 5,
+      "violated": 0,
+      "unknown": 4
+    },
+    "physicalTest": "not_performed",
+    "operatorCreatesOwners": 0,
+    "operatorCreatesGrants": 0,
+    "quotePaymentCalls": 0,
+    "optionalServerPush": "declined_before_network",
+    "ownerSeparatelyIssuedAndRevokedOneGrant": true
+  },
+  "independentNative": {
+    "input": "Original neutral illustrated Sample equipment asset",
+    "imageInputSha256": "24783972cd0caffacbc95229f4c9b6fdb5242583e5daed093beb9209304cb039",
+    "unselectedSourceAndCancelPhotoPosts": 0,
+    "explicitSamplePhotoPosts": 1,
+    "sampleLabelPersistedAfterReload": true,
+    "ownedItems": 0,
+    "plannedItems": 0,
+    "modelRequests": 0,
+    "discoveryRequests": 0,
+    "viewportWidth": 360,
+    "documentWidth": 360,
+    "dialogWidth": 336,
+    "cancelFocusReturned": "Start with a photo",
+    "keyboardContainment": "passed",
+    "networkEvents": 126,
+    "networkLogTruncated": false,
+    "consoleWarningsErrors": 0,
+    "originalCookiesAndStorageRestored": true,
+    "storageTransport": "installed official Blob SDK with controlled local peer, not actual Vercelstore qualification"
+  },
+  "localPreservation": {
+    "priorRows": 91,
+    "currentRows": 93,
+    "tables": 123,
+    "allPriorRowsByteExact": true,
+    "addedRows": {
+      "wk_inventory_photos": 1,
+      "wk_events": 1
+    },
+    "allOriginalSourceDependencyBuildEntriesByteExact": true,
+    "originalManifestEntries": {
+      "source": 520,
+      "dependencies": 45809,
+      "build": 1398
+    },
+    "initialStrictFileSetCheckPassed": false,
+    "additionalStaticIconCacheFiles": 2,
+    "cacheQualification": "Two runtime /icon.svg cache entries were added. Their body matches the frozen prerender exactly; metadata differs only by routeCacheLastModified. The first strict file-set failure remains retained.",
+    "originalExpiryUnchanged": true,
+    "originalGraphUnchanged": true,
+    "originalGrantRemainsRevoked": true,
+    "newAdmissions": 0,
+    "newJobs": 0,
+    "newProviderModelCatalogQuoteFinancialRows": 0
+  },
+  "hosted": {
+    "stageGetRequests": 10,
+    "anonymousEntrySecurityAndAuthChecks": [
+      {
+        "route": "/",
+        "anonymous": true,
+        "status": 200,
+        "securityHeaders": true,
+        "applicationCookieSet": false
+      },
+      {
+        "route": "/api/workspace",
+        "anonymous": true,
+        "status": 401,
+        "privateNoStore": true,
+        "applicationCookieSet": false
+      },
+      {
+        "route": "/api/inventory/photos",
+        "anonymous": true,
+        "status": 405,
+        "readCannotUpload": true,
+        "applicationCookieSet": false
+      },
+      {
+        "route": "/api/mcp",
+        "anonymous": true,
+        "status": 401,
+        "scopedBearerRequired": true,
+        "noStore": true,
+        "applicationCookieSet": false
+      }
+    ],
+    "canonicalGetRequests": 6,
+    "originalContinuity": [
+      {
+        "route": "/api/workspace",
+        "sha256": "4dd58e918d33504fe513622a6fd943a7223cfbac8034d5e270d62eb19c553f83",
+        "exactlyEqual": true,
+        "normalization": "none"
+      },
+      {
+        "route": "/api/commerce",
+        "sha256": "024dd9fc3116cece0cbec4ab5739d025dc24049c376b0335330dd4e40b5bda2d",
+        "exactlyEqual": true,
+        "normalization": "none"
+      },
+      {
+        "route": "/api/payment-evidence",
+        "sha256": "9b978884f829c035ded13a527271f32a73193958e2eb91bb12b3509a56a5477c",
+        "exactlyEqual": true,
+        "normalization": "none"
+      },
+      {
+        "route": "/api/inventory",
+        "sha256": "f8363f0a480056ac042eb21a5cccbb3125e3400e8b1211d2c6b2cf799ff22b9f",
+        "exactlyEqual": true,
+        "normalization": "none"
+      },
+      {
+        "route": "/api/records",
+        "sha256": "59755fb2018feab265b2e4bb8a45b7e295d364a643fb8e031923a55b8d38e011",
+        "exactlyEqual": true,
+        "normalization": "none"
+      },
+      {
+        "route": "/api/engineering-review",
+        "sha256": "c688b54a5da9829b5b9d80dcec37b2274588840de4d72648b182639eb416e282",
+        "exactlyEqual": true,
+        "normalization": "none"
+      }
+    ],
+    "originalExpiry": "2026-11-17T21:49:14.202Z",
+    "originalRevision": 2,
+    "originalGraphHash": "68f130fb23b10e3fae3ee81e8dc777525ffdb63b0e1c41553035985a5eb91c40",
+    "originalOrders": 0,
+    "admissions": 0,
+    "grants": 0,
+    "uploads": 0,
+    "queueMaintenanceRequests": 0,
+    "modelProviderFinancialCalls": 0,
+    "sessionRenewals": 0
+  },
+  "preservation": {
+    "sameExportedSnapshotBackup": {
+      "bytes": 2271972,
+      "sha256": "21be84481807a4f3843539f5bf65789e099f27bb237c639e1a874defcfa6c4bb",
+      "tocEntries": 790,
+      "allDataBlocksReadable": true,
+      "sameSnapshotAsBaseline": true
+    },
+    "postCanonical": {
+      "rows": 796,
+      "tables": 123,
+      "allRowsByteIdentical": true,
+      "allOriginalExpiriesGraphsCertificatesAndFinancialRowsUnchanged": true,
+      "authenticProviderExampleUnchanged": true,
+      "newAdmissions": 0,
+      "newCommands": 0,
+      "newProviderModelFinancialRows": 0
+    }
+  },
+  "evidenceHashes": {
+    "local-native": "1d23f141306887a2e6dcb7e822771b77aed0677a81c313cae52d340bb1eb53d3",
+    "local-post-native": "d1cc2b02c543898f5dfd4b1fa3caa3f290fc9ab4af1a2a714882a8fc981690d6",
+    "local-mcp": "526dfbed731d1cd3588d0e8d967934d0bfbbafc0d12e7ec5615d29caeb0a62d9",
+    "independent-upload": "2bd5403e6b90ad3400268e63ed2206304be4bd0891c40d7de8578b30d1ea87c8",
+    "dependency-controls": "91d5ba857789e7e5af3dabf5aee8b7a3a4523bb731ec822a7e2404bdf5b7188c",
+    "stage-qualification": "e5ee5f1e69d191f29f52fd0d055a1ed905bf307cab619ebc8292d5a006aee7d6",
+    "promoted-identity": "3f18dcf94aef23f54823d484240ecd639021c617902cbbd0d6e22f7cdad79ad8",
+    "promoted-continuity": "dead86c1e03ce4af8b13d5c03256c21c2025bcaac0a4b33bef5218fe3d49b535",
+    "promoted-audit": "e276f678ad2cd06c73a340de83688cb0a15c312acd62492d6727c24dd0a46c03"
+  },
+  "limitations": [
+    "The dependency tree retains ten package findings: nine high and one moderate, representing six underlying advisories. The narrow LangSmith override is outside its parent range and has bounded adapter qualification, not a general support guarantee.",
+    "The local image exercise used the installed official Blob SDK with a controlled loopback peer. It does not claim a new genuine Vercel store operation.",
+    "No hosted new grant, image, model, catalog, merchant, payment or physical operation was part of this source release. A subsequent explicitly authorized Sample film cohort is separately attributed.",
+    "Channel3 SDK licensing and genuine physical merchant eligibility remain external requirements.",
+    "Physical equipment measurements, independent adjudication and consented novice/engineer research remain unperformed or unverified; their software workflows and disclosed Sample fallbacks are implemented.",
+    "Three original film excerpts are qualified. The remaining nine shots and complete 170-second assembly are separate output work; no public submission is implied."
+  ]
+}

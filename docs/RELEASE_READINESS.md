@@ -2,6 +2,8 @@
 
 This guide runs from the public source, `.env.example` and checked-in vendor archives. Private plans and historical operator credentials are not prerequisites. Source-input validation and the licensing inventory are bounded release checks; they do not establish provider eligibility, physical results, independent research findings or permission to publish third-party material.
 
+Final source `d79827d` was promoted on 12 November 2026 after its affected controls, joined build, native image-intake review and read-only hosted qualification. The [release receipt](evidence/final-source-release-qualification.json) records the exact scope, preserved original data and residual limits. The documentation receipt is a later source-only update; it does not imply another deployment or a new provider run.
+
 ## Fresh isolated development setup
 
 Use Node **22.x**, npm **10.9.8**, Git and a local PostgreSQL instance. Git access is needed for the exact context-plugin PayPal SDK commit in the lockfile. Normal dependency installation runs that SDK's `prepare` build and may need native-addon build tooling when a prebuilt addon is unavailable. Keep a new checkout's dependencies and Next output separate from any running checkout.
