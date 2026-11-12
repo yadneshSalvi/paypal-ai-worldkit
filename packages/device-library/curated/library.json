@@ -1,0 +1,1945 @@
+{
+ "schema": "worldkit.dossier.1",
+ "extractor": "Anthropic Claude Fable 5.2 (curation pass over cached manufacturer text)",
+ "devices": [
+  {
+   "id": "shure-sm58-lc",
+   "manufacturer": "Shure",
+   "model": "SM58",
+   "variant": "SM58-LC · wired XLR · no cable",
+   "kind": "microphone",
+   "shortName": "SM58",
+   "description": "A familiar dynamic microphone for a voice.",
+   "accent": "#dbe4ed",
+   "sources": [
+    {
+     "id": "corpus-shure-sm58-lc",
+     "title": "Shure SM58 User Guide",
+     "publisher": "Shure",
+     "kind": "manufacturer",
+     "location": "User guide PDF, specifications",
+     "url": "https://pubs.shure.com/view/guide/SM58/en-US.pdf"
+    }
+   ],
+   "ports": [
+    {
+     "id": "out",
+     "label": "Balanced XLR out",
+     "connector": "XLR",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-shure-sm58-lc",
+     "quote": "Three-pin professional audio (XLR), male",
+     "locator": "page 5"
+    }
+   ],
+   "facts": [
+    {
+     "property": "transducerType",
+     "value": "dynamic",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-shure-sm58-lc",
+     "quote": "The Shure SM58 is a unidirectional (cardioid) dynamic vocal microphone for professional vocal use in sound reinforcement",
+     "locator": "page 3",
+     "note": "A moving-coil dynamic microphone is passive; the rule engine derives that it needs no phantom power."
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "rode-podmic",
+   "manufacturer": "RØDE",
+   "model": "PodMic",
+   "variant": "XLR dynamic · black",
+   "kind": "microphone",
+   "shortName": "PodMic",
+   "description": "A broadcast-style dynamic microphone built for speech.",
+   "accent": "#e2e0dc",
+   "sources": [
+    {
+     "id": "corpus-rode-podmic",
+     "title": "RØDE PodMic Datasheet",
+     "publisher": "RØDE",
+     "kind": "manufacturer",
+     "location": "Datasheet PDF",
+     "url": "https://edge.rode.com/pdf/products/108/PodMic_Datasheet_07_FA.pdf"
+    }
+   ],
+   "ports": [
+    {
+     "id": "out",
+     "label": "Balanced XLR out",
+     "connector": "XLR",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-rode-podmic",
+     "quote": "Output Connection: XLR",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "transducerType",
+     "value": "dynamic",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-rode-podmic",
+     "quote": "Acoustic Principle: Dynamic",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "phantomRequired",
+     "value": false,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-rode-podmic",
+     "quote": "Phantom Power: Not required",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "at2020-xlr",
+   "manufacturer": "Audio-Technica",
+   "model": "AT2020",
+   "variant": "Black · XLR condenser (not USB)",
+   "kind": "microphone",
+   "shortName": "AT2020",
+   "description": "A condenser microphone that needs 48 V phantom power.",
+   "accent": "#e0e2e6",
+   "sources": [
+    {
+     "id": "corpus-at2020-xlr",
+     "title": "Audio-Technica AT2020 specification sheet",
+     "publisher": "Audio-Technica",
+     "kind": "manufacturer",
+     "location": "Specification sheet PDF",
+     "url": "https://docs.audio-technica.com/eu/at2020_english.pdf"
+    }
+   ],
+   "ports": [
+    {
+     "id": "out",
+     "label": "Balanced XLR out",
+     "connector": "XLR",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-at2020-xlr",
+     "quote": "Output from the microphone’s XLRM-type connector is low",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "transducerType",
+     "value": "condenser",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-at2020-xlr",
+     "quote": "permanently polarized condenser",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "phantomRequired",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-at2020-xlr",
+     "quote": "is available. It requires 48V DC phantom power, which may be",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "phantomVoltage",
+     "value": 48,
+     "unit": "V",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-at2020-xlr",
+     "quote": "is available. It requires 48V DC phantom power, which may be",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "zoom-h4essential",
+   "manufacturer": "Zoom",
+   "model": "H4essential",
+   "variant": "Original H4essential · firmware as documented in the operation manual",
+   "kind": "recorder",
+   "shortName": "H4essential",
+   "description": "Keeps each microphone on its own track on the card and sends the mix to your stream.",
+   "accent": "#d7dfeb",
+   "sources": [
+    {
+     "id": "corpus-zoom-h4essential",
+     "title": "Zoom H4essential Operation Manual",
+     "publisher": "Zoom",
+     "kind": "manufacturer",
+     "location": "Online operation manual",
+     "url": "https://zoomcorp.com/manuals/h4essential-en/"
+    }
+   ],
+   "ports": [
+    {
+     "id": "input1",
+     "label": "Input 1 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Connect dynamic and condenser mics with XLR plugs to inputs 1 and 2.",
+     "locator": "page 1"
+    },
+    {
+     "id": "input2",
+     "label": "Input 2 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Connect dynamic and condenser mics with XLR plugs to inputs 1 and 2.",
+     "locator": "page 1"
+    },
+    {
+     "id": "usb",
+     "label": "USB-C · audio interface",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "usb_audio",
+      "usb_data"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "USB | Connectors | USB Type-C• Use a USB cable that supports data transfer. USB bus power is supported.",
+     "locator": "page 1"
+    },
+    {
+     "id": "phones",
+     "label": "Phone / line out",
+     "connector": "3.5mm TRS",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Use this stereo mini jack to output sound to headphones or a connected device.",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "independentChannels",
+     "value": 2,
+     "unit": "count",
+     "conditions": [
+      "Counts the two mono XLR/TRS combo inputs (INPUT 1 and INPUT 2)."
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "MIC/LINE (mono) | Connectors | 2 XLR/TRS combo jacks (XLR: 2 HOT, TRS: TIP HOT) |",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "onboardIsolated",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "Tracks for INPUT 1 and INPUT 2 enabled; stereo link off."
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "When recording with the H4essential, every selected track is recorded separately. In addition, all signals are mixed and simultaneously recorded as a stereo file.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "simultaneousUsbRecording",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "USB audio interface mode set to Audio I/F + REC",
+      "Sample rate 44.1 kHz or 48 kHz"
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Audio I/F + REC | The H4essential can record and play back even when it is being used as an audio interface.For details about this function, see “Recording on the H4essential while using it as an audio interface”.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbStereoMix",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "USB audio interface channel set to Stereo mix"
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Stereo mix | This will make a stereo mix of all inputs with the volume adjustments on the Mixer Screen and output two channels to the computer, smartphone or tablet. (→ Adjusting the monitoring balance of input sounds) |",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbDriverless",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "No driver is necessary for use with smartphones, tablets or Mac computers.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "phantomVoltage",
+     "value": 48,
+     "unit": "V",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "H4essential inputs 1 and 2 support phantom power and can provide +48 V. Turn on phantom power when condenser mics that require it are connected.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "batteryPower",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "Two AA batteries; not stated as included."
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "The H4essential can operate using batteries or a power supply connected to the USB port (AC adapter, USB bus power or portable battery).",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbBusPower",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "USB | Connectors | USB Type-C• Use a USB cable that supports data transfer. USB bus power is supported.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "powerWatts",
+     "value": 3,
+     "unit": "W",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Power consumption | 3 W maximum |",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "recordingMedia",
+     "value": "microSDHC 4-32 GB or microSDXC 64 GB-1 TB",
+     "unit": null,
+     "conditions": [],
+     "critical": false,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "microSDXC: 64 GB – 1 TB",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "sharedPhoneLineOutput",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "Outputs | PHONE/LINE OUT | Connector | 1 stereo mini jack |",
+     "locator": "page 1",
+     "note": "One jack serves headphones or a line feed, not both."
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": [
+    {
+     "id": "aif-rec",
+     "label": "Audio I/F + REC at 44.1 or 48 kHz",
+     "settings": {
+      "recordingMode": "Audio I/F + REC",
+      "sampleRate": [
+       44100,
+       48000
+      ]
+     },
+     "enables": [
+      "simultaneousUsbRecording"
+     ],
+     "sourceId": "corpus-zoom-h4essential",
+     "quote": "NOTE “Audio I/F + REC” can be selected only when the sample rate is set to 44.1 kHz or 48 kHz. (→ Setting the sample rate)",
+     "locator": "page 1"
+    }
+   ]
+  },
+  {
+   "id": "zoom-h6essential",
+   "manufacturer": "Zoom",
+   "model": "H6essential",
+   "variant": "Original H6essential · firmware as documented in the operation manual",
+   "kind": "recorder",
+   "shortName": "H6essential",
+   "description": "Four microphone inputs on separate tracks, with room for two more voices.",
+   "accent": "#d3dde6",
+   "sources": [
+    {
+     "id": "corpus-zoom-h6essential",
+     "title": "Zoom H6essential Operation Manual",
+     "publisher": "Zoom",
+     "kind": "manufacturer",
+     "location": "Online operation manual",
+     "url": "https://zoomcorp.com/manuals/h6essential-en/"
+    }
+   ],
+   "ports": [
+    {
+     "id": "input1",
+     "label": "Input 1 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "MIC/LINE (mono) | 4 |",
+     "locator": "page 1"
+    },
+    {
+     "id": "input2",
+     "label": "Input 2 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "MIC/LINE (mono) | 4 |",
+     "locator": "page 1"
+    },
+    {
+     "id": "input3",
+     "label": "Input 3 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "MIC/LINE (mono) | 4 |",
+     "locator": "page 1"
+    },
+    {
+     "id": "input4",
+     "label": "Input 4 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "MIC/LINE (mono) | 4 |",
+     "locator": "page 1"
+    },
+    {
+     "id": "usb",
+     "label": "USB-C · audio interface",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "usb_audio",
+      "usb_data"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "USB port (Type-C)",
+     "locator": "page 1"
+    },
+    {
+     "id": "phones",
+     "label": "Headphone out",
+     "connector": "3.5mm TRS",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "Headphone | Connector | 1 stereo mini jack |",
+     "locator": "page 1"
+    },
+    {
+     "id": "line",
+     "label": "Line out",
+     "connector": "3.5mm TRS",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "Use a stereo mini jack cable to connect the input jack of the camera to the H6essential LINE OUT jack.",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "independentChannels",
+     "value": 4,
+     "unit": "count",
+     "conditions": [
+      "Counts the four mono XLR/TRS combo inputs."
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "MIC/LINE (mono) | 4 |",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "onboardIsolated",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "When recording with the H6essential, every selected track is recorded separately. In addition, all signals are mixed and simultaneously recorded as a stereo file.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "simultaneousUsbRecording",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "USB audio interface mode set to Audio I/F + REC",
+      "Sample rate 44.1 kHz or 48 kHz"
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "Moreover, the H6essential can record even when it is being used as an audio interface.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbDriverless",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "No driver is necessary for use with smartphones, tablets or Mac computers.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "phantomVoltage",
+     "value": 48,
+     "unit": "V",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "H6essential inputs 1–4 support phantom power and can provide +48 V. Turn on phantom power when condenser mics that require it are connected.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "batteryPower",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "The H6essential can operate using batteries or a power supply connected to the USB port (AC adapter, USB bus power or portable battery).",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbBusPower",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "Connect this to a computer, smartphone or tablet to use file transfer functions and to use the H6essential as an audio interface.This supports operation on USB bus power.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "recordingMedia",
+     "value": "microSDHC 4-32 GB or microSDXC 64 GB-1 TB",
+     "unit": null,
+     "conditions": [],
+     "critical": false,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "microSDXC: 64 GB – 1 TB",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "independentLineOutput",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "LINE OUT jack\nThis outputs sound to a connected device.",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "usbStereoMix",
+     "reason": "The cached manual passage for the stereo-mix USB channel setting was not located for this model."
+    }
+   ],
+   "operatingModes": [
+    {
+     "id": "aif-rec",
+     "label": "Audio I/F + REC at 44.1 or 48 kHz",
+     "settings": {
+      "recordingMode": "Audio I/F + REC",
+      "sampleRate": [
+       44100,
+       48000
+      ]
+     },
+     "enables": [
+      "simultaneousUsbRecording"
+     ],
+     "sourceId": "corpus-zoom-h6essential",
+     "quote": "NOTE “Audio I/F + REC” can be selected only when the sample rate is set to 44.1 kHz or 48 kHz. (→ Setting the sample rate)",
+     "locator": "page 1"
+    }
+   ]
+  },
+  {
+   "id": "zoom-podtrak-p4",
+   "manufacturer": "Zoom",
+   "model": "PodTrak P4",
+   "variant": "Original P4 · firmware 2 manual",
+   "kind": "mixer",
+   "shortName": "PodTrak P4",
+   "description": "A four-voice podcast recorder with a headphone output for everyone.",
+   "accent": "#e6ddcf",
+   "sources": [
+    {
+     "id": "corpus-zoom-podtrak-p4",
+     "title": "Zoom PodTrak P4 Operation Manual",
+     "publisher": "Zoom",
+     "kind": "manufacturer",
+     "location": "Operation manual PDF",
+     "url": "https://zoomcorp.com/media/documents/E_P4_v2.pdf"
+    }
+   ],
+   "ports": [
+    {
+     "id": "input1",
+     "label": "Input 1 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The levels of the 4 mic inputs can be adjusted for the voices of the participants. The 4 headphone outputs allow",
+     "locator": "page 3"
+    },
+    {
+     "id": "input2",
+     "label": "Input 2 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The levels of the 4 mic inputs can be adjusted for the voices of the participants. The 4 headphone outputs allow",
+     "locator": "page 3"
+    },
+    {
+     "id": "input3",
+     "label": "Input 3 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The levels of the 4 mic inputs can be adjusted for the voices of the participants. The 4 headphone outputs allow",
+     "locator": "page 3"
+    },
+    {
+     "id": "input4",
+     "label": "Input 4 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The levels of the 4 mic inputs can be adjusted for the voices of the participants. The 4 headphone outputs allow",
+     "locator": "page 3"
+    },
+    {
+     "id": "usb",
+     "label": "USB-C · audio interface",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "usb_audio",
+      "usb_data"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The 2-in/2-out USB audio interface functions of the P4 can be used for live streaming and recording with",
+     "locator": "page 3"
+    },
+    {
+     "id": "phones",
+     "label": "Headphone out 1",
+     "connector": "3.5mm TRS",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The levels of the 4 mic inputs can be adjusted for the voices of the participants. The 4 headphone outputs allow",
+     "locator": "page 3"
+    }
+   ],
+   "facts": [
+    {
+     "property": "independentChannels",
+     "value": 4,
+     "unit": "count",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "Multitrack recorder supports recording up to four channels at the same time",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "onboardIsolated",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "for podcasting, the recorded data includes separate files for the audio of each channel that can be utilized for",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "usbStereoMix",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "USB carries a two-channel mix."
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "The 2-in/2-out USB audio interface functions of the P4 can be used for live streaming and recording with",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "phantomVoltage",
+     "value": 48,
+     "unit": "V",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "phantom power (+48 V). Enjoy recording using your favorite mics.",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "batteryPower",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "In addition to using an AC adapter, the P4 can be powered by 2 AA batteries or a USB mobile battery, enabling",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "directHostConnectionAdvised",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-podtrak-p4",
+     "quote": "• Connect the P4 directly to a USB port on the computer or other device. Do not connect it through a USB",
+     "locator": "page 55",
+     "note": "Zoom's troubleshooting guidance: connect directly to the host, not through a hub."
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "simultaneousUsbRecording",
+     "reason": "The cited manual passages do not state that the P4 records its card files while streaming over USB through a hub; WorldKit will not guess."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "zoom-livetrak-l8",
+   "manufacturer": "Zoom",
+   "model": "LiveTrak L-8",
+   "variant": "L-8 · not L-6 or L-12",
+   "kind": "mixer",
+   "shortName": "LiveTrak L-8",
+   "description": "A hands-on mixer that records every voice to its own track.",
+   "accent": "#d8dee7",
+   "sources": [
+    {
+     "id": "corpus-zoom-livetrak-l8",
+     "title": "Zoom LiveTrak L-8 product page",
+     "publisher": "Zoom",
+     "kind": "manufacturer",
+     "location": "Product page",
+     "url": "https://zoomcorp.com/en/jp/digital-mixer-multi-track-recorders/digital-mixer-recorders/LIVETRAK-L-8/"
+    }
+   ],
+   "ports": [
+    {
+     "id": "input1",
+     "label": "Input 1 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "The L-8 features six high performance preamps each with phantom power, a low noise floor (-121dBU EIN), and maximum input gain of +54dB.",
+     "locator": "page 1"
+    },
+    {
+     "id": "input2",
+     "label": "Input 2 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "The L-8 features six high performance preamps each with phantom power, a low noise floor (-121dBU EIN), and maximum input gain of +54dB.",
+     "locator": "page 1"
+    },
+    {
+     "id": "usb",
+     "label": "USB · audio interface",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "usb_audio",
+      "usb_data"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "The L-8 is also a 12-in/4-out audio interface. Track directly into your favorite DAW or use the USB return to run backing tracks from your computer.",
+     "locator": "page 1"
+    },
+    {
+     "id": "phones",
+     "label": "Headphone out",
+     "connector": "3.5mm TRS",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "If you can’t hear yourself, how are you supposed to speak your mind? The L-8 is equipped with four headphone outputs, so that each participant can clearly hear what is going on.",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "independentChannels",
+     "value": 6,
+     "unit": "count",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "Zoom’s preamps are famous for a good reason: they’re transparent, powerful and ultra-reliable. The L-8 features six independent Zoom preamps, built to handle anything from a whisper to a raucous debate.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "onboardIsolated",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "The pros know that when you record everyone on their own separate track it just sounds better and provides more flexibility in the edit. The L-8 records separate tracks directly to your SD card, enabling you to edit them later.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "simultaneousUsbRecording",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "Not at 96 kHz."
+     ],
+     "critical": true,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "Used as an audio interface, the L-8 can record full episodes directly to your computer and an SD card simultaneously. You can also live stream while recording.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbDriverless",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "L-8 is class compliant, enabling connection with iOS devices. Apple Lightning to USB Camera Adapter required.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "batteryPower",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-zoom-livetrak-l8",
+     "quote": "The Zoom LiveTrak L-8 can run up to 1 1⁄2 hours with just four AA batteries, or on a USB battery, so you can podcast from anywhere.",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "usbStereoMix",
+     "reason": "Zoom's product page does not say that the L-8 sends a stereo mix to a tablet over USB while it records; WorldKit will not guess."
+    },
+    {
+     "property": "phantomVoltage",
+     "reason": "The product page says each preamp has phantom power but does not state the voltage."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "focusrite-2i2-4",
+   "manufacturer": "Focusrite",
+   "model": "Scarlett 2i2",
+   "variant": "4th generation · two microphone inputs",
+   "kind": "interface",
+   "shortName": "Scarlett 2i2",
+   "description": "A compact interface; recording depends on the host application.",
+   "accent": "#f3d4d3",
+   "sources": [
+    {
+     "id": "corpus-focusrite-2i2-4",
+     "title": "Focusrite Scarlett 2i2 4th Gen User Guide",
+     "publisher": "Focusrite",
+     "kind": "manufacturer",
+     "location": "User guide PDF",
+     "url": "https://fael-downloads-prod.focusrite.com/customer/prod/downloads/scarlett_2i2_4th_gen_user_guide_v4-pdf-en.pdf"
+    }
+   ],
+   "ports": [
+    {
+     "id": "input1",
+     "label": "Input 1 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-focusrite-2i2-4",
+     "quote": "6. 48V button - Press to turn on 48V phantom power at the XLR mic input to power",
+     "locator": "page 9"
+    },
+    {
+     "id": "input2",
+     "label": "Input 2 · XLR",
+     "connector": "XLR",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_balanced"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-focusrite-2i2-4",
+     "quote": "6. 48V button - Press to turn on 48V phantom power at the XLR mic input to power",
+     "locator": "page 9"
+    },
+    {
+     "id": "usb",
+     "label": "USB-C",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "usb_audio",
+      "usb_data"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-focusrite-2i2-4",
+     "quote": "• USB-C to A cable",
+     "locator": "page 4"
+    },
+    {
+     "id": "phones",
+     "label": "Headphone out",
+     "connector": "6.35mm TRS",
+     "direction": "out",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-focusrite-2i2-4",
+     "quote": "6. 48V button - Press to turn on 48V phantom power at the XLR mic input to power",
+     "locator": "page 9"
+    }
+   ],
+   "facts": [
+    {
+     "property": "independentChannels",
+     "value": 2,
+     "unit": "count",
+     "conditions": [
+      "Two XLR microphone inputs."
+     ],
+     "critical": true,
+     "sourceId": "corpus-focusrite-2i2-4",
+     "quote": "When 48V is on, the Scarlett 2i2 applies 48V phantom power to both inputs.",
+     "locator": "page 9",
+     "note": null
+    },
+    {
+     "property": "phantomVoltage",
+     "value": 48,
+     "unit": "V",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-focusrite-2i2-4",
+     "quote": "6. 48V button - Press to turn on 48V phantom power at the XLR mic input to power",
+     "locator": "page 9",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "onboardIsolated",
+     "reason": "The interface has no recorder of its own; separate files depend on the host application."
+    },
+    {
+     "property": "hostIsolatedWhileStreaming",
+     "reason": "No Focusrite or tablet-app source states that a tablet records both inputs as separate files while it streams the live camera."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "sony-zve10",
+   "manufacturer": "Sony",
+   "model": "ZV-E10",
+   "variant": "Original generation · 1080 60p compatible model",
+   "kind": "camera",
+   "shortName": "ZV-E10",
+   "description": "Your camera supplies the picture over HDMI.",
+   "accent": "#dfe3e7",
+   "sources": [
+    {
+     "id": "corpus-sony-zve10",
+     "title": "Sony ZV-E10 Help Guide: Specifications",
+     "publisher": "Sony",
+     "kind": "manufacturer",
+     "location": "Help Guide, Specifications",
+     "url": "https://helpguide.sony.net/ilc/2070/v1/en/contents/TP1000201578.html"
+    },
+    {
+     "id": "sony-zve10-hdmi-resolution",
+     "title": "Sony ZV-E10 Help Guide: 24p/60p Output",
+     "publisher": "Sony",
+     "kind": "manufacturer",
+     "location": "Help Guide, HDMI Settings",
+     "url": "https://helpguide.sony.net/ilc/2070/v1/en/contents/TP0001140489.html"
+    }
+   ],
+   "ports": [
+    {
+     "id": "hdmi",
+     "label": "Micro HDMI out",
+     "connector": "Micro HDMI",
+     "direction": "out",
+     "signal": "video",
+     "protocols": [
+      "hdmi_1080p60"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-sony-zve10",
+     "quote": "HDMI type D micro jack",
+     "locator": "page 1"
+    },
+    {
+     "id": "mic",
+     "label": "Microphone input",
+     "connector": "3.5mm TRS",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_mic_stereo"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-sony-zve10",
+     "quote": "(Microphone) terminal",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "hdmi1080p60",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "HDMI Resolution set to 1080p",
+      "1080 60p compatible model"
+     ],
+     "critical": true,
+     "sourceId": "sony-zve10-hdmi-resolution",
+     "quote": "You can set 1080/24p or 1080/60p as the HDMI output format when [Record Setting] is set to [24p 50M ], [24p 60M] or [24p 100M].",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "lineToMicLevel",
+     "reason": "Sony's cited pages do not state a safe line-level input for the microphone jack; WorldKit will not guess."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "elgato-camlink-4k",
+   "manufacturer": "Elgato",
+   "model": "Cam Link 4K",
+   "variant": "USB 3.0 capture stick",
+   "kind": "capture",
+   "shortName": "Cam Link 4K",
+   "description": "Turns your camera's HDMI output into a webcam source.",
+   "accent": "#e3e5ec",
+   "sources": [
+    {
+     "id": "corpus-elgato-camlink-4k",
+     "title": "Elgato Cam Link 4K Technical Specifications",
+     "publisher": "Elgato",
+     "kind": "manufacturer",
+     "location": "Help center article",
+     "url": "https://help.elgato.com/api/v2/help_center/en-us/articles/360027963272.json"
+    }
+   ],
+   "ports": [
+    {
+     "id": "hdmi",
+     "label": "HDMI in",
+     "connector": "HDMI",
+     "direction": "in",
+     "signal": "video",
+     "protocols": [
+      "hdmi_1080p60"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-elgato-camlink-4k",
+     "quote": "It is a USB stick that has a female HDMI port on one end, and a male USB 3.0 port on the other end.",
+     "locator": "page 1"
+    },
+    {
+     "id": "usb",
+     "label": "USB 3.0 plug",
+     "connector": "USB-A",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "uvc",
+      "usb_data"
+     ],
+     "channels": 1,
+     "integral": true,
+     "sourceId": "corpus-elgato-camlink-4k",
+     "quote": "It is a USB stick that has a female HDMI port on one end, and a male USB 3.0 port on the other end.",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "hdmi1080p60",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "Unencrypted HDMI input."
+     ],
+     "critical": true,
+     "sourceId": "corpus-elgato-camlink-4k",
+     "quote": "1080p (1920 by 1080 resolution, up to 60 fps)",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "webcamSource",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-elgato-camlink-4k",
+     "quote": "Any camera with unencrypted HDMI output and a supported resolution and frame rate will appear as a webcam in various applications.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "usbInterfaceMbps",
+     "value": 5000,
+     "unit": "Mb/s",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-elgato-camlink-4k",
+     "quote": "It is a USB stick that has a female HDMI port on one end, and a male USB 3.0 port on the other end.",
+     "locator": "page 1",
+     "note": "USB 3.0 SuperSpeed is a 5 Gb/s link; used as an upper bound on what this device can ask of the bus."
+    },
+    {
+     "property": "directPlug",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-elgato-camlink-4k",
+     "quote": "It is a USB stick that has a female HDMI port on one end, and a male USB 3.0 port on the other end.",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "powerWatts",
+     "reason": "Elgato publishes no power draw for the Cam Link 4K; WorldKit will not guess a wattage."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "apple-ipad-air5",
+   "manufacturer": "Apple",
+   "model": "iPad Air",
+   "variant": "5th generation · M1 · Camo Studio for iPad",
+   "kind": "host",
+   "shortName": "iPad Air",
+   "description": "Your tablet runs the stream. Isolated recording happens elsewhere.",
+   "accent": "#dddcef",
+   "sources": [
+    {
+     "id": "corpus-apple-ipad-air5",
+     "title": "iPad Air (5th generation) Technical Specifications",
+     "publisher": "Apple",
+     "kind": "manufacturer",
+     "location": "Apple Support technical specifications",
+     "url": "https://support.apple.com/en-us/111887"
+    },
+    {
+     "id": "camo-ipad-guide",
+     "title": "How to use Camo Studio for iPad",
+     "publisher": "Reincubate",
+     "kind": "software_publisher",
+     "location": "Camo support article",
+     "url": "https://camo.com/support/camo-ipad/how-to-use-camo-ipad"
+    },
+    {
+     "id": "camo-ipad-troubleshooting",
+     "title": "Tips & Troubleshooting Camo Studio for iPad",
+     "publisher": "Reincubate",
+     "kind": "software_publisher",
+     "location": "Camo support article",
+     "url": "https://camo.com/support/camo-ipad/troubleshooting-camo-ipad"
+    }
+   ],
+   "ports": [
+    {
+     "id": "usb",
+     "label": "USB-C data + power",
+     "connector": "USB-C",
+     "direction": "in",
+     "signal": "data",
+     "protocols": [
+      "usb_data",
+      "usb_audio",
+      "uvc"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-apple-ipad-air5",
+     "quote": "USB 3 (up to 10Gb/s)",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "usbCapacityMbps",
+     "value": 10000,
+     "unit": "Mb/s",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-apple-ipad-air5",
+     "quote": "USB 3 (up to 10Gb/s)",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "externalVideo",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "Camo Studio for iPad",
+      "Capture card connected over USB"
+     ],
+     "critical": true,
+     "sourceId": "camo-ipad-guide",
+     "quote": "To populate it with your video sources, just go to the Primary source settings in the control panel on the left side of the interface, select external video source as your Type, and then select your capture card as your Device.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "externalVideoViaHub",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "camo-ipad-guide",
+     "quote": "If you’re connecting a dedicated camera or webcam, along with a console, you’ll need to plug them first into a hub, which then connects to the iPad.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "externalUsbAudio",
+     "value": true,
+     "unit": null,
+     "conditions": [
+      "One audio source at a time."
+     ],
+     "critical": true,
+     "sourceId": "camo-ipad-troubleshooting",
+     "quote": "This can be the iPad’s own microphone or one connected via a USB cable or USB hub.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "simultaneousUsbAudioSources",
+     "value": 1,
+     "unit": "count",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "camo-ipad-troubleshooting",
+     "quote": "Currently, iPadOS 26 only permits audio through a single source.",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "hostIsolatedWhileStreaming",
+     "reason": "No Apple or Camo source states that the tablet records each microphone as its own file while it streams the live camera; WorldKit will not guess."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "anker-555-a8383",
+   "manufacturer": "Anker",
+   "model": "555 USB-C Hub",
+   "variant": "A8383 · 8-in-1 · 10 Gb/s",
+   "kind": "hub",
+   "shortName": "555 USB-C Hub",
+   "description": "One connection to your tablet for the camera, audio and charging.",
+   "accent": "#dedfe6",
+   "sources": [
+    {
+     "id": "corpus-anker-555-a8383",
+     "title": "Anker 555 USB-C Hub (8-in-1) product page",
+     "publisher": "Anker",
+     "kind": "manufacturer",
+     "location": "Product page, model A8383",
+     "url": "https://www.anker.com/uk/products/a8383"
+    }
+   ],
+   "ports": [
+    {
+     "id": "audio",
+     "label": "USB-C data",
+     "connector": "USB-C",
+     "direction": "in",
+     "signal": "data",
+     "protocols": [
+      "usb_audio",
+      "usb_data"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "Massive Expansion: Equipped with a USB-C Power Delivery input port, a USB-C data port, 2 USB-A data ports, 1 HDMI port, an Ethernet port, and a microSD/SD card reader, giving you an incredible range of functions—all from a single USB-C port.",
+     "locator": "page 1"
+    },
+    {
+     "id": "video",
+     "label": "USB-A data",
+     "connector": "USB-A",
+     "direction": "in",
+     "signal": "data",
+     "protocols": [
+      "uvc",
+      "usb_data"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "Massive Expansion: Equipped with a USB-C Power Delivery input port, a USB-C data port, 2 USB-A data ports, 1 HDMI port, an Ethernet port, and a microSD/SD card reader, giving you an incredible range of functions—all from a single USB-C port.",
+     "locator": "page 1"
+    },
+    {
+     "id": "host",
+     "label": "USB-C to host",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "data",
+     "protocols": [
+      "usb_data",
+      "usb_audio",
+      "uvc"
+     ],
+     "channels": 2,
+     "integral": false,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "Turn your device’s USB-C port into 8 ports, allowing you to transfer data in seconds, stream media in unrivaled clarity, and provide high-speed pass-through charging.",
+     "locator": "page 1"
+    },
+    {
+     "id": "pd",
+     "label": "USB-C PD in",
+     "connector": "USB-C",
+     "direction": "in",
+     "signal": "power",
+     "protocols": [
+      "usb_pd"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "Massive Expansion: Equipped with a USB-C Power Delivery input port, a USB-C data port, 2 USB-A data ports, 1 HDMI port, an Ethernet port, and a microSD/SD card reader, giving you an incredible range of functions—all from a single USB-C port.",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "usbCapacityMbps",
+     "value": 10000,
+     "unit": "Mb/s",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "High-Speed, High-Def: USB-C and USB-A data ports provide file transfer at speeds up to 10 Gbps, while an HDMI port supports media display at resolutions up to 4K@60Hz.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "pdInputMaxWatts",
+     "value": 100,
+     "unit": "W",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "The USB-C port supports pass-through charging up to 100W (minus 15W for operation), allowing you to charge up your laptop at high-speed while retaining full function of the hub’s other ports. (Wall charger not included)",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "pdReserveWatts",
+     "value": 15,
+     "unit": "W",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "The USB-C port supports pass-through charging up to 100W (minus 15W for operation), allowing you to charge up your laptop at high-speed while retaining full function of the hub’s other ports. (Wall charger not included)",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "hostPowerMaxWatts",
+     "value": 85,
+     "unit": "W",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "Powerful Pass-Through Charging: Compatible with USB-C Power Delivery to provide high-speed pass-through charging up to 85W.",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "tabletMinAdapterWatts",
+     "value": 45,
+     "unit": "W",
+     "conditions": [
+      "Anker's note for tablets."
+     ],
+     "critical": true,
+     "sourceId": "corpus-anker-555-a8383",
+     "quote": "Due to the power input limitations of mobile devices, this hub can not provide pass-through charging to tablets (including iPad Pro) or phones when using the original wall charger that came with your mobile device. To support full-speed charging for iPad Pro, use an adapter that supports at least 15V (45W).",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [
+    {
+     "property": "peripheralPowerWatts",
+     "reason": "Anker publishes no per-port wattage for bus-powered accessories; WorldKit will not guess a headroom figure."
+    }
+   ],
+   "operatingModes": []
+  },
+  {
+   "id": "anker-735-a2668",
+   "manufacturer": "Anker",
+   "model": "735 Charger",
+   "variant": "A2668 · GaNPrime 65W",
+   "kind": "power",
+   "shortName": "735 Charger 65W",
+   "description": "A 65 W USB-C charger for the hub's pass-through power.",
+   "accent": "#eae0ce",
+   "sources": [
+    {
+     "id": "corpus-anker-735-a2668",
+     "title": "Anker 735 Charger (GaNPrime 65W) product description",
+     "publisher": "Anker",
+     "kind": "manufacturer",
+     "location": "Anker service product description, A2668",
+     "url": "https://service.anker.com/product-description/a085g000004xGpUAAU"
+    }
+   ],
+   "ports": [
+    {
+     "id": "out",
+     "label": "USB-C PD out",
+     "connector": "USB-C",
+     "direction": "out",
+     "signal": "power",
+     "protocols": [
+      "usb_pd"
+     ],
+     "channels": 1,
+     "integral": false,
+     "sourceId": "corpus-anker-735-a2668",
+     "quote": "USB-C1(Top Port)/USB-C2(Middle Port): 5V==3A /9V==3A /15V==3A /20V==3.25A (65W Max)",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "powerWatts",
+     "value": 65,
+     "unit": "W",
+     "conditions": [
+      "Single USB-C port in use."
+     ],
+     "critical": true,
+     "sourceId": "corpus-anker-735-a2668",
+     "quote": "USB-C1(Top Port)/USB-C2(Middle Port): 5V==3A /9V==3A /15V==3A /20V==3.25A (65W Max)",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "sony-mdr7506",
+   "manufacturer": "Sony",
+   "model": "MDR-7506",
+   "variant": "Stereo Unimatch plug · 3.5 mm with 6.3 mm adaptor",
+   "kind": "headphones",
+   "shortName": "MDR-7506",
+   "description": "Your headphones follow the recorder's mix.",
+   "accent": "#e4e3dc",
+   "sources": [
+    {
+     "id": "corpus-sony-mdr7506",
+     "title": "Sony MDR-7506 product sheet",
+     "publisher": "Sony",
+     "kind": "manufacturer",
+     "location": "Sony Professional product PDF",
+     "url": "https://pro.sony/en_NA/pdf/mdr-7506"
+    }
+   ],
+   "ports": [
+    {
+     "id": "in",
+     "label": "Headphone plug",
+     "connector": "3.5mm TRS",
+     "direction": "in",
+     "signal": "audio",
+     "protocols": [
+      "analog_stereo"
+     ],
+     "channels": 2,
+     "integral": true,
+     "sourceId": "corpus-sony-mdr7506",
+     "quote": "Plug Type Gold, Stereo Unimatch plug 1/4\" and 1/8\"\nCord Length 9.8 ft",
+     "locator": "page 1"
+    }
+   ],
+   "facts": [
+    {
+     "property": "stereoMonitoring",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-sony-mdr7506",
+     "quote": "Stereo professional headphones",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "adapterIncluded",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": false,
+     "sourceId": "corpus-sony-mdr7506",
+     "quote": "and gold-plated UnimatchTM 3.5mm/6.3mm adaptor.",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "hosa-hmic010",
+   "manufacturer": "Hosa",
+   "model": "HMIC-010",
+   "variant": "Pro Microphone Cable · XLR3F to XLR3M · 10 ft",
+   "kind": "cable",
+   "shortName": "XLR mic cable",
+   "description": "A balanced microphone cable, one per voice.",
+   "accent": "#e4e5e1",
+   "sources": [
+    {
+     "id": "corpus-hosa-hmic010",
+     "title": "Hosa Pro Microphone Cable HMIC-000 series",
+     "publisher": "Hosa",
+     "kind": "manufacturer",
+     "location": "Product page, HMIC-000 series",
+     "url": "https://hosatech.com/products/analog-audio/microphone-cables/hmic-000/"
+    }
+   ],
+   "ports": [],
+   "facts": [
+    {
+     "property": "connectorA",
+     "value": "XLR",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-hosa-hmic010",
+     "quote": "REAN XLR3F to XLR3M Price range: $16.95 through $122.95",
+     "locator": "page 1",
+     "note": null
+    },
+    {
+     "property": "connectorB",
+     "value": "XLR",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-hosa-hmic010",
+     "quote": "REAN XLR3F to XLR3M Price range: $16.95 through $122.95",
+     "locator": "page 1",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "startech-hdmiadmm3",
+   "manufacturer": "StarTech.com",
+   "model": "HDMIADMM3",
+   "variant": "3 ft Micro HDMI to HDMI · High Speed with Ethernet",
+   "kind": "cable",
+   "shortName": "Micro HDMI cable",
+   "description": "Carries the camera's picture to the capture stick.",
+   "accent": "#e4e5e1",
+   "sources": [
+    {
+     "id": "corpus-startech-hdmiadmm3",
+     "title": "StarTech.com HDMIADMM3 datasheet",
+     "publisher": "StarTech.com",
+     "kind": "manufacturer",
+     "location": "Datasheet PDF",
+     "url": "https://media.startech.com/cms/pdfs/hdmiadmm3_datasheet.pdf"
+    }
+   ],
+   "ports": [],
+   "facts": [
+    {
+     "property": "connectorA",
+     "value": "Micro HDMI",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-hdmiadmm3",
+     "quote": "Connector 2 Micro HDMI",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "connectorB",
+     "value": "HDMI",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-hdmiadmm3",
+     "quote": "Connector 1 HDMI",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "carries:hdmi_1080p60",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-hdmiadmm3",
+     "quote": "(3840x2160p, 24, 25, 30Hz 4096x2160p, 24Hz), Full HD (1920x1080p, 120Hz), 10.2Gbps bandwidth, wide aspect",
+     "locator": "page 2",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  },
+  {
+   "id": "startech-usb315cc1m",
+   "manufacturer": "StarTech.com",
+   "model": "USB315CC1M",
+   "variant": "1 m USB-C to USB-C · 5 Gb/s · 60 W",
+   "kind": "cable",
+   "shortName": "USB-C cable",
+   "description": "A data-capable USB-C cable that also carries charging power.",
+   "accent": "#e4e5e1",
+   "sources": [
+    {
+     "id": "corpus-startech-usb315cc1m",
+     "title": "StarTech.com USB315CC1M datasheet",
+     "publisher": "StarTech.com",
+     "kind": "manufacturer",
+     "location": "Datasheet PDF",
+     "url": "https://media.startech.com/cms/pdfs/usb315cc1m_datasheet.pdf"
+    }
+   ],
+   "ports": [],
+   "facts": [
+    {
+     "property": "connectorA",
+     "value": "USB-C",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "Connector 1 USB-C (5Gbps, 4.5W)",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "connectorB",
+     "value": "USB-C",
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "Connector 2 USB-C (5Gbps, 4.5W)",
+     "locator": "page 3",
+     "note": null
+    },
+    {
+     "property": "carries:usb_data",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "• Supports data transfer rates up to 5Gbps (USB 3.2 Gen 1)",
+     "locator": "page 2",
+     "note": null
+    },
+    {
+     "property": "carries:usb_audio",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "• Supports data transfer rates up to 5Gbps (USB 3.2 Gen 1)",
+     "locator": "page 2",
+     "note": "USB audio is ordinary USB data; the cable is documented as a data cable."
+    },
+    {
+     "property": "carries:usb_pd",
+     "value": true,
+     "unit": null,
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "Power Delivery 60W",
+     "locator": "page 2",
+     "note": null
+    },
+    {
+     "property": "dataRateMbps",
+     "value": 5000,
+     "unit": "Mb/s",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "• Supports data transfer rates up to 5Gbps (USB 3.2 Gen 1)",
+     "locator": "page 2",
+     "note": null
+    },
+    {
+     "property": "powerMaxWatts",
+     "value": 60,
+     "unit": "W",
+     "conditions": [],
+     "critical": true,
+     "sourceId": "corpus-startech-usb315cc1m",
+     "quote": "Power Delivery 60W",
+     "locator": "page 2",
+     "note": null
+    }
+   ],
+   "unknowns": [],
+   "operatingModes": []
+  }
+ ]
+}
