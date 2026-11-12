@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useRef, type ReactNode } from "react";
-export function ModalFrame({ children, labelledBy, onClose, className = "", backdropClassName = "" }: { children: ReactNode; labelledBy: string; onClose: () => void; className?: string; backdropClassName?: string }) {
+import { useEffect, useRef, type ReactNode, type RefObject } from "react";
+export function ModalFrame({ children, labelledBy, onClose, className = "", backdropClassName = "", returnFocusRef }: { children: ReactNode; labelledBy: string; onClose: () => void; className?: string; backdropClassName?: string; returnFocusRef?: RefObject<HTMLElement | null> }) {
   const element = useRef<HTMLDivElement>(null); const close = useRef(onClose); close.current = onClose;
   useEffect(() => {
     const before = document.activeElement as HTMLElement | null; const previousOverflow = document.body.style.overflow; document.body.style.overflow = "hidden";
@@ -16,7 +16,7 @@ export function ModalFrame({ children, labelledBy, onClose, className = "", back
       }
     };
     document.addEventListener("keydown", onKey);
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = previousOverflow; before?.focus(); };
-  }, []);
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = previousOverflow; (returnFocusRef?.current ?? before)?.focus(); };
+  }, [returnFocusRef]);
   return <div className={`modal-backdrop ${backdropClassName}`} onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }}><div ref={element} tabIndex={-1} className={`modal ${className}`} role="dialog" aria-modal="true" aria-labelledby={labelledBy}>{children}</div></div>;
 }
