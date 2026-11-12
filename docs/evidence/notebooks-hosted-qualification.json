@@ -1,0 +1,207 @@
+{
+  "schema": "worldkit.notebooks.hosted-qualification.1",
+  "qualifiedAt": "2026-11-12T12:42:58.141Z",
+  "sourceCommit": "0ff9d6ad07c24eb15be944be6f7ceb97dbbcac41",
+  "deploymentId": "dpl_5NuGnhhk3c9iP5JEMNeX1xGuxMeG",
+  "canonicalUrl": "https://paypal-ai-worldkit.vercel.app",
+  "promoted": true,
+  "canonicalAliasAndProjectTargetVerified": true,
+  "scope": "Actual hosted notebook, private Blob storage and consent/task software exercised with explicit fictional Sample observations. No physical equipment run or independently established human participant.",
+  "release": {
+    "cleanGitArchive": true,
+    "trackedSourceFiles": 478,
+    "sourceManifestSha256": "75c38ccb319203e170ec7d7e80cc6067e1aca8c18b5fc09a21a84d184f7c56f7",
+    "exactPrivateValueMatchesInUpload": 0,
+    "environmentOrProjectSettingsChanged": false
+  },
+  "softwareQualification": {
+    "researchMountedAndPure": 36,
+    "researchActualLoopbackHttpPostgres": 20,
+    "explicitEntryMounted": 12,
+    "explicitEntryActualLoopbackHttpPostgres": 12,
+    "fullTypecheck": "passed",
+    "localAndHostedProductionBuilds": "passed",
+    "priorPhysicalAndCorrectionReceiptsRetained": true
+  },
+  "hostedQualification": {
+    "explicitNewSampleWorkspaces": 2,
+    "protectedApplicationRequests": 100,
+    "journaledMutationAttempts": 34,
+    "unresolvedMutations": 0,
+    "successfulResearchCommands": 13,
+    "successfulPhysicalNotebookCommands": 9,
+    "successfulDomainCommands": 1,
+    "anonymousOrUnattributedAdmissions": 0,
+    "ownerForeignOriginAnonymousBoundaries": "passed",
+    "sameRequestRecoveryAndChangedBodyCollision": "passed",
+    "privateAndRedactedJsonCsvHashes": "passed",
+    "exportRouteObservations": 19,
+    "successfulPrivateAndRedactedExports": 18
+  },
+  "privateOriginal": {
+    "sdk": "@vercel/blob 2.9.0",
+    "transport": "Existing private Blob store; exact-path bounded client token; official multipart SDK",
+    "multipartHttpOperations": 3,
+    "sdkTransportRetries": 0,
+    "bytes": 128278,
+    "sha256": "4b0052b9286f4ebebecf52dea9e8967dc03cef93a34b1aefd68c317146ce8b9a",
+    "provenance": "sample_generated",
+    "generatedHelper": false,
+    "declaredChannels": 2,
+    "sampleRate": 16000,
+    "durationSeconds": 2,
+    "serverByteChecks": 1,
+    "authenticatedProviderCallbackObserved": true,
+    "explicitAttachmentAndSealing": true,
+    "automaticAttachment": false,
+    "nativePlayback": {
+      "durationSeconds": 2,
+      "ended": true,
+      "error": null,
+      "claim": "Browser playback completed; no listening-quality or real microphone claim."
+    }
+  },
+  "sealedSampleReport": {
+    "edition": 7,
+    "contentHash": "17388afed80bd181f5ec488ba2627982623f430ce98f6a56799550f0bcf50c6f",
+    "reportedFailures": 1,
+    "visibleEvidenceGaps": 17,
+    "recordedIntervalSeconds": 8.367,
+    "declaredIntervalSeconds": 60,
+    "actualQualifiedReviews": 0,
+    "physicalExecution": "not_performed",
+    "oldCompatibilityCertificateChanged": false
+  },
+  "research": {
+    "fictionalParticipants": 1,
+    "immutableConsentDeclarations": 2,
+    "protocolsAcrossTwoStudies": 3,
+    "retainedAttempts": 3,
+    "firstAttemptCountsBeforeWithdrawal": {
+      "success": 0,
+      "partial": 0,
+      "failure": 1,
+      "abandoned": 0,
+      "unknown": 0,
+      "pending": 0,
+      "excluded": 0,
+      "denominator": 1,
+      "unaidedSuccess": 0,
+      "assistance": {
+        "none": 1,
+        "prompted": 0,
+        "guided": 0,
+        "notRecorded": 0
+      },
+      "comprehension": {
+        "correct": 0,
+        "incorrect": 0,
+        "uncertain": 0,
+        "notAssessed": 1
+      }
+    },
+    "originalFailedAttemptSurvivesSuccessfulRetry": true,
+    "protocolCohortsRemainSeparate": true,
+    "changedSourceObservationRetained": true,
+    "finalParticipantWithdrawn": true,
+    "privateTextWithheldAfterWithdrawal": true,
+    "newerPublicConsentCannotExpandOriginalScope": true,
+    "independentlyVerifiedParticipants": 0
+  },
+  "independentNative": {
+    "passed": true,
+    "currentAndHistoricalReportAndProtocol": "passed",
+    "exactOriginalPlayback": "passed",
+    "unattachedHistoricalVaultDisclosure": "passed",
+    "withdrawnPrivateResearchWithheld": "passed",
+    "currentHeadingFocus": "passed",
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "consoleWarningsOrErrors": 0,
+    "networkEvents": 100,
+    "networkLogTruncated": false,
+    "nonGetHeadOptions": 0,
+    "originalCookiesRestored": true
+  },
+  "preservation": {
+    "backup": {
+      "bytes": 2086305,
+      "sha256": "d923b908530df8bb39d218171c98336cc0907b99472195dc00064daa369451e0",
+      "tocEntries": 636,
+      "allDataBlocksReadable": true,
+      "sameExportedSnapshot": true
+    },
+    "additiveMigration": {
+      "tables": 20,
+      "triggers": 20,
+      "functions": 9,
+      "sqlSha256": "58b1d6fc3cf1d7f2ed0ebc678f4e44c12e8f2fe5081db64a7382e06e51c9baaf",
+      "oldRowsByteIdenticalImmediatelyAfter": 672
+    },
+    "originalNonCounterRowsByteIdentical": 654,
+    "originalAdmissionRowsByteIdentical": 17,
+    "existingDayCounterIncrement": 2,
+    "newHourCounter": 2,
+    "newNonCounterRowsFullyAttributed": 102,
+    "postNativeAndPostCanonical": {
+      "tables": 122,
+      "rows": 775,
+      "allOriginalAndFreshRowsByteIdentical": true,
+      "admissionCountersUnchanged": true,
+      "newAdmissions": 0,
+      "newCommands": 0
+    },
+    "originalContinuity": {
+      "routes": [
+        "/api/workspace",
+        "/api/commerce",
+        "/api/payment-evidence",
+        "/api/inventory",
+        "/api/records",
+        "/api/engineering-review"
+      ],
+      "beforeAndAfterPromotion": "exact equality",
+      "normalization": "none",
+      "originalExpiry": "2026-11-17T21:49:14.202Z",
+      "revision": 2,
+      "graphHash": "68f130fb23b10e3fae3ee81e8dc777525ffdb63b0e1c41553035985a5eb91c40",
+      "commerceOrders": 0
+    }
+  },
+  "externalEffects": {
+    "newFinancialRows": 0,
+    "newPaymentProviderModelQuoteRows": 0,
+    "actualOriginalStorageUpload": 1,
+    "actualAuthenticatedStorageCallback": 1,
+    "actualPeopleOrEquipmentTests": 0,
+    "newAccountsStoresOrSubscriptions": 0
+  },
+  "retainedQualificationFailure": {
+    "kind": "Read-only combined snapshot statement reached its 60-second timeout after native review.",
+    "diagnosis": "Subsequent read-only activity inspection found no active blockers.",
+    "resolution": "One bounded retry used smaller statements in the same repeatable-read snapshot and passed unchanged exact comparison. Original failure/driver retained.",
+    "productionWritesForResolution": 0
+  },
+  "evidenceHashes": {
+    "qualify-hosted.mjs": "8ee20cbf15e59be053446ee82db5a735a3fd205fcf34a4094b4bbaa465ec7b63",
+    "qualify-physical.mjs": "664a4bf890a0729a8b57904ea53766caa059139f842233919a614fe8f5fd695a",
+    "hosted-audit.json": "72c55a544286a0cf6e9bbd4e1b41eb065071f01accb1c38213ac62a0a26ce067",
+    "post-native-audit.json": "6a567db9f1d67c288c490b81ae1d4d25837291fd0805007e05c911df949436bc",
+    "canonical-verification.json": "56bbafa6354411ed78c3e5a0a433d7b372f490e5307ade07d1f78e72563cba40",
+    "promoted-continuity.json": "c7a2797db5a1cf46d2b4be67459e601ba8390d2862ee1c89db33d1e6278fd19b",
+    "promoted-audit.json": "54852b36f2537a5a07e47b237863e775227c4213123c6e3af5ee01b06bb1b28b"
+  },
+  "remainingGates": [
+    "Actual equipment, scoped physical observations and independently qualified review.",
+    "Actual consented novice/engineer sessions and independent adjudication.",
+    "Production Blob withdrawal, deletion, retention and upload/deletion races require separate provider qualification.",
+    "Authentic Channel3 event delivery, external resource ownership and genuine physical merchant eligibility.",
+    "Original media/third-party asset permissions and current dependency exposure review."
+  ],
+  "limitations": [
+    "Sample people and generated tones do not establish human consent, physical performance or acoustic quality.",
+    "A sealed incomplete report preserves its failure, gaps and short recorded interval.",
+    "Masked environment-pull values do not prove deployed provider/encryption-secret equality.",
+    "No public latency or novice usability target is claimed."
+  ]
+}

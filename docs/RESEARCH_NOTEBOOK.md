@@ -2,7 +2,7 @@
 
 Open **Research notebook** from the workbench header, or `/research`, in an existing private workspace. Declare tasks, record dated permission and keep observations against the exact task, consent and system that were present. Opening a study never admits or renews a workspace, contacts a participant, or records a task result.
 
-The notebook makes the planned research workflow usable. It does not independently establish a person's identity, experience, consent or performance. **Sample** studies contain fictional participants and outcomes. **Operator-recorded** studies retain what the operator declares; their mode cannot later become Sample or vice versa. Independently verified participant counts remain zero. The separate research acceptance gate still requires 5–8 consenting novice creators and an appropriately qualified audio engineer, with actual observations and scoped findings.
+The notebook is deployed with [hosted and native qualification](evidence/notebooks-hosted-qualification.json), including exact protocol history, source variation and withheld text after withdrawal. It makes the planned research workflow usable. It does not independently establish a person's identity, experience, consent or performance. **Sample** studies contain fictional participants and outcomes. **Operator-recorded** studies retain what the operator declares; their mode cannot later become Sample or vice versa. Independently verified participant counts remain zero. The separate research acceptance gate still requires 5–8 consenting novice creators and an appropriately qualified audio engineer, with actual observations and scoped findings.
 
 ## Run a study
 
