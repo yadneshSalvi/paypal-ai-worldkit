@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es2022"
-    ],
+    "lib": ["dom", "dom.iterable", "es2022"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,48 +14,9 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@worldkit/*": [
-        "./packages/*"
-      ]
-    }
+    "plugins": [{ "name": "next" }],
+    "paths": { "@/*": ["./src/*"], "@worldkit/*": ["./packages/*"] }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    ".next-certificate-qa/types/**/*.ts",
-    ".next-certificate-qa/dev/types/**/*.ts",
-    ".next-source-impact-qa/types/**/*.ts",
-    ".next-source-impact-qa/dev/types/**/*.ts",
-    ".next-engineering-qa/types/**/*.ts",
-    ".next-engineering-qa/dev/types/**/*.ts",
-    ".next-domain-packs-qa/types/**/*.ts",
-    ".next-domain-packs-qa/dev/types/**/*.ts",
-    ".next-cart-qa/types/**/*.ts",
-    ".next-cart-qa/dev/types/**/*.ts",
-    ".next-physical-qa/types/**/*.ts",
-    ".next-physical-qa/dev/types/**/*.ts",
-    ".next-research-qa/types/**/*.ts",
-    ".next-research-qa/dev/types/**/*.ts",
-    ".next-guided-qa/types/**/*.ts",
-    ".next-guided-qa/dev/types/**/*.ts",
-    ".next-cut-lead/types/**/*.ts",
-    ".next-cut-lead/dev/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    ".artifacts",
-    "plans"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", ".next-certificate-qa/types/**/*.ts", ".next-certificate-qa/dev/types/**/*.ts", ".next-source-impact-qa/types/**/*.ts", ".next-source-impact-qa/dev/types/**/*.ts", ".next-engineering-qa/types/**/*.ts", ".next-engineering-qa/dev/types/**/*.ts", ".next-domain-packs-qa/types/**/*.ts", ".next-domain-packs-qa/dev/types/**/*.ts", ".next-cart-qa/types/**/*.ts", ".next-cart-qa/dev/types/**/*.ts", ".next-physical-qa/types/**/*.ts", ".next-physical-qa/dev/types/**/*.ts", ".next-research-qa/types/**/*.ts", ".next-research-qa/dev/types/**/*.ts", ".next-guided-qa/types/**/*.ts", ".next-guided-qa/dev/types/**/*.ts"],
+  "exclude": ["node_modules", ".artifacts", "plans"]
 }
