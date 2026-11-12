@@ -1,0 +1,114 @@
+{
+  "schema": "worldkit.final-film-qualification.1",
+  "qualifiedAt": "2026-11-12T17:30:02.001216+00:00",
+  "status": "passed",
+  "captureSourceCommit": "d79827dd780f91b570fa74f692e2513c5a6cbf2e",
+  "currentApplicationSource": "0fc062bfabdc2b30bfdba47f232317ab57b061d5",
+  "artifactName": "WorldKit-master-delivery-v3.mp4",
+  "sha256": "51d57343985c43f289dfd19fc6b947f4ed68157637044a73a2ee7b31075119e3",
+  "bytes": 10214622,
+  "master": {
+    "durationSeconds": 170,
+    "frames": 5100,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "sampleRate": "48000",
+    "channels": 2
+  },
+  "audio": {
+    "measuredIntegratedLufs": -15.0,
+    "measuredTruePeakDbtp": -3.18,
+    "humanListening": "not_performed",
+    "originalNarrationClipsPresent": 12,
+    "allOriginalNarrationIntervalsPresent": true,
+    "baselineModelCorrelation": 0.9999960016445271,
+    "repairedModelCorrelation": 0.9999852117284243,
+    "unpoweredModelInteriorExactlyZero": true,
+    "scope": "Generated narration, existing generated music and original application-modeled tones; no hardware recording or participant audio."
+  },
+  "captions": {
+    "recognitionDerived": true,
+    "humanVerified": false,
+    "all90FinalFramesCaptionFree": true,
+    "finalHoldSeconds": 3,
+    "firstCaptionFreeFrame": 5010,
+    "lastFrame": 5099,
+    "rawRecognitionAndDisplayEditsRetained": true
+  },
+  "render": {
+    "fullRenders": 1,
+    "sourceInputsUnchanged": true,
+    "referencedInputs": 111,
+    "inputDigest": "c17e549725d06d55ebd50b293fbaea21151b5632f94e833e0d0e24beff1201c5",
+    "audioOnlyMasteringGainDb": -2,
+    "paddingTrimKeptSamples": 8160000,
+    "videoBitstreamUnchanged": true,
+    "videoBitstreamSha256": "13e8e82a842ef65b23754fe7d074e2ebb44220a4302b98d6c84b2b08a9ec5250",
+    "sourceNarrationBytesUnchanged": true,
+    "newProviderCallsDuringRender": 0
+  },
+  "review": {
+    "editableNativePreviewBeforeRender": true,
+    "beatSheets": 3,
+    "phoneSheets": 3,
+    "seamSheets": 11,
+    "independentDecodedFrames": 21,
+    "mobileNamedPortReadabilityIssueFixed": true,
+    "remainingP0OrP1FromIndependentReview": 0
+  },
+  "retainedFailures": [
+    "Initial original public capture React 418 errors, fixed by a separately qualified application successor.",
+    "Original narration duration/recognition ambiguities and declared caption display edits.",
+    "First joined sampling/timing checks, followed by bounded corrections.",
+    "Master v1 integrated loudness −12.99 LUFS missed the −16 to −14 target.",
+    "Master v2 AAC padding extended the audio/container 5 ms beyond 170 seconds."
+  ],
+  "limitations": [
+    "Software release and full film are delivered capabilities. The full physical and independent research plan remains unmet.",
+    "Actual simultaneous equipment testing, independent engineering/source adjudication, an audio engineer and 5–8 consented novice sessions remain unperformed or unverified.",
+    "The current input is an original Sample illustration; actual Gemini/Channel3 results are proposed matches, not identity, ownership or accuracy evidence.",
+    "The certificate retains four unknowns and zero of thirty reviewed critical facts.",
+    "Historical $12 + $8 sandbox service captures/refunds are dated original records, not purchases by the final cohort.",
+    "The public QR targets an expiring edition, ending 19 November 2026 at 16:01:23.987 UTC.",
+    "Music uses the existing 120-second source twice with a documented 4-second crossfade and 3-second fade, not new paid music.",
+    "Physical Store Sync merchant eligibility, genuine retailer changes, independent human evidence, residual dependency findings and third-party permissions retain separate acceptance gates.",
+    "Final public submission or third-party distribution is separate. No human listening is claimed."
+  ],
+  "evidenceHashes": {
+    "qualification.json": "7901b0e7f3702e03ab91dc325c60e82264beaedb191fa372a3ea84e7eb22bf86",
+    "result.json": "7e9694f63963ee9ee394cb6ab2527113df13cf9923f6468fb874859b228ef1e8",
+    "voice-mounts.json": "659461155e0e3fb71b5b426fe4bb49648c473a8efb06813fd923f0a9ef355900"
+  },
+  "completionScope": "Software release and full 170-second film with editable source are complete. Physical and independent research requirements of the full project plan remain unmet or unverified.",
+  "editableArchive": {
+    "status": "passed",
+    "artifactName": "WorldKit-editable-source-v1.tar.gz",
+    "bytes": 29754403,
+    "sha256": "fe26739a7dd15a022b156c57d6d7ccf3d3115fad10ac9ed815ef18c52ada64c6",
+    "payloadFiles": 100,
+    "manifestFiles": 1,
+    "archiveRegularMembers": 101,
+    "payloadBytes": 33171087,
+    "verifiedExtractedBytes": 33188569,
+    "manifestSha256": "95b7dfadfde8afb87b2891fb1d226bdd2f6c21c255ba26b81ea3afcebea0ef9e",
+    "everyArchivedFileReadAndHashed": true,
+    "safeMemberPaths": true,
+    "symlinks": 0,
+    "stageUnchanged": true,
+    "knownPrivateValuesChecked": 9,
+    "knownPrivateValueMatches": 0,
+    "renderRepeated": false,
+    "sourceChanged": false,
+    "qualificationReceiptSha256": "431ab6726383552b8138ff70b1f4820d38aa5dc9b170945eef67453f3e3130ba",
+    "privacyScope": "Nine selected retained credential/cookie values checked across all 101 staged regular files; zero matches. This is not an exhaustive secret or redistribution-rights audit."
+  },
+  "cleanup": {
+    "ownedMediaPreviewsStopped": true,
+    "mediaOnlyCredentialConfigRemoved": true,
+    "otherFrozenRuntimesPreserved": true,
+    "hyperframesHistoryEnded": true
+  }
+}
